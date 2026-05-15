@@ -1,0 +1,13 @@
+[remap]
+
+importer="spine.skel"
+type="SpineSkeletonFileResource"
+uid="uid://33i2r8wni6cs"
+valid=false
+
+[deps]
+
+source_file="res://resources/characters/bone/hero-pro.skel"
+
+[params]
+

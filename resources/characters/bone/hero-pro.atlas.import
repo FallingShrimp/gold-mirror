@@ -1,0 +1,16 @@
+[remap]
+
+importer="spine.atlas"
+type="SpineAtlasResource"
+uid="uid://cpr1x8lep1ha4"
+path="res://.godot/imported/hero-pro.atlas-44a35294812c2e019deff50e719112b0.spatlas"
+
+[deps]
+
+source_file="res://resources/characters/bone/hero-pro.atlas"
+dest_files=["res://.godot/imported/hero-pro.atlas-44a35294812c2e019deff50e719112b0.spatlas"]
+
+[params]
+
+normal_map_prefix="n"
+specular_map_prefix="s"

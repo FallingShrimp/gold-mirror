@@ -1,3 +1,10 @@
 [gd_scene format=3 uid="uid://bqv2uugch0t5e"]
 
-[node name="EntityBase" type="Node2D" unique_id=948564138]
+[sub_resource type="CircleShape2D" id="CircleShape2D_26as7"]
+
+[node name="EntityBase" type="CharacterBody2D" unique_id=63274235]
+
+[node name="texture" type="Node2D" parent="." unique_id=167379002]
+
+[node name="movebox" type="CollisionShape2D" parent="." unique_id=1108104038]
+shape = SubResource("CircleShape2D_26as7")
