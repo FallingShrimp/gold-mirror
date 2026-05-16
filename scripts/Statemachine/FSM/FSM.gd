@@ -1,6 +1,10 @@
 extends RefCounted
 class_name FiniteStateMachine
 
+signal joinState(newState: IState, oldState: IState, animationName: String)
+signal updateState(state: IState)
+signal exitState(state: IState)
+
 var character: CharacterBase = null
 var currentState: IState = null
 var firstUpdated: bool = false
@@ -11,7 +15,10 @@ func changeState(newStateClass: GDScript, arguments: Array = []) -> bool:
 		if currentState is IState:
 			if newState.stateIs() == currentState.stateIs() && ArrayUtil.same(arguments, currentState.arguments): return false
 			currentState.exit()
-		character.animationPlayback.travel(newState.join())
+			exitState.emit(currentState)
+		var animationName = newState.join()
+		character.animationPlayback.travel(animationName)
+		joinState.emit(newState, currentState, animationName)
 		currentState = newState
 		firstUpdated = false
 		return true
@@ -21,6 +28,7 @@ func changeState(newStateClass: GDScript, arguments: Array = []) -> bool:
 func update(delta: float):
 	if currentState is IState:
 		currentState.update(delta)
+		updateState.emit(currentState)
 		if !firstUpdated:
 			currentState.firstUpdate(delta)
 			firstUpdated = true

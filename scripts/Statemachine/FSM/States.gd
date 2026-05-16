@@ -13,16 +13,11 @@ class WALK extends IState:
 
 class ATTACK extends IState:
 	func join() -> String:
-		SignalUtil.once(character.animationTree.animation_finished,
-			func(_n):
-				character.attackCounter = 0
-				fsm.changeState(IDLE)
-		)
 		return "ATTACK%d" % arguments[0]
 
 class JUMP extends IState:
 	func join() -> String:
-		character.impact(Vector2(0, -arguments[0] * 500))
+		character.impact(Vector2(0, -arguments[0] * 750))
 		character.frictable = false
 		return "JUMP"
 

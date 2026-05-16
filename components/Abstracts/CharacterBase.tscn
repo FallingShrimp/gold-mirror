@@ -3,14 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
 [ext_resource type="Texture2D" uid="uid://bgo2hppto8j2n" path="res://resources/characters/gbot/full.png" id="3_0cve1"]
 
-[sub_resource type="Animation" id="Animation_0cve1"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_w6roo"]
-_data = {
-&"RESET": SubResource("Animation_0cve1")
-}
-
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 
 [node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
@@ -26,5 +18,4 @@ position = Vector2(489, -421)
 texture = ExtResource("3_0cve1")
 
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
-libraries/ = SubResource("AnimationLibrary_w6roo")
 speed_scale = 3.0

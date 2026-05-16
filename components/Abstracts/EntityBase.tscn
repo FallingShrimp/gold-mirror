@@ -2,8 +2,6 @@
 
 [ext_resource type="Script" uid="uid://c5k8ar4wo7hln" path="res://scripts/Statemachine/EntityBase.gd" id="1_o1eeb"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_26as7"]
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_26as7"]
 
 [node name="EntityBase" type="CharacterBody2D" unique_id=63274235]
@@ -18,7 +16,6 @@ unique_name_in_owner = true
 [node name="tree" type="AnimationTree" parent="texture/animator" unique_id=861821677]
 unique_name_in_owner = true
 root_node = NodePath("%animator/..")
-tree_root = SubResource("AnimationNodeStateMachine_26as7")
 anim_player = NodePath("..")
 
 [node name="movebox" type="CollisionShape2D" parent="." unique_id=1108104038]
