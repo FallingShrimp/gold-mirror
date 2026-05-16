@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkhiw7p0l85ct"
-path="res://.godot/imported/hero-pro.png-c520a22b804f6bec6eb18f54e0494241.ctex"
+uid="uid://deenj6fr3okw6"
+path="res://.godot/imported/bones.png-eb3bb39768d285b96869b446d98060ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/characters/bone/hero-pro.png"
-dest_files=["res://.godot/imported/hero-pro.png-c520a22b804f6bec6eb18f54e0494241.ctex"]
+source_file="res://resources/characters/gbot/bones.png"
+dest_files=["res://.godot/imported/bones.png-eb3bb39768d285b96869b446d98060ed.ctex"]
 
 [params]
 

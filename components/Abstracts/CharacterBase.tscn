@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://byn7d8frmp314"]
 
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
-[ext_resource type="SpineAtlasResource" uid="uid://cpr1x8lep1ha4" path="res://resources/characters/bone/hero-pro.atlas" id="2_6kavq"]
-
-[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_0cve1"]
-atlas_res = ExtResource("2_6kavq")
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 
-[node name="SpineSprite" type="SpineSprite" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=855923761]
-skeleton_data_res = SubResource("SpineSkeletonDataResource_0cve1")
+[node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
+
+[node name="polygons" type="Node2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="1" unique_id=507869215]

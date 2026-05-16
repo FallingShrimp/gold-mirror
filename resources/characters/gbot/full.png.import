@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmcw03vt5ifny"
-path="res://.godot/imported/main.png-8568c7ac9a241daab56469c38163342f.ctex"
+uid="uid://bgo2hppto8j2n"
+path="res://.godot/imported/full.png-20d3408b5e6660f07aed932c8923eaf1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/arts/main.png"
-dest_files=["res://.godot/imported/main.png-8568c7ac9a241daab56469c38163342f.ctex"]
+source_file="res://resources/characters/gbot/full.png"
+dest_files=["res://.godot/imported/full.png-20d3408b5e6660f07aed932c8923eaf1.ctex"]
 
 [params]
 
