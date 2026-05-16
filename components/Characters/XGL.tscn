@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1foynltlo4nt" path="res://resources/characters/xgl/bones.png" id="2_kejvf"]
 [ext_resource type="Script" uid="uid://bdnu1w1xag5qo" path="res://scripts/Content/Characters/XGL.gd" id="2_sowdv"]
 
-[sub_resource type="Animation" id="Animation_w6roo"]
+[sub_resource type="Animation" id="Animation_sowdv"]
 resource_name = "attack1"
 step = 0.05
 tracks/0/type = "bezier"
@@ -19,15 +19,15 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.3)
 }
 
-[sub_resource type="Animation" id="Animation_sowdv"]
+[sub_resource type="Animation" id="Animation_b7uyj"]
 resource_name = "die"
 step = 0.05
 
-[sub_resource type="Animation" id="Animation_kejvf"]
+[sub_resource type="Animation" id="Animation_l8grr"]
 resource_name = "idle"
 step = 0.05
 
-[sub_resource type="Animation" id="Animation_buw6x"]
+[sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "walk"
 length = 2.625
 loop_mode = 1
@@ -153,12 +153,12 @@ tracks/9/keys = {
 "values": [1.3089969389957472, 1.1344640137963142, 1.0471975511965976, 1.1344640137963142, 0.9599310885968813, 1.2217304763960306, 1.3089969389957472, 1.3089969389957472]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kejvf"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sowdv"]
 _data = {
-&"attack1": SubResource("Animation_w6roo"),
-&"die": SubResource("Animation_sowdv"),
-&"idle": SubResource("Animation_kejvf"),
-&"walk": SubResource("Animation_buw6x")
+&"attack1": SubResource("Animation_sowdv"),
+&"die": SubResource("Animation_b7uyj"),
+&"idle": SubResource("Animation_l8grr"),
+&"walk": SubResource("Animation_46enu")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8grr"]
@@ -229,7 +229,7 @@ length = 240.342
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-137, 42)
-rotation = 0.0
+rotation = 2.62
 rest = Transform2D(-0.8670267, 0.49826175, -0.49826175, -0.8670267, -137, 42)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
@@ -288,7 +288,6 @@ rest = Transform2D(1, 0, 0, 1, -2.0000038, 184)
 
 [node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
 position = Vector2(16.999992, 246)
-rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 16.999992, 246)
 
@@ -361,7 +360,7 @@ position = Vector2(1714, -676)
 texture = ExtResource("2_kejvf")
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
-libraries/char = SubResource("AnimationLibrary_kejvf")
+libraries/ = SubResource("AnimationLibrary_sowdv")
 
 [node name="tree" parent="texture/animator" index="0" unique_id=861821677]
 tree_root = SubResource("AnimationNodeStateMachine_cebsw")

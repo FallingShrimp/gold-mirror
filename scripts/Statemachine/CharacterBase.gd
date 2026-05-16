@@ -9,6 +9,7 @@ enum Direction {
 const GRAVITY = 20
 const CONSTANT_FRICTION: float = 0.2
 
+var attackTime: float = 100.0
 var movementSpeed: float = 1.0
 var mass: float = 1
 var frictable: bool = true
@@ -17,6 +18,8 @@ var frictionMultipiler: float = 1
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
+var emittedForNextAttack: bool = false
+var lastAttackTime: float = 0
 
 func _ready():
 	super._ready()

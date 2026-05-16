@@ -13,6 +13,7 @@ class WALK extends IState:
 
 class ATTACK extends IState:
 	func join() -> String:
+		character.lastAttackTime = WorldManager.getCurrentTime()
 		return "ATTACK%d" % arguments[0]
 
 class JUMP extends IState:

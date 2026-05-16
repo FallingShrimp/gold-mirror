@@ -3,7 +3,13 @@
 [ext_resource type="PackedScene" uid="uid://byn7d8frmp314" path="res://components/Abstracts/CharacterBase.tscn" id="1_iy2xj"]
 [ext_resource type="Texture2D" uid="uid://deenj6fr3okw6" path="res://resources/characters/gbot/bones.png" id="2_3127m"]
 [ext_resource type="Texture2D" uid="uid://2svyulxah4fe" path="res://resources/characters/gbot/weapon.png" id="3_3127m"]
-[ext_resource type="AnimationLibrary" uid="uid://dlxbtc0y16jeg" path="res://char.res" id="3_ooenc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3127m"]
+size = Vector2(310, 190)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3127m"]
+radius = 195.0
+height = 880.0
 
 [node name="Humanoid" unique_id=948564138 instance=ExtResource("1_iy2xj")]
 script = null
@@ -22,11 +28,13 @@ rest = Transform2D(1, 0, 0, 1, 10, -173)
 
 [node name="leftarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(76, 43)
+rotation = 0.5235988
 scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.8908146, -0.45436633, 0.45436633, 0.8908146, 76, 43)
 
 [node name="lefthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 position = Vector2(-52.56317, 85.44656)
+rotation = 1.3089969
 scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(-0.26183867, 0.9651113, -0.9651113, -0.26183867, -52.56317, 85.44656)
 auto_calculate_length_and_angle = false
@@ -35,10 +43,12 @@ bone_angle = 0.0
 
 [node name="rightarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-113, 45)
+rotation = 2.0943952
 rest = Transform2D(-0.9986515, 0.05191462, -0.05191462, -0.9986515, -113, 45)
 
 [node name="righthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(4.6203995, -88.879974)
+rotation = -1.3962634
 scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(-0.0517121, -0.99866146, 0.99866146, -0.0517121, 4.6203995, -88.879974)
 auto_calculate_length_and_angle = false
@@ -48,7 +58,7 @@ bone_angle = 0.0
 [node name="weapon" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(143.37064, 3.8577828)
 rotation = -1.4497777
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.12072343, -0.99268615, 0.99268615, 0.12072343, 143.37064, 3.8577828)
 auto_calculate_length_and_angle = false
 length = 563.395
@@ -57,24 +67,27 @@ bone_angle = 0.0
 [node name="mouth" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="2" unique_id=24930383]
 position = Vector2(-58, -111)
 rotation = 2.659209
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(-0.8858917, 0.46389213, -0.46389213, -0.8858917, -58, -111)
 auto_calculate_length_and_angle = false
 length = 185.174
-bone_angle = -154.37793
+bone_angle = -154.37791
 
 [node name="rightleg" type="Bone2D" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-58, 8)
-scale = Vector2(0.99999976, 0.99999976)
+rotation = 0.34906584
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.95339894, -0.3017118, 0.3017118, 0.95339894, -58, 8)
 
 [node name="rightknee" type="Bone2D" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
 position = Vector2(-47.73062, 84.53871)
-scale = Vector2(0.9999996, 0.9999996)
+rotation = 0.17453292
+scale = Vector2(0.99999946, 0.99999946)
 rest = Transform2D(0.6816894, 0.7316412, -0.7316412, 0.6816894, -47.73062, 84.53871)
 
 [node name="rightfoot" type="Bone2D" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(58.26716, 107.20519)
+rotation = -0.08726645
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8719359, -0.48961958, 0.48961958, 0.8719359, 58.26716, 107.20519)
 auto_calculate_length_and_angle = false
@@ -83,12 +96,14 @@ bone_angle = 0.0
 
 [node name="leftleg" type="Bone2D" parent="texture/skeleton/hip" index="2" unique_id=1150981751]
 position = Vector2(58, -4)
+rotation = -0.5235988
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, 0.45436627, -0.45436627, 0.89081466, 58, -4)
 
 [node name="leftknee" type="Bone2D" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
 position = Vector2(14.204372, 98.276344)
-scale = Vector2(0.99999994, 0.99999994)
+rotation = 0.7853982
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(0.99359566, 0.11299355, -0.11299355, 0.99359566, 14.204372, 98.276344)
 
 [node name="leftfoot" type="Bone2D" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
@@ -173,5 +188,10 @@ polygons = [PackedInt32Array(19, 20, 16), PackedInt32Array(21, 22, 15), PackedIn
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/leftarm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/leftarm/lefthand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/rightarm", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/body/neck/rightarm/righthand", PackedFloat32Array(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1), "hip/body/neck/rightarm/righthand/weapon", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/mouth", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg/rightknee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg/rightknee/rightfoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg/leftknee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg/leftknee/leftfoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 8
 
-[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
-libraries/char = ExtResource("3_ooenc")
+[node name="movebox" parent="." index="1" unique_id=1108104038]
+position = Vector2(0, -56)
+shape = SubResource("RectangleShape2D_3127m")
+
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
+position = Vector2(-1, -391)
+shape = SubResource("CapsuleShape2D_3127m")

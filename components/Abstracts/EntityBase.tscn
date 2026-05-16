@@ -4,6 +4,8 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_26as7"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_o1eeb"]
+
 [node name="EntityBase" type="CharacterBody2D" unique_id=63274235]
 script = ExtResource("1_o1eeb")
 
@@ -20,3 +22,8 @@ anim_player = NodePath("..")
 
 [node name="movebox" type="CollisionShape2D" parent="." unique_id=1108104038]
 shape = SubResource("CircleShape2D_26as7")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=771077559]
+
+[node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=1412400232]
+shape = SubResource("CircleShape2D_o1eeb")

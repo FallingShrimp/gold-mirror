@@ -8,6 +8,7 @@ class_name EntityBase
 var animationPlayback: AnimationNodeStateMachinePlayback
 
 func _ready():
+	register()
 	animationTree.active = true
 	animationPlayback = animationTree.get("parameters/playback")
 	animationTree.set("parameters/conditions/always", true)
@@ -15,6 +16,8 @@ func _ready():
 func _physics_process(delta):
 	ai(delta)
 
+func register():
+	pass
 func spawn():
 	pass
 func ai(_delta: float):
