@@ -6,6 +6,66 @@
 [sub_resource type="Animation" id="Animation_x3xge"]
 resource_name = "RESET"
 step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0896547]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("skeleton/hip/body/neck/mouth:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.659209]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("skeleton/hip/rightleg:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.30648768]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("skeleton/hip/leftleg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.47166082]
+}
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -207,34 +267,8 @@ graph_offset = Vector2(-98.60647, 43.61379)
 [node name="Humanoid" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
 
-[node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
-rotation = -0.47166088
-
-[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
-rotation = 1.8357233
-scale = Vector2(0.99999964, 0.99999964)
-
-[node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" parent_id_path=PackedInt32Array(604297370) index="0" unique_id=751552691]
-rotation = -1.6225315
-
-[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
-scale = Vector2(0.99999994, 0.99999994)
-
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-rotation = 0.0
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="rightknee" parent="texture/skeleton/hip/rightleg" parent_id_path=PackedInt32Array(703145623) index="0" unique_id=756090729]
-rotation = 0.82072675
-
-[node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
-rotation = -0.51165354
-
-[node name="leftknee" parent="texture/skeleton/hip/leftleg" parent_id_path=PackedInt32Array(1150981751) index="0" unique_id=1032884720]
-rotation = 0.11323539
-
-[node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
-rotation = -0.5788706
+scale = Vector2(0.99999976, 0.99999976)
 
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")

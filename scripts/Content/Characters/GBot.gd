@@ -29,14 +29,14 @@ func ai(_delta: float):
 	if velocity.y > 0 && fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP]:
 		fsm.changeState(States.FALLING)
 	elif Input.is_action_just_pressed("attack"):
-		if fsm.stateIs() in [States.IDLE, States.WALK, States.FALLING]:
+		if fsm.stateIs() in [States.IDLE, States.WALK]:
 			if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
 				attackCounter += 1
 	elif Input.is_action_just_pressed("dash"):
-		if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP]:
+		if fsm.stateIs() in [States.IDLE, States.WALK]:
 			fsm.changeState(States.DASH, [direction])
 	elif Input.is_action_just_pressed("jump"):
-		if fsm.stateIs() in [States.IDLE, States.WALK] && is_on_floor():
+		if fsm.stateIs() in [States.IDLE, States.WALK, States.DASH] && is_on_floor():
 			fsm.changeState(States.JUMP, [1])
 	elif Input.is_action_pressed("moving"):
 		if fsm.stateIs() in [States.IDLE, States.WALK] && is_on_floor():

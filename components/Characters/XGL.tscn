@@ -4,6 +4,130 @@
 [ext_resource type="Texture2D" uid="uid://1foynltlo4nt" path="res://resources/characters/xgl/bones.png" id="2_kejvf"]
 [ext_resource type="Script" uid="uid://bdnu1w1xag5qo" path="res://scripts/Content/Characters/XGL.gd" id="2_sowdv"]
 
+[sub_resource type="Animation" id="Animation_e2ur4"]
+resource_name = "RESET"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.62]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skeleton/hip/body/neck/leftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("skeleton/hip/body/neck/leftarm/lefthand:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3099034]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("skeleton/hip/body/neck/rightarm/righthand:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.6225315]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("skeleton/hip/rightleg:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("skeleton/hip/rightleg/rightknee:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("skeleton/hip/rightleg/rightknee/rightfoot:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("skeleton/hip/leftleg:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("skeleton/hip/leftleg/leftknee:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("skeleton/hip/leftleg/leftknee/leftfoot:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_sowdv"]
 resource_name = "attack1"
 step = 0.05
@@ -21,10 +145,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_b7uyj"]
 resource_name = "die"
-step = 0.05
-
-[sub_resource type="Animation" id="Animation_l8grr"]
-resource_name = "idle"
 step = 0.05
 
 [sub_resource type="Animation" id="Animation_46enu"]
@@ -155,9 +275,9 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sowdv"]
 _data = {
+&"RESET": SubResource("Animation_e2ur4"),
 &"attack1": SubResource("Animation_sowdv"),
 &"die": SubResource("Animation_b7uyj"),
-&"idle": SubResource("Animation_l8grr"),
 &"walk": SubResource("Animation_46enu")
 }
 
@@ -165,7 +285,7 @@ _data = {
 animation = &"char/attack1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sowdv"]
-animation = &"char/idle"
+animation = &"RESET"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7uyj"]
 animation = &"char/walk"
@@ -222,7 +342,7 @@ rest = Transform2D(1, 0, 0, 1, 123, 36)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 position = Vector2(39, 162)
-rotation = 0.0
+rotation = 1.3099034
 scale = Vector2(1, 1)
 rest = Transform2D(0.2579434, 0.96616006, -0.96616006, 0.2579434, 39, 162)
 length = 240.342
@@ -234,7 +354,6 @@ rest = Transform2D(-0.8670267, 0.49826175, -0.49826175, -0.8670267, -137, 42)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(121.07329, -91.13322)
-rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(-0.05171213, -0.99866205, 0.99866205, -0.05171213, 121.07329, -91.13322)
 length = 258.29
@@ -288,6 +407,7 @@ rest = Transform2D(1, 0, 0, 1, -2.0000038, 184)
 
 [node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
 position = Vector2(16.999992, 246)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 16.999992, 246)
 
@@ -363,5 +483,6 @@ texture = ExtResource("2_kejvf")
 libraries/ = SubResource("AnimationLibrary_sowdv")
 
 [node name="tree" parent="texture/animator" index="0" unique_id=861821677]
+active = false
 tree_root = SubResource("AnimationNodeStateMachine_cebsw")
 parameters/conditions/always = false

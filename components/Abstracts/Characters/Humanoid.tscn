@@ -28,14 +28,14 @@ rest = Transform2D(1, 0, 0, 1, 10, -173)
 
 [node name="leftarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(76, 43)
-rotation = 0.5235988
+rotation = -0.47166088
 scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.8908146, -0.45436633, 0.45436633, 0.8908146, 76, 43)
 
 [node name="lefthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 position = Vector2(-52.56317, 85.44656)
-rotation = 1.3089969
-scale = Vector2(0.9999996, 0.9999996)
+rotation = 1.8357233
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(-0.26183867, 0.9651113, -0.9651113, -0.26183867, -52.56317, 85.44656)
 auto_calculate_length_and_angle = false
 length = 123.684
@@ -43,12 +43,12 @@ bone_angle = 0.0
 
 [node name="rightarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-113, 45)
-rotation = 2.0943952
+rotation = 3.0896547
 rest = Transform2D(-0.9986515, 0.05191462, -0.05191462, -0.9986515, -113, 45)
 
 [node name="righthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(4.6203995, -88.879974)
-rotation = -1.3962634
+rotation = -1.6225315
 scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(-0.0517121, -0.99866146, 0.99866146, -0.0517121, 4.6203995, -88.879974)
 auto_calculate_length_and_angle = false
@@ -58,7 +58,7 @@ bone_angle = 0.0
 [node name="weapon" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(143.37064, 3.8577828)
 rotation = -1.4497777
-scale = Vector2(0.99999976, 0.99999976)
+scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(0.12072343, -0.99268615, 0.99268615, 0.12072343, 143.37064, 3.8577828)
 auto_calculate_length_and_angle = false
 length = 563.395
@@ -67,7 +67,7 @@ bone_angle = 0.0
 [node name="mouth" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="2" unique_id=24930383]
 position = Vector2(-58, -111)
 rotation = 2.659209
-scale = Vector2(0.99999976, 0.99999976)
+scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(-0.8858917, 0.46389213, -0.46389213, -0.8858917, -58, -111)
 auto_calculate_length_and_angle = false
 length = 185.174
@@ -75,19 +75,19 @@ bone_angle = -154.37791
 
 [node name="rightleg" type="Bone2D" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-58, 8)
-rotation = 0.34906584
-scale = Vector2(0.99999964, 0.99999964)
+rotation = -0.30648768
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.95339894, -0.3017118, 0.3017118, 0.95339894, -58, 8)
 
 [node name="rightknee" type="Bone2D" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
 position = Vector2(-47.73062, 84.53871)
-rotation = 0.17453292
-scale = Vector2(0.99999946, 0.99999946)
+rotation = 0.82072675
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(0.6816894, 0.7316412, -0.7316412, 0.6816894, -47.73062, 84.53871)
 
 [node name="rightfoot" type="Bone2D" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(58.26716, 107.20519)
-rotation = -0.08726645
+rotation = -0.51165354
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8719359, -0.48961958, 0.48961958, 0.8719359, 58.26716, 107.20519)
 auto_calculate_length_and_angle = false
@@ -96,18 +96,19 @@ bone_angle = 0.0
 
 [node name="leftleg" type="Bone2D" parent="texture/skeleton/hip" index="2" unique_id=1150981751]
 position = Vector2(58, -4)
-rotation = -0.5235988
+rotation = 0.47166082
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, 0.45436627, -0.45436627, 0.89081466, 58, -4)
 
 [node name="leftknee" type="Bone2D" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
 position = Vector2(14.204372, 98.276344)
-rotation = 0.7853982
-scale = Vector2(0.9999999, 0.9999999)
+rotation = 0.11323539
+scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(0.99359566, 0.11299355, -0.11299355, 0.99359566, 14.204372, 98.276344)
 
 [node name="leftfoot" type="Bone2D" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
 position = Vector2(70.92974, 112.5477)
+rotation = -0.5788706
 scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.8370808, -0.5470787, 0.5470787, 0.8370808, 70.92974, 112.5477)
 auto_calculate_length_and_angle = false
