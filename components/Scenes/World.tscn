@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cnw8gnfh3klpc"]
+
+[ext_resource type="PackedScene" uid="uid://bki1gffoosyve" path="res://components/Characters/XGL.tscn" id="1_lnjql"]
+[ext_resource type="Script" uid="uid://dsj6rgpmtljc1" path="res://scripts/Utils/Managers/WorldManager.gd" id="1_sbdvw"]
+[ext_resource type="PackedScene" uid="uid://cricq0wagb4pe" path="res://components/Characters/GBot.tscn" id="2_0ci2v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ci2v"]
+size = Vector2(1659, 99)
+
+[node name="World" type="Node2D" unique_id=1785129246]
+script = ExtResource("1_sbdvw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1697715685]
+position = Vector2(241, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=568404488]
+position = Vector2(166.5, 24.5)
+shape = SubResource("RectangleShape2D_0ci2v")
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=529562544]
+polygon = PackedVector2Array(-674, -27, -666, 70, 994, 83, 1000, -24)
+
+[node name="Humanoid" parent="." unique_id=948564138 instance=ExtResource("1_lnjql")]
+position = Vector2(340, 62.000015)
+scale = Vector2(0.2336621, 0.2336621)
+
+[node name="Humanoid2" parent="." unique_id=408243359 instance=ExtResource("2_0ci2v")]
+position = Vector2(-68, 94.000015)
+scale = Vector2(0.27015564, 0.27015564)
+
+[node name="Camera2D" type="Camera2D" parent="Humanoid2" unique_id=1792746904]
+position = Vector2(-7.4031982, -273.9162)
+scale = Vector2(3.70157, 3.70157)
+process_callback = 0
+position_smoothing_enabled = true

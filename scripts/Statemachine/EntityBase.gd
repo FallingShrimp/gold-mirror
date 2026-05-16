@@ -6,13 +6,16 @@ class_name EntityBase
 @onready var texture: Node2D = $%texture
 
 var animationPlayback: AnimationNodeStateMachinePlayback
-var fsm: FiniteStateMachine = FiniteStateMachine.new(self )
 
 func _ready():
 	animationTree.active = true
 	animationPlayback = animationTree.get("parameters/playback")
+	animationTree.set("parameters/conditions/always", true)
+	spawn()
 func _physics_process(delta):
-	fsm.update(delta)
+	ai(delta)
 
-func ai():
+func spawn():
+	pass
+func ai(_delta: float):
 	pass

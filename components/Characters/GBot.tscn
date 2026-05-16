@@ -1,0 +1,278 @@
+[gd_scene format=3 uid="uid://cricq0wagb4pe"]
+
+[ext_resource type="PackedScene" uid="uid://gmit1n7i3rvf" path="res://components/Abstracts/Characters/Humanoid.tscn" id="1_feuyp"]
+[ext_resource type="Script" uid="uid://b0t4458k68yaq" path="res://scripts/Content/Characters/GBot.gd" id="2_1uso6"]
+
+[sub_resource type="Animation" id="Animation_feuyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/rightleg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.30648768]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skeleton/hip/leftleg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.47166082]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0896547]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("skeleton/hip/body/neck/mouth:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.659209]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("skeleton/hip:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_vmwqn"]
+resource_name = "attack1"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0896547, 0.3368485456349058]
+}
+
+[sub_resource type="Animation" id="Animation_b5e2n"]
+resource_name = "attack1"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.3368485456349058, 3.0896547]
+}
+
+[sub_resource type="Animation" id="Animation_4tujy"]
+resource_name = "dash"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.7853981633974483, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j3bhw"]
+resource_name = "falling"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/body/neck/mouth:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.3596851486963333, 3.1974431896536126]
+}
+
+[sub_resource type="Animation" id="Animation_hfxiv"]
+resource_name = "jump"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/body/neck/mouth:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.659209, 2.3596851486963333]
+}
+
+[sub_resource type="Animation" id="Animation_1uso6"]
+resource_name = "walk"
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skeleton/hip/rightleg:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-0.30648768, -1.0925761117484507, -0.30717794835100237]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skeleton/hip/leftleg:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.47166082, 0.994837673636768, 0.47123889803846897]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vmwqn"]
+_data = {
+&"RESET": SubResource("Animation_feuyp"),
+&"attack1": SubResource("Animation_vmwqn"),
+&"attack2": SubResource("Animation_b5e2n"),
+&"dash": SubResource("Animation_4tujy"),
+&"falling": SubResource("Animation_j3bhw"),
+&"jump": SubResource("Animation_hfxiv"),
+&"walk": SubResource("Animation_1uso6")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vmwqn"]
+animation = &"attack1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4tujy"]
+animation = &"attack2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfxiv"]
+animation = &"dash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b5e2n"]
+animation = &"falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_feuyp"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j3bhw"]
+animation = &"jump"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_1uso6"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vmwqn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b5e2n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hfxiv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_j3bhw"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4tujy"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_x3xge"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7gmcx"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_12pkj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ejmrh"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_svyw4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d4fll"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d0jbr"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i6yko"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fsmix"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8tjt6"]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfxiv"]
+state_machine_type = 1
+states/ATTACK1/node = SubResource("AnimationNodeAnimation_vmwqn")
+states/ATTACK1/position = Vector2(695, 277)
+states/ATTACK2/node = SubResource("AnimationNodeAnimation_4tujy")
+states/ATTACK2/position = Vector2(490.39352, 368.64838)
+states/DASH/node = SubResource("AnimationNodeAnimation_hfxiv")
+states/DASH/position = Vector2(712, 113)
+states/FALLING/node = SubResource("AnimationNodeAnimation_b5e2n")
+states/FALLING/position = Vector2(680, 189)
+states/IDLE/node = SubResource("AnimationNodeAnimation_feuyp")
+states/IDLE/position = Vector2(374, 62)
+states/JUMP/node = SubResource("AnimationNodeAnimation_j3bhw")
+states/JUMP/position = Vector2(537, 242)
+states/WALK/node = SubResource("AnimationNodeAnimation_1uso6")
+states/WALK/position = Vector2(371, 155)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_vmwqn"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_b5e2n"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_hfxiv"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_j3bhw"), "IDLE", "JUMP", SubResource("AnimationNodeStateMachineTransition_4tujy"), "WALK", "JUMP", SubResource("AnimationNodeStateMachineTransition_x3xge"), "JUMP", "FALLING", SubResource("AnimationNodeStateMachineTransition_7gmcx"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_12pkj"), "IDLE", "DASH", SubResource("AnimationNodeStateMachineTransition_ejmrh"), "WALK", "DASH", SubResource("AnimationNodeStateMachineTransition_svyw4"), "JUMP", "DASH", SubResource("AnimationNodeStateMachineTransition_d4fll"), "DASH", "IDLE", SubResource("AnimationNodeStateMachineTransition_d0jbr"), "IDLE", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_i6yko"), "WALK", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_fsmix"), "ATTACK1", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_8tjt6")]
+graph_offset = Vector2(-98.60647, 43.61379)
+
+[node name="Humanoid" unique_id=948564138 instance=ExtResource("1_feuyp")]
+script = ExtResource("2_1uso6")
+
+[node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
+visible = false
+
+[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
+scale = Vector2(0.9999997, 0.9999997)
+
+[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
+libraries/ = SubResource("AnimationLibrary_vmwqn")
+speed_scale = 1.0
+
+[node name="tree" parent="texture/animator" index="0" unique_id=861821677]
+tree_root = SubResource("AnimationNodeStateMachine_hfxiv")

@@ -1,23 +1,33 @@
 extends RefCounted
 class_name FiniteStateMachine
 
-var entity: EntityBase = null
-var currentState: IState
+var character: CharacterBase = null
+var currentState: IState = null
 var firstUpdated: bool = false
 
-func changeState(newStateClass: GDScript, arguments: Array = []):
-	var newState = newStateClass.new(entity, arguments)
+func changeState(newStateClass: GDScript, arguments: Array = []) -> bool:
+	var newState = newStateClass.new(self , character, arguments)
 	if newState is IState:
-		if newState == currentState: return
-		currentState.exit()
+		if currentState is IState:
+			if newState.stateIs() == currentState.stateIs() && ArrayUtil.same(arguments, currentState.arguments): return false
+			currentState.exit()
+		character.animationPlayback.travel(newState.join())
+		currentState = newState
 		firstUpdated = false
-		newState.join()
-		entity.animationPlayback.travel(newState.animationNodeName)
+		return true
 	else:
 		push_error("无效状态类", newStateClass, newState)
+		return false
 func update(delta: float):
-	currentState.update(delta)
+	if currentState is IState:
+		currentState.update(delta)
+		if !firstUpdated:
+			currentState.firstUpdate(delta)
+			firstUpdated = true
 
-func _init(entitx: EntityBase):
-	entity = entitx
-	currentState = States.IDLE.new(entity)
+func stateIs():
+	return currentState.stateIs()
+
+func _init(charactex: CharacterBase):
+	character = charactex
+	changeState(States.IDLE)

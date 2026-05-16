@@ -1,7 +1,9 @@
 extends RefCounted
 class_name IState
 
-var entity: EntityBase = null
+var enterTime: float = 0
+var fsm: FiniteStateMachine = null
+var character: CharacterBase = null
 var arguments: Array = []
 
 func register() -> void:
@@ -17,7 +19,14 @@ func update(_delta: float) -> void:
 func exit() -> void:
 	pass
 
-func _init(entitx: EntityBase, argumentx: Array = []):
+func stateIs():
+	return get_script()
+func timePassed():
+	return WorldManager.getCurrentTime() - enterTime
+
+func _init(fsmx: FiniteStateMachine, charactex: CharacterBase, argumentx: Array = []):
 	register()
-	entity = entitx
+	enterTime = WorldManager.getCurrentTime()
+	fsm = fsmx
+	character = charactex
 	arguments = argumentx

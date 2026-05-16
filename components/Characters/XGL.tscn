@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://gmit1n7i3rvf" path="res://components/Abstracts/Characters/Humanoid.tscn" id="1_6wly8"]
 [ext_resource type="Texture2D" uid="uid://1foynltlo4nt" path="res://resources/characters/xgl/bones.png" id="2_kejvf"]
+[ext_resource type="Script" uid="uid://bdnu1w1xag5qo" path="res://scripts/Content/Characters/XGL.gd" id="2_sowdv"]
 
 [sub_resource type="Animation" id="Animation_w6roo"]
 resource_name = "attack1"
@@ -160,55 +161,46 @@ _data = {
 &"walk": SubResource("Animation_buw6x")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kejvf"]
-animation = &"char/idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sowdv"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_l8grr"]
 animation = &"char/attack1"
 
-[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_b7uyj"]
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_l8grr"]
-graph_offset = Vector2(-105.02844, 50.802933)
-nodes/output/position = Vector2(660, 120)
-nodes/OneShot/node = SubResource("AnimationNodeOneShot_b7uyj")
-nodes/OneShot/position = Vector2(420, 100)
-nodes/Animation/node = SubResource("AnimationNodeAnimation_sowdv")
-nodes/Animation/position = Vector2(140, 60)
-"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_kejvf")
-"nodes/Animation 2/position" = Vector2(140, 260)
-node_connections = [&"output", 0, &"OneShot", &"OneShot", 0, &"Animation 2", &"OneShot", 1, &"Animation"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46enu"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sowdv"]
 animation = &"char/idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2ur4"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b7uyj"]
 animation = &"char/walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u3h3u"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l8grr"]
 advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_46enu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e2ur4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u3h3u"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w6duw"]
 advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_webv5"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f4tlt"]
-advance_mode = 2
+advance_condition = &"always"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cebsw"]
 state_machine_type = 1
-states/ATTACK1/node = SubResource("AnimationNodeBlendTree_l8grr")
-states/ATTACK1/position = Vector2(632, 118)
-states/IDLE/node = SubResource("AnimationNodeAnimation_46enu")
-states/IDLE/position = Vector2(411, 68)
-states/WALK/node = SubResource("AnimationNodeAnimation_e2ur4")
-states/WALK/position = Vector2(404, 182)
-transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_u3h3u"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_w6duw"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_webv5"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_f4tlt")]
+states/ATTACK/node = SubResource("AnimationNodeAnimation_l8grr")
+states/ATTACK/position = Vector2(633.2727, 175.18318)
+states/End/position = Vector2(902, 100)
+states/IDLE/node = SubResource("AnimationNodeAnimation_sowdv")
+states/IDLE/position = Vector2(386.2727, 9.183182)
+states/Start/position = Vector2(201, 100)
+states/WALK/node = SubResource("AnimationNodeAnimation_b7uyj")
+states/WALK/position = Vector2(724.2727, 44.18318)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_l8grr"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_46enu"), "WALK", "ATTACK", SubResource("AnimationNodeStateMachineTransition_e2ur4"), "IDLE", "ATTACK", SubResource("AnimationNodeStateMachineTransition_u3h3u"), "ATTACK", "IDLE", SubResource("AnimationNodeStateMachineTransition_w6duw")]
 graph_offset = Vector2(-48.727283, -61.81682)
 
 [node name="Humanoid" unique_id=948564138 instance=ExtResource("1_6wly8")]
+script = ExtResource("2_sowdv")
+
+[node name="texture" parent="." index="0" unique_id=167379002]
+position = Vector2(-55, 52)
 
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
 position = Vector2(98, -501)
@@ -224,21 +216,25 @@ rest = Transform2D(1, 0, 0, 1, -30, -230)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(123, 36)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 123, 36)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 position = Vector2(39, 162)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(0.2579434, 0.96616006, -0.96616006, 0.2579434, 39, 162)
 length = 240.342
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-137, 42)
+rotation = 0.0
 rest = Transform2D(-0.8670267, 0.49826175, -0.49826175, -0.8670267, -137, 42)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(121.07329, -91.13322)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(-0.05171213, -0.99866205, 0.99866205, -0.05171213, 121.07329, -91.13322)
 length = 258.29
@@ -263,30 +259,36 @@ bone_angle = 0.0
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-73, 7)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -73, 7)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
 position = Vector2(-21, 202.00002)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -21, 202.00002)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-39, 213)
+rotation = 0.0
 rest = Transform2D(0.99999976, 0, 0, 0.99999976, -39, 213)
 
 [node name="leftleg" parent="texture/skeleton/hip" index="2" unique_id=1150981751]
 position = Vector2(27, 6)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 27, 6)
 
 [node name="leftknee" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
 position = Vector2(-2.0000038, 184)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, -2.0000038, 184)
 
 [node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
 position = Vector2(16.999992, 246)
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(1, 0, 0, 1, 16.999992, 246)
 
@@ -354,15 +356,13 @@ polygons = [PackedInt32Array(22, 25, 24), PackedInt32Array(25, 24, 7), PackedInt
 bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/leftarm", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/leftarm/lefthand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/neck/rightarm", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1), "hip/body/neck/rightarm/righthand", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1), "hip/body/neck/mouth", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/body/tail", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg/rightknee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/rightleg/rightknee/rightfoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg/leftknee", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/leftleg/leftknee/leftfoot", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 internal_vertex_count = 4
 
-[node name="full" parent="texture" parent_id_path=PackedInt32Array(167379002) index="2" unique_id=275419339]
+[node name="full" parent="texture" index="2" unique_id=275419339]
 position = Vector2(1714, -676)
 texture = ExtResource("2_kejvf")
 
-[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
+[node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/char = SubResource("AnimationLibrary_kejvf")
 
 [node name="tree" parent="texture/animator" index="0" unique_id=861821677]
 tree_root = SubResource("AnimationNodeStateMachine_cebsw")
-parameters/ATTACK1/OneShot/active = false
-parameters/ATTACK1/OneShot/internal_active = false
-parameters/ATTACK1/OneShot/request = 0
+parameters/conditions/always = false
