@@ -1,9 +1,142 @@
 [gd_scene format=3 uid="uid://byn7d8frmp314"]
 
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
+[ext_resource type="Texture2D" uid="uid://deenj6fr3okw6" path="res://resources/characters/gbot/bones.png" id="2_6kavq"]
+[ext_resource type="Texture2D" uid="uid://bgo2hppto8j2n" path="res://resources/characters/gbot/full.png" id="3_0cve1"]
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 
 [node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
 
+[node name="hip" type="Bone2D" parent="texture/skeleton" index="0" unique_id=825686019]
+position = Vector2(-22, -263)
+rest = Transform2D(1, 0, 0, 1, -22, -263)
+
+[node name="body" type="Bone2D" parent="texture/skeleton/hip" index="0" unique_id=1525503106]
+position = Vector2(-6, -52)
+rest = Transform2D(1, 0, 0, 1, -6, -52)
+
+[node name="neck" type="Bone2D" parent="texture/skeleton/hip/body" index="0" unique_id=1477056281]
+position = Vector2(10, -173)
+rest = Transform2D(1, 0, 0, 1, 10, -173)
+
+[node name="jaw" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="0" unique_id=356832668]
+position = Vector2(-79, -67)
+rest = Transform2D(1, 0, 0, 1, -79, -67)
+auto_calculate_length_and_angle = false
+length = 186.5
+bone_angle = 0.0
+
+[node name="leftarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="1" unique_id=181268983]
+position = Vector2(76, 43)
+rest = Transform2D(1, 0, 0, 1, 76, 43)
+
+[node name="lefthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=1188443405]
+position = Vector2(-9, 101)
+rotation = 1.3920919
+rest = Transform2D(0.1777548, 0.98407483, -0.98407483, 0.1777548, -9, 101)
+auto_calculate_length_and_angle = false
+length = 123.684
+bone_angle = 0.0
+
+[node name="rightarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="2" unique_id=1499045470]
+position = Vector2(-113, 45)
+rotation = 2.6045651
+rest = Transform2D(-0.85923314, 0.5115842, -0.5115842, -0.85923314, -113, 45)
+
+[node name="righthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=1566946572]
+position = Vector2(51.670006, -86.78255)
+rotation = -1.1020881
+rest = Transform2D(0.45173422, -0.89215255, 0.89215255, 0.45173422, 51.670006, -86.78255)
+auto_calculate_length_and_angle = false
+length = 141.632
+bone_angle = 0.0
+
+[node name="rightleg" type="Bone2D" parent="texture/skeleton/hip" index="1" unique_id=1647263341]
+position = Vector2(-58, 8)
+rest = Transform2D(1, 0, 0, 1, -58, 8)
+
+[node name="rightknee" type="Bone2D" parent="texture/skeleton/hip/rightleg" index="0" unique_id=1729547346]
+position = Vector2(-21, 92)
+rest = Transform2D(1, 0, 0, 1, -21, 92)
+
+[node name="rightfoot" type="Bone2D" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1577278629]
+position = Vector2(2, 132)
+rest = Transform2D(1, 0, 0, 1, 2, 132)
+auto_calculate_length_and_angle = false
+length = 70.042
+bone_angle = 0.0
+
+[node name="leftleg" type="Bone2D" parent="texture/skeleton/hip" index="2" unique_id=1119893612]
+position = Vector2(58, -4)
+rest = Transform2D(1, 0, 0, 1, 58, -4)
+
+[node name="leftknee" type="Bone2D" parent="texture/skeleton/hip/leftleg" index="0" unique_id=98173031]
+position = Vector2(-35, 98)
+rest = Transform2D(1, 0, 0, 1, -35, 98)
+
+[node name="leftfoot" type="Bone2D" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=661767710]
+position = Vector2(-1, 126)
+rest = Transform2D(1, 0, 0, 1, -1, 126)
+auto_calculate_length_and_angle = false
+length = 70.042
+bone_angle = 0.0
+
 [node name="polygons" type="Node2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="1" unique_id=507869215]
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="leftarm" type="Polygon2D" parent="texture/polygons" index="0" unique_id=1998457901]
+position = Vector2(-169, -539)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(170.19745, 32.314026, 168.07996, 202.7723, 178.66742, 337.23315, 217.84106, 367.93683, 299.36462, 363.70184, 315.2458, 314.9995, 283.4834, 253.59215, 261.2497, 180.53862, 267.60217, 133.95374, 290.89465, 76.7814, 287.71838, 39.725258, 248.54474, 20.667809, 230.54602, 18.550316)
+uv = PackedVector2Array(170.19745, 32.314026, 168.07996, 202.7723, 178.66742, 337.23315, 217.84106, 367.93683, 299.36462, 363.70184, 315.2458, 314.9995, 283.4834, 253.59215, 261.2497, 180.53862, 267.60217, 133.95374, 290.89465, 76.7814, 287.71838, 39.725258, 248.54474, 20.667809, 230.54602, 18.550316)
+
+[node name="leftleg" type="Polygon2D" parent="texture/polygons" index="1" unique_id=502582795]
+position = Vector2(-279, -682)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(267.0172, 379.018, 225.72607, 536.7713, 226.78485, 700.8771, 321.0133, 714.6408, 453.3567, 701.93585, 422.653, 616.17737, 358.06946, 562.1813, 359.12823, 488.06894, 360.18695, 415.01538, 348.54077, 375.84174, 314.66083, 370.54803)
+uv = PackedVector2Array(267.0172, 379.018, 225.72607, 536.7713, 226.78485, 700.8771, 321.0133, 714.6408, 453.3567, 701.93585, 422.653, 616.17737, 358.06946, 562.1813, 359.12823, 488.06894, 360.18695, 415.01538, 348.54077, 375.84174, 314.66083, 370.54803)
+
+[node name="body" type="Polygon2D" parent="texture/polygons" index="2" unique_id=1801845984]
+position = Vector2(-452, -574)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(400.8911, 33.285233, 385.43658, 60.55797, 384.52753, 80.557976, 350.8911, 107.83071, 339.07294, 151.46707, 341.80017, 187.83072, 354.52747, 228.73984, 377.25476, 236.92166, 375.43658, 251.4671, 349.07294, 263.28528, 343.6184, 298.73984, 353.6184, 325.1035, 386.3457, 349.64896, 451.80023, 345.1035, 485.43665, 323.2853, 494.52753, 310.55804, 494.52753, 290.558, 494.52753, 271.4671, 479.98206, 263.28528, 477.25482, 245.10345, 517.2548, 219.64893, 518.1639, 199.6489, 522.70935, 180.55801, 519.073, 142.37616, 508.16388, 107.83071, 495.43665, 84.19434, 492.70935, 71.467064, 479.073, 39.648872, 467.25482, 26.921593, 446.3457, 11.467041, 419.07294, 18.739777)
+uv = PackedVector2Array(400.8911, 33.285233, 385.43658, 60.55797, 384.52753, 80.557976, 350.8911, 107.83071, 339.07294, 151.46707, 341.80017, 187.83072, 354.52747, 228.73984, 377.25476, 236.92166, 375.43658, 251.4671, 349.07294, 263.28528, 343.6184, 298.73984, 353.6184, 325.1035, 386.3457, 349.64896, 451.80023, 345.1035, 485.43665, 323.2853, 494.52753, 310.55804, 494.52753, 290.558, 494.52753, 271.4671, 479.98206, 263.28528, 477.25482, 245.10345, 517.2548, 219.64893, 518.1639, 199.6489, 522.70935, 180.55801, 519.073, 142.37616, 508.16388, 107.83071, 495.43665, 84.19434, 492.70935, 71.467064, 479.073, 39.648872, 467.25482, 26.921593, 446.3457, 11.467041, 419.07294, 18.739777)
+
+[node name="headtop" type="Polygon2D" parent="texture/polygons" index="3" unique_id=1403378568]
+position = Vector2(-653, -1100)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(489.28384, 500.14377, 537.93134, 500.14377, 549.7645, 525.78235, 597.7546, 534.3285, 670.7258, 539.58765, 685.846, 515.9213, 702.9384, 517.23615, 713.4568, 531.0415, 739.7527, 534.3285, 772.6226, 529.06934, 782.48364, 513.29175, 807.4648, 510.00476, 813.61084, 375.1861, 807.8358, 366.52362, 817.4607, 334.7612, 763.5609, 267.38638, 680.78613, 248.13644, 596.0864, 247.17393, 522.9365, 299.1488, 495.02414, 334.7612, 469.0367, 389.62354, 477.6992, 468.54834)
+uv = PackedVector2Array(489.28384, 500.14377, 537.93134, 500.14377, 549.7645, 525.78235, 597.7546, 534.3285, 670.7258, 539.58765, 685.846, 515.9213, 702.9384, 517.23615, 713.4568, 531.0415, 739.7527, 534.3285, 772.6226, 529.06934, 782.48364, 513.29175, 807.4648, 510.00476, 813.61084, 375.1861, 807.8358, 366.52362, 817.4607, 334.7612, 763.5609, 267.38638, 680.78613, 248.13644, 596.0864, 247.17393, 522.9365, 299.1488, 495.02414, 334.7612, 469.0367, 389.62354, 477.6992, 468.54834)
+
+[node name="headbottom" type="Polygon2D" parent="texture/polygons" index="4" unique_id=239731800]
+position = Vector2(-647, -1188)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(480.90536, 570.8041, 820.40436, 560.30414, 810.7794, 654.80383, 688.2798, 700.3037, 493.1553, 670.55383, 483.53033, 595.304)
+uv = PackedVector2Array(480.90536, 570.8041, 820.40436, 560.30414, 810.7794, 654.80383, 688.2798, 700.3037, 493.1553, 670.55383, 483.53033, 595.304)
+
+[node name="rightleg" type="Polygon2D" parent="texture/polygons" index="5" unique_id=1352429432]
+position = Vector2(-161, -671)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(55.21582, 385.11133, 11.903412, 539.1109, 5.1659546, 708.5105, 137.9906, 718.13544, 194.77795, 705.623, 180.34045, 611.2982, 150.50305, 552.5859, 131.25311, 477.51108, 127.40314, 392.8113, 104.30319, 382.22382)
+uv = PackedVector2Array(55.21582, 385.11133, 11.903412, 539.1109, 5.1659546, 708.5105, 137.9906, 718.13544, 194.77795, 705.623, 180.34045, 611.2982, 150.50305, 552.5859, 131.25311, 477.51108, 127.40314, 392.8113, 104.30319, 382.22382)
+
+[node name="rightarm" type="Polygon2D" parent="texture/polygons" index="6" unique_id=915968019]
+position = Vector2(-197, -534)
+texture = ExtResource("2_6kavq")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(24.73523, 11.241802, 15.11026, 347.15347, 66.12262, 376.0284, 146.97244, 359.66592, 130.60995, 225.87878, 110.39749, 171.97891, 145.04745, 58.404182, 129.64749, 1.6168289, 66.12262, 11.241802)
+uv = PackedVector2Array(24.73523, 11.241802, 15.11026, 347.15347, 66.12262, 376.0284, 146.97244, 359.66592, 130.60995, 225.87878, 110.39749, 171.97891, 145.04745, 58.404182, 129.64749, 1.6168289, 66.12262, 11.241802)
+
+[node name="full" type="Sprite2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="2" unique_id=275419339]
+modulate = Color(1, 0, 0, 0.4)
+z_index = -1
+position = Vector2(489, -421)
+texture = ExtResource("3_0cve1")
