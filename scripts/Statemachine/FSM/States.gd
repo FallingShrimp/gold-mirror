@@ -7,7 +7,8 @@ class IDLE extends IState:
 
 class WALK extends IState:
 	func join() -> String:
-		character.direction = sign(arguments[0])
+		if abs(arguments[0]) > 0:
+			character.direction = sign(arguments[0])
 		return "WALK"
 	func update(delta: float) -> void:
 		character.forward(arguments[0], delta)
@@ -56,12 +57,17 @@ class DASH extends IState:
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
 
 class PARRY_START extends IState:
+	var maxHoldTime: float = 1000
 	func join() -> String:
 		character.parrying = true
 		return "PARRY_START"
+	func update(_delta: float) -> void:
+		if timePassed() > maxHoldTime:
+			fsm.changeState(PARRY_END)
 
 class PARRY_END extends IState:
 	func join() -> String:
+		character.attackCounter = 0
 		character.parrying = false
 		return "PARRY_END"
 

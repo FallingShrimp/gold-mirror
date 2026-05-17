@@ -29,7 +29,11 @@ func _ready():
 						elif chara.fsm.currentState is States.DASH:
 							return
 						elif chara.fsm.currentState is States.PARRY_START:
+							chara.impact((Vector2.from_angle(rotation) * Vector2(1, 0)).normalized() * 2000)
 							chara.parry(self )
+							var parryState = chara.fsm.currentState as States.PARRY_START
+							parryState.maxHoldTime *= 0.5
+							CameraManager.shake(300, 300)
 							return
 						if chara.isInterruptedByDamage(baseDamage):
 							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])

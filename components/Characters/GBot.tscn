@@ -553,7 +553,7 @@ scale = Vector2(0.32535243, 0.32535243)
 scale = Vector2(0.9999996, 0.9999996)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999999, 0.9999999)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
 scale = Vector2(0.9999999, 0.9999999)
@@ -565,9 +565,12 @@ scale = Vector2(0.99999964, 0.99999964)
 scale = Vector2(0.9999997, 0.9999997)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.99999905, 0.99999905)
 
-[node name="leftknee" parent="texture/skeleton/hip/leftleg" parent_id_path=PackedInt32Array(1150981751) index="0" unique_id=1032884720]
+[node name="leftleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="2" unique_id=1150981751]
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="leftknee" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
 scale = Vector2(0.9999998, 0.9999998)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
@@ -585,7 +588,8 @@ scale = Vector2(-1, 1)
 position = Vector2(381.12518, -430.3026)
 
 [node name="parry" type="Node2D" parent="texture/anchors" index="1" unique_id=1605478299]
-position = Vector2(-39.956673, -728.44086)
+position = Vector2(-76.83977, -614.718)
+rotation = 0.3265123
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 visible = false

@@ -46,11 +46,17 @@ func takeDamage(amount: float):
 	damageTaken.emit(amount)
 	if currentHealth == 0:
 		queue_free()
-func getAnchor(namx: String):
+func getAnchorPosition(namx: String):
 	var node = anchorParent.get_node_or_null(namx as NodePath)
 	if node is Node2D:
 		return node.global_position
 	else:
 		return Vector2.ZERO
+func getAnchorRotation(namx: String):
+	var node = anchorParent.get_node_or_null(namx as NodePath)
+	if node is Node2D:
+		return node.global_rotation
+	else:
+		return 0
 func impact(delta: Vector2):
 	velocity += delta

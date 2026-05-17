@@ -153,10 +153,10 @@ script = ExtResource("2_sowdv")
 maxHealth = 1000.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
-position = Vector2(-55, 52)
+position = Vector2(0, 52)
 
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
-position = Vector2(47, -173)
+position = Vector2(0, -174)
 rest = Transform2D(1, 0, 0, 1, 47, -173)
 
 [node name="body" parent="texture/skeleton/hip" index="0" unique_id=192538903]
@@ -208,7 +208,7 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.099907726
-scale = Vector2(0.99999857, 0.99999857)
+scale = Vector2(0.9999985, 0.9999985)
 rest = Transform2D(0.9950133, 0.09974159, -0.09974159, 0.9950133, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -220,7 +220,7 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
 rotation = 0.1826143
-scale = Vector2(0.99999934, 0.99999934)
+scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -322,11 +322,11 @@ tree_root = SubResource("AnimationNodeStateMachine_cebsw")
 position = Vector2(235, -198)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
-position = Vector2(-13, -135.5)
+position = Vector2(0, -135.5)
 shape = SubResource("RectangleShape2D_sowdv")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
-position = Vector2(-14, -138)
+position = Vector2(0, -138)
 shape = SubResource("CapsuleShape2D_b7uyj")
 
 [node name="healthBar" parent="." index="3" unique_id=2020367561]

@@ -24,6 +24,7 @@ static func shake(millseconds: float, intensity: float = 10, steper: Callable = 
 	instance.shaking = true
 	while WorldManager.getCurrentTime() - startTime < millseconds || !instance.shaking:
 		instance.shakeIntensity = steper.call(instance.shakeIntensity, intensity, 1 - (WorldManager.getCurrentTime() - startTime) / millseconds)
+		await WorldManager.sceneTree.physics_frame
 	shakeStop()
 static func shakeStop():
 	instance.shaking = false
