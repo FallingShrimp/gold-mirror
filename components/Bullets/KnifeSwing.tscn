@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dc48rh6o11nsw"]
+
+[ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_ov6p8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0gpf"]
+size = Vector2(83, 178)
+
+[node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_ov6p8")]
+lifetime = 100.0
+
+[node name="hitbox" parent="." index="1" unique_id=1273022028]
+position = Vector2(57.5, 0)
+shape = SubResource("RectangleShape2D_d0gpf")

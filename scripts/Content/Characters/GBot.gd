@@ -53,3 +53,9 @@ func ai(_delta: float):
 		else:
 			if fsm.stateIs() in [States.WALK]:
 				fsm.changeState(States.IDLE)
+func createAttack(id: int) -> void:
+	match id:
+		1:
+			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), 0, self )
+		2:
+			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), 0, self )
