@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://cloit07mtgepd"]
+
+[ext_resource type="Script" uid="uid://d3vmtp03qb1rr" path="res://scripts/Statemachine/ColorBar.gd" id="1_55urc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55urc"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yikt4"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ovk7"]
+bg_color = Color(0.1561687, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ko0ti"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="ColorBar" type="Node2D" unique_id=2020367561]
+script = ExtResource("1_55urc")
+backbox = SubResource("StyleBoxFlat_55urc")
+middlebox1 = SubResource("StyleBoxFlat_yikt4")
+middlebox2 = SubResource("StyleBoxFlat_0ovk7")
+frontbox = SubResource("StyleBoxFlat_ko0ti")
+currentValue = 46.1

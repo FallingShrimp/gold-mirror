@@ -35,7 +35,10 @@ func _physics_process(delta):
 	move_and_slide()
 	texture.scale.x = direction
 
+func createAttack(_id: int) -> void:
+	pass
+
 func forward(directiox: Direction, delta: float):
-	velocity += Vector2(directiox * 5000, 0) * delta
+	velocity += Vector2(sign(directiox) * 5000, 0) * delta
 func impact(delta: Vector2):
 	velocity += delta

@@ -4,6 +4,7 @@ enum Layers {
 	PLAYER = 1,
 	ENEMY = 2,
 	WALL = 3,
+    GHOST_ENTITY = 4
 }
 
 static func belong(something: CollisionObject2D, layers: Dictionary[Layers, bool]):

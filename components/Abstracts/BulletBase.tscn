@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://380q0ifu3meq"]
+
+[ext_resource type="Script" uid="uid://cicr2lxn24tse" path="res://scripts/Statemachine/BulletBase.gd" id="1_bi48g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_otbph"]
+
+[node name="BulletBase" type="Area2D" unique_id=1797257955]
+script = ExtResource("1_bi48g")
+
+[node name="texture" type="Node2D" parent="." unique_id=556042530]
+unique_name_in_owner = true
+
+[node name="textureSprite" type="Sprite2D" parent="texture" unique_id=515101659]
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=1273022028]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_otbph")

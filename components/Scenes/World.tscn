@@ -11,6 +11,7 @@
 script = ExtResource("1_sbdvw")
 
 [node name="Ef9Ae02660a54b454d76Fab2d44b760f2197140261677047264" type="Sprite2D" parent="." unique_id=245469242]
+modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(205, -37)
 texture = ExtResource("2_lu72f")
 
@@ -28,7 +29,7 @@ polygon = PackedVector2Array(-674, -27, -666, 70, 994, 83, 1000, -24)
 
 [node name="Humanoid" parent="." unique_id=948564138 instance=ExtResource("1_lnjql")]
 position = Vector2(340, -63.999992)
-scale = Vector2(0.2336621, 0.2336621)
+scale = Vector2(0.81612796, 0.81612796)
 
 [node name="Humanoid2" parent="." unique_id=408243359 instance=ExtResource("2_0ci2v")]
 position = Vector2(-68, -208.99998)

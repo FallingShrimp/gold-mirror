@@ -21,7 +21,6 @@ func _ready():
 	)
 	fsm.joinState.connect(
 		func(newState, _o, _a):
-			print(_a)
 			if newState is States.ATTACK:
 				emittedForNextAttack = false
 	)

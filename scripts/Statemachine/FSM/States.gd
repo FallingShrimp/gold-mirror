@@ -40,12 +40,16 @@ class DASH extends IState:
 				fsm.changeState(IDLE)
 		)
 		if character is PlayerBase:
+			LayerUtil.belong(character, {
+				LayerUtil.Layers.GHOST_ENTITY: true,
+				LayerUtil.Layers.PLAYER: false
+			})
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: false})
-		elif character is EnemyBase:
-			LayerUtil.mask(character, {LayerUtil.Layers.PLAYER: false})
 		return "DASH"
 	func exit() -> void:
 		if character is PlayerBase:
+			LayerUtil.belong(character, {
+				LayerUtil.Layers.GHOST_ENTITY: false,
+				LayerUtil.Layers.PLAYER: true
+			})
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
-		elif character is EnemyBase:
-			LayerUtil.mask(character, {LayerUtil.Layers.PLAYER: true})
