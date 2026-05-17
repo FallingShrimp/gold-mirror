@@ -1,5 +1,12 @@
 extends EnemyBase
 
+func _ready():
+	super._ready()
+	animationTree.animation_finished.connect(
+		func(_n):
+			if fsm.currentState is States.ATTACK:
+				fsm.changeState(States.IDLE)
+	)
 func register():
 	movementSpeed = 0.5
 func ai(_delta: float):

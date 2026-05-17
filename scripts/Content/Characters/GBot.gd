@@ -1,6 +1,5 @@
 extends PlayerBase
 
-
 func _ready():
 	super._ready()
 	animationTree.animation_finished.connect(
@@ -25,21 +24,30 @@ func _ready():
 				emittedForNextAttack = false
 	)
 func ai(_delta: float):
-	if velocity.y > 0 && fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP]:
-		fsm.changeState(States.FALLING)
-	elif Input.is_action_just_pressed("attack"):
-		if fsm.stateIs() in [States.IDLE, States.WALK]:
-			if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
-				attackCounter += 1
-	elif Input.is_action_just_pressed("dash"):
-		if fsm.stateIs() in [States.IDLE, States.WALK]:
-			fsm.changeState(States.DASH, [direction])
-	elif Input.is_action_just_pressed("jump"):
-		if fsm.stateIs() in [States.IDLE, States.WALK, States.DASH] && is_on_floor():
-			fsm.changeState(States.JUMP, [1])
-	elif Input.is_action_pressed("moving"):
-		if fsm.stateIs() in [States.IDLE, States.WALK] && is_on_floor():
-			fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
+	if fsm.currentState is States.PARRY_START:
+		if !Input.is_action_pressed("parry"):
+			fsm.changeState(States.PARRY_END)
+	elif fsm.currentState is States.PARRY_END:
+		pass
 	else:
-		if fsm.stateIs() in [States.WALK]:
-			fsm.changeState(States.IDLE)
+		if velocity.y > 0 && fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP]:
+			fsm.changeState(States.FALLING)
+		elif Input.is_action_just_pressed("parry"):
+			if fsm.stateIs() in [States.IDLE, States.WALK]:
+				fsm.changeState(States.PARRY_START)
+		elif Input.is_action_just_pressed("attack"):
+			if fsm.stateIs() in [States.IDLE, States.WALK]:
+				if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
+					attackCounter += 1
+		elif Input.is_action_just_pressed("dash"):
+			if fsm.stateIs() in [States.IDLE, States.WALK]:
+				fsm.changeState(States.DASH, [direction])
+		elif Input.is_action_just_pressed("jump"):
+			if fsm.stateIs() in [States.IDLE, States.WALK, States.DASH] && is_on_floor():
+				fsm.changeState(States.JUMP, [1])
+		elif Input.is_action_pressed("moving"):
+			if fsm.stateIs() in [States.IDLE, States.WALK] && is_on_floor():
+				fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
+		else:
+			if fsm.stateIs() in [States.WALK]:
+				fsm.changeState(States.IDLE)

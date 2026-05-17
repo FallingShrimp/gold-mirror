@@ -53,3 +53,11 @@ class DASH extends IState:
 				LayerUtil.Layers.PLAYER: true
 			})
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
+
+class PARRY_START extends IState:
+	func join() -> String:
+		return "PARRY_START"
+
+class PARRY_END extends IState:
+	func join() -> String:
+		return "PARRY_END"

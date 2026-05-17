@@ -26,10 +26,11 @@ func _ready():
 	super._ready()
 	fsm = FiniteStateMachine.new(self )
 	damageTaken.connect(
-		func(amount):
+		func(_a):
 			healthBar.maxValue = maxHealth
-			healthBar.setValue(amount)
+			healthBar.setValue(currentHealth)
 	)
+	damageTaken.emit(0)
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
