@@ -37,7 +37,8 @@ func drawFront(box: StyleBoxFlat, rect: Rect2):
 
 func getCurrentPercent():
 	return currentValue / maxValue
-func setValue(newValue: float):
+func setValue(newValue: float, ignoreDirection: bool = false):
 	if currentFront == newValue: return
-	currentDirection = sign(currentValue - newValue)
+	if !ignoreDirection:
+		currentDirection = sign(currentValue - newValue)
 	currentValue = newValue

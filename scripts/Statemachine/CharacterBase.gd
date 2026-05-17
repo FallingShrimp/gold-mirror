@@ -1,6 +1,9 @@
 extends EntityBase
 class_name CharacterBase
 
+signal strengthIncreased(amount: float)
+signal strengthChanged(to: float)
+
 enum Direction {
 	LEFT = -1,
 	RIGHT = 1
@@ -12,11 +15,14 @@ const CONSTANT_FRICTION: float = 0.2
 @export var attackTime: float = 50.0
 @export var movementSpeed: float = 1.0
 @export var mass: float = 1
+@export var maxStrength: float = 100
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
+@onready var stateBar: CharacterStateBar = $%stateBar
 @onready var skeleton: Skeleton2D = $%skeleton
 @onready var polygonParent: Node2D = $%polygons
+@export var currentStrength: float = 0
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
@@ -26,7 +32,9 @@ var parrying: bool = false
 
 func _ready():
 	super._ready()
+	currentStrength = maxStrength
 	fsm = FiniteStateMachine.new(self )
+	stateBar.initCharacter(self )
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
@@ -47,3 +55,12 @@ func parry(_bullet: BulletBase):
 
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed
+func useStrength(amount: float):
+	currentStrength = clamp(currentStrength - amount, 0, maxStrength)
+	strengthIncreased.emit(-amount)
+func storeStrength(amount: float, justChanged: bool = false):
+	currentStrength = clamp(currentStrength + amount, 0, maxStrength)
+	if justChanged:
+		strengthChanged.emit(currentStrength)
+	else:
+		strengthIncreased.emit(amount)

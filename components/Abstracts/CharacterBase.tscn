@@ -25,6 +25,6 @@ z_index = -1
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
 speed_scale = 3.0
 
-[node name="stateBar" parent="." index="3" unique_id=2012763349 node_paths=PackedStringArray("character") instance=ExtResource("3_0cve1")]
+[node name="stateBar" parent="." index="3" unique_id=2012763349 instance=ExtResource("3_0cve1")]
+unique_name_in_owner = true
 position = Vector2(0, -170)
-character = NodePath("..")
