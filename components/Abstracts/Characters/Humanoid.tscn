@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://deenj6fr3okw6" path="res://resources/characters/gbot/bones.png" id="2_3127m"]
 [ext_resource type="Texture2D" uid="uid://2svyulxah4fe" path="res://resources/characters/gbot/weapon.png" id="3_3127m"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3127m"]
-size = Vector2(310, 190)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3127m"]
 radius = 195.0
 height = 880.0
@@ -191,7 +188,6 @@ internal_vertex_count = 8
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 position = Vector2(0, -56)
-shape = SubResource("RectangleShape2D_3127m")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
 position = Vector2(-1, -391)

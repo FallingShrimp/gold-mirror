@@ -316,6 +316,9 @@ states/WALK/position = Vector2(724.2727, 44.18318)
 transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_l8grr"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_46enu"), "WALK", "ATTACK", SubResource("AnimationNodeStateMachineTransition_e2ur4"), "IDLE", "ATTACK", SubResource("AnimationNodeStateMachineTransition_u3h3u"), "ATTACK", "IDLE", SubResource("AnimationNodeStateMachineTransition_w6duw")]
 graph_offset = Vector2(-48.727283, -61.81682)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sowdv"]
+size = Vector2(234, 989)
+
 [node name="Humanoid" unique_id=948564138 instance=ExtResource("1_6wly8")]
 script = ExtResource("2_sowdv")
 
@@ -486,3 +489,7 @@ libraries/ = SubResource("AnimationLibrary_sowdv")
 active = false
 tree_root = SubResource("AnimationNodeStateMachine_cebsw")
 parameters/conditions/always = false
+
+[node name="movebox" parent="." index="1" unique_id=1108104038]
+position = Vector2(-13, -496.5)
+shape = SubResource("RectangleShape2D_sowdv")

@@ -39,4 +39,7 @@ class DASH extends IState:
 				character.frictionMultipiler /= 0.5
 				fsm.changeState(IDLE)
 		)
+		LayerUtil.exit(character, LayerUtil.Layers.ENTITY)
 		return "DASH"
+	func exit() -> void:
+		LayerUtil.join(character, LayerUtil.Layers.ENTITY)

@@ -4,6 +4,8 @@ class_name EntityBase
 @onready var animator: AnimationPlayer = $%animator
 @onready var animationTree: AnimationTree = $%tree
 @onready var texture: Node2D = $%texture
+@onready var movebox: CollisionShape2D = $%movebox
+@onready var hurtboxArea: Area2D = $%hurtbox
 
 var animationPlayback: AnimationNodeStateMachinePlayback
 
@@ -12,6 +14,10 @@ func _ready():
 	animationTree.active = true
 	animationPlayback = animationTree.get("parameters/playback")
 	animationTree.set("parameters/conditions/always", true)
+	LayerUtil.config(self , {
+		LayerUtil.Layers.ENTITY: true,
+		LayerUtil.Layers.WALL: true
+	})
 	spawn()
 func _physics_process(delta):
 	ai(delta)

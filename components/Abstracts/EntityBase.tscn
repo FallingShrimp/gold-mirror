@@ -21,9 +21,11 @@ root_node = NodePath("%animator/..")
 anim_player = NodePath("..")
 
 [node name="movebox" type="CollisionShape2D" parent="." unique_id=1108104038]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_26as7")
 
 [node name="hurtbox" type="Area2D" parent="." unique_id=771077559]
+unique_name_in_owner = true
 
 [node name="shape" type="CollisionShape2D" parent="hurtbox" unique_id=1412400232]
 shape = SubResource("CircleShape2D_o1eeb")
