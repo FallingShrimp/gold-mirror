@@ -1,4 +1,4 @@
-extends PlayerBase
+extends EnemyBase
 
 func ai(_delta: float):
 	pass

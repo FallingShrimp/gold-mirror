@@ -1,21 +1,23 @@
 class_name LayerUtil
 
 enum Layers {
-	ENTITY = 1,
-	WALL = 2,
+	PLAYER = 1,
+	ENEMY = 2,
+	WALL = 3,
 }
 
-static func join(something: CollisionObject2D, layer: Layers):
-	something.set_collision_layer_value(layer, true)
-	something.set_collision_mask_value(layer, true)
-static func exit(something: CollisionObject2D, layer: Layers):
-	something.set_collision_layer_value(layer, false)
-	something.set_collision_mask_value(layer, false)
-static func config(something: CollisionObject2D, cfg: Dictionary[Layers, bool]):
+static func belong(something: CollisionObject2D, layers: Dictionary[Layers, bool]):
+	for layer in layers:
+		something.set_collision_layer_value(layer, layers[layer])
+static func mask(something: CollisionObject2D, layers: Dictionary[Layers, bool]):
+	for layer in layers:
+		something.set_collision_mask_value(layer, layers[layer])
+static func config(something: CollisionObject2D, belongs: Array[Layers], masks: Array[Layers]):
 	something.collision_layer = 0
 	something.collision_mask = 0
-	for layer in cfg:
-		if cfg[layer]:
-			join(something, layer)
-		else:
-			exit(something, layer)
+	for layer in belongs:
+		belong(something, {layer: true})
+	for layer in masks:
+		mask(something, {layer: true})
+static func ghostize(something: CollisionObject2D):
+	config(something, [], [])

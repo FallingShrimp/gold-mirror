@@ -14,10 +14,7 @@ func _ready():
 	animationTree.active = true
 	animationPlayback = animationTree.get("parameters/playback")
 	animationTree.set("parameters/conditions/always", true)
-	LayerUtil.config(self , {
-		LayerUtil.Layers.ENTITY: true,
-		LayerUtil.Layers.WALL: true
-	})
+	LayerUtil.ghostize(self )
 	spawn()
 func _physics_process(delta):
 	ai(delta)

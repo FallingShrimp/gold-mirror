@@ -29,7 +29,7 @@ class FALLING extends IState:
 		if character.is_on_floor():
 			fsm.changeState(IDLE)
 			character.frictable = true
-
+ 
 class DASH extends IState:
 	func join() -> String:
 		character.frictionMultipiler *= 0.5
@@ -39,7 +39,13 @@ class DASH extends IState:
 				character.frictionMultipiler /= 0.5
 				fsm.changeState(IDLE)
 		)
-		LayerUtil.exit(character, LayerUtil.Layers.ENTITY)
+		if character is PlayerBase:
+			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: false})
+		elif character is EnemyBase:
+			LayerUtil.mask(character, {LayerUtil.Layers.PLAYER: false})
 		return "DASH"
 	func exit() -> void:
-		LayerUtil.join(character, LayerUtil.Layers.ENTITY)
+		if character is PlayerBase:
+			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
+		elif character is EnemyBase:
+			LayerUtil.mask(character, {LayerUtil.Layers.PLAYER: true})

@@ -16,8 +16,8 @@ texture = ExtResource("2_lu72f")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 270)
-collision_layer = 2
-collision_mask = 2
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=568404488]
 position = Vector2(171, -30)
