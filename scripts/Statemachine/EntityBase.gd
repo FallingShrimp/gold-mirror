@@ -4,6 +4,7 @@ class_name EntityBase
 signal damageTaken(amount: float)
 
 @export var maxHealth: float = 100
+@export var invincible: bool = false
 
 @onready var animator: AnimationPlayer = $%animator
 @onready var animationTree: AnimationTree = $%tree
@@ -38,6 +39,7 @@ func isPlayer() -> bool:
 	return false
 
 func takeDamage(amount: float):
+	if invincible: return
 	currentHealth -= amount
 	currentHealth = clamp(currentHealth, 0, maxHealth)
 	DamageLabel.create(get_parent(), position, amount)

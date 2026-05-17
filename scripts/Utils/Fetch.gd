@@ -12,4 +12,5 @@ static func canDamage(bullet: BulletBase, entity: EntityBase) -> bool:
 	if !is_instance_valid(bullet.launcher): return false
 	if bullet.launcher == entity: return false
 	if bullet.launcher.isPlayer() == entity.isPlayer(): return false
+	if entity.invincible: return false
 	return true
