@@ -7,6 +7,7 @@ class IDLE extends IState:
 
 class WALK extends IState:
 	func join() -> String:
+		character.direction = sign(arguments[0])
 		return "WALK"
 	func update(delta: float) -> void:
 		character.forward(arguments[0], delta)
@@ -65,3 +66,8 @@ class PARRY_END extends IState:
 	func join() -> String:
 		character.invincible = false
 		return "PARRY_END"
+
+class HURT extends IState:
+	func join() -> String:
+		character.direction = sign(character.position - arguments[0]).x
+		return "HURT"

@@ -126,6 +126,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [-0.5788706]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("%skeleton/hip/body:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -203,7 +215,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.099999994, 0.3, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, -1.3962634015954636, -1.3962634015954636, 0.0]
+"values": [0.0, -1.2217304763960306, -1.2217304763960306, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_j3bhw"]
@@ -221,6 +233,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.3596851486963333, 3.1974431896536126]
+}
+
+[sub_resource type="Animation" id="Animation_12pkj"]
+resource_name = "hurt"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.4363323129985824, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_hfxiv"]
@@ -389,6 +418,7 @@ _data = {
 &"attack2": SubResource("Animation_b5e2n"),
 &"dash": SubResource("Animation_4tujy"),
 &"falling": SubResource("Animation_j3bhw"),
+&"hurt": SubResource("Animation_12pkj"),
 &"jump": SubResource("Animation_hfxiv"),
 &"parryStart": SubResource("Animation_7gmcx"),
 &"walk": SubResource("Animation_1uso6")
@@ -405,6 +435,9 @@ animation = &"dash"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b5e2n"]
 animation = &"falling"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7gmcx"]
+animation = &"hurt"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_feuyp"]
 animation = &"RESET"
@@ -462,6 +495,22 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y8eq5"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2kdsn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_risgo"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cmu7u"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5is45"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_srdmp"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a1tc3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6huhu"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_51rcy"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfxiv"]
 state_machine_type = 1
 states/ATTACK1/node = SubResource("AnimationNodeAnimation_vmwqn")
@@ -471,7 +520,9 @@ states/ATTACK2/position = Vector2(767.72687, 407.31503)
 states/DASH/node = SubResource("AnimationNodeAnimation_hfxiv")
 states/DASH/position = Vector2(712, 113)
 states/FALLING/node = SubResource("AnimationNodeAnimation_b5e2n")
-states/FALLING/position = Vector2(713.7037, 187)
+states/FALLING/position = Vector2(979.7037, 395)
+states/HURT/node = SubResource("AnimationNodeAnimation_7gmcx")
+states/HURT/position = Vector2(880.8853, 182.0834)
 states/IDLE/node = SubResource("AnimationNodeAnimation_feuyp")
 states/IDLE/position = Vector2(391.33334, 123.323685)
 states/JUMP/node = SubResource("AnimationNodeAnimation_j3bhw")
@@ -482,8 +533,8 @@ states/PARRY_START/node = SubResource("AnimationNodeAnimation_12pkj")
 states/PARRY_START/position = Vector2(304.64017, 384.7041)
 states/WALK/node = SubResource("AnimationNodeAnimation_1uso6")
 states/WALK/position = Vector2(228.33333, 270.55557)
-transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_vmwqn"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_b5e2n"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_hfxiv"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_j3bhw"), "IDLE", "JUMP", SubResource("AnimationNodeStateMachineTransition_4tujy"), "WALK", "JUMP", SubResource("AnimationNodeStateMachineTransition_x3xge"), "JUMP", "FALLING", SubResource("AnimationNodeStateMachineTransition_7gmcx"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_12pkj"), "IDLE", "DASH", SubResource("AnimationNodeStateMachineTransition_ejmrh"), "WALK", "DASH", SubResource("AnimationNodeStateMachineTransition_svyw4"), "JUMP", "DASH", SubResource("AnimationNodeStateMachineTransition_d4fll"), "DASH", "IDLE", SubResource("AnimationNodeStateMachineTransition_d0jbr"), "IDLE", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_i6yko"), "WALK", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_fsmix"), "ATTACK1", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_8tjt6"), "WALK", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_de0m2"), "IDLE", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_6y65c"), "PARRY_START", "PARRY_END", SubResource("AnimationNodeStateMachineTransition_o3gk5"), "PARRY_END", "IDLE", SubResource("AnimationNodeStateMachineTransition_y8eq5")]
-graph_offset = Vector2(-286.80643, 26.083399)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_vmwqn"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_b5e2n"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_hfxiv"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_j3bhw"), "IDLE", "JUMP", SubResource("AnimationNodeStateMachineTransition_4tujy"), "WALK", "JUMP", SubResource("AnimationNodeStateMachineTransition_x3xge"), "JUMP", "FALLING", SubResource("AnimationNodeStateMachineTransition_7gmcx"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_12pkj"), "IDLE", "DASH", SubResource("AnimationNodeStateMachineTransition_ejmrh"), "WALK", "DASH", SubResource("AnimationNodeStateMachineTransition_svyw4"), "JUMP", "DASH", SubResource("AnimationNodeStateMachineTransition_d4fll"), "DASH", "IDLE", SubResource("AnimationNodeStateMachineTransition_d0jbr"), "IDLE", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_i6yko"), "WALK", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_fsmix"), "ATTACK1", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_8tjt6"), "WALK", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_de0m2"), "IDLE", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_6y65c"), "PARRY_START", "PARRY_END", SubResource("AnimationNodeStateMachineTransition_o3gk5"), "PARRY_END", "IDLE", SubResource("AnimationNodeStateMachineTransition_y8eq5"), "IDLE", "HURT", SubResource("AnimationNodeStateMachineTransition_2kdsn"), "FALLING", "HURT", SubResource("AnimationNodeStateMachineTransition_risgo"), "ATTACK1", "HURT", SubResource("AnimationNodeStateMachineTransition_cmu7u"), "ATTACK2", "HURT", SubResource("AnimationNodeStateMachineTransition_5is45"), "PARRY_END", "HURT", SubResource("AnimationNodeStateMachineTransition_srdmp"), "PARRY_START", "HURT", SubResource("AnimationNodeStateMachineTransition_a1tc3"), "WALK", "HURT", SubResource("AnimationNodeStateMachineTransition_6huhu"), "HURT", "IDLE", SubResource("AnimationNodeStateMachineTransition_51rcy")]
+graph_offset = Vector2(61.8853, 26.083399)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uso6"]
 size = Vector2(95, 269)
@@ -498,23 +549,8 @@ script = ExtResource("2_1uso6")
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
-[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
-scale = Vector2(0.9999995, 0.9999995)
-
-[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-scale = Vector2(0.99999994, 0.99999994)
-
-[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999998, 0.9999998)
-
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999997, 0.9999997)
-
-[node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
-scale = Vector2(0.9999997, 0.9999997)
-
-[node name="leftknee" parent="texture/skeleton/hip/leftleg" parent_id_path=PackedInt32Array(1150981751) index="0" unique_id=1032884720]
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(0.99999964, 0.99999964)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
@@ -530,10 +566,14 @@ scale = Vector2(-1, 1)
 position = Vector2(381.12518, -430.3026)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
+visible = false
 position = Vector2(5.5, -135.5)
 shape = SubResource("RectangleShape2D_1uso6")
 
-[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
+[node name="hurtbox" parent="." index="2" unique_id=771077559]
+visible = false
+
+[node name="shape" parent="hurtbox" index="0" unique_id=1412400232]
 position = Vector2(3, -132)
 shape = SubResource("CapsuleShape2D_1uso6")
 

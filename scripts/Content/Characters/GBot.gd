@@ -8,7 +8,7 @@ func _ready():
 				if !emittedForNextAttack:
 					attackCounter = 0
 					fsm.changeState(States.IDLE)
-			elif fsm.currentState is States.PARRY_END:
+			elif fsm.stateIs() in [States.PARRY_END, States.HURT]:
 				fsm.changeState(States.IDLE)
 	)
 	fsm.updateState.connect(
@@ -56,6 +56,6 @@ func ai(_delta: float):
 func createAttack(id: int) -> void:
 	match id:
 		1:
-			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), 0, self )
+			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), PI / 2 - direction * PI / 2, self )
 		2:
-			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), 0, self )
+			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), PI / 2 - direction * PI / 2, self )

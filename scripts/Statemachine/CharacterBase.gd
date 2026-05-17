@@ -36,8 +36,6 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
-	if abs(velocity.x) >= 1:
-		direction = sign(velocity.x)
 	velocity += Vector2(0, GRAVITY)
 	if frictable:
 		velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
