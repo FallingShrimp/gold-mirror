@@ -11,11 +11,13 @@ enum Direction {
 
 const GRAVITY = 20
 const CONSTANT_FRICTION: float = 0.2
+const PERFECT_PARRY_WINDOW: float = 200.0
 
 @export var attackTime: float = 50.0
 @export var movementSpeed: float = 1.0
 @export var mass: float = 1
 @export var maxStrength: float = 100
+@export var impactMultiplier: float = 0.25
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -50,7 +52,7 @@ func createAttack(_id: int) -> void:
 	pass
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount >= 0
-func parry(_bullet: BulletBase):
+func parry(_bullet: BulletBase, _isPerfect: bool):
 	pass
 
 func forward(directiox: Direction, delta: float):

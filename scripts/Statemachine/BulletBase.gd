@@ -12,6 +12,7 @@ enum MotionType {
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
 @export var knockback: float = 0
+@export var impulse: float = 0
 
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
@@ -30,11 +31,25 @@ func _ready():
 							return
 						elif chara.fsm.currentState is States.PARRY_START:
 							if chara.direction != getDirection():
-								chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
-								chara.parry(self )
 								var parryState = chara.fsm.currentState as States.PARRY_START
+								var isPerfect = parryState.timePassed() <= chara.PERFECT_PARRY_WINDOW
+								chara.parry(self , isPerfect)
 								parryState.maxHoldTime *= 0.5
-								CameraManager.shake(300, 400)
+								if isPerfect:
+									chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
+									CameraManager.shake(300, 400)
+								else:
+									chara.impact(Vector2(getDirection(), 0).normalized() * 1000)
+									CameraManager.shake(200, 150)
+								if launcher is CharacterBase:
+									if isPerfect:
+										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
+										chara.useStrength(impulse * averageMultiplier)
+										launcher.useStrength(impulse * (2 - averageMultiplier))
+									else:
+										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
+										chara.useStrength(impulse * (2 - averageMultiplier))
+										launcher.useStrength(impulse * averageMultiplier)
 								return
 						if chara.isInterruptedByDamage(baseDamage):
 							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])

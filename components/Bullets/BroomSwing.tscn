@@ -9,6 +9,7 @@ size = Vector2(250.5, 178)
 baseDamage = 30.0
 lifetime = 100.0
 knockback = 1.0
+impulse = 10.0
 
 [node name="hitbox" parent="." index="1" unique_id=1273022028]
 position = Vector2(-83.75, 0)
