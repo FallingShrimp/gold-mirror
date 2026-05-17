@@ -9,6 +9,7 @@ func _ready():
 	)
 func ai(_delta: float):
 	if is_instance_valid(WorldManager.playerInstance):
+		if fsm.stateIs() == States.CONVERSED: return
 		var targetDir = sign(WorldManager.playerInstance.position.x - position.x)
 		if WorldManager.playerInstance.position.distance_to(position) > 300 || targetDir != direction:
 			fsm.changeState(States.WALK, [targetDir])

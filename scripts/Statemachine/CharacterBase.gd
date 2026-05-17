@@ -3,6 +3,7 @@ class_name CharacterBase
 
 signal strengthIncreased(amount: float)
 signal strengthChanged(to: float)
+signal converse()
 
 enum Direction {
 	LEFT = -1,
@@ -18,6 +19,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 @export var mass: float = 1
 @export var maxStrength: float = 100
 @export var impactMultiplier: float = 0.25
+@export var vulnerability: float = 0.5
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -37,6 +39,15 @@ func _ready():
 	currentStrength = maxStrength
 	fsm = FiniteStateMachine.new(self )
 	stateBar.initCharacter(self )
+	strengthIncreased.connect(
+		func(_a):
+			if currentStrength == 0:
+				converse.emit()
+	)
+	converse.connect(
+		func():
+			fsm.changeState(States.CONVERSED)
+	)
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
@@ -54,6 +65,12 @@ func isInterruptedByDamage(amount: float) -> bool:
 	return amount >= 0
 func parry(_bullet: BulletBase, _isPerfect: bool):
 	pass
+
+func overrideDamage(base: float) -> float:
+	if fsm.stateIs() == States.CONVERSED:
+		return base * (1 + vulnerability)
+	else:
+		return base
 
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed

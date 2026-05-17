@@ -75,3 +75,12 @@ class HURT extends IState:
 	func join() -> String:
 		character.direction = sign(arguments[0])
 		return "HURT"
+
+class CONVERSED extends IState:
+	func join() -> String:
+		SignalUtil.once(character.animationTree.animation_finished,
+			func(_a):
+				character.storeStrength(character.maxStrength)
+				character.fsm.changeState(IDLE)
+		)
+		return "CONVERSED"

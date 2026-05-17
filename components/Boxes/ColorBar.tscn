@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://d3vmtp03qb1rr" path="res://scripts/Statemachine/ColorBar.gd" id="1_55urc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55urc"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0, 0, 0, 0.6)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yikt4"]
-bg_color = Color(1, 0, 0, 1)
+bg_color = Color(1, 0, 0, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ovk7"]
-bg_color = Color(0.1561687, 1, 0, 1)
+bg_color = Color(0.09985284, 0.62377065, 0, 0.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ko0ti"]
 bg_color = Color(1, 1, 1, 1)
@@ -20,5 +20,4 @@ backbox = SubResource("StyleBoxFlat_55urc")
 middlebox1 = SubResource("StyleBoxFlat_yikt4")
 middlebox2 = SubResource("StyleBoxFlat_0ovk7")
 frontbox = SubResource("StyleBoxFlat_ko0ti")
-currentValue = 0.0
 currentDirection = -1

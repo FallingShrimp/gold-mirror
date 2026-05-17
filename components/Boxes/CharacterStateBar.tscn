@@ -4,6 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cloit07mtgepd" path="res://components/Boxes/ColorBar.tscn" id="2_dvjik"]
 [ext_resource type="PackedScene" uid="uid://brdqq2yu2maoe" path="res://components/Boxes/RingColorBar.tscn" id="3_v5f3w"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pdxj7"]
+bg_color = Color(0, 0, 0, 0.6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dvjik"]
+bg_color = Color(0.52630603, 0.326748, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkibl"]
+bg_color = Color(1, 0.57434696, 0, 1)
+
 [node name="StateBar" type="Node2D" unique_id=2012763349]
 script = ExtResource("1_pdxj7")
 
@@ -18,3 +27,8 @@ rotation = -0.7853982
 innerR = 6.0
 outerR = 10.0
 size = Vector2(270, 0)
+backbox = SubResource("StyleBoxFlat_pdxj7")
+middlebox1 = SubResource("StyleBoxFlat_dvjik")
+middlebox2 = SubResource("StyleBoxFlat_dvjik")
+frontbox = SubResource("StyleBoxFlat_bkibl")
+currentValue = 50.0

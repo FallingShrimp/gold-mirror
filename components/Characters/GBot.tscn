@@ -138,6 +138,18 @@ tracks/10/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("%skeleton/hip/body/neck/leftarm:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.47166088]
+}
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -199,6 +211,35 @@ tracks/1/keys = {
 "args": [2],
 "method": &"createAttack"
 }]
+}
+
+[sub_resource type="Animation" id="Animation_ejmrh"]
+resource_name = "conversed"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.5235987755982988, 0.5235987755982988, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%skeleton/hip/body/neck/leftarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.7, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.47166088, -0.6963863715457371, -0.6963863715457371, -0.47166088]
 }
 
 [sub_resource type="Animation" id="Animation_4tujy"]
@@ -416,6 +457,7 @@ _data = {
 &"RESET": SubResource("Animation_x3xge"),
 &"attack1": SubResource("Animation_vmwqn"),
 &"attack2": SubResource("Animation_b5e2n"),
+&"conversed": SubResource("Animation_ejmrh"),
 &"dash": SubResource("Animation_4tujy"),
 &"falling": SubResource("Animation_j3bhw"),
 &"hurt": SubResource("Animation_12pkj"),
@@ -429,6 +471,9 @@ animation = &"attack1"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4tujy"]
 animation = &"attack2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejmrh"]
+animation = &"conversed"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hfxiv"]
 animation = &"dash"
@@ -511,12 +556,30 @@ switch_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_51rcy"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5hk2r"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ab5iv"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2gjhk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fxy25"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8lhl5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_anmt4"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qwl38"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t2jjy"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_hfxiv"]
 state_machine_type = 1
 states/ATTACK1/node = SubResource("AnimationNodeAnimation_vmwqn")
-states/ATTACK1/position = Vector2(796.55554, 276.33334)
+states/ATTACK1/position = Vector2(652.55554, 221.33334)
 states/ATTACK2/node = SubResource("AnimationNodeAnimation_4tujy")
 states/ATTACK2/position = Vector2(767.72687, 407.31503)
+states/CONVERSED/node = SubResource("AnimationNodeAnimation_ejmrh")
+states/CONVERSED/position = Vector2(612.8853, 324.25482)
 states/DASH/node = SubResource("AnimationNodeAnimation_hfxiv")
 states/DASH/position = Vector2(712, 113)
 states/FALLING/node = SubResource("AnimationNodeAnimation_b5e2n")
@@ -526,15 +589,15 @@ states/HURT/position = Vector2(880.8853, 182.0834)
 states/IDLE/node = SubResource("AnimationNodeAnimation_feuyp")
 states/IDLE/position = Vector2(391.33334, 123.323685)
 states/JUMP/node = SubResource("AnimationNodeAnimation_j3bhw")
-states/JUMP/position = Vector2(485.48456, 234.66667)
+states/JUMP/position = Vector2(955.48456, 256.6667)
 states/PARRY_END/node = SubResource("AnimationNodeAnimation_x3xge")
 states/PARRY_END/position = Vector2(511.30682, 432.15314)
 states/PARRY_START/node = SubResource("AnimationNodeAnimation_12pkj")
 states/PARRY_START/position = Vector2(304.64017, 384.7041)
 states/WALK/node = SubResource("AnimationNodeAnimation_1uso6")
 states/WALK/position = Vector2(228.33333, 270.55557)
-transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_vmwqn"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_b5e2n"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_hfxiv"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_j3bhw"), "IDLE", "JUMP", SubResource("AnimationNodeStateMachineTransition_4tujy"), "WALK", "JUMP", SubResource("AnimationNodeStateMachineTransition_x3xge"), "JUMP", "FALLING", SubResource("AnimationNodeStateMachineTransition_7gmcx"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_12pkj"), "IDLE", "DASH", SubResource("AnimationNodeStateMachineTransition_ejmrh"), "WALK", "DASH", SubResource("AnimationNodeStateMachineTransition_svyw4"), "JUMP", "DASH", SubResource("AnimationNodeStateMachineTransition_d4fll"), "DASH", "IDLE", SubResource("AnimationNodeStateMachineTransition_d0jbr"), "IDLE", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_i6yko"), "WALK", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_fsmix"), "ATTACK1", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_8tjt6"), "WALK", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_de0m2"), "IDLE", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_6y65c"), "PARRY_START", "PARRY_END", SubResource("AnimationNodeStateMachineTransition_o3gk5"), "PARRY_END", "IDLE", SubResource("AnimationNodeStateMachineTransition_y8eq5"), "IDLE", "HURT", SubResource("AnimationNodeStateMachineTransition_2kdsn"), "FALLING", "HURT", SubResource("AnimationNodeStateMachineTransition_risgo"), "ATTACK1", "HURT", SubResource("AnimationNodeStateMachineTransition_cmu7u"), "ATTACK2", "HURT", SubResource("AnimationNodeStateMachineTransition_5is45"), "PARRY_END", "HURT", SubResource("AnimationNodeStateMachineTransition_srdmp"), "PARRY_START", "HURT", SubResource("AnimationNodeStateMachineTransition_a1tc3"), "WALK", "HURT", SubResource("AnimationNodeStateMachineTransition_6huhu"), "HURT", "IDLE", SubResource("AnimationNodeStateMachineTransition_51rcy")]
-graph_offset = Vector2(61.8853, 26.083399)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_vmwqn"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_b5e2n"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_hfxiv"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_j3bhw"), "IDLE", "JUMP", SubResource("AnimationNodeStateMachineTransition_4tujy"), "WALK", "JUMP", SubResource("AnimationNodeStateMachineTransition_x3xge"), "JUMP", "FALLING", SubResource("AnimationNodeStateMachineTransition_7gmcx"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_12pkj"), "IDLE", "DASH", SubResource("AnimationNodeStateMachineTransition_ejmrh"), "WALK", "DASH", SubResource("AnimationNodeStateMachineTransition_svyw4"), "JUMP", "DASH", SubResource("AnimationNodeStateMachineTransition_d4fll"), "DASH", "IDLE", SubResource("AnimationNodeStateMachineTransition_d0jbr"), "IDLE", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_i6yko"), "WALK", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_fsmix"), "ATTACK1", "ATTACK2", SubResource("AnimationNodeStateMachineTransition_8tjt6"), "WALK", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_de0m2"), "IDLE", "PARRY_START", SubResource("AnimationNodeStateMachineTransition_6y65c"), "PARRY_START", "PARRY_END", SubResource("AnimationNodeStateMachineTransition_o3gk5"), "PARRY_END", "IDLE", SubResource("AnimationNodeStateMachineTransition_y8eq5"), "IDLE", "HURT", SubResource("AnimationNodeStateMachineTransition_2kdsn"), "FALLING", "HURT", SubResource("AnimationNodeStateMachineTransition_risgo"), "ATTACK1", "HURT", SubResource("AnimationNodeStateMachineTransition_cmu7u"), "ATTACK2", "HURT", SubResource("AnimationNodeStateMachineTransition_5is45"), "PARRY_END", "HURT", SubResource("AnimationNodeStateMachineTransition_srdmp"), "PARRY_START", "HURT", SubResource("AnimationNodeStateMachineTransition_a1tc3"), "WALK", "HURT", SubResource("AnimationNodeStateMachineTransition_6huhu"), "HURT", "IDLE", SubResource("AnimationNodeStateMachineTransition_51rcy"), "IDLE", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_5hk2r"), "WALK", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_ab5iv"), "PARRY_END", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_2gjhk"), "ATTACK2", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_fxy25"), "ATTACK1", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_8lhl5"), "HURT", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_anmt4"), "FALLING", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_qwl38"), "CONVERSED", "IDLE", SubResource("AnimationNodeStateMachineTransition_t2jjy")]
+graph_offset = Vector2(61.8853, 22.461693)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uso6"]
 size = Vector2(95, 269)
@@ -545,18 +608,22 @@ height = 264.0
 
 [node name="GBot" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
+maxStrength = 100.0
+impactMultiplier = 0.25
+vulnerability = 0.5
+currentStrength = 0.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
-scale = Vector2(0.9999994, 0.9999994)
+scale = Vector2(0.99999934, 0.99999934)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(0.9999997, 0.9999997)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999997, 0.9999997)
+scale = Vector2(0.99999964, 0.99999964)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.99999964, 0.99999964)
@@ -575,7 +642,6 @@ libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
 
 [node name="tree" parent="texture/animator" index="0" unique_id=861821677]
-active = false
 tree_root = SubResource("AnimationNodeStateMachine_hfxiv")
 
 [node name="anchors" parent="texture" index="4" unique_id=1302053380]

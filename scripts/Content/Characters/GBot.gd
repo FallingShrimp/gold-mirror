@@ -26,11 +26,10 @@ func _ready():
 				emittedForNextAttack = false
 	)
 func ai(_delta: float):
+	if fsm.stateIs() in [States.CONVERSED, States.PARRY_END]: return
 	if fsm.currentState is States.PARRY_START:
 		if !Input.is_action_pressed("parry"):
 			fsm.changeState(States.PARRY_END)
-	elif fsm.currentState is States.PARRY_END:
-		pass
 	else:
 		if velocity.y > 0 && fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP]:
 			fsm.changeState(States.FALLING)

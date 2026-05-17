@@ -38,13 +38,16 @@ func ai(_delta: float):
 func isPlayer() -> bool:
 	push_error("未实现isPlayer")
 	return false
+func overrideDamage(base: float) -> float:
+	return base
 
 func takeDamage(amount: float):
 	if invincible: return
-	currentHealth -= amount
+	var totalDamage = overrideDamage(amount)
+	currentHealth -= totalDamage
 	currentHealth = clamp(currentHealth, 0, maxHealth)
-	DamageLabel.create(get_parent(), position, amount)
-	damageTaken.emit(amount)
+	DamageLabel.create(get_parent(), position, totalDamage)
+	damageTaken.emit(totalDamage)
 	if currentHealth == 0:
 		queue_free()
 func getAnchorPosition(namx: String):
