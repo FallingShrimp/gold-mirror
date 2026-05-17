@@ -20,6 +20,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 @export var maxStrength: float = 100
 @export var impactMultiplier: float = 0.25
 @export var vulnerability: float = 0.5
+@export var isBoss: bool = false
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -33,6 +34,7 @@ var attackCounter: int = 0
 var emittedForNextAttack: bool = false
 var lastAttackTime: float = 0
 var parrying: bool = false
+var myBossbar: CharacterStateBar = null
 
 func _ready():
 	super._ready()
@@ -48,6 +50,11 @@ func _ready():
 		func():
 			fsm.changeState(States.CONVERSED)
 	)
+	die.connect(func(): myBossbar.queue_free())
+	if isBoss:
+		stateBar.hide()
+		await get_tree().process_frame
+		myBossbar = PlayerInterface.addBossBarFor(self )
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)

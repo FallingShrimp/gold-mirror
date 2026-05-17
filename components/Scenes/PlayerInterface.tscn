@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ce5ljachmwsp8"]
+
+[ext_resource type="PackedScene" uid="uid://byk7vgl2igwga" path="res://components/Boxes/Bossbar.tscn" id="1_hska0"]
+[ext_resource type="Script" uid="uid://bfi2shf85pc5j" path="res://scripts/Statemachine/PlayerInterface.gd" id="1_mxaxt"]
+
+[node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
+
+[node name="root" type="Control" parent="." unique_id=979726907]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mxaxt")
+
+[node name="bossbars" type="Control" parent="root" unique_id=1902559509]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.1
+anchor_right = 0.5
+anchor_bottom = 0.1
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="BossBar" parent="root/bossbars" unique_id=2012763349 instance=ExtResource("1_hska0")]
+
+[node name="BossBar2" parent="root/bossbars" unique_id=861052617 instance=ExtResource("1_hska0")]
+
+[node name="BossBar3" parent="root/bossbars" unique_id=1518963019 instance=ExtResource("1_hska0")]

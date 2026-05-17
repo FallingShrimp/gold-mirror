@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 class_name CharacterStateBar
 
 @onready var healthBar: ColorBar = $%health

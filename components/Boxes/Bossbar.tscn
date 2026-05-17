@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://byk7vgl2igwga"]
+
+[ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_te66c"]
+
+[node name="BossBar" unique_id=2012763349 instance=ExtResource("1_te66c")]
+
+[node name="health" parent="." index="0" unique_id=2020367561]
+position = Vector2(0, 0)
+size = Vector2(500, 20)
+
+[node name="strength" parent="." index="1" unique_id=1793376854]
+position = Vector2(255, 15)
+rotation = 0.7853982
+innerR = 13.0
+outerR = 20.0

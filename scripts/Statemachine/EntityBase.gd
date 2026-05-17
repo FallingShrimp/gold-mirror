@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name EntityBase
 
 signal damageTaken(amount: float)
+signal die()
 
 @export var maxHealth: float = 100
 @export var invincible: bool = false
@@ -49,6 +50,7 @@ func takeDamage(amount: float):
 	DamageLabel.create(get_parent(), position, totalDamage)
 	damageTaken.emit(totalDamage)
 	if currentHealth == 0:
+		die.emit()
 		queue_free()
 func getAnchorPosition(namx: String):
 	var node = anchorParent.get_node_or_null(namx as NodePath)
