@@ -68,6 +68,7 @@ stream = ExtResource("2_0dvu2")
 visible = false
 
 [node name="particles" parent="." index="5" unique_id=2076768246]
+emitting = false
 amount = 100
 texture = ExtResource("3_ke6nh")
 lifetime = 0.5

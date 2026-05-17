@@ -11,6 +11,7 @@ enum MotionType {
 @export var motionType: MotionType = MotionType.SWING
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
+@export var knockback: float = 0
 
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
@@ -22,6 +23,8 @@ func _ready():
 			if entity is EntityBase:
 				if FetchUtil.canDamage(self , entity):
 					entity.takeDamage(baseDamage)
+					EffectPlayer.play(get_parent(), "Blood", position, 0)
+					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
 					if penetrate:
 						queue_free()
 	)

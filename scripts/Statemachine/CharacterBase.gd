@@ -9,7 +9,7 @@ enum Direction {
 const GRAVITY = 20
 const CONSTANT_FRICTION: float = 0.2
 
-var attackTime: float = 100.0
+var attackTime: float = 50.0
 var movementSpeed: float = 1.0
 var mass: float = 1
 var frictable: bool = true
@@ -51,5 +51,3 @@ func createAttack(_id: int) -> void:
 
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta
-func impact(delta: Vector2):
-	velocity += delta

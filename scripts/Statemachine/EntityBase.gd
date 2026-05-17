@@ -52,3 +52,5 @@ func getAnchor(namx: String):
 		return node.global_position
 	else:
 		return Vector2.ZERO
+func impact(delta: Vector2):
+	velocity += delta
