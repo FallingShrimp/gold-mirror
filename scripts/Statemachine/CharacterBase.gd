@@ -9,9 +9,9 @@ enum Direction {
 const GRAVITY = 20
 const CONSTANT_FRICTION: float = 0.2
 
-var attackTime: float = 50.0
-var movementSpeed: float = 1.0
-var mass: float = 1
+@export var attackTime: float = 50.0
+@export var movementSpeed: float = 1.0
+@export var mass: float = 1
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -53,4 +53,4 @@ func parry(_bullet: BulletBase):
 	pass
 
 func forward(directiox: Direction, delta: float):
-	velocity += Vector2(sign(directiox) * 5000, 0) * delta
+	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed

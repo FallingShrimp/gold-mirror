@@ -150,6 +150,9 @@ height = 264.0
 
 [node name="XGL" unique_id=948564138 instance=ExtResource("1_6wly8")]
 script = ExtResource("2_sowdv")
+attackTime = 50.0
+movementSpeed = 0.5
+mass = 1.0
 maxHealth = 1000.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
@@ -208,7 +211,7 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.099907726
-scale = Vector2(0.9999985, 0.9999985)
+scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(0.9950133, 0.09974159, -0.09974159, 0.9950133, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]

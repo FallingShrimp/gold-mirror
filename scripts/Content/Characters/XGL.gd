@@ -7,8 +7,6 @@ func _ready():
 			if fsm.currentState is States.ATTACK:
 				fsm.changeState(States.IDLE)
 	)
-func register():
-	movementSpeed = 0.5
 func ai(_delta: float):
 	if is_instance_valid(WorldManager.playerInstance):
 		var targetDir = sign(WorldManager.playerInstance.position.x - position.x)

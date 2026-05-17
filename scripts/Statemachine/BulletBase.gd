@@ -38,7 +38,7 @@ func _ready():
 								return
 						if chara.isInterruptedByDamage(baseDamage):
 							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
-					EffectPlayer.play(get_parent(), "Blood", position, 0)
+					EffectPlayer.play(get_parent(), "Blood", Vector2(entity.position.x, position.y), 0)
 					entity.takeDamage(baseDamage)
 					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
 					if penetrate:
