@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dtybtaij5lm0g"]
+
+[ext_resource type="Script" uid="uid://dci7oqgclnb6x" path="res://scripts/Statemachine/ShaderStage.gd" id="1_wuceu"]
+
+[node name="ShaderStage" type="Node2D" unique_id=784770636]
+script = ExtResource("1_wuceu")
