@@ -46,6 +46,8 @@ func _physics_process(delta):
 
 func createAttack(_id: int) -> void:
 	pass
+func isInterruptedByDamage(amount: float) -> bool:
+	return amount >= 0
 
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta

@@ -141,7 +141,7 @@ tracks/10/keys = {
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
-length = 0.15
+length = 0.1
 step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -150,7 +150,7 @@ tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [3.0896547, 0.3368485456349058]
@@ -162,7 +162,7 @@ tracks/1/path = NodePath("%texture/..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.075),
+"times": PackedFloat32Array(0.05),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [1],
@@ -172,7 +172,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_b5e2n"]
 resource_name = "attack1"
-length = 0.2
+length = 0.25
 step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -181,7 +181,7 @@ tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125),
+"times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.3368485456349058, 3.0896547]

@@ -26,7 +26,8 @@ func _ready():
 					entity.takeDamage(baseDamage)
 					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
 					if entity is CharacterBase:
-						entity.fsm.changeState(States.HURT, [position])
+						if entity.isInterruptedByDamage(baseDamage):
+							entity.fsm.changeState(States.HURT, [position])
 					if penetrate:
 						queue_free()
 	)
