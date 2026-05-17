@@ -146,12 +146,13 @@ visible = false
 
 [node name="texture" parent="." index="4" unique_id=212148538]
 modulate = Color(0.9866621, 0.69905746, 0, 1)
+z_index = 1
 rotation = 1.5707964
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("3_ybuw1")
 
 [node name="particles" parent="." index="5" unique_id=2076768246]
-amount = 100
+amount = 200
 texture = ExtResource("3_7h6aa")
 lifetime = 1.5
 explosiveness = 1.0
