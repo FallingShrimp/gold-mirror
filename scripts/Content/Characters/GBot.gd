@@ -8,6 +8,8 @@ func _ready():
 				if !emittedForNextAttack:
 					attackCounter = 0
 					fsm.changeState(States.IDLE)
+			elif fsm.currentState is States.PARRY_END:
+				fsm.changeState(States.IDLE)
 	)
 	fsm.updateState.connect(
 		func(state):

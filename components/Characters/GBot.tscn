@@ -226,7 +226,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.0896547, 1.8744836166419094]
+"values": [3.0896547, 1.8744836166419097]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -238,7 +238,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-1.6225315, -1.9792033717615698]
+"values": [-1.6225315, -1.9792033717615696]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -469,18 +469,6 @@ script = ExtResource("2_1uso6")
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
-
-[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999997, 0.9999997)
-
-[node name="rightleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="1" unique_id=703145623]
-scale = Vector2(0.9999997, 0.9999997)
-
-[node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
-scale = Vector2(0.99999964, 0.99999964)
-
-[node name="leftknee" parent="texture/skeleton/hip/leftleg" parent_id_path=PackedInt32Array(1150981751) index="0" unique_id=1032884720]
-scale = Vector2(0.9999998, 0.9999998)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
