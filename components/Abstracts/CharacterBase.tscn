@@ -2,10 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
 [ext_resource type="Script" uid="uid://cbfsgu3wmt418" path="res://scripts/Statemachine/CharacterBase.gd" id="2_0cve1"]
-[ext_resource type="PackedScene" uid="uid://cloit07mtgepd" path="res://components/Boxes/ColorBar.tscn" id="2_6kavq"]
+[ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="3_0cve1"]
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 script = ExtResource("2_0cve1")
+attackTime = 50.0
+movementSpeed = 1.0
+mass = 1.0
 
 [node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
 unique_name_in_owner = true
@@ -22,6 +25,6 @@ z_index = -1
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
 speed_scale = 3.0
 
-[node name="healthBar" parent="." index="3" unique_id=2020367561 instance=ExtResource("2_6kavq")]
-unique_name_in_owner = true
-position = Vector2(0, -200)
+[node name="stateBar" parent="." index="3" unique_id=2012763349 node_paths=PackedStringArray("character") instance=ExtResource("3_0cve1")]
+position = Vector2(0, -170)
+character = NodePath("..")

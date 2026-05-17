@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://v5w64ehq8nq3"]
+
+[ext_resource type="Script" uid="uid://dl2rknlv2job2" path="res://scripts/Statemachine/CharacterStateBar.gd" id="1_pdxj7"]
+[ext_resource type="PackedScene" uid="uid://cloit07mtgepd" path="res://components/Boxes/ColorBar.tscn" id="2_dvjik"]
+[ext_resource type="PackedScene" uid="uid://brdqq2yu2maoe" path="res://components/Boxes/RingColorBar.tscn" id="3_v5f3w"]
+
+[node name="StateBar" type="Node2D" unique_id=2012763349]
+script = ExtResource("1_pdxj7")
+
+[node name="health" parent="." unique_id=2020367561 instance=ExtResource("2_dvjik")]
+unique_name_in_owner = true
+position = Vector2(0, -30)
+
+[node name="strength" parent="." unique_id=1793376854 instance=ExtResource("3_v5f3w")]
+unique_name_in_owner = true
+position = Vector2(53.000004, -38.000004)
+rotation = -0.7853982
+innerR = 6.0
+outerR = 10.0
+size = Vector2(270, 0)

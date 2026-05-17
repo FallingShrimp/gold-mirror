@@ -550,13 +550,13 @@ script = ExtResource("2_1uso6")
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
-scale = Vector2(0.9999995, 0.9999995)
+scale = Vector2(0.9999994, 0.9999994)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
 scale = Vector2(0.9999999, 0.9999999)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.9999997, 0.9999997)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.99999964, 0.99999964)
@@ -600,5 +600,5 @@ visible = false
 position = Vector2(3, -132)
 shape = SubResource("CapsuleShape2D_1uso6")
 
-[node name="healthBar" parent="." index="3" unique_id=2020367561]
-position = Vector2(0, -300)
+[node name="stateBar" parent="." index="3" unique_id=2012763349]
+position = Vector2(0, -260)

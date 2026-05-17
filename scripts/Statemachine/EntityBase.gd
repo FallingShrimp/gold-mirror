@@ -13,11 +13,12 @@ signal damageTaken(amount: float)
 @onready var hurtboxArea: Area2D = $%hurtbox
 @onready var anchorParent: Node2D = $%anchors
 
-@onready var currentHealth = maxHealth
+@export var currentHealth: float = 0
 var animationPlayback: AnimationNodeStateMachinePlayback
 
 func _ready():
 	register()
+	currentHealth = maxHealth
 	animationTree.active = true
 	animationPlayback = animationTree.get("parameters/playback")
 	animationTree.set("parameters/conditions/always", true)

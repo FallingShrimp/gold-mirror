@@ -15,7 +15,6 @@ const CONSTANT_FRICTION: float = 0.2
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
-@onready var healthBar: ColorBar = $%healthBar
 @onready var skeleton: Skeleton2D = $%skeleton
 @onready var polygonParent: Node2D = $%polygons
 var fsm: FiniteStateMachine
@@ -28,12 +27,6 @@ var parrying: bool = false
 func _ready():
 	super._ready()
 	fsm = FiniteStateMachine.new(self )
-	damageTaken.connect(
-		func(_a):
-			healthBar.maxValue = maxHealth
-			healthBar.setValue(currentHealth)
-	)
-	damageTaken.emit(0)
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
