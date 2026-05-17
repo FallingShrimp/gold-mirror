@@ -464,11 +464,26 @@ size = Vector2(95, 269)
 radius = 49.0
 height = 264.0
 
-[node name="Humanoid" unique_id=948564138 instance=ExtResource("1_feuyp")]
+[node name="GBot" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
+
+[node name="skeleton" parent="texture" index="0" unique_id=1326387772]
+scale = Vector2(-1, 1)
+
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
+scale = Vector2(0.9999996, 0.9999996)
+
+[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
+scale = Vector2(0.9999999, 0.9999999)
+
+[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
+scale = Vector2(0.9999997, 0.9999997)
+
+[node name="polygons" parent="texture" index="1" unique_id=507869215]
+scale = Vector2(-1, 1)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
@@ -478,14 +493,10 @@ speed_scale = 1.0
 tree_root = SubResource("AnimationNodeStateMachine_hfxiv")
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
-visible = false
 position = Vector2(5.5, -135.5)
 shape = SubResource("RectangleShape2D_1uso6")
 
-[node name="hurtbox" parent="." index="2" unique_id=771077559]
-visible = false
-
-[node name="shape" parent="hurtbox" index="0" unique_id=1412400232]
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
 position = Vector2(3, -132)
 shape = SubResource("CapsuleShape2D_1uso6")
 

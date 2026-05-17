@@ -16,6 +16,8 @@ var frictable: bool = true
 var frictionMultipiler: float = 1
 
 @onready var healthBar: ColorBar = $%healthBar
+@onready var skeleton: Skeleton2D = $%skeleton
+@onready var polygonParent: Node2D = $%polygons
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
@@ -40,7 +42,9 @@ func _physics_process(delta):
 	if frictable:
 		velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
 	move_and_slide()
-	texture.scale.x = direction
+	skeleton.scale.x = direction
+	polygonParent.scale.x = direction
+	anchorParent.scale.x = direction
 
 func createAttack(_id: int) -> void:
 	pass

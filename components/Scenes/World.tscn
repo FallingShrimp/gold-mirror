@@ -14,6 +14,7 @@ script = ExtResource("1_sbdvw")
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(205, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 270)
@@ -27,14 +28,11 @@ shape = SubResource("WorldBoundaryShape2D_lu72f")
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=529562544]
 polygon = PackedVector2Array(-674, -27, -666, 70, 994, 83, 1000, -24)
 
-[node name="Humanoid" parent="." unique_id=948564138 instance=ExtResource("1_lnjql")]
-position = Vector2(340, -63.999992)
+[node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 
-[node name="Humanoid2" parent="." unique_id=408243359 instance=ExtResource("2_0ci2v")]
-position = Vector2(-68, -208.99998)
-
-[node name="Camera2D" type="Camera2D" parent="Humanoid2" unique_id=1792746904]
-position = Vector2(-7.4031982, -273.9162)
-scale = Vector2(3.70157, 3.70157)
+[node name="Camera2D" type="Camera2D" parent="GBot" unique_id=2047599218]
+position = Vector2(0, -151)
 process_callback = 0
 position_smoothing_enabled = true
+
+[node name="XGL" parent="." unique_id=605514924 instance=ExtResource("1_lnjql")]

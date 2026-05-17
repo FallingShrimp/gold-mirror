@@ -10,6 +10,7 @@ signal damageTaken(amount: float)
 @onready var texture: Node2D = $%texture
 @onready var movebox: CollisionShape2D = $%movebox
 @onready var hurtboxArea: Area2D = $%hurtbox
+@onready var anchorParent: Node2D = $%anchors
 
 @onready var currentHealth = maxHealth
 var animationPlayback: AnimationNodeStateMachinePlayback
@@ -43,3 +44,9 @@ func takeDamage(amount: float):
 	damageTaken.emit(amount)
 	if currentHealth == 0:
 		queue_free()
+func getAnchor(namx: String):
+	var node = anchorParent.get_node_or_null(namx as NodePath)
+	if node is Node2D:
+		return node.global_position
+	else:
+		return Vector2.ZERO
