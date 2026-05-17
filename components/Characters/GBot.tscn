@@ -265,24 +265,27 @@ transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-98.60647, 43.61379)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1uso6"]
-size = Vector2(255, 823)
+size = Vector2(95, 269)
 
 [node name="Humanoid" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
 
+[node name="texture" parent="." index="0" unique_id=167379002]
+scale = Vector2(0.32535243, 0.32535243)
+
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
-scale = Vector2(0.9999995, 0.9999995)
+scale = Vector2(0.99999934, 0.99999934)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
 scale = Vector2(0.9999997, 0.9999997)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.99999964, 0.99999964)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.9999997, 0.9999997)
 
-[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
+[node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
 
@@ -290,5 +293,11 @@ speed_scale = 1.0
 tree_root = SubResource("AnimationNodeStateMachine_hfxiv")
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
-position = Vector2(5.5, -412.5)
+position = Vector2(5.5, -135.5)
 shape = SubResource("RectangleShape2D_1uso6")
+
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
+position = Vector2(3, -132)
+
+[node name="healthBar" parent="." index="3" unique_id=2020367561]
+position = Vector2(0, -300)

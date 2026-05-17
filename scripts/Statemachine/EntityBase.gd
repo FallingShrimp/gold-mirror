@@ -1,6 +1,8 @@
 extends CharacterBody2D
 class_name EntityBase
 
+signal damageTaken(amount: float)
+
 @export var maxHealth: float = 100
 
 @onready var animator: AnimationPlayer = $%animator
@@ -36,4 +38,8 @@ func isPlayer() -> bool:
 
 func takeDamage(amount: float):
 	currentHealth -= amount
+	currentHealth = clamp(currentHealth, 0, maxHealth)
 	DamageLabel.create(get_parent(), position, amount)
+	damageTaken.emit(amount)
+	if currentHealth == 0:
+		queue_free()

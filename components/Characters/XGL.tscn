@@ -203,7 +203,7 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.099907726
-scale = Vector2(0.9999994, 0.9999994)
+scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(0.9950133, 0.09974159, -0.09974159, 0.9950133, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -214,8 +214,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261427
-scale = Vector2(0.99999964, 0.99999964)
+rotation = 0.18261428
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -320,3 +320,6 @@ shape = SubResource("RectangleShape2D_sowdv")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
 position = Vector2(-14, -138)
+
+[node name="healthBar" parent="." index="3" unique_id=2020367561]
+position = Vector2(0, -297)

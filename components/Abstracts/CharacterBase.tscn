@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byn7d8frmp314"]
 
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
-[ext_resource type="Texture2D" uid="uid://bgo2hppto8j2n" path="res://resources/characters/gbot/full.png" id="3_0cve1"]
+[ext_resource type="PackedScene" uid="uid://cloit07mtgepd" path="res://components/Boxes/ColorBar.tscn" id="2_6kavq"]
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 
@@ -14,8 +14,10 @@ metadata/_edit_group_ = true
 [node name="full" type="Sprite2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="2" unique_id=275419339]
 modulate = Color(1, 0, 0, 0.4)
 z_index = -1
-position = Vector2(489, -421)
-texture = ExtResource("3_0cve1")
 
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
 speed_scale = 3.0
+
+[node name="healthBar" parent="." index="3" unique_id=2020367561 instance=ExtResource("2_6kavq")]
+unique_name_in_owner = true
+position = Vector2(0, -200)

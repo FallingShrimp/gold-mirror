@@ -15,6 +15,7 @@ var mass: float = 1
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
+@onready var healthBar: ColorBar = $%healthBar
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
@@ -24,6 +25,11 @@ var lastAttackTime: float = 0
 func _ready():
 	super._ready()
 	fsm = FiniteStateMachine.new(self )
+	damageTaken.connect(
+		func(amount):
+			healthBar.maxValue = maxHealth
+			healthBar.setValue(amount)
+	)
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
