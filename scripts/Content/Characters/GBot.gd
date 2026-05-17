@@ -59,3 +59,5 @@ func createAttack(id: int) -> void:
 			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), PI / 2 - direction * PI / 2, self )
 		2:
 			BulletBase.create(get_parent(), "KnifeSwing", getAnchor("attack1"), PI / 2 - direction * PI / 2, self )
+func parry(_bullet: BulletBase):
+	EffectPlayer.play(get_parent(), "PerfectParry", getAnchor("parry"), PI / 2 - direction * PI / 2)

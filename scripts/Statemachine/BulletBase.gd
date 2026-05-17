@@ -22,12 +22,20 @@ func _ready():
 			var entity = FetchUtil.getEntityFromHurtbox(hurtbox)
 			if entity is EntityBase:
 				if FetchUtil.canDamage(self , entity):
+					if entity is CharacterBase:
+						var chara = entity as CharacterBase
+						if chara.invincible:
+							return
+						elif chara.fsm.currentState is States.DASH:
+							return
+						elif chara.fsm.currentState is States.PARRY_START:
+							chara.parry(self )
+							return
+						if chara.isInterruptedByDamage(baseDamage):
+							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
 					EffectPlayer.play(get_parent(), "Blood", position, 0)
 					entity.takeDamage(baseDamage)
 					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
-					if entity is CharacterBase:
-						if entity.isInterruptedByDamage(baseDamage):
-							entity.fsm.changeState(States.HURT, [position])
 					if penetrate:
 						queue_free()
 	)

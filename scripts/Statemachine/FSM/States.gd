@@ -46,7 +46,6 @@ class DASH extends IState:
 				LayerUtil.Layers.PLAYER: false
 			})
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: false})
-		character.invincible = true
 		return "DASH"
 	func exit() -> void:
 		if character is PlayerBase:
@@ -55,19 +54,18 @@ class DASH extends IState:
 				LayerUtil.Layers.PLAYER: true
 			})
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
-		character.invincible = false
 
 class PARRY_START extends IState:
 	func join() -> String:
-		character.invincible = true
+		character.parrying = true
 		return "PARRY_START"
 
 class PARRY_END extends IState:
 	func join() -> String:
-		character.invincible = false
+		character.parrying = false
 		return "PARRY_END"
 
 class HURT extends IState:
 	func join() -> String:
-		character.direction = sign(character.position - arguments[0]).x
+		character.direction = sign(arguments[0])
 		return "HURT"

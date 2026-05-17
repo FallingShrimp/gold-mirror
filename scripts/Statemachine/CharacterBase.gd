@@ -23,6 +23,7 @@ var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
 var emittedForNextAttack: bool = false
 var lastAttackTime: float = 0
+var parrying: bool = false
 
 func _ready():
 	super._ready()
@@ -48,6 +49,8 @@ func createAttack(_id: int) -> void:
 	pass
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount >= 0
+func parry(_bullet: BulletBase):
+	pass
 
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta
