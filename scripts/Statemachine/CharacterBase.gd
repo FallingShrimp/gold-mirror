@@ -21,6 +21,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 @export var impactMultiplier: float = 0.25
 @export var vulnerability: float = 0.5
 @export var isBoss: bool = false
+@export var strengthRegeneration: float = 5
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -62,7 +63,7 @@ func _ready():
 func _physics_process(delta):
 	super._physics_process(delta)
 	if strengthThrottle.canExecute():
-		storeStrength(10 * delta, true)
+		storeStrength(strengthRegeneration * delta, true)
 	fsm.update(delta)
 	velocity += Vector2(0, GRAVITY)
 	if frictable:
