@@ -17,10 +17,11 @@ bg_color = Color(1, 1, 1, 1)
 [node name="ColorBar" type="Node2D" unique_id=2020367561]
 script = ExtResource("1_cknvj")
 cornerDetails = 32
+usePointer = true
 size = Vector2(90, 0)
 backbox = SubResource("StyleBoxFlat_cknvj")
 middlebox1 = SubResource("StyleBoxFlat_dxws8")
 middlebox2 = SubResource("StyleBoxFlat_nh1px")
 frontbox = SubResource("StyleBoxFlat_xih8t")
-currentValue = 0.0
+currentValue = 35.195
 currentDirection = -1

@@ -12,6 +12,9 @@ script = ExtResource("2_bxmq7")
 cornerDetails = 8
 innerR = 100.0
 outerR = 85.0
+usePointer = true
+pointerWidth = 10.0
+pointerColor = Color(1, 0, 0, 1)
 size = Vector2(90, 10)
 currentDirection = 1
 
@@ -19,4 +22,7 @@ currentDirection = 1
 position = Vector2(0, 0)
 innerR = 110.0
 outerR = 105.0
+pointerWidth = 10.0
+pointerColor = Color(1, 0.7996895, 0.47369397, 1)
 size = Vector2(90, 0)
+currentValue = 0.0

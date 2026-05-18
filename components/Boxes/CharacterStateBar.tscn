@@ -26,6 +26,7 @@ position = Vector2(53.000004, -38.000004)
 rotation = -0.7853982
 innerR = 6.0
 outerR = 10.0
+pointerColor = Color(1, 0.8, 0.4745098, 1)
 size = Vector2(270, 0)
 backbox = SubResource("StyleBoxFlat_pdxj7")
 middlebox1 = SubResource("StyleBoxFlat_dvjik")

@@ -19,6 +19,7 @@ func _ready():
 					await animationTree.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
 					attackCounter += 1
+					useStrength(10)
 	)
 	fsm.joinState.connect(
 		func(newState, _o, _a):
@@ -40,9 +41,11 @@ func ai(_delta: float):
 			if fsm.stateIs() in [States.IDLE, States.WALK]:
 				if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
 					attackCounter += 1
+					useStrength(10)
 		elif Input.is_action_just_pressed("dash"):
 			if fsm.stateIs() in [States.IDLE, States.WALK]:
 				fsm.changeState(States.DASH, [direction])
+				useStrength(5)
 		elif Input.is_action_just_pressed("jump"):
 			if fsm.stateIs() in [States.IDLE, States.WALK, States.DASH] && is_on_floor():
 				fsm.changeState(States.JUMP, [1])
