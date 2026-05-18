@@ -36,10 +36,12 @@ func _ready():
 								chara.parry(self , isPerfect)
 								parryState.maxHoldTime *= 0.5
 								if isPerfect:
-									chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
+									launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
+									chara.impact(Vector2(getDirection(), 0).normalized() * 1500)
 									CameraManager.shake(300, 400)
 								else:
-									chara.impact(Vector2(getDirection(), 0).normalized() * 1000)
+									chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
+									launcher.impact(Vector2(-getDirection(), 0).normalized() * 1500)
 									CameraManager.shake(200, 150)
 								if launcher is CharacterBase:
 									if isPerfect:

@@ -50,11 +50,11 @@ func _ready():
 		func():
 			fsm.changeState(States.CONVERSED)
 	)
-	die.connect(func(): myBossbar.queue_free())
 	if isBoss:
 		stateBar.hide()
 		await get_tree().process_frame
 		myBossbar = PlayerInterface.addBossBarFor(self )
+		die.connect(func(): myBossbar.queue_free())
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
