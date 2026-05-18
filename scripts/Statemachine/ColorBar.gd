@@ -15,12 +15,14 @@ class_name ColorBar
 
 var currentMiddle: float = 0.5
 var currentFront: float = 0.5
+var throttle: ThrottleController = ThrottleController.new(500)
 
 func _ready():
 	pass
 func _physics_process(_delta):
 	currentFront = lerpf(currentFront, getCurrentPercent(), frontSpeed if currentDirection > 0 else middleSpeed)
-	currentMiddle = lerpf(currentMiddle, getCurrentPercent(), middleSpeed if currentDirection > 0 else frontSpeed)
+	if throttle.canExecute():
+		currentMiddle = lerpf(currentMiddle, getCurrentPercent(), middleSpeed if currentDirection > 0 else frontSpeed)
 	queue_redraw()
 func _draw():
 	if backbox && middlebox1 && middlebox2 && frontbox:
@@ -41,4 +43,5 @@ func setValue(newValue: float, ignoreDirection: bool = false):
 	if currentFront == newValue: return
 	if !ignoreDirection:
 		currentDirection = sign(currentValue - newValue)
+		throttle.flag()
 	currentValue = newValue
