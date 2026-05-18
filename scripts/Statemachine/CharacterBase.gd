@@ -36,15 +36,19 @@ var lastAttackTime: float = 0
 var parrying: bool = false
 var myBossbar: CharacterStateBar = null
 
+var strengthThrottle: ThrottleController = ThrottleController.new(2000)
+
 func _ready():
 	super._ready()
 	currentStrength = maxStrength
 	fsm = FiniteStateMachine.new(self )
 	stateBar.initCharacter(self )
 	strengthIncreased.connect(
-		func(_a):
+		func(amount: float):
 			if currentStrength == 0:
 				converse.emit()
+			if amount < 0:
+				strengthThrottle.flag()
 	)
 	converse.connect(
 		func():
@@ -57,6 +61,8 @@ func _ready():
 		die.connect(func(): myBossbar.queue_free())
 func _physics_process(delta):
 	super._physics_process(delta)
+	if strengthThrottle.canExecute():
+		storeStrength(10 * delta, true)
 	fsm.update(delta)
 	velocity += Vector2(0, GRAVITY)
 	if frictable:
