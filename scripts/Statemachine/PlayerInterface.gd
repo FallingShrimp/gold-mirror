@@ -4,6 +4,7 @@ class_name PlayerInterface
 static var instance: PlayerInterface = null
 
 @onready var bossbars: Control = $%bossbars
+@onready var playerStateBar: CharacterStateBar = $%playerState
 
 func _ready():
 	instance = self

@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://qbxbo1b510ta"]
+
+[ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_0v5js"]
+[ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/RingColorBar.gd" id="2_bxmq7"]
+
+[node name="PlayerState" unique_id=2012763349 instance=ExtResource("1_0v5js")]
+
+[node name="health" parent="." index="0" unique_id=2020367561]
+position = Vector2(0, 0)
+rotation = -0.7853982
+script = ExtResource("2_bxmq7")
+cornerDetails = 8
+innerR = 100.0
+outerR = 85.0
+size = Vector2(90, 10)
+currentDirection = 1
+
+[node name="strength" parent="." index="1" unique_id=1793376854]
+position = Vector2(0, 0)
+innerR = 110.0
+outerR = 105.0
+size = Vector2(90, 0)

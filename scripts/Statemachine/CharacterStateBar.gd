@@ -2,7 +2,7 @@ extends Node2D
 class_name CharacterStateBar
 
 @onready var healthBar: ColorBar = $%health
-@onready var strengthBar: RingColorBar = $%strength
+@onready var strengthBar: ColorBar = $%strength
 
 func initCharacter(character: CharacterBase):
 	if character is CharacterBase:
