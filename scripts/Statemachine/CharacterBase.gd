@@ -88,7 +88,7 @@ func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed
 func useStrength(amount: float, check: bool = true):
 	if check:
-		if currentHealth <= amount:
+		if currentStrength <= amount:
 			return false
 	currentStrength = clamp(currentStrength - amount, 0, maxStrength)
 	strengthIncreased.emit(-amount)

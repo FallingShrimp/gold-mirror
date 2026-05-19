@@ -80,7 +80,10 @@ class CONVERSED extends IState:
 	func join() -> String:
 		SignalUtil.once(character.animationTree.animation_finished,
 			func(_a):
-				character.storeStrength(character.maxStrength)
 				character.fsm.changeState(IDLE)
 		)
+		character.strengthThrottle.unflag()
+		character.strengthRegeneration *= 2
 		return "CONVERSED"
+	func exit() -> void:
+		character.strengthRegeneration /= 2

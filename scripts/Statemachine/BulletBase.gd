@@ -47,12 +47,12 @@ func _ready():
 								if launcher is CharacterBase:
 									if isPerfect:
 										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
-										chara.useStrength(impulse * averageMultiplier)
-										launcher.useStrength(impulse * (2 - averageMultiplier))
+										chara.useStrength(impulse * averageMultiplier, false)
+										launcher.useStrength(impulse * (2 - averageMultiplier), false)
 									else:
 										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
-										chara.useStrength(impulse * (2 - averageMultiplier))
-										launcher.useStrength(impulse * averageMultiplier)
+										chara.useStrength(impulse * (2 - averageMultiplier), false)
+										launcher.useStrength(impulse * averageMultiplier, false)
 								return
 						if chara.isInterruptedByDamage(baseDamage):
 							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])

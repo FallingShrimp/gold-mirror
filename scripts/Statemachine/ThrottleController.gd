@@ -10,6 +10,8 @@ func _init(cooldowx: float):
 
 func flag():
 	lastFlag = WorldManager.getCurrentTime()
+func unflag():
+	lastFlag = - INF
 func timePassedSinceLastFlag() -> float:
 	return WorldManager.getCurrentTime() - lastFlag
 func canExecute() -> bool:
