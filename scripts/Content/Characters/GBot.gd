@@ -14,12 +14,11 @@ func _ready():
 	fsm.updateState.connect(
 		func(state):
 			if state is States.ATTACK && !emittedForNextAttack:
-				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime:
+				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter):
 					emittedForNextAttack = true
 					await animationTree.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
 					attackCounter += 1
-					useStrength(attackCounter)
 	)
 	fsm.joinState.connect(
 		func(newState, _o, _a):
@@ -40,12 +39,12 @@ func ai(_delta: float):
 				if Input.is_action_just_pressed("parry"):
 					fsm.changeState(States.PARRY_START)
 				elif Input.is_action_just_pressed("attack"):
-					if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
-						attackCounter += 1
-						useStrength(attackCounter)
+					if useStrength(attackCounter):
+						if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
+							attackCounter += 1
 				elif Input.is_action_just_pressed("dash"):
-					fsm.changeState(States.DASH, [direction])
-					useStrength(10)
+					if useStrength(10):
+						fsm.changeState(States.DASH, [direction])
 				elif Input.is_action_just_pressed("jump"):
 					fsm.changeState(States.JUMP, [1])
 				elif Input.is_action_pressed("moving"):
