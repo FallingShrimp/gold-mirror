@@ -68,10 +68,33 @@ tracks/4/keys = {
 "update": 0,
 "values": [2.57]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%skeleton/hip/body/neck:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
-step = 0.1
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -79,9 +102,9 @@ tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2),
-"points": PackedFloat32Array(2.57, 0, 0, 0, 0, 0, 0, 0, 0, 2.5, 2.57, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.7, 1)
+"handle_modes": PackedInt32Array(2, 0, 0),
+"points": PackedFloat32Array(2.57, 0, 0, 0.025000002, 0, 0, 0, 0, 0, 2.5, 2.57, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -90,7 +113,7 @@ tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(0.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [1],
@@ -139,6 +162,23 @@ tracks/2/keys = {
 "values": [2.57, 2.0472712125893486, 2.0472712125893486, 2.57]
 }
 
+[sub_resource type="Animation" id="Animation_u3h3u"]
+resource_name = "falling"
+length = 0.5
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body/neck:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.6719517620178169]
+}
+
 [sub_resource type="Animation" id="Animation_l8grr"]
 resource_name = "walk"
 loop_mode = 1
@@ -173,6 +213,7 @@ _data = {
 &"RESET": SubResource("Animation_b7uyj"),
 &"attack": SubResource("Animation_46enu"),
 &"conversed": SubResource("Animation_e2ur4"),
+&"falling": SubResource("Animation_u3h3u"),
 &"walk": SubResource("Animation_l8grr")
 }
 
@@ -181,6 +222,9 @@ animation = &"attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_46enu"]
 animation = &"conversed"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_e2ur4"]
+animation = &"falling"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sowdv"]
 animation = &"RESET"
@@ -207,6 +251,14 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_cebsw"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f810p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_atd6i"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_3wi1n"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mqog2"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cebsw"]
 state_machine_type = 1
 states/ATTACK1/node = SubResource("AnimationNodeAnimation_l8grr")
@@ -214,12 +266,14 @@ states/ATTACK1/position = Vector2(450.60602, 169.51651)
 states/CONVERSED/node = SubResource("AnimationNodeAnimation_46enu")
 states/CONVERSED/position = Vector2(776.2727, 94.543015)
 states/End/position = Vector2(901, 100)
+states/FALLING/node = SubResource("AnimationNodeAnimation_e2ur4")
+states/FALLING/position = Vector2(622.6061, 274.89032)
 states/IDLE/node = SubResource("AnimationNodeAnimation_sowdv")
 states/IDLE/position = Vector2(386.2727, 9.183182)
 states/Start/position = Vector2(201, 100)
 states/WALK/node = SubResource("AnimationNodeAnimation_b7uyj")
-states/WALK/position = Vector2(587.6061, 99.57591)
-transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_l8grr"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_46enu"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_b7uyj"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_e2ur4"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_u3h3u"), "IDLE", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_w6duw"), "WALK", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_webv5"), "ATTACK1", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_f4tlt"), "CONVERSED", "IDLE", SubResource("AnimationNodeStateMachineTransition_cebsw")]
+states/WALK/position = Vector2(756.6061, 246.57591)
+transitions = ["Start", "IDLE", SubResource("AnimationNodeStateMachineTransition_l8grr"), "IDLE", "WALK", SubResource("AnimationNodeStateMachineTransition_46enu"), "WALK", "IDLE", SubResource("AnimationNodeStateMachineTransition_b7uyj"), "WALK", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_e2ur4"), "IDLE", "ATTACK1", SubResource("AnimationNodeStateMachineTransition_u3h3u"), "IDLE", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_w6duw"), "WALK", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_webv5"), "ATTACK1", "CONVERSED", SubResource("AnimationNodeStateMachineTransition_f4tlt"), "CONVERSED", "IDLE", SubResource("AnimationNodeStateMachineTransition_cebsw"), "IDLE", "FALLING", SubResource("AnimationNodeStateMachineTransition_f810p"), "ATTACK1", "FALLING", SubResource("AnimationNodeStateMachineTransition_atd6i"), "WALK", "FALLING", SubResource("AnimationNodeStateMachineTransition_3wi1n"), "FALLING", "IDLE", SubResource("AnimationNodeStateMachineTransition_mqog2")]
 graph_offset = Vector2(-48.727283, -13.109689)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sowdv"]
@@ -231,12 +285,15 @@ height = 264.0
 
 [node name="XGL" unique_id=948564138 instance=ExtResource("1_6wly8")]
 script = ExtResource("2_sowdv")
-movementSpeed = 2.0
+isBoss = true
+movementSpeed = 2.5
 maxStrength = 100.0
+maxMagicLength = 100.0
 impactMultiplier = 0.25
 vulnerability = 0.5
-isBoss = true
+strengthRegeneration = 5.0
 currentStrength = 0.0
+currentMagic = Vector2(0, 0)
 maxHealth = 1000.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
@@ -269,7 +326,7 @@ length = 56.075
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
-rotation = 2.57
+rotation = 0.0
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
@@ -295,7 +352,7 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.099907726
-scale = Vector2(0.99999934, 0.99999934)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.99501324, 0.099741586, -0.099741586, 0.99501324, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -306,8 +363,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261428
-scale = Vector2(0.9999996, 0.9999996)
+rotation = 0.18261427
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 

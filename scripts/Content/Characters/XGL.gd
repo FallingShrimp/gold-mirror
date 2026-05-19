@@ -9,12 +9,17 @@ func _ready():
 	)
 func ai(_delta: float):
 	if is_instance_valid(WorldManager.playerInstance):
-		if fsm.stateIs() == States.CONVERSED: return
-		var targetDir = sign(WorldManager.playerInstance.position.x - position.x)
-		if WorldManager.playerInstance.position.distance_to(position) > 300 || targetDir != direction:
-			fsm.changeState(States.WALK, [targetDir])
-		else:
-			fsm.changeState(States.ATTACK, [1])
+		var targetDirection = sign(WorldManager.playerInstance.position.x - position.x)
+		match fsm.stateIs():
+			States.CONVERSED:
+				return
+			States.WALK, States.IDLE, States.JUMP:
+				if !is_on_floor():
+					fsm.changeState(States.FALLING)
+				elif WorldManager.playerInstance.position.distance_to(position) > 150 || targetDirection != direction:
+					fsm.changeState(States.WALK, [targetDirection])
+				else:
+					fsm.changeState(States.ATTACK, [1])
 func createAttack(id: int) -> void:
 	match id:
 		1:

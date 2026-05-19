@@ -34,7 +34,7 @@ func ai(_delta: float):
 			if !Input.is_action_pressed("parry"):
 				fsm.changeState(States.PARRY_END)
 		States.IDLE, States.WALK, States.JUMP, States.ATTACK:
-			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && velocity.y > 0:
+			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && !is_on_floor():
 				fsm.changeState(States.FALLING)
 			elif fsm.stateIs() not in [States.JUMP, States.ATTACK]:
 				if Input.is_action_just_pressed("parry"):
