@@ -57,7 +57,7 @@ class DASH extends IState:
 			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
 
 class PARRY_START extends IState:
-	var maxHoldTime: float = 1000
+	var maxHoldTime: float = 500
 	func join() -> String:
 		character.parrying = true
 		return "PARRY_START"
