@@ -608,24 +608,26 @@ height = 264.0
 
 [node name="GBot" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
+isBoss = false
 maxStrength = 100.0
+maxMagicLength = 100.0
 impactMultiplier = 0.25
 vulnerability = 0.5
-isBoss = false
-strengthRegeneration = 10.0
+strengthRegeneration = 20.0
 currentStrength = 0.0
+currentMagic = Vector2(0, 0)
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
-scale = Vector2(0.9999993, 0.9999993)
+scale = Vector2(0.9999992, 0.9999992)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
 scale = Vector2(0.9999997, 0.9999997)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999996, 0.9999996)
+scale = Vector2(0.9999995, 0.9999995)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.99999964, 0.99999964)
