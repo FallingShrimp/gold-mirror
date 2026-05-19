@@ -1,0 +1,2 @@
+extends CharacterStateBar
+class_name PlayerState

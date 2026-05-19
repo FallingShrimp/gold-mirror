@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c4jy3f6g1op8g"]
+
+[ext_resource type="Script" uid="uid://bv4bspd58uosk" path="res://scripts/Statemachine/MagicVector.gd" id="1_503jq"]
+[ext_resource type="Texture2D" uid="uid://duc85ecfneb0u" path="res://resources/ui/yin-yang.png" id="1_wgtl0"]
+
+[node name="MagicVector" type="Node2D" unique_id=1457230980]
+script = ExtResource("1_503jq")
+
+[node name="back" type="Sprite2D" parent="." unique_id=23905142]
+z_index = -1
+texture = ExtResource("1_wgtl0")
