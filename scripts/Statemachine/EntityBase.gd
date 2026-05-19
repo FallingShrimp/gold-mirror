@@ -8,21 +8,16 @@ signal die()
 @export var invincible: bool = false
 
 @onready var animator: AnimationPlayer = $%animator
-@onready var animationTree: AnimationTree = $%tree
 @onready var texture: Node2D = $%texture
 @onready var movebox: CollisionShape2D = $%movebox
 @onready var hurtboxArea: Area2D = $%hurtbox
 @onready var anchorParent: Node2D = $%anchors
 
 @export var currentHealth: float = 0
-var animationPlayback: AnimationNodeStateMachinePlayback
 
 func _ready():
 	register()
 	currentHealth = maxHealth
-	animationTree.active = true
-	animationPlayback = animationTree.get("parameters/playback")
-	animationTree.set("parameters/conditions/always", true)
 	hurtboxArea.add_to_group("hurtboxes")
 	LayerUtil.ghostize(self )
 	await get_tree().process_frame

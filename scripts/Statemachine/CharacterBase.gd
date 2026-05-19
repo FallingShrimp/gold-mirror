@@ -84,6 +84,8 @@ func overrideDamage(base: float) -> float:
 	else:
 		return base
 
+func dart(force: float):
+	impact(Vector2(direction * 200 * force, 0))
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed
 func useStrength(amount: float, check: bool = true):

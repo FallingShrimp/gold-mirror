@@ -2,7 +2,7 @@ extends PlayerBase
 
 func _ready():
 	super._ready()
-	animationTree.animation_finished.connect(
+	animator.animation_finished.connect(
 		func(_n):
 			if fsm.currentState is States.ATTACK:
 				if !emittedForNextAttack:
@@ -16,7 +16,7 @@ func _ready():
 			if state is States.ATTACK && !emittedForNextAttack:
 				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter):
 					emittedForNextAttack = true
-					await animationTree.animation_finished
+					await animator.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
 					attackCounter += 1
 	)

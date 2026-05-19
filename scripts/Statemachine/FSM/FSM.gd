@@ -17,7 +17,8 @@ func changeState(newStateClass: GDScript, arguments: Array = []) -> bool:
 			currentState.exit()
 			exitState.emit(currentState)
 		var animationName = newState.join()
-		character.animationPlayback.travel(animationName)
+		NodeUtil.skeletonMakeRest(character.skeleton)
+		character.animator.play(animationName)
 		joinState.emit(newState, currentState, animationName)
 		currentState = newState
 		firstUpdated = false

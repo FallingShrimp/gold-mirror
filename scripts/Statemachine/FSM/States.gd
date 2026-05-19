@@ -3,7 +3,7 @@ class_name States
 
 class IDLE extends IState:
 	func join() -> String:
-		return "IDLE"
+		return "RESET"
 
 class WALK extends IState:
 	func join() -> String:
@@ -36,7 +36,7 @@ class DASH extends IState:
 	func join() -> String:
 		character.frictionMultipiler *= 0.5
 		character.impact(Vector2(arguments[0] * 3000, 0))
-		SignalUtil.once(character.animationTree.animation_finished,
+		SignalUtil.once(character.animator.animation_finished,
 			func(_n):
 				character.frictionMultipiler /= 0.5
 				fsm.changeState(IDLE)
@@ -78,7 +78,7 @@ class HURT extends IState:
 
 class CONVERSED extends IState:
 	func join() -> String:
-		SignalUtil.once(character.animationTree.animation_finished,
+		SignalUtil.once(character.animator.animation_finished,
 			func(_a):
 				character.fsm.changeState(IDLE)
 		)

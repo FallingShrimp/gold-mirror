@@ -15,11 +15,6 @@ unique_name_in_owner = true
 [node name="animator" type="AnimationPlayer" parent="texture" unique_id=788723809]
 unique_name_in_owner = true
 
-[node name="tree" type="AnimationTree" parent="texture/animator" unique_id=861821677]
-unique_name_in_owner = true
-root_node = NodePath("%animator/..")
-anim_player = NodePath("..")
-
 [node name="anchors" type="Node2D" parent="texture" unique_id=1302053380]
 unique_name_in_owner = true
 
