@@ -4,3 +4,8 @@
 
 [node name="ShaderStage" type="Node2D" unique_id=784770636]
 script = ExtResource("1_wuceu")
+
+[node name="rect" type="ColorRect" parent="." unique_id=1094670784]
+unique_name_in_owner = true
+offset_right = 40.0
+offset_bottom = 40.0

@@ -6,9 +6,10 @@ class_name ShaderStage
 @export var background: Color = Color.WHITE
 @export var shader: ShaderMaterial = null
 
+@onready var rect: ColorRect = $%rect
+
 func _ready():
-	material = shader
-func _physics_process(_delta):
-	queue_redraw()
-func _draw():
-	draw_rect(Rect2(size / -2, size), background)
+	rect.material = shader
+func _process(_delta):
+	rect.position = size / -2
+	rect.size = size

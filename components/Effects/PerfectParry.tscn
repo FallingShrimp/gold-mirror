@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxp6oy0iktpuh" path="res://components/Abstracts/EffectBase.tscn" id="1_7h6aa"]
 [ext_resource type="AudioStream" uid="uid://c1ivw5yn6ufbv" path="res://resources/sounds/perfect-parry.wav" id="2_7h6aa"]
 [ext_resource type="Texture2D" uid="uid://bptcfeyjm8a7g" path="res://resources/effects/star.svg" id="3_7h6aa"]
+[ext_resource type="Shader" uid="uid://3mfx6u5n2kjn" path="res://shaders/GoldenStar4.gdshader" id="3_sooux"]
 [ext_resource type="Texture2D" uid="uid://dfcwsav4jt1c2" path="res://resources/effects/spark.svg" id="3_ybuw1"]
 
 [sub_resource type="Animation" id="Animation_sooux"]
@@ -87,6 +88,11 @@ _data = {
 &"spawn": SubResource("Animation_mm61v")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mm61v"]
+shader = ExtResource("3_sooux")
+shader_parameter/gold_color = Color(1, 0.84, 0, 1)
+shader_parameter/star_size = 0.8
+
 [sub_resource type="Curve" id="Curve_7h6aa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -143,6 +149,7 @@ libraries/ = SubResource("AnimationLibrary_8u25p")
 
 [node name="shader" parent="." index="2" unique_id=784770636]
 visible = false
+material = SubResource("ShaderMaterial_mm61v")
 
 [node name="texture" parent="." index="4" unique_id=212148538]
 modulate = Color(0.9866621, 0.69905746, 0, 1)
