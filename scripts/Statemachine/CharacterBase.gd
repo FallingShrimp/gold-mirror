@@ -14,13 +14,14 @@ const GRAVITY = 20
 const CONSTANT_FRICTION: float = 0.2
 const PERFECT_PARRY_WINDOW: float = 200.0
 
+@export var isBoss: bool = false
 @export var attackTime: float = 50.0
-@export var movementSpeed: float = 1.0
 @export var mass: float = 1
+@export var movementSpeed: float = 1.0
 @export var maxStrength: float = 100
+@export var maxMagicLength: float = 100
 @export var impactMultiplier: float = 0.25
 @export var vulnerability: float = 0.5
-@export var isBoss: bool = false
 @export var strengthRegeneration: float = 5
 var frictable: bool = true
 var frictionMultipiler: float = 1
@@ -29,6 +30,7 @@ var frictionMultipiler: float = 1
 @onready var skeleton: Skeleton2D = $%skeleton
 @onready var polygonParent: Node2D = $%polygons
 @export var currentStrength: float = 0
+@export var currentMagic: Vector2 = Vector2.ZERO
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
@@ -42,6 +44,7 @@ var strengthThrottle: ThrottleController = ThrottleController.new(2000)
 func _ready():
 	super._ready()
 	currentStrength = maxStrength
+	currentMagic = Vector2(maxMagicLength, 0)
 	fsm = FiniteStateMachine.new(self )
 	stateBar.initCharacter(self )
 	strengthIncreased.connect(
@@ -92,3 +95,7 @@ func storeStrength(amount: float, justChanged: bool = false):
 		strengthChanged.emit(currentStrength)
 	else:
 		strengthIncreased.emit(amount)
+func useMagic(delta: Vector2):
+	currentMagic = (currentMagic - delta).limit_length(maxMagicLength)
+func storeMagic(delta: Vector2):
+	currentMagic = (currentMagic + delta).limit_length(maxMagicLength)
