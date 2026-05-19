@@ -35,12 +35,12 @@ func _ready():
 								var isPerfect = parryState.timePassed() <= chara.PERFECT_PARRY_WINDOW
 								chara.parry(self , isPerfect)
 								if isPerfect:
-									parryState.maxHoldTime += 500
+									parryState.maxHoldTime += 250
 									launcher.impact(Vector2(-getDirection(), 0).normalized() * 1500)
 									chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
 									CameraManager.shake(300, 400)
 								else:
-									parryState.maxHoldTime -= 250
+									parryState.maxHoldTime -= 500
 									chara.impact(Vector2(getDirection(), 0).normalized() * 1500)
 									launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
 									CameraManager.shake(200, 150)
