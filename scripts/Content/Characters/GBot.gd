@@ -61,3 +61,5 @@ func createAttack(id: int) -> void:
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
 		EffectPlayer.play(get_parent(), "PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
+	else:
+		EffectPlayer.play(get_parent(), "UnexactParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
