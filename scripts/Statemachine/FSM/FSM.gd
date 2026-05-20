@@ -34,7 +34,7 @@ func update(delta: float):
 			currentState.firstUpdate(delta)
 			firstUpdated = true
 
-func stateIs():
+func stateIs() -> GDScript:
 	return currentState.stateIs()
 
 func _init(charactex: CharacterBase):

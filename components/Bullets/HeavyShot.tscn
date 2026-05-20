@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://go25qwc308ng"]
+
+[ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_xbkvd"]
+[ext_resource type="Texture2D" uid="uid://cppd7rgtrec5s" path="res://resources/bullets/heavy-shot/Effect_DangerJumpSlash6.png" id="2_0c0yh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djkg0"]
+size = Vector2(94, 184)
+
+[node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_xbkvd")]
+motionType = 2
+
+[node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
+scale = Vector2(-0.15, 0.15)
+texture = ExtResource("2_0c0yh")
+
+[node name="hitbox" parent="." index="1" unique_id=1273022028]
+shape = SubResource("RectangleShape2D_djkg0")

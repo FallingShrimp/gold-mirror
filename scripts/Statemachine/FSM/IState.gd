@@ -19,7 +19,7 @@ func update(_delta: float) -> void:
 func exit() -> void:
 	pass
 
-func stateIs():
+func stateIs() -> GDScript:
 	return get_script()
 func timePassed():
 	return WorldManager.getCurrentTime() - enterTime

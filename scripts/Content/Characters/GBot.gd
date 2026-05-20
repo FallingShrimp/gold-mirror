@@ -1,31 +1,27 @@
 extends PlayerBase
 
+var MAX_ATTACK_PERIOD = 2
+
 func _ready():
 	super._ready()
 	animator.animation_finished.connect(
 		func(_n):
-			if fsm.currentState is States.ATTACK:
-				if !emittedForNextAttack:
-					attackCounter = 0
+			match fsm.stateIs():
+				States.ATTACK:
+					if !emittedForNextAttack:
+						attackCounter = 0
+						fsm.changeState(States.IDLE)
+				States.PARRY_END, States.HURT:
 					fsm.changeState(States.IDLE)
-			elif fsm.stateIs() in [States.PARRY_END, States.HURT]:
-				fsm.changeState(States.IDLE)
-	)
-	fsm.updateState.connect(
-		func(state):
-			if state is States.ATTACK && !emittedForNextAttack:
-				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter):
-					emittedForNextAttack = true
-					await animator.animation_finished
-					fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
-					attackCounter += 1
 	)
 	fsm.joinState.connect(
 		func(newState, _o, _a):
 			if newState is States.ATTACK:
 				emittedForNextAttack = false
 	)
-func ai(_delta: float):
+	handleHoldon("attack")
+func ai(delta: float):
+	super.ai(delta)
 	match fsm.stateIs():
 		States.CONVERSED, States.PARRY_END:
 			return
@@ -40,7 +36,7 @@ func ai(_delta: float):
 					fsm.changeState(States.PARRY_START)
 				elif Input.is_action_just_pressed("attack"):
 					if useStrength(attackCounter):
-						if fsm.changeState(States.ATTACK, [attackCounter % 2 + 1]):
+						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
 							attackCounter += 1
 				elif Input.is_action_just_pressed("dash"):
 					if useStrength(10):
@@ -52,12 +48,25 @@ func ai(_delta: float):
 				else:
 					if fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
+			elif fsm.stateIs() == States.ATTACK && !emittedForNextAttack:
+				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter):
+					emittedForNextAttack = true
+					await animator.animation_finished
+					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
+					attackCounter += 1
+				# elif getHoldon("attack") > 1000 && useStrength(15):
+				# 	emittedForNextAttack = true
+				# 	await animator.animation_finished
+				# 	fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
+				# 	attackCounter = 0
 func createAttack(id: int) -> void:
 	match id:
 		1:
 			BulletBase.create(get_parent(), "KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 		2:
 			BulletBase.create(get_parent(), "KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+		3:
+			BulletBase.create(get_parent(), "HeavyShot", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
 		EffectPlayer.play(get_parent(), "PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
