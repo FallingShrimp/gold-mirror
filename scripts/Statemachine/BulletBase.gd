@@ -13,6 +13,7 @@ enum MotionType {
 @export var penetrate: bool = false
 @export var knockback: float = 0
 @export var impulse: float = 0
+@export var speed: float = 10
 
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null

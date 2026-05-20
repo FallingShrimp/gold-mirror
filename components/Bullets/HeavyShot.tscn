@@ -2,12 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_xbkvd"]
 [ext_resource type="Texture2D" uid="uid://cppd7rgtrec5s" path="res://resources/bullets/heavy-shot/Effect_DangerJumpSlash6.png" id="2_0c0yh"]
+[ext_resource type="Script" uid="uid://2ejbi48gg8gn" path="res://scripts/Content/Bullets/HeavyShot.gd" id="2_1isuk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djkg0"]
 size = Vector2(94, 184)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_xbkvd")]
+script = ExtResource("2_1isuk")
+baseDamage = 30.0
 motionType = 2
+speed = 500.0
 
 [node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
 scale = Vector2(-0.15, 0.15)

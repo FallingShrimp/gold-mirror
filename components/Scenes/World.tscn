@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://cnw8gnfh3klpc"]
 
+[ext_resource type="PackedScene" uid="uid://bki1gffoosyve" path="res://components/Characters/XGL.tscn" id="1_lnjql"]
 [ext_resource type="Script" uid="uid://dsj6rgpmtljc1" path="res://scripts/Utils/Managers/WorldManager.gd" id="1_sbdvw"]
 [ext_resource type="PackedScene" uid="uid://cricq0wagb4pe" path="res://components/Characters/GBot.tscn" id="2_0ci2v"]
 [ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/ef9ae02660a54b454d76fab2d44b760f_2197140261677047264.webp" id="2_lu72f"]
@@ -39,5 +40,7 @@ constantOffset = Vector2(0, -150)
 unique_name_in_owner = true
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
+
+[node name="XGL" parent="." unique_id=511576382 instance=ExtResource("1_lnjql")]
 
 [node name="PlayerInterface" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]

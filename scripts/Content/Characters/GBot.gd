@@ -28,14 +28,21 @@ func ai(delta: float):
 		States.PARRY_START:
 			if !Input.is_action_pressed("parry"):
 				fsm.changeState(States.PARRY_END)
-		States.IDLE, States.WALK, States.JUMP, States.ATTACK:
+		States.IDLE, States.WALK, States.JUMP:
 			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && !is_on_floor():
 				fsm.changeState(States.FALLING)
-			elif fsm.stateIs() not in [States.JUMP, States.ATTACK]:
+			elif fsm.stateIs() not in [States.JUMP]:
 				if Input.is_action_just_pressed("parry"):
 					fsm.changeState(States.PARRY_START)
-				elif Input.is_action_just_pressed("attack"):
-					if useStrength(attackCounter):
+				elif Input.is_action_pressed("attack"):
+					if getHoldon("attack") > 300 && useStrength(15):
+						print(1)
+						clearHoldon("attack")
+						emittedForNextAttack = true
+						await animator.animation_finished
+						fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
+						attackCounter = 0
+					elif Input.is_action_just_pressed("attack") && useStrength(attackCounter):
 						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
 							attackCounter += 1
 				elif Input.is_action_just_pressed("dash"):
@@ -55,12 +62,6 @@ func ai(delta: float):
 					await animator.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
 					attackCounter += 1
-				elif getHoldon("attack") > 1000 && useStrength(15):
-					print(1)
-					emittedForNextAttack = true
-					await animator.animation_finished
-					fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
-					attackCounter = 0
 func createAttack(id: int) -> void:
 	match id:
 		1:

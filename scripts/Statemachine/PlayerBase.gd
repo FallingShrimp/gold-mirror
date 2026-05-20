@@ -15,7 +15,7 @@ func ai(delta: float):
 		if Input.is_action_pressed(key):
 			inputHoldStart[key] += delta * 1000
 		else:
-			inputHoldStart[key] = 0
+			clearHoldon(key)
 
 func isPlayer() -> bool:
 	return true
@@ -23,3 +23,5 @@ func handleHoldon(inp: String):
 	inputHoldStart[inp] = 0
 func getHoldon(inp: String) -> float:
 	return inputHoldStart.get(inp, 0)
+func clearHoldon(inp: String):
+	inputHoldStart[inp] = 0
