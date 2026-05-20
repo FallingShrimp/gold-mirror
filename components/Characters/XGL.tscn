@@ -7,46 +7,58 @@
 
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
-length = 6.0
+length = 7.0
 step = 0.05
-tracks/0/type = "bezier"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/0/path = NodePath("..")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 0, 0, 0, 0, 0, 0, 0),
-"points": PackedFloat32Array(2.57, 0, 0, 0, 0, 0.029546259, 0, 0, 0, 2.5, 2.57, 0, 0, 0, 0, 2.57, 0, 0, 0, -2.5, 0, 0, 0, 1, 0, 3, 0, 0, 0, 0, 3, 0, 0, 0, 0, 1.565, -0.083333336, 0.5, 0, 0),
-"times": PackedFloat32Array(0, 1, 2, 2.5, 3.5, 4.5, 5.5, 6)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.45),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.75, 2.25, 4.15),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [1],
+"method": &"createAttack"
+}, {
+"args": [1],
+"method": &"createAttack"
+}, {
 "args": [1],
 "method": &"createAttack"
 }]
 }
-tracks/2/type = "method"
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%texture/..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.65, 2.15, 4.05),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [15.0],
+"method": &"dart"
+}, {
+"args": [15.0],
+"method": &"dart"
+}, {
+"args": [50.0],
+"method": &"dart"
+}]
+}
+tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("%texture/..")
+tracks/2/path = NodePath("%skeleton/hip/body/neck/rightarm:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.35),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [10.0],
-"method": &"dart"
-}]
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0, 0, 2, 0, 2, 0, 0),
+"points": PackedFloat32Array(2.57, 0, 0, 0, 0.5, 2.995, 0, 0, 0, 0, 2.995, 0, 0, 0.25, 0, -0.655, -0.25, 0, 0.25, 0, 2.9, -0.25, 0, 0, 0, 2.9, 0, 0, 0.25, 0, 3.245, -0.25, 0, 0, 0, 3.245, 0, 0, 0, -1.5, 0.608, 0, 0, 0, 0, 0.608, 0, 0, 0, 0, 2.57, 0, 0, 0, 0.5),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 2.5, 2.75, 3.25, 4, 4.5, 5.05, 5.5375004)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -55,14 +67,53 @@ tracks/3/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2, 0, 2),
-"points": PackedFloat32Array(-1.57, 0, 0, 0, 0, -1.57, 0, 0, 1, 0, -2.38, 0, 0, 0, 0, -2.38, 0, 0, 0, 0, -1.72, -0.083333336, -0.3966667, 0, 0),
-"times": PackedFloat32Array(0, 2.5, 3.5, 4.5, 5)
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 0, 0, 2, 0, 0, 0, 0),
+"points": PackedFloat32Array(-1.57, 0, 0, 0, 0.2, -1.345, 0, 0, 0, 0, -1.345, 0, 0, 0.5, 0.7, -1.345, -0.25, 0, 0.5, -0.7, -1.345, -0.25, 0, 0, 0, -1.345, 0, 0, 0.25, 0, -3.21, -0.25, 0, 0, 0, -3.21, 0, 0, 0, 1.5, -1.785, 0, 0, 0, 0, -1.785, 0, 0, 0, 0, -1.57, 0, 0, 0, 0.2),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 2.5, 2.75, 3.25, 4, 4.5, 5.05, 5.5375004)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand/weapon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.63, 0, 0, 0, 1.5, 0.965, 0, 0, 0, 0, 0.965, 0, 0, 0.5, 0.7, 0.585, -0.15, 0, 0.5, -0.7, 0.585, -0.25, 0, 0, 0, 0.585, 0, 0, 0.25, 0, 0.025, -0.25, 0, 0, 0, 0.025, 0, 0, 0, 0.2, 0.19, 0, 0, 0, 0, 0.19, 0, 0, 0, 0, -0.63, 0, 0, 0, 1.5),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 2.5, 2.75, 3.25, 4, 4.5, 5.05, 5.5375004)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%skeleton/hip/body:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(2, 2, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.6666667, 0, 0, 0, 1.025, -0.0916667, 0, 0, 0, 1.025, -0.0916667, 0, 0, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 4, 4.5, 5.0375004, 5.5375004)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%texture/..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2, 2.75),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"fixDirection"
+}, {
+"args": [],
+"method": &"fixDirection"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_e2ur4"]
 resource_name = "conversed"
-length = 4.0
+length = 6.0
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -71,7 +122,7 @@ tracks/0/path = NodePath("%skeleton/hip/body:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.7, 4),
+"times": PackedFloat32Array(0, 0.5, 5.5, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 0.5235987755982988, 0.5235987755982988, 0.0]
@@ -83,7 +134,7 @@ tracks/1/path = NodePath("%skeleton/hip/body/neck/leftarm:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.7, 4),
+"times": PackedFloat32Array(0, 0.5, 5.5, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.039133653, -0.18675022996339305, -0.18675022996339305, 0.039133653]
@@ -95,7 +146,7 @@ tracks/2/path = NodePath("%skeleton/hip/body/neck/rightarm:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5, 3.7, 4),
+"times": PackedFloat32Array(0, 0.5, 5.5, 6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [2.57, 2.0472712125893486, 2.0472712125893486, 2.57]
@@ -124,7 +175,7 @@ step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("skeleton/hip/body/neck/rightarm:rotation")
+tracks/0/path = NodePath("%skeleton/hip/body:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -221,20 +272,21 @@ length = 56.075
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
-rotation = 0.0
+rotation = 2.57
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(34.56015, -32.040535)
-rotation = -1.72
-scale = Vector2(0.99999994, 0.99999994)
+rotation = -1.57
+scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(0.00047107134, -0.9999998, 0.9999998, 0.00047107134, 34.56015, -32.040535)
 length = 258.29
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(30.594189, 24.515202)
-rotation = -0.6330559
-scale = Vector2(0.9999998, 0.9999998)
+rotation = -0.63
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8062232, -0.59161115, 0.59161115, 0.8062232, 30.594189, 24.515202)
 length = 118.612
 
@@ -246,8 +298,8 @@ length = 27.034
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.09990772
-scale = Vector2(0.9999998, 0.9999998)
+rotation = 0.09990771
+scale = Vector2(0.9999993, 0.9999993)
 rest = Transform2D(0.99501324, 0.099741586, -0.099741586, 0.99501324, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -353,6 +405,7 @@ position = Vector2(1714, -676)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_sowdv")
+speed_scale = 1.5
 
 [node name="attack1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="0" unique_id=2133687096]
 position = Vector2(235, -198)

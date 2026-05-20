@@ -12,3 +12,6 @@ func _ready():
 
 func isPlayer() -> bool:
 	return false
+func fixDirection():
+	if is_instance_valid(WorldManager.playerInstance):
+		direction = sign(WorldManager.playerInstance.position.x - position.x)

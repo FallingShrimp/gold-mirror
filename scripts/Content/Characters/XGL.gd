@@ -16,7 +16,7 @@ func ai(_delta: float):
 			States.WALK, States.IDLE, States.JUMP:
 				if !is_on_floor():
 					fsm.changeState(States.FALLING)
-				elif WorldManager.playerInstance.position.distance_to(position) > 200 || targetDirection != direction:
+				elif WorldManager.playerInstance.position.distance_to(position) > 350 || targetDirection != direction:
 					fsm.changeState(States.WALK, [targetDirection])
 				else:
 					fsm.changeState(States.ATTACK, [1])
