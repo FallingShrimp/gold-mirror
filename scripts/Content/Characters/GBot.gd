@@ -48,17 +48,19 @@ func ai(delta: float):
 				else:
 					if fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
-			elif fsm.stateIs() == States.ATTACK && !emittedForNextAttack:
-				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter):
+			elif fsm.stateIs() == States.ATTACK:
+				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter) && !emittedForNextAttack:
+					print(2)
 					emittedForNextAttack = true
 					await animator.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
 					attackCounter += 1
-				# elif getHoldon("attack") > 1000 && useStrength(15):
-				# 	emittedForNextAttack = true
-				# 	await animator.animation_finished
-				# 	fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
-				# 	attackCounter = 0
+				elif getHoldon("attack") > 1000 && useStrength(15):
+					print(1)
+					emittedForNextAttack = true
+					await animator.animation_finished
+					fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
+					attackCounter = 0
 func createAttack(id: int) -> void:
 	match id:
 		1:

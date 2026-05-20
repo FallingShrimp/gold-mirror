@@ -520,6 +520,9 @@ scale = Vector2(0.32535243, 0.32535243)
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
 rotation = 0.33684856
 
+[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
+scale = Vector2(0.9999999, 0.9999999)
+
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
