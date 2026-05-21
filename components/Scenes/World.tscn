@@ -44,3 +44,4 @@ unique_name_in_owner = true
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
+position = Vector2(980, 0)
