@@ -1,16 +1,23 @@
 [gd_scene format=3 uid="uid://380q0ifu3meq"]
 
 [ext_resource type="Script" uid="uid://cicr2lxn24tse" path="res://scripts/Statemachine/BulletBase.gd" id="1_bi48g"]
+[ext_resource type="PackedScene" uid="uid://ds2lqjafjwia6" path="res://components/Stages/SoundStage.tscn" id="2_n0wxb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_otbph"]
 
 [node name="BulletBase" type="Area2D" unique_id=1797257955]
 script = ExtResource("1_bi48g")
 
+[node name="sounds" parent="." unique_id=2008599912 instance=ExtResource("2_n0wxb")]
+unique_name_in_owner = true
+
 [node name="texture" type="Node2D" parent="." unique_id=556042530]
 unique_name_in_owner = true
 
 [node name="textureSprite" type="Sprite2D" parent="texture" unique_id=515101659]
+
+[node name="animator" type="AnimationPlayer" parent="texture" unique_id=375031096]
+unique_name_in_owner = true
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=1273022028]
 unique_name_in_owner = true

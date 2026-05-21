@@ -12,6 +12,8 @@
 [node name="World" type="Node2D" unique_id=1785129246]
 script = ExtResource("1_sbdvw")
 
+[node name="PlayerInterface" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
+
 [node name="Ef9Ae02660a54b454d76Fab2d44b760f2197140261677047264" type="Sprite2D" parent="." unique_id=245469242]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(205, -37)
@@ -41,6 +43,4 @@ unique_name_in_owner = true
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 
-[node name="XGL" parent="." unique_id=511576382 instance=ExtResource("1_lnjql")]
-
-[node name="PlayerInterface" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
+[node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]

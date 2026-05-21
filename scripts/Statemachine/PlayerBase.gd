@@ -25,3 +25,12 @@ func getHoldon(inp: String) -> float:
 	return inputHoldStart.get(inp, 0)
 func clearHoldon(inp: String):
 	inputHoldStart[inp] = 0
+func holdup(inp: String, maxTime: float = INF):
+	var result = inputHoldStart[inp]
+	while inputHoldStart[inp] != 0:
+		result = inputHoldStart[inp]
+		if result >= maxTime:
+			result = maxTime
+			break
+		await get_tree().process_frame
+	return result

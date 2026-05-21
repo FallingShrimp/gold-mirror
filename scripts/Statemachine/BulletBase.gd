@@ -14,7 +14,11 @@ enum MotionType {
 @export var knockback: float = 0
 @export var impulse: float = 0
 @export var speed: float = 10
+@export var spawnSound: StringName = ""
+@export var spawnAnimation: StringName = ""
 
+@onready var sounds: SoundStage = $%sounds
+@onready var animator: AnimationPlayer = $%animator
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
 
@@ -63,6 +67,10 @@ func _ready():
 					if penetrate:
 						queue_free()
 	)
+	if spawnSound:
+		sounds.play(spawnSound)
+	if spawnAnimation:
+		animator.play(spawnAnimation)
 func _physics_process(delta):
 	if timePassed() > lifetime:
 		queue_free()

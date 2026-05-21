@@ -9,8 +9,17 @@ func _ready():
 			match fsm.stateIs():
 				States.ATTACK:
 					if !emittedForNextAttack:
-						attackCounter = 0
-						fsm.changeState(States.IDLE)
+						var toIdle = true
+						if fsm.currentState.arguments[0] != MAX_ATTACK_PERIOD + 1:
+							var holdTime = await holdup("attack", 1000)
+							if holdTime == 1000 && useStrength(25):
+								emittedForNextAttack = true
+								fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
+								attackCounter = 0
+								toIdle = false
+						if toIdle:
+							attackCounter = 0
+							fsm.changeState(States.IDLE)
 				States.PARRY_END, States.HURT:
 					fsm.changeState(States.IDLE)
 	)
@@ -35,14 +44,7 @@ func ai(delta: float):
 				if Input.is_action_just_pressed("parry"):
 					fsm.changeState(States.PARRY_START)
 				elif Input.is_action_pressed("attack"):
-					if getHoldon("attack") > 300 && useStrength(15):
-						print(1)
-						clearHoldon("attack")
-						emittedForNextAttack = true
-						await animator.animation_finished
-						fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
-						attackCounter = 0
-					elif Input.is_action_just_pressed("attack") && useStrength(attackCounter):
+					if Input.is_action_just_pressed("attack") && useStrength(attackCounter):
 						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
 							attackCounter += 1
 				elif Input.is_action_just_pressed("dash"):
@@ -55,13 +57,12 @@ func ai(delta: float):
 				else:
 					if fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
-			elif fsm.stateIs() == States.ATTACK:
-				if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter) && !emittedForNextAttack:
-					print(2)
-					emittedForNextAttack = true
-					await animator.animation_finished
-					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
-					attackCounter += 1
+		States.ATTACK:
+			if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter) && !emittedForNextAttack:
+				emittedForNextAttack = true
+				await animator.animation_finished
+				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
+				attackCounter += 1
 func createAttack(id: int) -> void:
 	match id:
 		1:

@@ -3,19 +3,67 @@
 [ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_xbkvd"]
 [ext_resource type="Texture2D" uid="uid://cppd7rgtrec5s" path="res://resources/bullets/heavy-shot/Effect_DangerJumpSlash6.png" id="2_0c0yh"]
 [ext_resource type="Script" uid="uid://2ejbi48gg8gn" path="res://scripts/Content/Bullets/HeavyShot.gd" id="2_1isuk"]
+[ext_resource type="AudioStream" uid="uid://cfui6gi76owuk" path="res://resources/sounds/heavy-shot.mp3" id="3_1isuk"]
+
+[sub_resource type="Animation" id="Animation_1isuk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1g1v6"]
+resource_name = "spawn"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%texture/..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_khmh7"]
+_data = {
+&"RESET": SubResource("Animation_1isuk"),
+&"spawn": SubResource("Animation_1g1v6")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djkg0"]
-size = Vector2(94, 184)
+size = Vector2(194, 360)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_xbkvd")]
 script = ExtResource("2_1isuk")
 baseDamage = 30.0
 motionType = 2
+lifetime = 1500.0
 speed = 500.0
+spawnSound = &"spawn"
+spawnAnimation = &"spawn"
+
+[node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=1409636104]
+stream = ExtResource("3_1isuk")
 
 [node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
-scale = Vector2(-0.15, 0.15)
+scale = Vector2(-0.3, 0.3)
 texture = ExtResource("2_0c0yh")
 
-[node name="hitbox" parent="." index="1" unique_id=1273022028]
+[node name="animator" parent="texture" parent_id_path=PackedInt32Array(556042530) index="1" unique_id=375031096]
+libraries/ = SubResource("AnimationLibrary_khmh7")
+
+[node name="hitbox" parent="." index="2" unique_id=1273022028]
 shape = SubResource("RectangleShape2D_djkg0")
