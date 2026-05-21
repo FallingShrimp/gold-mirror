@@ -65,6 +65,10 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_d0jbr"]
+resource_name = "ATTACK3"
+step = 0.1
+
 [sub_resource type="Animation" id="Animation_d4fll"]
 resource_name = "ATTACK3"
 length = 0.4
@@ -456,7 +460,8 @@ tracks/1/keys = {
 _data = {
 &"ATTACK1": SubResource("Animation_vmwqn"),
 &"ATTACK2": SubResource("Animation_b5e2n"),
-&"ATTACK3": SubResource("Animation_d4fll"),
+&"ATTACK3": SubResource("Animation_d0jbr"),
+&"ATTACK4": SubResource("Animation_d4fll"),
 &"CONVERSED": SubResource("Animation_ejmrh"),
 &"DASH": SubResource("Animation_4tujy"),
 &"FALLING": SubResource("Animation_j3bhw"),
@@ -488,6 +493,12 @@ currentMagic = Vector2(0, 0)
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
+
+[node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
+scale = Vector2(0.9999998, 0.9999998)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")

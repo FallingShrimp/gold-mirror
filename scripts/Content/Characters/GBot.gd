@@ -1,6 +1,7 @@
 extends PlayerBase
 
-var MAX_ATTACK_PERIOD = 2
+var MAX_ATTACK_PERIOD = 3
+@onready var HEAVY_SHOT = MAX_ATTACK_PERIOD + 1
 
 func _ready():
 	super._ready()
@@ -15,7 +16,7 @@ func _ready():
 							if holdTime == 1000:
 								useStrength(25)
 								emittedForNextAttack = true
-								fsm.changeState(States.ATTACK, [MAX_ATTACK_PERIOD + 1])
+								fsm.changeState(States.ATTACK, [HEAVY_SHOT])
 								attackCounter = 0
 								toIdle = false
 						if toIdle:
@@ -71,6 +72,7 @@ func createAttack(id: int) -> void:
 		2:
 			BulletBase.create(get_parent(), "KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 		3:
+			BulletBase.create(get_parent(), "KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 			BulletBase.create(get_parent(), "HeavyShot", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
