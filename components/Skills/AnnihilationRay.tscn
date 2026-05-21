@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://gj3pyvdee1cf"]
+
+[ext_resource type="PackedScene" uid="uid://vmsdn7bwdk0l" path="res://components/Abstracts/SkillCardBase.tscn" id="1_vi58j"]
+[ext_resource type="Script" uid="uid://ov7af4rmd4nm" path="res://scripts/Content/Skills/AnnihilationRay.gd" id="2_6bkm1"]
+
+[node name="SkillCardBase" unique_id=2046829541 instance=ExtResource("1_vi58j")]
+script = ExtResource("2_6bkm1")

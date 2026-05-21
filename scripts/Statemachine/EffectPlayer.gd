@@ -16,6 +16,12 @@ class_name EffectPlayer
 func _ready():
 	particles.one_shot = oneShot
 	particles.emitting = false
+func _physics_process(delta):
+	ai(delta)
+
+func ai(_delta: float):
+	pass
+
 func shot():
 	particles.emitting = true
 	if autoplayAnimation:

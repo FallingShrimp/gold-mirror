@@ -2,6 +2,7 @@ extends CharacterBase
 class_name PlayerBase
 
 var inputHoldStart: Dictionary[String, float] = {}
+var skills: Array[SkillCard] = []
 
 func _ready():
 	super._ready()
@@ -17,6 +18,9 @@ func ai(delta: float):
 		else:
 			clearHoldon(key)
 
+func installSkill(card: SkillCard):
+	card.player = self
+	skills.append(card)
 func isPlayer() -> bool:
 	return true
 func handleHoldon(inp: String):

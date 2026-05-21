@@ -23,7 +23,8 @@ func _ready():
 	await get_tree().process_frame
 	spawn()
 func _physics_process(delta):
-	ai(delta)
+	if visible:
+		ai(delta)
 
 func register():
 	pass

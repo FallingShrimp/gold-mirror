@@ -31,6 +31,7 @@ func _ready():
 				emittedForNextAttack = false
 	)
 	handleHoldon("attack")
+	installSkill(SkillCard.createCard("AnnihilationRay"))
 func ai(delta: float):
 	super.ai(delta)
 	match fsm.stateIs():
@@ -57,7 +58,19 @@ func ai(delta: float):
 				elif Input.is_action_pressed("moving"):
 					fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
 				else:
-					if fsm.stateIs() in [States.WALK]:
+					var useSkill = -1
+					for i in 3:
+						if Input.is_action_just_pressed("skill%d" % (i + 1)):
+							useSkill = i
+							break
+					if useSkill >= 0:
+						if len(skills) > useSkill:
+							var card = skills[useSkill]
+							if is_instance_valid(card):
+								card.attack()
+						else:
+							print("Not installed skill %d" % (useSkill + 1))
+					elif fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
 			if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter) && !emittedForNextAttack:

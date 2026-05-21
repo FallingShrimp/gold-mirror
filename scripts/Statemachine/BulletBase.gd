@@ -71,12 +71,16 @@ func _ready():
 		sounds.play(spawnSound)
 	if spawnAnimation:
 		animator.play(spawnAnimation)
+	await get_tree().process_frame
+	spawn()
 func _physics_process(delta):
 	if timePassed() > lifetime:
 		queue_free()
 	ai(delta)
 
 func register():
+	pass
+func spawn():
 	pass
 func ai(_delta: float):
 	pass

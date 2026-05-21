@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://4ghomlubm8mm"]
+
+[ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_5066b"]
+
+[node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_5066b")]
