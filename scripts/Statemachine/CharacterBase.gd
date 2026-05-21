@@ -95,6 +95,8 @@ func useStrength(amount: float, check: bool = true):
 	currentStrength = clamp(currentStrength - amount, 0, maxStrength)
 	strengthIncreased.emit(-amount)
 	return true
+func enoughStrength(amount: float):
+	return currentStrength >= amount
 func storeStrength(amount: float, justChanged: bool = false):
 	currentStrength = clamp(currentStrength + amount, 0, maxStrength)
 	if justChanged:

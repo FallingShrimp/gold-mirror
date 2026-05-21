@@ -24,5 +24,7 @@ func createAttack(id: int) -> void:
 	match id:
 		1:
 			BulletBase.create(get_parent(), "BroomSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+		2:
+			BulletBase.create(get_parent(), "BroomSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 100

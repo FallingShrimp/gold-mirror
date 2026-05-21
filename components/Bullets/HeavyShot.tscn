@@ -48,10 +48,10 @@ size = Vector2(194, 360)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_xbkvd")]
 script = ExtResource("2_1isuk")
-baseDamage = 30.0
+baseDamage = 50.0
 motionType = 2
 lifetime = 1500.0
-speed = 500.0
+speed = 1000.0
 spawnSound = &"spawn"
 spawnAnimation = &"spawn"
 
