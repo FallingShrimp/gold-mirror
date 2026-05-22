@@ -366,6 +366,7 @@ maxMagicLength = 100.0
 impactMultiplier = 0.25
 vulnerability = 0.5
 strengthRegeneration = 5.0
+magicRegeneration = 5.0
 currentStrength = 0.0
 currentMagic = Vector2(0, 0)
 maxHealth = 1000.0
@@ -425,8 +426,7 @@ length = 27.034
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.09990771
-scale = Vector2(0.99999946, 0.99999946)
+rotation = 0.09990772
 rest = Transform2D(0.99501324, 0.099741586, -0.099741586, 0.99501324, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -438,7 +438,7 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
 rotation = 0.18261427
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -536,6 +536,9 @@ speed_scale = 1.5
 
 [node name="attack1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="0" unique_id=2133687096]
 position = Vector2(235, -198)
+
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="1" unique_id=490380349]
+position = Vector2(3, -219)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 position = Vector2(0, -11)

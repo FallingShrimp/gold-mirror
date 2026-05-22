@@ -6,4 +6,4 @@ static func lockLauncher(bullet: BulletBase, anchor: String):
 	bullet.position = bullet.launcher.getAnchorPosition(anchor)
 static func trace(bullet: BulletBase, speed: float):
 	if is_instance_valid(bullet.launcher.focusingEntity):
-		bullet.rotation = lerp_angle(bullet.rotation, bullet.position.angle_to_point(bullet.launcher.focusingEntity.position), speed)
+		bullet.rotation = lerp_angle(bullet.rotation, bullet.position.angle_to_point(bullet.launcher.focusingEntity.getAnchorPosition("trace")), speed)

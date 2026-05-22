@@ -21,6 +21,8 @@ unique_name_in_owner = true
 [node name="anchors" type="Node2D" parent="texture" unique_id=1302053380]
 unique_name_in_owner = true
 
+[node name="trace" type="Node2D" parent="texture/anchors" unique_id=490380349]
+
 [node name="movebox" type="CollisionShape2D" parent="." unique_id=1108104038]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_26as7")

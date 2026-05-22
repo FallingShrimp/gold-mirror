@@ -89,8 +89,6 @@ func handleCollision(node: CollisionObject2D):
 							launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
 							CameraManager.shake(200, 150)
 						if launcher is CharacterBase:
-							if launcher.isPlayer():
-								launcher.focusingEntity = entity
 							if isPerfect:
 								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
 								entity.useStrength(impulse * averageMultiplier, false)
@@ -102,6 +100,8 @@ func handleCollision(node: CollisionObject2D):
 						return
 				if entity.isInterruptedByDamage(baseDamage):
 					entity.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
+			if launcher.isPlayer():
+				launcher.focusingEntity = entity
 			EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
 			entity.takeDamage(baseDamage)
 			entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)

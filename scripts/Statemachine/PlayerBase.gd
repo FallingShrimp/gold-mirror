@@ -18,6 +18,8 @@ func ai(delta: float):
 			inputHoldStart[key] += delta * 1000
 		else:
 			clearHoldon(key)
+	if !is_instance_valid(focusingEntity):
+		focusingEntity = WorldManager.findClosetEntity(position, func(e: EntityBase): return !e.isPlayer())
 
 func installSkill(card: SkillCard):
 	card.player = self
