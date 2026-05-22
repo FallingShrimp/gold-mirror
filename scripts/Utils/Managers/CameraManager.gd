@@ -18,7 +18,7 @@ func _physics_process(_delta):
 		position = WorldManager.playerInstance.position + constantOffset
 		position += MathUtil.sampleInCircle(shakeIntensity)
  
-static func shake(millseconds: float, intensity: float = 10, steper: Callable = func(currentValue, _totalValue, _restPercent): return currentValue):
+static func shake(millseconds: float, intensity: float = 10, steper: Callable = func(currentValue, _initialValue, _restPercent): return currentValue):
 	var startTime = WorldManager.getCurrentTime()
 	instance.shakeIntensity += intensity
 	instance.shaking = true

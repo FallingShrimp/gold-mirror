@@ -29,8 +29,11 @@ collision_mask = 7
 position = Vector2(171, -30)
 shape = SubResource("WorldBoundaryShape2D_lu72f")
 
-[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D" unique_id=529562544]
-polygon = PackedVector2Array(-674, -27, -666, 70, 994, 83, 1000, -24)
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=275736625]
+offset_left = -726.0
+offset_top = -28.0
+offset_right = 1215.0
+offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2047599218]
 process_callback = 0
@@ -42,6 +45,7 @@ constantOffset = Vector2(0, -150)
 unique_name_in_owner = true
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
+position = Vector2(146, 100)
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
 visible = false

@@ -16,9 +16,12 @@ class_name EffectPlayer
 func _ready():
 	particles.one_shot = oneShot
 	particles.emitting = false
+	spawn()
 func _physics_process(delta):
 	ai(delta)
 
+func spawn():
+	pass
 func ai(_delta: float):
 	pass
 
@@ -42,7 +45,6 @@ func shot():
 			await sounds.soundStopped
 		if particles.emitting:
 			await particles.finished
-		
 		queue_free()
 
 static func play(root: Node, namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true):

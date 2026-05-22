@@ -65,9 +65,7 @@ func ai(delta: float):
 							break
 					if useSkill >= 0:
 						if len(skills) > useSkill:
-							var card = skills[useSkill]
-							if is_instance_valid(card):
-								card.attack()
+							fsm.changeState(States.MAGIC, [useSkill])
 						else:
 							print("Not installed skill %d" % (useSkill + 1))
 					elif fsm.stateIs() in [States.WALK]:

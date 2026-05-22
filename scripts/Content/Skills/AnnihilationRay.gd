@@ -1,4 +1,4 @@
 extends SkillCard
 
 func attack():
-	print("123")
+	BulletBase.create(WorldManager.instance, "LaserBase", player.getAnchorPosition("attack1"), PI / 2 - player.direction * PI / 2, player)

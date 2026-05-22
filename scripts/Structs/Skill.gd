@@ -1,7 +1,16 @@
 extends Control
 class_name SkillCard
 
+enum EmitType {
+	JUST_CLICK,
+	HOLD_RESTART,
+	CLICK_HOLD
+}
+
 var player: PlayerBase = null
+
+@export var useMagic: Vector2 = Vector2.ZERO
+@export var emitType: EmitType = EmitType.JUST_CLICK
 
 func attack():
 	pass

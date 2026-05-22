@@ -23,6 +23,7 @@ enum MotionType {
 var launcher: EntityBase = null
 
 func _ready():
+	register()
 	area_entered.connect(
 		func(hurtbox):
 			var entity = FetchUtil.getEntityFromHurtbox(hurtbox)
@@ -64,8 +65,8 @@ func _ready():
 					EffectPlayer.play(get_parent(), "Blood", Vector2(entity.position.x, position.y), 0)
 					entity.takeDamage(baseDamage)
 					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
-					if penetrate:
-						queue_free()
+					if !penetrate:
+						publicDestroy()
 	)
 	if spawnSound:
 		sounds.play(spawnSound)
@@ -75,8 +76,9 @@ func _ready():
 	spawn()
 func _physics_process(delta):
 	if timePassed() > lifetime:
-		queue_free()
-	ai(delta)
+		publicDestroy()
+	else:
+		ai(delta)
 
 func register():
 	pass
@@ -84,7 +86,12 @@ func spawn():
 	pass
 func ai(_delta: float):
 	pass
+func destroy():
+	pass
 
+func publicDestroy():
+	await destroy()
+	queue_free()
 func timePassed():
 	return WorldManager.getCurrentTime() - spawnTime
 func getDirection():

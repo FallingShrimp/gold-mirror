@@ -16,21 +16,66 @@ shader_parameter/wave_width = 0.1
 shader_parameter/edge_nonalpha = 0.25
 shader_parameter/alpha = 0.999999977648
 
+[sub_resource type="Curve" id="Curve_itlbo"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_xathl"]
+curve = SubResource("Curve_itlbo")
+
+[sub_resource type="Curve" id="Curve_75ctq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_my7uy"]
+curve = SubResource("Curve_75ctq")
+
+[sub_resource type="Gradient" id="Gradient_62xhh"]
+offsets = PackedFloat32Array(0, 0.60687)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_yix5j"]
+gradient = SubResource("Gradient_62xhh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l66mh"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0, 500, 1)
+angle_min = 1.07288e-05
+angle_max = 360.0
+angle_curve = SubResource("CurveTexture_my7uy")
+spread = 15.0
+initial_velocity_min = -100.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 500, 0)
+scale_min = 3.0
+scale_max = 15.0
+color_ramp = SubResource("GradientTexture1D_yix5j")
+alpha_curve = SubResource("CurveTexture_xathl")
+
 [node name="EffectBase" unique_id=685466674 instance=ExtResource("1_dxtnt")]
 script = ExtResource("2_l66mh")
-defaultLength = 1000.0
-penetrate = false
+maxLength = 1000.0
+penetrate = true
+laserHeight = 100.0
 
 [node name="shader" parent="." index="2" unique_id=784770636]
 position = Vector2(500, 0)
 rotation = 1.5707964
-size = Vector2(30, 1000)
+size = Vector2(50, 1000)
 shader = SubResource("ShaderMaterial_l66mh")
 
 [node name="particles" parent="." index="5" unique_id=2076768246]
-emitting = false
+position = Vector2(500, 0)
+rotation = 1.5707964
+amount = 400
+preprocess = 1.0
+visibility_rect = Rect2(-50, -500, 100, 1000)
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_l66mh")
 
 [node name="raycast" type="RayCast2D" parent="." index="6" unique_id=1116270501]
 unique_name_in_owner = true
 rotation = -1.5707964
-target_position = Vector2(0, 58.08)
+exclude_parent = false
+target_position = Vector2(0, 1000)

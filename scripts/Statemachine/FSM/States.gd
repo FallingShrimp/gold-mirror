@@ -86,3 +86,16 @@ class CONVERSED extends IState:
 		return "CONVERSED"
 	func exit() -> void:
 		character.storeStrength(character.maxStrength)
+
+class MAGIC extends IState:
+	func join() -> String:
+		if character is PlayerBase:
+			SignalUtil.once(character.animator.animation_finished,
+				func():
+					var card = character.skills[arguments[0]]
+					if is_instance_valid(card):
+						card.attack()
+			)
+		else:
+			fsm.changeState(IDLE)
+		return "MAGIC"

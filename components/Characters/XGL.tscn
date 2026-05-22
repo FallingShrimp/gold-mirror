@@ -308,9 +308,6 @@ _data = {
 &"WALK": SubResource("Animation_l8grr")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sowdv"]
-size = Vector2(70, 267)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b7uyj"]
 radius = 49.0
 height = 264.0
@@ -359,7 +356,6 @@ length = 56.075
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
 rotation = 0.0
-scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
@@ -385,7 +381,6 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.09990772
-scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(0.99501324, 0.099741586, -0.099741586, 0.99501324, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -497,14 +492,10 @@ speed_scale = 1.5
 position = Vector2(235, -198)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
-visible = false
 position = Vector2(0, -135.5)
-shape = SubResource("RectangleShape2D_sowdv")
+disabled = true
 
-[node name="hurtbox" parent="." index="2" unique_id=771077559]
-visible = false
-
-[node name="shape" parent="hurtbox" index="0" unique_id=1412400232]
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
 position = Vector2(0, -138)
 shape = SubResource("CapsuleShape2D_b7uyj")
 
