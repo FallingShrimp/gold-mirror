@@ -9,8 +9,10 @@ var character: CharacterBase = null
 var currentState: IState = null
 var firstUpdated: bool = false
 
-func changeState(newStateClass: GDScript, arguments: Array = []) -> bool:
-	var newState = newStateClass.new(self , character, arguments)
+func createState(stateClass: GDScript, arguments: Array = []):
+	return stateClass.new(self , character, arguments)
+func changeState(newStateClass: Variant, arguments: Array = []) -> bool:
+	var newState = createState(newStateClass, arguments) if newStateClass is GDScript else newStateClass
 	if newState is IState:
 		if currentState is IState:
 			if newState.stateIs() == currentState.stateIs() && ArrayUtil.same(arguments, currentState.arguments): return false

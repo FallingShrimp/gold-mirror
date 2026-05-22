@@ -1,6 +1,8 @@
 extends Area2D
 class_name BulletBase
 
+signal destroied()
+
 enum MotionType {
 	SWING,
 	STAB,
@@ -21,6 +23,7 @@ enum MotionType {
 @onready var animator: AnimationPlayer = $%animator
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
+var destroying: bool = false
 
 func _ready():
 	register()
@@ -90,17 +93,21 @@ func destroy():
 	pass
 
 func publicDestroy():
+	if destroying: return
+	destroying = true
 	await destroy()
+	destroied.emit()
 	queue_free()
+	destroying = false
 func timePassed():
 	return WorldManager.getCurrentTime() - spawnTime
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
 
-static func create(root: Node2D, namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase):
+static func create(root: Node2D, namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase) -> Array[BulletBase]:
 	var instance = load("res://components/Bullets/%s.tscn" % namx).instantiate() as BulletBase
 	instance.position = positiox
 	instance.rotation = rotatiox
 	instance.launcher = launchex
 	root.add_child(instance)
-	return instance
+	return [instance]

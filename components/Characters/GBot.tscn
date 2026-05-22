@@ -268,6 +268,23 @@ tracks/0/keys = {
 "values": [-0.47166082, -1.7435839227423349]
 }
 
+[sub_resource type="Animation" id="Animation_fsmix"]
+resource_name = "MAGIC"
+length = 0.3
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body/neck/leftarm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.7435839227423349, -0.47166082]
+}
+
 [sub_resource type="Animation" id="Animation_svyw4"]
 resource_name = "parryStart"
 length = 0.1
@@ -587,6 +604,7 @@ _data = {
 &"HURT": SubResource("Animation_12pkj"),
 &"JUMP": SubResource("Animation_hfxiv"),
 &"MAGIC": SubResource("Animation_i6yko"),
+&"MAGIC_EXIT": SubResource("Animation_fsmix"),
 &"PARRY_END": SubResource("Animation_svyw4"),
 &"PARRY_START": SubResource("Animation_7gmcx"),
 &"RESET": SubResource("Animation_x3xge"),
@@ -615,10 +633,10 @@ currentMagic = Vector2(0, 0)
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.9999997, 0.9999997)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.9999997, 0.9999997)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")

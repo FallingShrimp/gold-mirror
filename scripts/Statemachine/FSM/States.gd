@@ -88,14 +88,44 @@ class CONVERSED extends IState:
 		character.storeStrength(character.maxStrength)
 
 class MAGIC extends IState:
+	var currentCard: SkillCard = null
+	var nextState: MAGIC_EXIT = null
+	
 	func join() -> String:
 		if character is PlayerBase:
 			SignalUtil.once(character.animator.animation_finished,
-				func():
-					var card = character.skills[arguments[0]]
-					if is_instance_valid(card):
-						card.attack()
+				func(_a):
+					currentCard = character.skills[arguments[0]]
+					if is_instance_valid(currentCard):
+						doAttack()
 			)
 		else:
 			fsm.changeState(IDLE)
 		return "MAGIC"
+	func update(_delta: float) -> void:
+		if currentCard && currentCard.emitType == SkillCard.EmitType.CLICK_HOLD:
+			currentCard.attack()
+	
+	func doAttack():
+		match currentCard.emitType:
+			SkillCard.EmitType.JUST_CLICK:
+				currentCard.attack()
+				fsm.changeState(MAGIC_EXIT)
+			SkillCard.EmitType.HOLD_RESTART:
+				currentCard.attack()
+			SkillCard.EmitType.CLICK_HOLD:
+				currentCard.holdStart(WorldManager.getCurrentTime())
+				currentCard.forceHoldEnded.connect(func(): fsm.changeState(MAGIC_EXIT))
+				nextState = fsm.createState(MAGIC_EXIT)
+				nextState.currentCard = currentCard
+				nextState.startTime = WorldManager.getCurrentTime()
+
+class MAGIC_EXIT extends IState:
+	var currentCard: SkillCard = null
+	var startTime: float = 0
+
+	func join() -> String:
+		if currentCard:
+			currentCard.holdEnd(WorldManager.getCurrentTime() - startTime)
+		SignalUtil.once(character.animator.animation_finished, func(_a): fsm.changeState(IDLE))
+		return "MAGIC_EXIT"

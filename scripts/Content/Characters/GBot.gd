@@ -60,7 +60,11 @@ func ai(delta: float):
 				else:
 					var useSkill = -1
 					for i in 3:
-						if Input.is_action_just_pressed("skill%d" % (i + 1)):
+						var skillInputId = "skill%d" % (i + 1)
+						var currentState: States.MAGIC = null
+						if fsm.currentState is States.MAGIC:
+							currentState = fsm.currentState as States.MAGIC
+						if Input.is_action_just_pressed(skillInputId):
 							useSkill = i
 							break
 					if useSkill >= 0:
@@ -76,6 +80,21 @@ func ai(delta: float):
 				await animator.animation_finished
 				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
 				attackCounter += 1
+		States.MAGIC:
+			var currentState = fsm.currentState as States.MAGIC
+			for i in 3:
+				var skillInputId = "skill%d" % (i + 1)
+				if currentState.currentCard && currentState.arguments[0] == i:
+					match currentState.currentCard.emitType:
+						SkillCard.EmitType.HOLD_RESTART:
+							if Input.is_action_pressed(skillInputId):
+								currentState.doAttack()
+							else:
+								fsm.changeState(States.MAGIC_EXIT)
+						SkillCard.EmitType.CLICK_HOLD:
+							if !Input.is_action_pressed(skillInputId):
+								if currentState.nextState:
+									fsm.changeState(currentState.nextState)
 func createAttack(id: int) -> void:
 	match id:
 		1:

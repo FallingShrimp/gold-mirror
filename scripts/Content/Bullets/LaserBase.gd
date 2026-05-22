@@ -11,3 +11,4 @@ func register():
 func destroy():
 	animator.play("hide")
 	await animator.animation_finished
+	CameraManager.shakeStop()
