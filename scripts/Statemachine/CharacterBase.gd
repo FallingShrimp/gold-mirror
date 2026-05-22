@@ -64,6 +64,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
 	if currentMagic.x < 0:
+		useStrength(strengthRegeneration * 0.25 * delta, false)
 		storeMagic(Vector2(magicRegeneration * delta, 0))
 	elif strengthThrottle.canExecute():
 		storeStrength(strengthRegeneration * delta, true)
@@ -92,8 +93,8 @@ func dart(force: float):
 	impact(Vector2(direction * 200 * force, 0))
 func forward(directiox: Direction, delta: float):
 	velocity += Vector2(sign(directiox) * 5000, 0) * delta * movementSpeed
-func useStrength(amount: float, check: bool = true):
-	if check:
+func useStrength(amount: float, underscore: bool = true):
+	if underscore:
 		if currentStrength <= amount:
 			return false
 	currentStrength = clamp(currentStrength - amount, 0, maxStrength)
