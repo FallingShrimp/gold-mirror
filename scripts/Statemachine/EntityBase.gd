@@ -14,9 +14,11 @@ signal die()
 @onready var anchorParent: Node2D = $%anchors
 
 @export var currentHealth: float = 0
+var focusingEntity: EntityBase = null
 
 func _ready():
 	register()
+	add_to_group("entity")
 	currentHealth = maxHealth
 	hurtboxArea.add_to_group("hurtboxes")
 	LayerUtil.ghostize(self )
@@ -64,3 +66,5 @@ func getAnchorRotation(namx: String):
 		return 0
 func impact(delta: Vector2):
 	velocity += delta
+func findFocusable():
+	pass

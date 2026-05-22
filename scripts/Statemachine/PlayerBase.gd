@@ -6,6 +6,7 @@ var skills: Array[SkillCard] = []
 
 func _ready():
 	super._ready()
+	add_to_group("player")
 	LayerUtil.config(self , [LayerUtil.Layers.PLAYER], [LayerUtil.Layers.ENEMY, LayerUtil.Layers.WALL])
 	WorldManager.playerInstance = self
 	stateBar.hide()

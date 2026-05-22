@@ -29,50 +29,8 @@ var destroying: bool = false
 
 func _ready():
 	register()
-	area_entered.connect(
-		func(hurtbox):
-			var entity = FetchUtil.getEntityFromHurtbox(hurtbox)
-			if entity is EntityBase:
-				if FetchUtil.canDamage(self , entity):
-					if entity is CharacterBase:
-						var chara = entity as CharacterBase
-						if chara.invincible:
-							return
-						elif chara.fsm.currentState is States.DASH:
-							return
-						elif chara.fsm.currentState is States.PARRY_START:
-							if chara.direction != getDirection():
-								var parryState = chara.fsm.currentState as States.PARRY_START
-								var isPerfect = parryState.timePassed() <= chara.PERFECT_PARRY_WINDOW
-								chara.parry(self , isPerfect)
-								if isPerfect:
-									parryState.maxHoldTime += 250
-									launcher.impact(Vector2(-getDirection(), 0).normalized() * 1500)
-									chara.impact(Vector2(getDirection(), 0).normalized() * 3000)
-									CameraManager.shake(300, 400)
-								else:
-									parryState.maxHoldTime -= 500
-									chara.impact(Vector2(getDirection(), 0).normalized() * 1500)
-									launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
-									CameraManager.shake(200, 150)
-								if launcher is CharacterBase:
-									if isPerfect:
-										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
-										chara.useStrength(impulse * averageMultiplier, false)
-										launcher.useStrength(impulse * (2 - averageMultiplier), false)
-									else:
-										var averageMultiplier = (launcher.impactMultiplier + chara.impactMultiplier) / 2.0
-										chara.useStrength(impulse * (2 - averageMultiplier), false)
-										launcher.useStrength(impulse * averageMultiplier, false)
-								return
-						if chara.isInterruptedByDamage(baseDamage):
-							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
-					EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
-					entity.takeDamage(baseDamage)
-					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
-					if !penetrate:
-						publicDestroy()
-	)
+	add_to_group("bullet")
+	area_entered.connect(handleCollision)
 	if spawnSound:
 		sounds.play(spawnSound)
 	if spawnAnimation:
@@ -105,6 +63,50 @@ func timePassed():
 	return WorldManager.getCurrentTime() - spawnTime
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
+func handleCollision(node: CollisionObject2D):
+	var entity = FetchUtil.getEntityFromHurtbox(node)
+	if entity is EntityBase:
+		if FetchUtil.canDamage(self , entity):
+			if entity is CharacterBase:
+				entity = entity as CharacterBase
+				if entity.invincible:
+					return
+				elif entity.fsm.currentState is States.DASH:
+					return
+				elif entity.fsm.currentState is States.PARRY_START:
+					if entity.direction != getDirection():
+						var parryState = entity.fsm.currentState as States.PARRY_START
+						var isPerfect = parryState.timePassed() <= entity.PERFECT_PARRY_WINDOW
+						entity.parry(self , isPerfect)
+						if isPerfect:
+							parryState.maxHoldTime += 250
+							launcher.impact(Vector2(-getDirection(), 0).normalized() * 1500)
+							entity.impact(Vector2(getDirection(), 0).normalized() * 3000)
+							CameraManager.shake(300, 400)
+						else:
+							parryState.maxHoldTime -= 500
+							entity.impact(Vector2(getDirection(), 0).normalized() * 1500)
+							launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
+							CameraManager.shake(200, 150)
+						if launcher is CharacterBase:
+							if launcher.isPlayer():
+								launcher.focusingEntity = entity
+							if isPerfect:
+								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
+								entity.useStrength(impulse * averageMultiplier, false)
+								launcher.useStrength(impulse * (2 - averageMultiplier), false)
+							else:
+								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
+								entity.useStrength(impulse * (2 - averageMultiplier), false)
+								launcher.useStrength(impulse * averageMultiplier, false)
+						return
+				if entity.isInterruptedByDamage(baseDamage):
+					entity.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
+			EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
+			entity.takeDamage(baseDamage)
+			entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
+			if !penetrate:
+				publicDestroy()
 
 static func create(namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase) -> Array[BulletBase]:
 	var instance = load("res://components/Bullets/%s.tscn" % namx).instantiate() as BulletBase

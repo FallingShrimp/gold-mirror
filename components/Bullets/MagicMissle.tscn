@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://2n26jkiitn86"]
+
+[ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_4sjx4"]
+[ext_resource type="Texture2D" uid="uid://o34w232f1oek" path="res://resources/bullets/magic-missle/magic-missle.png" id="2_ross6"]
+
+[sub_resource type="Curve" id="Curve_rugh7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lrw10"]
+curve = SubResource("Curve_rugh7")
+
+[sub_resource type="Curve" id="Curve_ross6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rugh7"]
+curve = SubResource("Curve_ross6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3jny5"]
+particle_flag_disable_z = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 10.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_rugh7")
+alpha_curve = SubResource("CurveTexture_lrw10")
+
+[node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_4sjx4")]
+
+[node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
+texture = ExtResource("2_ross6")
+
+[node name="trail" type="GPUParticles2D" parent="texture/textureSprite" index="0" unique_id=2014296934]
+z_index = -1
+amount = 50
+texture = ExtResource("2_ross6")
+process_material = SubResource("ParticleProcessMaterial_3jny5")

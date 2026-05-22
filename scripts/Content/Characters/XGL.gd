@@ -7,16 +7,17 @@ func _ready():
 			if fsm.currentState is States.ATTACK:
 				fsm.changeState(States.IDLE)
 	)
-func ai(_delta: float):
-	if is_instance_valid(WorldManager.playerInstance):
-		var targetDirection = sign(WorldManager.playerInstance.position.x - position.x)
+func ai(delta: float):
+	super.ai(delta)
+	if is_instance_valid(focusingEntity) && focusingEntity is EntityBase:
+		var targetDirection = sign(focusingEntity.position.x - position.x)
 		match fsm.stateIs():
 			States.CONVERSED:
 				return
 			States.WALK, States.IDLE, States.JUMP:
 				if !is_on_floor():
 					fsm.changeState(States.FALLING)
-				elif WorldManager.playerInstance.position.distance_to(position) > 350 || targetDirection != direction:
+				elif focusingEntity.position.distance_to(position) > 350 || targetDirection != direction:
 					fsm.changeState(States.WALK, [targetDirection])
 				else:
 					fsm.changeState(States.ATTACK, [1])
