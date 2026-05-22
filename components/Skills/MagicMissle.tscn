@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dsh3mvkfbxi1r"]
+
+[ext_resource type="PackedScene" uid="uid://vmsdn7bwdk0l" path="res://components/Abstracts/SkillCardBase.tscn" id="1_5yfnh"]
+
+[node name="SkillCardBase" unique_id=2046829541 instance=ExtResource("1_5yfnh")]

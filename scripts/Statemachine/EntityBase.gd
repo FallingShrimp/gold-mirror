@@ -48,6 +48,8 @@ func takeDamage(amount: float):
 	if currentHealth == 0:
 		die.emit()
 		queue_free()
+func hasAnchor(namx: String) -> bool:
+	return !!(anchorParent.get_node_or_null(namx as NodePath))
 func getAnchorPosition(namx: String):
 	var node = anchorParent.get_node_or_null(namx as NodePath)
 	if node is Node2D:
