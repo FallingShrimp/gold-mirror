@@ -3,6 +3,7 @@ class_name CharacterBase
 
 signal strengthIncreased(amount: float)
 signal strengthChanged(to: float)
+signal magicChanged(to: Vector2)
 signal converse()
 
 enum Direction {
@@ -105,5 +106,7 @@ func storeStrength(amount: float, justChanged: bool = false):
 		strengthIncreased.emit(amount)
 func useMagic(delta: Vector2):
 	currentMagic = (currentMagic - delta).limit_length(maxMagicLength)
+	magicChanged.emit(currentMagic)
 func storeMagic(delta: Vector2):
 	currentMagic = (currentMagic + delta).limit_length(maxMagicLength)
+	magicChanged.emit(currentMagic)

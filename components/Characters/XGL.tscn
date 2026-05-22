@@ -221,6 +221,23 @@ tracks/0/keys = {
 "values": [0.0, 0.6719517620178169]
 }
 
+[sub_resource type="Animation" id="Animation_webv5"]
+resource_name = "HURT"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body/neck:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.5323254218582705, 0.0]
+}
+
 [sub_resource type="Animation" id="Animation_b7uyj"]
 length = 0.001
 step = 0.1
@@ -268,6 +285,30 @@ tracks/3/keys = {
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%skeleton/hip/body/neck:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%skeleton/hip/body/neck/leftarm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_l8grr"]
 resource_name = "walk"
@@ -304,9 +345,13 @@ _data = {
 &"ATTACK2": SubResource("Animation_w6duw"),
 &"CONVERSED": SubResource("Animation_e2ur4"),
 &"FALLING": SubResource("Animation_u3h3u"),
+&"HURT": SubResource("Animation_webv5"),
 &"RESET": SubResource("Animation_b7uyj"),
 &"WALK": SubResource("Animation_l8grr")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b7uyj"]
+size = Vector2(88, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b7uyj"]
 radius = 49.0
@@ -342,7 +387,7 @@ rest = Transform2D(1, 0, 0, 1, 1, -40)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(31, 13)
-rotation = 0.039133653
+rotation = 0.0
 scale = Vector2(1, 1)
 rest = Transform2D(0.9992344, 0.039123666, -0.039123666, 0.9992344, 31, 13)
 
@@ -380,7 +425,8 @@ length = 27.034
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.09990772
+rotation = 0.09990771
+scale = Vector2(0.99999946, 0.99999946)
 rest = Transform2D(0.99501324, 0.099741586, -0.099741586, 0.99501324, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -392,7 +438,7 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
 rotation = 0.18261427
-scale = Vector2(0.9999997, 0.9999997)
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -492,8 +538,8 @@ speed_scale = 1.5
 position = Vector2(235, -198)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
-position = Vector2(0, -135.5)
-disabled = true
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_b7uyj")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
 position = Vector2(0, -138)

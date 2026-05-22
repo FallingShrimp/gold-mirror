@@ -73,6 +73,7 @@ class PARRY_END extends IState:
 
 class HURT extends IState:
 	func join() -> String:
+		SignalUtil.once(character.animator.animation_finished, func(_a): fsm.changeState(IDLE))
 		character.direction = sign(arguments[0])
 		return "HURT"
 
@@ -97,6 +98,8 @@ class MAGIC extends IState:
 				func(_a):
 					currentCard = character.skills[arguments[0]]
 					if is_instance_valid(currentCard):
+						if currentCard.emitType == SkillCard.EmitType.CLICK_HOLD:
+							character.useMagic(currentCard.useMagic)
 						doAttack()
 			)
 		else:
@@ -109,9 +112,11 @@ class MAGIC extends IState:
 	func doAttack():
 		match currentCard.emitType:
 			SkillCard.EmitType.JUST_CLICK:
+				character.useMagic(currentCard.useMagic)
 				currentCard.attack()
 				fsm.changeState(MAGIC_EXIT)
 			SkillCard.EmitType.HOLD_RESTART:
+				character.useMagic(currentCard.useMagic)
 				currentCard.attack()
 			SkillCard.EmitType.CLICK_HOLD:
 				currentCard.holdStart(WorldManager.getCurrentTime())

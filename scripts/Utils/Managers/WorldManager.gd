@@ -1,13 +1,13 @@
 extends Node2D
 class_name WorldManager
 
-static var instance: WorldManager
+static var rootNode: WorldManager
 static var sceneTree: SceneTree
 static var runnedTime: float = 0.0
 static var playerInstance: PlayerBase = null
 
 func _ready():
-	instance = self
+	rootNode = self
 	sceneTree = get_tree()
 func _physics_process(delta):
 	runnedTime += delta

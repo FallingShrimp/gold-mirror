@@ -47,11 +47,11 @@ func shot():
 			await particles.finished
 		queue_free()
 
-static func play(root: Node, namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true):
+static func play(namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true):
 	var instance = load("res://components/Effects/%s.tscn" % namx).instantiate() as EffectPlayer
 	instance.position = positiox
 	instance.rotation = rotatiox
-	root.add_child(instance)
+	WorldManager.rootNode.add_child(instance)
 	if autoShot:
 		instance.shot()
 	return instance

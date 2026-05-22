@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://qbxbo1b510ta"]
 
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_0v5js"]
+[ext_resource type="Script" uid="uid://cn7gpowvewoa8" path="res://scripts/Statemachine/PlayerState.gd" id="2_32xvi"]
 [ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/RingColorBar.gd" id="2_bxmq7"]
 [ext_resource type="PackedScene" uid="uid://c4jy3f6g1op8g" path="res://components/Boxes/MagicVector.tscn" id="3_m3ysf"]
 
 [node name="PlayerState" unique_id=2012763349 instance=ExtResource("1_0v5js")]
+script = ExtResource("2_32xvi")
 
 [node name="health" parent="." index="0" unique_id=2020367561]
 position = Vector2(40, -40)
@@ -28,6 +30,7 @@ pointerColor = Color(1, 0.7996895, 0.47369397, 1)
 size = Vector2(90, 0)
 currentValue = 0.0
 
-[node name="MagicVector" parent="." index="2" unique_id=1457230980 instance=ExtResource("3_m3ysf")]
+[node name="magic" parent="." index="2" unique_id=1457230980 instance=ExtResource("3_m3ysf")]
+unique_name_in_owner = true
 z_index = 1
 position = Vector2(50, -50)

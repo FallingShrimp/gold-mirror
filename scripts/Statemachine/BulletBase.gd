@@ -6,7 +6,8 @@ signal destroied()
 enum MotionType {
 	SWING,
 	STAB,
-	PROJECTILE
+	PROJECTILE,
+	LASER
 }
 
 @export var baseDamage: float = 10
@@ -21,6 +22,7 @@ enum MotionType {
 
 @onready var sounds: SoundStage = $%sounds
 @onready var animator: AnimationPlayer = $%animator
+@onready var hitbox: CollisionShape2D = $%hitbox
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
 var destroying: bool = false
@@ -65,7 +67,7 @@ func _ready():
 								return
 						if chara.isInterruptedByDamage(baseDamage):
 							chara.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
-					EffectPlayer.play(get_parent(), "Blood", Vector2(entity.position.x, position.y), 0)
+					EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
 					entity.takeDamage(baseDamage)
 					entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
 					if !penetrate:
@@ -104,10 +106,10 @@ func timePassed():
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
 
-static func create(root: Node2D, namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase) -> Array[BulletBase]:
+static func create(namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase) -> Array[BulletBase]:
 	var instance = load("res://components/Bullets/%s.tscn" % namx).instantiate() as BulletBase
 	instance.position = positiox
 	instance.rotation = rotatiox
 	instance.launcher = launchex
-	root.add_child(instance)
+	WorldManager.rootNode.add_child(instance)
 	return [instance]
