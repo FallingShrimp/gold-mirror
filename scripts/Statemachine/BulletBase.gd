@@ -38,9 +38,9 @@ func _ready():
 	await get_tree().process_frame
 	spawn()
 func _physics_process(delta):
-	if timePassed() > lifetime:
+	if timePassed() > lifetime || !is_instance_valid(launcher):
 		publicDestroy()
-	else:
+	elif !destroying:
 		ai(delta)
 
 func register():

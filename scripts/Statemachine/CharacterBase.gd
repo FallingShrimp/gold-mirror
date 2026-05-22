@@ -114,3 +114,5 @@ func useMagic(delta: Vector2):
 func storeMagic(delta: Vector2):
 	currentMagic = (currentMagic + delta).limit_length(maxMagicLength)
 	magicChanged.emit(currentMagic)
+func directionAsRotation() -> float:
+	return PI / 2 - direction * PI / 2

@@ -99,12 +99,12 @@ func ai(delta: float):
 func createAttack(id: int) -> void:
 	match id:
 		1:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 		2:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 		3:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
-			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
 		EffectPlayer.play("PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())

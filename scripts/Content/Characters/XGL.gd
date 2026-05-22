@@ -24,8 +24,8 @@ func ai(delta: float):
 func createAttack(id: int) -> void:
 	match id:
 		1:
-			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 		2:
-			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), PI / 2 - direction * PI / 2, self )
+			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 50
