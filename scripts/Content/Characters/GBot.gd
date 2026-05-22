@@ -32,6 +32,7 @@ func _ready():
 	)
 	handleHoldon("attack")
 	installSkill(SkillCard.createCard("AnnihilationRay"))
+	installSkill(SkillCard.createCard("MagicMissle"))
 func ai(delta: float):
 	super.ai(delta)
 	match fsm.stateIs():

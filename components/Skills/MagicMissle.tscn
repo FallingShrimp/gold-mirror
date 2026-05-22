@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dsh3mvkfbxi1r"]
 
 [ext_resource type="PackedScene" uid="uid://vmsdn7bwdk0l" path="res://components/Abstracts/SkillCardBase.tscn" id="1_5yfnh"]
+[ext_resource type="Script" uid="uid://bb1usv82u0m08" path="res://scripts/Content/Skills/MagicMissle.gd" id="2_r1tt8"]
 
 [node name="SkillCardBase" unique_id=2046829541 instance=ExtResource("1_5yfnh")]
+script = ExtResource("2_r1tt8")
