@@ -11,7 +11,7 @@ enum Direction {
 	RIGHT = 1
 }
 
-const GRAVITY = 20
+const GRAVITY = 2000
 const CONSTANT_FRICTION: float = 0.2
 const PERFECT_PARRY_WINDOW: float = 200.0
 
@@ -24,6 +24,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 @export var impactMultiplier: float = 0.25
 @export var vulnerability: float = 0.5
 @export var strengthRegeneration: float = 5
+@export var magicRegeneration: float = 5
 var frictable: bool = true
 var frictionMultipiler: float = 1
 
@@ -61,10 +62,12 @@ func _ready():
 	)
 func _physics_process(delta):
 	super._physics_process(delta)
-	if strengthThrottle.canExecute():
-		storeStrength(strengthRegeneration * delta, true)
 	fsm.update(delta)
-	velocity += Vector2(0, GRAVITY)
+	if currentMagic.x < 0:
+		storeMagic(Vector2(magicRegeneration * delta, 0))
+	elif strengthThrottle.canExecute():
+		storeStrength(strengthRegeneration * delta, true)
+	velocity += Vector2(0, GRAVITY * delta)
 	if frictable:
 		velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
 	move_and_slide()
