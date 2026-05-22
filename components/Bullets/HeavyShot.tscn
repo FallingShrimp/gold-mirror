@@ -44,7 +44,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djkg0"]
-size = Vector2(194, 360)
+size = Vector2(174, 356)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_xbkvd")]
 script = ExtResource("2_1isuk")
@@ -59,12 +59,16 @@ spawnAnimation = &"spawn"
 [node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=1409636104]
 stream = ExtResource("3_1isuk")
 
-[node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
+[node name="texture" parent="." index="1" unique_id=556042530]
+rotation = 0.12026896
+
+[node name="textureSprite" parent="texture" index="0" unique_id=515101659]
 scale = Vector2(-0.3, 0.3)
 texture = ExtResource("2_0c0yh")
 
-[node name="animator" parent="texture" parent_id_path=PackedInt32Array(556042530) index="1" unique_id=375031096]
+[node name="animator" parent="texture" index="1" unique_id=375031096]
 libraries/ = SubResource("AnimationLibrary_khmh7")
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]
+position = Vector2(10, -8)
 shape = SubResource("RectangleShape2D_djkg0")

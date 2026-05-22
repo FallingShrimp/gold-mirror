@@ -6,11 +6,11 @@ class_name LaserBaseBullet
 @onready var effect: LaserBase = $%effect
 var dotTimer: CooldownController = CooldownController.new(250)
 
-func ai(_delta: float):
+func ai(delta: float):
+	if launcher is CharacterBase:
+		launcher.useMagic(Vector2(20 * delta, 0))
 	if dotTimer.start():
 		hitbox.disabled = false
-		if launcher is CharacterBase:
-			launcher.useMagic(Vector2(10, 0))
 	else:
 		hitbox.disabled = true
 func register():
