@@ -20,6 +20,37 @@ position = Vector2(205, -37)
 texture = ExtResource("2_lu72f")
 metadata/_edit_lock_ = true
 
+[node name="Label" type="Label" parent="." unique_id=254397984]
+offset_left = -1638.0
+offset_top = -43.0
+offset_right = -1466.0
+offset_bottom = 162.0
+text = "AD - 左右移动
+W - 跳
+连续按J - 3段普攻
+第3段普攻后长按J - 重击
+K - 格挡
+Shift - 冲刺
+数字1 - 湮灭射线
+数字2 - 魔法飞弹"
+
+[node name="Label2" type="Label" parent="." unique_id=761341199]
+offset_left = -1422.0
+offset_top = -123.0
+offset_right = -867.0
+offset_bottom = 160.0
+text = "在合适的时机按下格挡可振晕敌人，
+但不精准的格挡可能会振晕自己。
+
+冲刺穿过飞弹时可短暂减慢时间流速，观察局势，
+同时可以从飞弹中擦取法力。
+
+魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
+倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。
+
+敌人的下砸与飞弹无法被格挡，
+需使用闪避来规避伤害。"
+
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 270)
 collision_layer = 7
@@ -30,9 +61,9 @@ position = Vector2(171, -30)
 shape = SubResource("WorldBoundaryShape2D_lu72f")
 
 [node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=275736625]
-offset_left = -726.0
+offset_left = -2026.0
 offset_top = -28.0
-offset_right = 1215.0
+offset_right = 2984.0
 offset_bottom = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2047599218]
@@ -45,7 +76,7 @@ constantOffset = Vector2(0, -150)
 unique_name_in_owner = true
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
-position = Vector2(146, 100)
+position = Vector2(-1762, 14)
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
-position = Vector2(697, 163)
+position = Vector2(2791, -881)
