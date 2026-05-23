@@ -69,9 +69,9 @@ func timePassed():
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
 func handleCollision(node: CollisionObject2D):
-	var entity = FetchUtil.getEntityFromHurtbox(node)
+	var entity = ContentUtil.getEntityFromHurtbox(node)
 	if entity is EntityBase:
-		if FetchUtil.canDamage(self , entity):
+		if ContentUtil.canDamage(self , entity):
 			if entity is CharacterBase:
 				entity = entity as CharacterBase
 				if entity.invincible:

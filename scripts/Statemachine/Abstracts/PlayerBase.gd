@@ -19,7 +19,7 @@ func ai(delta: float):
 		else:
 			clearHoldon(key)
 	if !is_instance_valid(focusingEntity):
-		focusingEntity = WorldManager.findClosetEntity(position, func(e: EntityBase): return !e.isPlayer())
+		focusingEntity = ContentUtil.findClosetEntity(position, func(e: EntityBase): return !e.isPlayer())
 
 func installSkill(card: SkillCard):
 	card.player = self

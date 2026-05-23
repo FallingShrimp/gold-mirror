@@ -19,7 +19,7 @@ func _ready():
 
 func ai(_delta: float):
 	if !is_instance_valid(focusingEntity):
-		focusingEntity = WorldManager.findClosetEntity(position, func(e: EntityBase): return e.isPlayer())
+		focusingEntity = ContentUtil.findClosetEntity(position, func(e: EntityBase): return e.isPlayer())
 
 func isPlayer() -> bool:
 	return false

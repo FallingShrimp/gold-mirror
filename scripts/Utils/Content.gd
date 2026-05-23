@@ -1,4 +1,4 @@
-class_name FetchUtil
+class_name ContentUtil
 
 static func getEntityFromHurtbox(box: Node) -> EntityBase:
 	if box is Area2D && box.is_in_group("hurtboxes"):
@@ -9,6 +9,17 @@ static func getEntityFromHurtbox(box: Node) -> EntityBase:
 			else:
 				return parent
 	return null
+static func findClosetEntity(to: Vector2, validator: Callable = func(_e: EntityBase): return true) -> EntityBase:
+	var result = null
+	var lastDistance = INF
+	for entity in WorldManager.sceneTree.get_nodes_in_group("entity"):
+		if entity is EntityBase:
+			var currentDistance = entity.position.distance_to(to)
+			if currentDistance < lastDistance && validator.call(entity):
+				result = entity
+				lastDistance = currentDistance
+	return result
+
 
 static func canDamage(bullet: BulletBase, entity: EntityBase) -> bool:
 	if !is_instance_valid(bullet) || !is_instance_valid(entity): return false

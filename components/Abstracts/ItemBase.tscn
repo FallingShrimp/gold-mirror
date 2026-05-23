@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://co7f7ih08tmhu"]
 
+[ext_resource type="Script" uid="uid://brn2jbmp7e4fp" path="res://scripts/Statemachine/Abstracts/ItemBase.gd" id="1_0f6mv"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0yanf"]
 
 [node name="ItemBase" type="RigidBody2D" unique_id=170137742]
+script = ExtResource("1_0f6mv")
+
+[node name="texture" type="Sprite2D" parent="." unique_id=2121349808]
+unique_name_in_owner = true
 
 [node name="hitbox" type="CollisionShape2D" parent="." unique_id=1424617650]
 shape = SubResource("CircleShape2D_0yanf")
