@@ -74,5 +74,3 @@ func getAnchorRotation(namx: String):
 		return 0
 func impact(delta: Vector2):
 	velocity += delta
-func findFocusable():
-	pass

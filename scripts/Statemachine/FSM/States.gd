@@ -125,3 +125,7 @@ class MAGIC_EXIT extends IState:
 			currentCard.holdEnd(WorldManager.getCurrentTime() - startTime)
 		SignalUtil.once(character.animator.animation_finished, func(_a): fsm.changeState(IDLE))
 		return "MAGIC_EXIT"
+
+class DIE extends IState:
+	func join() -> String:
+		return "DIE"

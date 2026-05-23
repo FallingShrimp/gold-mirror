@@ -10,7 +10,11 @@ func _ready():
 		stateBar.hide()
 		await get_tree().process_frame
 		myBossbar = PlayerInterface.addBossBarFor(self )
-		died.connect(func(): myBossbar.queue_free())
+		died.connect(
+			func():
+				if is_instance_valid(myBossbar):
+					myBossbar.queue_free()
+		)
 
 func ai(_delta: float):
 	if !is_instance_valid(focusingEntity):

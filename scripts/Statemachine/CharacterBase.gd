@@ -64,6 +64,7 @@ func _ready():
 		func():
 			fsm.changeState(States.CONVERSED)
 	)
+	died.connect(func(): fsm.changeState(States.DIE))
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
@@ -93,6 +94,8 @@ func parry(_bullet: BulletBase, _isPerfect: bool):
 	pass
 func canRunAi() -> bool:
 	return !following
+func die():
+	await animator.animation_finished
 
 func follow(positiox: Variant, speed: float = 1, autoExit: float = 10):
 	following = true
