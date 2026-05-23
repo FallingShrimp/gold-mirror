@@ -56,7 +56,7 @@ alpha_curve = SubResource("CurveTexture_u3h3u")
 
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
-length = 7.0
+length = 6.0
 step = 0.05
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -159,7 +159,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_w6duw"]
 resource_name = "ATTACK2"
-length = 4.0
+length = 3.3
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -236,7 +236,7 @@ tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_cebsw"]
 resource_name = "ATTACK3"
-length = 4.5
+length = 3.9
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -278,7 +278,7 @@ tracks/3/path = NodePath("%polygons/weapon:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 2, 2.2, 3.5, 4.5),
+"times": PackedFloat32Array(0, 2, 2.2, 2.9, 3.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -664,14 +664,13 @@ strengthRegeneration = 5.0
 magicRegeneration = 5.0
 currentStrength = 0.0
 currentMagic = Vector2(0, 0)
-maxHealth = 500.0
+maxHealth = 1000.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 position = Vector2(0, 52)
 
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
-position = Vector2(0, -50)
-rotation = -1.5707964
+position = Vector2(0, -173)
 rest = Transform2D(1, 0, 0, 1, 0, -173)
 
 [node name="body" parent="texture/skeleton/hip" index="0" unique_id=192538903]
@@ -684,7 +683,7 @@ rest = Transform2D(1, 0, 0, 1, 1, -80)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(31, 13)
-rotation = 2.8815386
+rotation = 0.039133653
 scale = Vector2(1, 1)
 rest = Transform2D(0.9992344, 0.039123666, -0.039123666, 0.9992344, 31, 13)
 
@@ -697,7 +696,7 @@ length = 56.075
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
-rotation = -0.6457718
+rotation = 2.57
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
@@ -709,7 +708,7 @@ length = 258.29
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(30.594189, 24.515202)
-rotation = 0.64577174
+rotation = -0.63
 scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(0.8062232, -0.59161115, 0.59161115, 0.8062232, 30.594189, 24.515202)
 length = 118.612
@@ -730,8 +729,8 @@ process_material = SubResource("ParticleProcessMaterial_webv5")
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.0999077
-scale = Vector2(0.99999887, 0.99999887)
+rotation = 0.09990771
+scale = Vector2(0.9999995, 0.9999995)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -742,8 +741,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261428
-scale = Vector2(0.9999996, 0.9999996)
+rotation = 0.18261427
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -816,7 +815,6 @@ bones = ["hip", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "hip/
 internal_vertex_count = 3
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
-modulate = Color(1, 1, 1, 0.9999999)
 position = Vector2(174.81917, -61.999992)
 rotation = -2.7896469
 texture = ExtResource("4_b7uyj")
