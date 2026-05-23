@@ -6,9 +6,10 @@
 size = Vector2(83, 178)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_ov6p8")]
+baseDamage = 100.0
 lifetime = 100.0
 knockback = 0.1
 impulse = 5.0
 
-[node name="hitbox" parent="." index="1" unique_id=1273022028]
+[node name="hitbox" parent="." index="2" unique_id=1273022028]
 shape = SubResource("RectangleShape2D_d0gpf")

@@ -12,8 +12,9 @@ func _ready():
 		myBossbar = PlayerInterface.addBossBarFor(self )
 		died.connect(
 			func():
+				CameraManager.extreme(self )
 				if is_instance_valid(myBossbar):
-					myBossbar.queue_free()
+					myBossbar.die()
 		)
 
 func ai(_delta: float):

@@ -10,6 +10,8 @@ script = ExtResource("1_xccqq")
 [node name="sounds" parent="." unique_id=2008599912 instance=ExtResource("2_6117n")]
 unique_name_in_owner = true
 
+[node name="animationSound" type="AudioStreamPlayer2D" parent="." unique_id=1671469331]
+
 [node name="animator" type="AnimationPlayer" parent="." unique_id=138184434]
 unique_name_in_owner = true
 

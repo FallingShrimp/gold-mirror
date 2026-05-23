@@ -1,8 +1,90 @@
 [gd_scene format=3 uid="uid://byk7vgl2igwga"]
 
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_te66c"]
+[ext_resource type="Script" uid="uid://cphhpao43ivv3" path="res://scripts/Statemachine/Bossbar.gd" id="2_r1od1"]
+
+[sub_resource type="Animation" id="Animation_r1od1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_te66c"]
+resource_name = "die"
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0, 1, 2, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.7, 0.99999994)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0, 1, 2, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.7, 0.99999994)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0.3, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0.7, 0.99999994)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r1od1"]
+_data = {
+&"RESET": SubResource("Animation_r1od1"),
+&"die": SubResource("Animation_te66c")
+}
 
 [node name="BossBar" unique_id=2012763349 instance=ExtResource("1_te66c")]
+modulate = Color(1.6022277, 1, 1, 1)
+script = ExtResource("2_r1od1")
 
 [node name="health" parent="." index="0" unique_id=2020367561]
 position = Vector2(0, 0)
@@ -13,3 +95,7 @@ position = Vector2(255, 15)
 rotation = 0.7853982
 innerR = 13.0
 outerR = 20.0
+
+[node name="animator" type="AnimationPlayer" parent="." index="2" unique_id=259934410]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_r1od1")

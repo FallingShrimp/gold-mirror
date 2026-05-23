@@ -18,8 +18,8 @@ func rebuildInfo():
 		if bossbar is CharacterStateBar:
 			bossbar.y = index * 100
 
-static func addBossBarFor(character: CharacterBase):
-	var bossbar = load("res://components/Boxes/Bossbar.tscn").instantiate() as CharacterStateBar
+static func addBossBarFor(character: CharacterBase) -> Bossbar:
+	var bossbar = load("res://components/Boxes/Bossbar.tscn").instantiate() as Bossbar
 	instance.bossbars.add_child(bossbar)
 	bossbar.initCharacter(character)
 	return bossbar

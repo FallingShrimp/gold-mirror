@@ -533,7 +533,6 @@ position = Vector2(0, 52)
 
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
 position = Vector2(0, -173)
-scale = Vector2(1e-05, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -173)
 
 [node name="body" parent="texture/skeleton/hip" index="0" unique_id=192538903]
@@ -564,7 +563,7 @@ rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(34.56015, -32.040535)
-rotation = -1.5703253
+rotation = -1.57
 scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(0.00047107134, -0.9999998, 0.9999998, 0.00047107134, 34.56015, -32.040535)
 length = 258.29
@@ -584,8 +583,8 @@ length = 27.034
 
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.09990771
-scale = Vector2(0.9999993, 0.9999993)
+rotation = 0.0999077
+scale = Vector2(0.99999917, 0.99999917)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -596,8 +595,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261427
-scale = Vector2(0.9999997, 0.9999997)
+rotation = 0.18261428
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 

@@ -4,7 +4,10 @@ static func getEntityFromHurtbox(box: Node) -> EntityBase:
 	if box is Area2D && box.is_in_group("hurtboxes"):
 		var parent = box.get_parent()
 		if is_instance_valid(parent) && parent is EntityBase:
-			return parent
+			if parent.dieing:
+				return null
+			else:
+				return parent
 	return null
 
 static func canDamage(bullet: BulletBase, entity: EntityBase) -> bool:

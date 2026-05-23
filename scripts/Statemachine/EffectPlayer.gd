@@ -25,6 +25,8 @@ func spawn():
 func ai(_delta: float):
 	pass
 
+func shake(millseconds: float, intensity: float):
+	CameraManager.shake(millseconds, intensity)
 func shot():
 	particles.emitting = true
 	if autoplayAnimation:
@@ -47,11 +49,11 @@ func shot():
 			await particles.finished
 		queue_free()
 
-static func play(namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true):
+static func play(namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true, overrideRoot: Node = null):
 	var instance = load("res://components/Effects/%s.tscn" % namx).instantiate() as EffectPlayer
 	instance.position = positiox
 	instance.rotation = rotatiox
-	WorldManager.rootNode.add_child(instance)
+	(overrideRoot if is_instance_valid(overrideRoot) else WorldManager.rootNode).add_child(instance)
 	if autoShot:
 		instance.shot()
 	return instance

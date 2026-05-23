@@ -15,6 +15,7 @@ signal died()
 
 @export var currentHealth: float = 0
 var focusingEntity: EntityBase = null
+var dieing: bool = false
 
 func _ready():
 	register()
@@ -45,10 +46,13 @@ func die():
 	pass
 
 func publicDie():
+	if dieing: return
 	if isPlayer(): return
+	dieing = true
 	died.emit()
 	await die()
 	queue_free()
+	dieing = false
 func takeDamage(amount: float):
 	if invincible: return
 	var totalDamage = overrideDamage(amount)
