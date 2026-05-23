@@ -211,6 +211,20 @@ tracks/3/keys = {
 "method": &"createAttack"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%texture/..")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"alert"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ejmrh"]
 resource_name = "conversed"
@@ -690,10 +704,10 @@ scale = Vector2(0.99999976, 0.99999976)
 scale = Vector2(0.9999994, 0.9999994)
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.9999994, 0.9999994)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.99999905, 0.99999905)
+scale = Vector2(0.99999887, 0.99999887)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.9999997, 0.9999997)
@@ -712,7 +726,10 @@ rotation = 0.3265123
 [node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=662818464]
 position = Vector2(316.57977, -393.41953)
 
-[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=490380349]
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=198186523]
+position = Vector2(76.83975, -811.42773)
+
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]

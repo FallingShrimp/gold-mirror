@@ -57,7 +57,7 @@ alpha_curve = SubResource("CurveTexture_u3h3u")
 
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
-length = 6.0
+length = 6.3
 step = 0.05
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -723,7 +723,7 @@ process_material = SubResource("ParticleProcessMaterial_webv5")
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.0999077
-scale = Vector2(0.99999857, 0.99999857)
+scale = Vector2(0.9999985, 0.9999985)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -735,7 +735,7 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
 rotation = 0.18261428
-scale = Vector2(0.9999996, 0.9999996)
+scale = Vector2(0.9999995, 0.9999995)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 

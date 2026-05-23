@@ -41,7 +41,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 1.57, -0.5, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 3.14, -0.5, 0, 0, 0),
 "times": PackedFloat32Array(0, 1)
 }
 tracks/1/type = "value"
@@ -56,6 +56,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("animationSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_garu6")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_garu6"]
 _data = {
@@ -76,13 +91,9 @@ shader_parameter/rotation = 0.0
 [node name="EffectBase" unique_id=685466674 instance=ExtResource("1_wo0v7")]
 oneShot = true
 autoplayAnimation = &"spawn"
-autoplaySound = &"spawn"
 
-[node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=388114899]
-stream = ExtResource("2_garu6")
-
-[node name="animator" parent="." index="1" unique_id=138184434]
+[node name="animator" parent="." index="2" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_garu6")
 
-[node name="shader" parent="." index="2" unique_id=784770636]
+[node name="shader" parent="." index="3" unique_id=784770636]
 shader = SubResource("ShaderMaterial_garu6")

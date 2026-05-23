@@ -115,3 +115,5 @@ func parry(_bullet: BulletBase, isPerfect: bool):
 		EffectPlayer.play("PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
 	else:
 		EffectPlayer.play("UnexactParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
+func alert():
+	EffectPlayer.play("GoldenStar4", getAnchorPosition("alert"), 0)
