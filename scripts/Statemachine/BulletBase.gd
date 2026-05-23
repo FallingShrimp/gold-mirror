@@ -8,16 +8,19 @@ enum MotionType {
 	SWING,
 	STAB,
 	PROJECTILE,
-	LASER
+	LASER,
+	DANMAKU
 }
 
 @export var baseDamage: float = 10
 @export var motionType: MotionType = MotionType.SWING
+@export var canParry: bool = true
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
 @export var knockback: float = 0
 @export var impulse: float = 0
-@export var speed: float = 10
+@export var speed: float = 500
+@export var magic: Vector2 = Vector2.ZERO
 @export var spawnSound: StringName = ""
 @export var spawnAnimation: StringName = ""
 @export var verticalDirection: bool = false
@@ -74,9 +77,12 @@ func handleCollision(node: CollisionObject2D):
 				if entity.invincible:
 					return
 				elif entity.fsm.currentState is States.DASH:
+					if motionType == MotionType.DANMAKU:
+						if launcher is CharacterBase:
+							entity.storeMagic(magic)
 					return
 				elif entity.fsm.currentState is States.PARRY_START:
-					if entity.direction != getDirection() || verticalDirection:
+					if canParry && (entity.direction != getDirection() || verticalDirection):
 						var parryState = entity.fsm.currentState as States.PARRY_START
 						var isPerfect = parryState.timePassed() <= entity.PERFECT_PARRY_WINDOW
 						entity.parry(self , isPerfect)
