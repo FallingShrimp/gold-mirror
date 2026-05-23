@@ -12,6 +12,7 @@ signal died()
 @onready var movebox: CollisionShape2D = $%movebox
 @onready var hurtboxArea: Area2D = $%hurtbox
 @onready var anchorParent: Node2D = $%anchors
+@onready var soundStage: SoundStage = $%sounds
 
 @export var currentHealth: float = 0
 var focusingEntity: EntityBase = null

@@ -7,6 +7,7 @@ size = Vector2(112, 45)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_c2n5y")]
 anchor = "attack2"
+baseDamage = 35.0
 motionType = 1
 canParry = false
 verticalDirection = true

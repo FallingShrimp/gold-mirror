@@ -3,6 +3,8 @@ class_name SoundStage
 
 signal soundStopped(soundName: String)
 
+var playings: Array[AudioStreamPlayer2D] = []
+
 func _ready():
 	for child in get_children():
 		if child is AudioStreamPlayer2D:
@@ -18,6 +20,7 @@ func play(namx: StringName, repeatable: bool = false):
 			var cloned = player.duplicate() as AudioStreamPlayer2D
 			get_parent().add_child(cloned)
 			cloned.play()
+			playings.append(cloned)
 func isPlaying(namx: String = "") -> bool:
 	if namx:
 		return getPlayer(namx).playing
@@ -27,3 +30,8 @@ func isPlaying(namx: String = "") -> bool:
 				if child.playing:
 					return true
 		return false
+func stop(namx: String = "all"):
+	for player in playings:
+		if player is AudioStreamPlayer2D:
+			if namx == "all" || player.name == namx:
+				player.stop()

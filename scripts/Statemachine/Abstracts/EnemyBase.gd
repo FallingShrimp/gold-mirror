@@ -12,10 +12,12 @@ func _ready():
 		myBossbar = PlayerInterface.addBossBarFor(self )
 		died.connect(
 			func():
+				soundStage.stop("bossmusic")
 				CameraManager.extreme(self )
 				if is_instance_valid(myBossbar):
 					myBossbar.die()
 		)
+		soundStage.play("bossmusic")
 
 func ai(_delta: float):
 	if !is_instance_valid(focusingEntity):

@@ -6,9 +6,18 @@
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 script = ExtResource("2_0cve1")
+isBoss = false
 attackTime = 50.0
-movementSpeed = 1.0
 mass = 1.0
+movementSpeed = 1.0
+maxStrength = 100.0
+maxMagicLength = 100.0
+impactMultiplier = 0.25
+vulnerability = 0.5
+strengthRegeneration = 5.0
+magicRegeneration = 5.0
+currentStrength = 0.0
+currentMagic = Vector2(0, 0)
 
 [node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
 unique_name_in_owner = true
@@ -24,6 +33,8 @@ z_index = -1
 
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
 speed_scale = 3.0
+
+[node name="bossmusic" type="AudioStreamPlayer2D" parent="texture/sounds" parent_id_path=PackedInt32Array(1330768803) index="0" unique_id=559295679]
 
 [node name="stateBar" parent="." index="3" unique_id=2012763349 instance=ExtResource("3_0cve1")]
 unique_name_in_owner = true

@@ -36,7 +36,7 @@ height = 262.0
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_7ykg5")]
 script = ExtResource("2_uv0o1")
-baseDamage = 20.0
+baseDamage = 15.0
 motionType = 4
 canParry = false
 penetrate = true
