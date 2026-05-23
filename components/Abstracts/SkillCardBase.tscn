@@ -1,12 +1,115 @@
 [gd_scene format=3 uid="uid://vmsdn7bwdk0l"]
 
 [ext_resource type="Script" uid="uid://8ut4c7bih76n" path="res://scripts/Structs/Skill.gd" id="1_y8un4"]
+[ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/FlaggedAnimator.gd" id="2_a4vmb"]
 
-[node name="SkillCardBase" type="Control" unique_id=2046829541]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6aig"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.70000005)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="Animation" id="Animation_h6aig"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.125, 0, 0.125, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_od8pc"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0, 0, 0.5, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animator")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["show"],
+"method": &"flag"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_a4vmb"]
+resource_name = "hide"
+length = 0.25
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0.5, 0, 0, 0, 0, 1, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.25)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animator")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["show"],
+"method": &"unflag"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h6aig"]
+_data = {
+&"RESET": SubResource("Animation_h6aig"),
+&"hide": SubResource("Animation_od8pc"),
+&"show": SubResource("Animation_a4vmb")
+}
+
+[node name="SkillCardBase" type="PanelContainer" unique_id=488464843]
+theme_override_styles/panel = SubResource("StyleBoxFlat_h6aig")
 script = ExtResource("1_y8un4")
+
+[node name="icon" type="TextureRect" parent="." unique_id=754378529]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="animator" type="AnimationPlayer" parent="." unique_id=1115947789]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_h6aig")
+script = ExtResource("2_a4vmb")

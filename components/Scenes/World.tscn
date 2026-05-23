@@ -48,4 +48,5 @@ unique_name_in_owner = true
 position = Vector2(146, 100)
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
+visible = false
 position = Vector2(697, 163)

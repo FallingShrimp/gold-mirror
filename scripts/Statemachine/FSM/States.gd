@@ -91,12 +91,13 @@ class CONVERSED extends IState:
 class MAGIC extends IState:
 	var currentCard: SkillCard = null
 	var nextState: MAGIC_EXIT = null
+	var attacking: bool = false
 	
 	func join() -> String:
 		if character is PlayerBase:
 			SignalUtil.once(character.animator.animation_finished,
 				func(_a):
-					currentCard = character.skills[arguments[0]]
+					currentCard = arguments[0]
 					if is_instance_valid(currentCard):
 						if currentCard.emitType == SkillCard.EmitType.CLICK_HOLD:
 							character.useMagic(currentCard.useMagic)
@@ -110,6 +111,7 @@ class MAGIC extends IState:
 			currentCard.attack()
 	
 	func doAttack():
+		attacking = true
 		match currentCard.emitType:
 			SkillCard.EmitType.JUST_CLICK:
 				character.useMagic(currentCard.useMagic)
@@ -117,13 +119,14 @@ class MAGIC extends IState:
 				fsm.changeState(MAGIC_EXIT)
 			SkillCard.EmitType.HOLD_RESTART:
 				character.useMagic(currentCard.useMagic)
-				currentCard.attack()
+				await currentCard.attack()
 			SkillCard.EmitType.CLICK_HOLD:
 				currentCard.holdStart(WorldManager.getCurrentTime())
 				currentCard.forceHoldEnded.connect(func(): fsm.changeState(MAGIC_EXIT))
 				nextState = fsm.createState(MAGIC_EXIT)
 				nextState.currentCard = currentCard
 				nextState.startTime = WorldManager.getCurrentTime()
+		attacking = false
 
 class MAGIC_EXIT extends IState:
 	var currentCard: SkillCard = null

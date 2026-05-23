@@ -7,6 +7,7 @@ var lastStart: float = 0
 
 func _init(cooldowx: float):
 	cooldown = cooldowx
+	lastStart = WorldManager.getCurrentTime()
 
 func start():
 	var state = canStart()

@@ -24,6 +24,13 @@ func ai(delta: float):
 func installSkill(card: SkillCard):
 	card.player = self
 	skills.append(card)
+	PlayerInterface.instance.skills.add_child(card)
+func uninstallSkill(index: int):
+	var card = skills[index]
+	if card is SkillCard:
+		card.player = null
+		skills.remove_at(index)
+		PlayerInterface.instance.skills.remove_child(card)
 func isPlayer() -> bool:
 	return true
 func handleHoldon(inp: String):

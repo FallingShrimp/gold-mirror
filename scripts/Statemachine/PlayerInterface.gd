@@ -5,6 +5,7 @@ static var instance: PlayerInterface = null
 
 @onready var bossbars: Control = $%bossbars
 @onready var playerStateBar: CharacterStateBar = $%playerState
+@onready var skills: Control = $%skills
 
 func _ready():
 	instance = self

@@ -1,3 +1,4 @@
+@tool
 extends Control
 class_name SkillCard
 
@@ -9,15 +10,28 @@ enum EmitType {
 	CLICK_HOLD
 }
 
-var player: PlayerBase = null
-
+@export var displayName: String = "SkillName"
+@export var icon: Texture2D = null
 @export var useMagic: Vector2 = Vector2.ZERO
 @export var emitType: EmitType = EmitType.JUST_CLICK
+@export var cooldown: float = 1000
+
+@onready var iconTexture: TextureRect = $%icon
+@onready var animator: FlaggedAnimator = $%animator
+var player: PlayerBase = null
+var cooldownTimer: CooldownController = null
 
 func _ready():
 	register()
+	cooldownTimer = CooldownController.new(cooldown)
+	iconTexture.texture = icon
 	await get_tree().process_frame
 	spawn()
+func _physics_process(_delta):
+	if !animator.isFlagged("show") && cooldownTimer.canStart():
+		animator.play("show")
+	elif animator.isFlagged("show") && !cooldownTimer.canStart():
+		animator.play("hide")
 
 func register():
 	pass

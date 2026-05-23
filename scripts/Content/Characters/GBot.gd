@@ -70,7 +70,11 @@ func ai(delta: float):
 							break
 					if useSkill >= 0:
 						if len(skills) > useSkill:
-							fsm.changeState(States.MAGIC, [useSkill])
+							var card: SkillCard = skills[useSkill]
+							if card.cooldownTimer.start():
+								fsm.changeState(States.MAGIC, [card, useSkill])
+							else:
+								print("Not cooldowned skill %d" % (useSkill + 1))
 						else:
 							print("Not installed skill %d" % (useSkill + 1))
 					elif fsm.stateIs() in [States.WALK]:
@@ -85,11 +89,12 @@ func ai(delta: float):
 			var currentState = fsm.currentState as States.MAGIC
 			for i in 3:
 				var skillInputId = "skill%d" % (i + 1)
-				if currentState.currentCard && currentState.arguments[0] == i:
+				if currentState.currentCard && currentState.arguments[1] == i:
 					match currentState.currentCard.emitType:
 						SkillCard.EmitType.HOLD_RESTART:
 							if Input.is_action_pressed(skillInputId):
-								currentState.doAttack()
+								if !currentState.attacking && currentState.currentCard.cooldownTimer.start():
+									currentState.doAttack()
 							else:
 								fsm.changeState(States.MAGIC_EXIT)
 						SkillCard.EmitType.CLICK_HOLD:

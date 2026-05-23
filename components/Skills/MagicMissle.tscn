@@ -5,3 +5,4 @@
 
 [node name="SkillCardBase" unique_id=2046829541 instance=ExtResource("1_5yfnh")]
 script = ExtResource("2_r1tt8")
+emitType = 1

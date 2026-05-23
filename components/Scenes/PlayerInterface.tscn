@@ -26,6 +26,7 @@ grow_vertical = 0
 
 [node name="playerState" type="Control" parent="root" unique_id=1867937423]
 layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
@@ -34,3 +35,15 @@ grow_vertical = 0
 
 [node name="playerState" parent="root/playerState" unique_id=2012763349 instance=ExtResource("2_mxaxt")]
 unique_name_in_owner = true
+
+[node name="skills" type="HBoxContainer" parent="root" unique_id=1190516439]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/separation = 10

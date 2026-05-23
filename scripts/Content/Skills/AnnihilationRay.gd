@@ -1,3 +1,4 @@
+@tool
 extends SkillCard
 
 var laser: LaserBaseBullet
