@@ -8,4 +8,8 @@
 script = ExtResource("2_r1tt8")
 displayName = "魔法飞弹"
 icon = ExtResource("3_brt2u")
+useMagic = Vector2(5, 20)
 cooldown = 3000.0
+
+[node name="icon" parent="." index="1" unique_id=754378529]
+texture = ExtResource("3_brt2u")
