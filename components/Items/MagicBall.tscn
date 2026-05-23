@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://jf6p18io4mku"]
+
+[ext_resource type="PackedScene" uid="uid://co7f7ih08tmhu" path="res://components/Abstracts/ItemBase.tscn" id="1_422fj"]
+[ext_resource type="Texture2D" uid="uid://bxdmfpktjrn1k" path="res://resources/items/magic-ball.svg" id="2_i4pxh"]
+
+[node name="ItemBase" unique_id=170137742 instance=ExtResource("1_422fj")]
+gravity_scale = 0.0
+linear_damp = 10.0
+icon = ExtResource("2_i4pxh")
+item = null
+
+[node name="texture" parent="." index="0" unique_id=2121349808]
+texture = ExtResource("2_i4pxh")

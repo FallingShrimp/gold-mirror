@@ -20,6 +20,8 @@ func _ready():
 func ai(_delta: float):
 	if !is_instance_valid(focusingEntity):
 		focusingEntity = ContentUtil.findClosetEntity(position, func(e: EntityBase): return e.isPlayer())
+func canCollect(_item: ItemBase) -> bool:
+	return false
 
 func isPlayer() -> bool:
 	return false

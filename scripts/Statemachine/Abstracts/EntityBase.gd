@@ -36,7 +36,7 @@ func spawn():
 func ai(_delta: float):
 	pass
 func isPlayer() -> bool:
-	push_error("未实现isPlayer")
+	assert(false, "未实现isPlayer")
 	return false
 func overrideDamage(base: float) -> float:
 	return base

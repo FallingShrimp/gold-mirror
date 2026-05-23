@@ -79,7 +79,9 @@ func handleCollision(node: CollisionObject2D):
 				elif entity.fsm.currentState is States.DASH:
 					if motionType == MotionType.DANMAKU:
 						if launcher is CharacterBase:
-							entity.storeMagic(magic)
+							for i in 3:
+								var positiox = position + MathUtil.sampleInCircle(100)
+								ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
 					return
 				elif entity.fsm.currentState is States.PARRY_START:
 					if canParry && (entity.direction != getDirection() || verticalDirection):

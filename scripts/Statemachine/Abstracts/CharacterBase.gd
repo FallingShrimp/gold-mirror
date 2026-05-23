@@ -5,6 +5,7 @@ signal strengthIncreased(amount: float)
 signal strengthChanged(to: float)
 signal magicChanged(to: Vector2)
 signal converse()
+signal itemStored(delta: Dictionary[ContentManager.ItemType, int])
 
 enum Direction {
 	LEFT = -1,
@@ -44,8 +45,11 @@ var following: bool = false
 var followingPosition: Vector2 = Vector2.ZERO
 var followingSpeed: float = 1
 var followingAutoExit: float = 10
-
 var strengthThrottle: ThrottleController = ThrottleController.new(2000)
+var inventory: Dictionary[ContentManager.ItemType, int] = {
+	ContentManager.ItemType.MAGIC_BALL: 0
+}
+var inventoryMax: Dictionary[ContentManager.ItemType, int] = {}
 
 func _ready():
 	super._ready()
@@ -65,6 +69,12 @@ func _ready():
 			fsm.changeState(States.CONVERSED)
 	)
 	died.connect(func(): fsm.changeState(States.DIE))
+	itemStored.connect(
+		func(delta: Dictionary[ContentManager.ItemType, int]):
+			for item in delta:
+				if item == ContentManager.ItemType.MAGIC_BALL:
+					storeMagic(Vector2(10 * delta[item], 0))
+	)
 func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
@@ -96,6 +106,9 @@ func canRunAi() -> bool:
 	return !following
 func die():
 	await animator.animation_finished
+func canCollect(_item: ItemBase) -> bool:
+	assert(false, "未实现canCollect")
+	return false
 
 func follow(positiox: Variant, speed: float = 1, autoExit: float = 10):
 	following = true
@@ -145,3 +158,18 @@ func distanceToFocusing():
 		return position.distance_to(focusingEntity.position)
 	else:
 		return INF
+func enoughItem(delta: Dictionary[ContentManager.ItemType, int]):
+	for item in delta:
+		if inventory[item] < delta[item]:
+			return false
+	return true
+func useItem(delta: Dictionary[ContentManager.ItemType, int]):
+	var state = enoughItem(delta)
+	if state:
+		for item in delta:
+			inventory[item] -= delta[item]
+	return state
+func storeItem(delta: Dictionary[ContentManager.ItemType, int]):
+	for item in delta:
+		inventory[item] = clamp(inventory[item] + delta[item], 0, inventoryMax.get(item, INF))
+	itemStored.emit(delta)

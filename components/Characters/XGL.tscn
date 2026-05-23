@@ -2,10 +2,57 @@
 
 [ext_resource type="PackedScene" uid="uid://gmit1n7i3rvf" path="res://components/Abstracts/Characters/Humanoid.tscn" id="1_6wly8"]
 [ext_resource type="Script" uid="uid://bdnu1w1xag5qo" path="res://scripts/Content/Characters/XGL.gd" id="2_sowdv"]
+[ext_resource type="Texture2D" uid="uid://d2xj46xewgblt" path="res://resources/effects/circle.svg" id="3_e2ur4"]
 [ext_resource type="Texture2D" uid="uid://74w6mksjmywu" path="res://resources/characters/xgl/bones.svg" id="3_sowdv"]
 [ext_resource type="Texture2D" uid="uid://h2exqqu5r1o0" path="res://resources/weapons/broom.svg" id="4_b7uyj"]
 [ext_resource type="AudioStream" uid="uid://b24vtxin0xfpm" path="res://resources/sounds/jump.wav" id="5_l8grr"]
 [ext_resource type="AudioStream" uid="uid://chn4o8f731rys" path="res://resources/sounds/squeak.wav" id="6_46enu"]
+[ext_resource type="AudioStream" uid="uid://y3s3ouvr4tn6" path="res://resources/sounds/pew.wav" id="8_u3h3u"]
+
+[sub_resource type="Curve" id="Curve_e2ur4"]
+_data = [Vector2(0.7, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u3h3u"]
+curve = SubResource("Curve_e2ur4")
+
+[sub_resource type="Gradient" id="Gradient_u3h3u"]
+colors = PackedColorArray(1, 0, 0, 1, 0.40792882, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_w6duw"]
+gradient = SubResource("Gradient_u3h3u")
+
+[sub_resource type="Curve" id="Curve_w6duw"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0.7, 0), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_webv5"]
+curve = SubResource("Curve_w6duw")
+
+[sub_resource type="Curve" id="Curve_u3h3u"]
+_data = [Vector2(0.8, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w6duw"]
+curve = SubResource("Curve_u3h3u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_webv5"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 40, 1)
+spread = 40.0
+initial_velocity_min = 100.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+damping_min = 1000.00006
+damping_max = 2000.0001
+damping_curve = SubResource("CurveTexture_webv5")
+scale_min = 0.049999997
+scale_max = 0.19999999
+scale_curve = SubResource("CurveTexture_w6duw")
+color_initial_ramp = SubResource("GradientTexture1D_w6duw")
+alpha_curve = SubResource("CurveTexture_u3h3u")
 
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
@@ -409,6 +456,81 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 1), Vector2(0, 1)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("%skeleton/hip/body/blood:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("%animationAudio")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("8_u3h3u")
+}],
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.90000004, 1.2, 1.5000001, 1.8000001, 2.1, 2.4, 2.7, 3.0000002, 3.3000002, 3.6000001)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_u3h3u"]
 resource_name = "falling"
@@ -447,6 +569,30 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_b7uyj"]
 length = 0.001
 step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%skeleton/hip/body/blood:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_l8grr"]
 resource_name = "walk"
@@ -515,7 +661,9 @@ maxHealth = 500.0
 position = Vector2(0, 52)
 
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
-position = Vector2(0, -173)
+position = Vector2(0, -50)
+rotation = -1.5707964
+scale = Vector2(1e-05, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -173)
 
 [node name="body" parent="texture/skeleton/hip" index="0" unique_id=192538903]
@@ -528,7 +676,7 @@ rest = Transform2D(1, 0, 0, 1, 1, -80)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(31, 13)
-rotation = 0.039133653
+rotation = 2.8815386
 scale = Vector2(1, 1)
 rest = Transform2D(0.9992344, 0.039123666, -0.039123666, 0.9992344, 31, 13)
 
@@ -541,19 +689,19 @@ length = 56.075
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
-rotation = -2.1397848
+rotation = -0.6457718
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(34.56015, -32.040535)
-rotation = -0.5100484
+rotation = -1.57
 scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(0.00047107134, -0.9999998, 0.9999998, 0.00047107134, 34.56015, -32.040535)
 length = 258.29
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(30.594189, 24.515202)
-rotation = 2.449844
+rotation = 0.64577174
 scale = Vector2(0.9999998, 0.9999998)
 rest = Transform2D(0.8062232, -0.59161115, 0.59161115, 0.8062232, 30.594189, 24.515202)
 length = 118.612
@@ -564,10 +712,18 @@ scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(-0.88589144, 0.46389198, -0.46389198, -0.88589144, -12.000001, -2)
 length = 27.034
 
+[node name="blood" type="GPUParticles2D" parent="texture/skeleton/hip/body" index="1" unique_id=695661892]
+z_index = 1
+position = Vector2(0, -30)
+emitting = false
+amount = 300
+texture = ExtResource("3_e2ur4")
+process_material = SubResource("ParticleProcessMaterial_webv5")
+
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
-rotation = 0.09990772
-scale = Vector2(0.99999964, 0.99999964)
+rotation = 0.0999077
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]

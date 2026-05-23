@@ -20,6 +20,8 @@ func ai(delta: float):
 			clearHoldon(key)
 	if !is_instance_valid(focusingEntity):
 		focusingEntity = ContentUtil.findClosetEntity(position, func(e: EntityBase): return !e.isPlayer())
+func canCollect(item: ItemBase) -> bool:
+	return inventory[item.item] < inventoryMax.get(item.item, INF)
 
 func installSkill(card: SkillCard):
 	card.player = self
