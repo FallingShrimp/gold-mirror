@@ -17,7 +17,9 @@ func ai(delta: float):
 			States.WALK, States.IDLE, States.JUMP:
 				if !is_on_floor():
 					fsm.changeState(States.FALLING)
-				elif focusingEntity.position.distance_to(position) > 350 || targetDirection != direction:
+				elif distanceToFocusing() < 200:
+					fsm.changeState(States.WALK, [-targetDirection])
+				elif distanceToFocusing() > 350 || targetDirection != direction:
 					fsm.changeState(States.WALK, [targetDirection])
 				else:
 					fsm.changeState(States.ATTACK, [MathUtil.randomChoiceFromWeights([1, 2], [4, 1])])

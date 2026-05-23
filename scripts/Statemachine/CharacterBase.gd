@@ -140,3 +140,8 @@ func storeMagic(delta: Vector2):
 	magicChanged.emit(currentMagic)
 func directionAsRotation() -> float:
 	return PI / 2 - direction * PI / 2
+func distanceToFocusing():
+	if is_instance_valid(focusingEntity):
+		return position.distance_to(focusingEntity.position)
+	else:
+		return INF

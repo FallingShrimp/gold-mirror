@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bmcwt37espmrq" path="res://resources/sounds/ding.wav" id="3_lrw10"]
 
 [sub_resource type="Curve" id="Curve_rugh7"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 0.75), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_lrw10"]
@@ -138,6 +138,7 @@ _data = {
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_4sjx4")]
 script = ExtResource("2_rugh7")
+baseDamage = 20.0
 motionType = 2
 lifetime = 5000.0
 speed = 0.0
