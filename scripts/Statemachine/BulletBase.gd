@@ -20,6 +20,7 @@ enum MotionType {
 @export var speed: float = 10
 @export var spawnSound: StringName = ""
 @export var spawnAnimation: StringName = ""
+@export var verticalDirection: bool = false
 
 @onready var sounds: SoundStage = $%sounds
 @onready var animator: AnimationPlayer = $%animator
@@ -75,7 +76,7 @@ func handleCollision(node: CollisionObject2D):
 				elif entity.fsm.currentState is States.DASH:
 					return
 				elif entity.fsm.currentState is States.PARRY_START:
-					if entity.direction != getDirection():
+					if entity.direction != getDirection() || verticalDirection:
 						var parryState = entity.fsm.currentState as States.PARRY_START
 						var isPerfect = parryState.timePassed() <= entity.PERFECT_PARRY_WINDOW
 						entity.parry(self , isPerfect)

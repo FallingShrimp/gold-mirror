@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name EntityBase
 
 signal damageTaken(amount: float)
-signal die()
+signal died()
 
 @export var maxHealth: float = 100
 @export var invincible: bool = false
@@ -25,7 +25,7 @@ func _ready():
 	await get_tree().process_frame
 	spawn()
 func _physics_process(delta):
-	if visible:
+	if visible && canRunAi():
 		ai(delta)
 
 func register():
@@ -39,7 +39,16 @@ func isPlayer() -> bool:
 	return false
 func overrideDamage(base: float) -> float:
 	return base
+func canRunAi() -> bool:
+	return true
+func die():
+	pass
 
+func publicDie():
+	if isPlayer(): return
+	died.emit()
+	await die()
+	queue_free()
 func takeDamage(amount: float):
 	if invincible: return
 	var totalDamage = overrideDamage(amount)
@@ -48,8 +57,7 @@ func takeDamage(amount: float):
 	DamageLabel.create(get_parent(), position, totalDamage)
 	damageTaken.emit(totalDamage)
 	if currentHealth == 0:
-		die.emit()
-		queue_free()
+		publicDie()
 func hasAnchor(namx: String) -> bool:
 	return !!(anchorParent.get_node_or_null(namx as NodePath))
 func getAnchorPosition(namx: String):

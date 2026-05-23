@@ -40,6 +40,10 @@ var emittedForNextAttack: bool = false
 var lastAttackTime: float = 0
 var parrying: bool = false
 var myBossbar: CharacterStateBar = null
+var following: bool = false
+var followingPosition: Vector2 = Vector2.ZERO
+var followingSpeed: float = 1
+var followingAutoExit: float = 10
 
 var strengthThrottle: ThrottleController = ThrottleController.new(2000)
 
@@ -68,13 +72,18 @@ func _physics_process(delta):
 		storeMagic(Vector2(magicRegeneration * delta, 0))
 	elif strengthThrottle.canExecute():
 		storeStrength(strengthRegeneration * delta, true)
-	velocity += Vector2(0, GRAVITY * delta)
-	if frictable:
-		velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
-	move_and_slide()
 	skeleton.scale.x = direction
 	polygonParent.scale.x = direction
 	anchorParent.scale.x = direction
+	if following:
+		position = lerp(position, followingPosition, delta * followingSpeed)
+		if position.distance_to(followingPosition) <= followingAutoExit:
+			unfollow()
+	else:
+		velocity += Vector2(0, GRAVITY * delta)
+		if frictable:
+			velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
+		move_and_slide()
 
 func createAttack(_id: int) -> void:
 	pass
@@ -82,13 +91,25 @@ func isInterruptedByDamage(amount: float) -> bool:
 	return amount >= 0
 func parry(_bullet: BulletBase, _isPerfect: bool):
 	pass
+func canRunAi() -> bool:
+	return !following
 
+func follow(positiox: Variant, speed: float = 1, autoExit: float = 10):
+	following = true
+	followingPosition = positiox if positiox is Vector2 else positiox.call()
+	followingSpeed = speed
+	followingAutoExit = autoExit
+	velocity = Vector2.ZERO
+	while following:
+		followingPosition = positiox if positiox is Vector2 else positiox.call()
+		await get_tree().process_frame
+func unfollow():
+	following = false
 func overrideDamage(base: float) -> float:
 	if fsm.stateIs() == States.CONVERSED:
 		return base * (1 + vulnerability)
 	else:
 		return base
-
 func dart(force: float):
 	impact(Vector2(direction * 200 * force, 0))
 func forward(directiox: Direction, delta: float):

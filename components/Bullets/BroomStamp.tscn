@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://duju1r3vp2nod"]
+
+[ext_resource type="PackedScene" uid="uid://bdaps5s4qe0vu" path="res://components/Bullets/BroomSwing.tscn" id="1_c2n5y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2n5y"]
+size = Vector2(112, 45)
+
+[node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_c2n5y")]
+anchor = "attack2"
+motionType = 1
+verticalDirection = true
+
+[node name="hitbox" parent="." index="2" unique_id=1273022028]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_c2n5y")

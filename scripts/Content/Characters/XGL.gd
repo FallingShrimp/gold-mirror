@@ -20,12 +20,19 @@ func ai(delta: float):
 				elif focusingEntity.position.distance_to(position) > 350 || targetDirection != direction:
 					fsm.changeState(States.WALK, [targetDirection])
 				else:
-					fsm.changeState(States.ATTACK, [1])
+					fsm.changeState(States.ATTACK, [MathUtil.randomChoiceFromWeights([1, 2], [5, 1])])
 func createAttack(id: int) -> void:
 	match id:
 		1:
 			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 		2:
 			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+		3:
+			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+			await follow(func(): return focusingEntity.position - Vector2(0, 500), 5, -1)
+		4:
+			unfollow()
+			BulletBase.create("BroomStamp", getAnchorPosition("attack1"), PI / -2, self )
+			impact(Vector2(0, 5000))
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 50

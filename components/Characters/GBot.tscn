@@ -33,6 +33,20 @@ tracks/1/keys = {
 "method": &"createAttack"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%texture/..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.075),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-2.0],
+"method": &"dart"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b5e2n"]
 resource_name = "attack1"
@@ -62,6 +76,20 @@ tracks/1/keys = {
 "values": [{
 "args": [2],
 "method": &"createAttack"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%texture/..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.075),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [-2.0],
+"method": &"dart"
 }]
 }
 
@@ -149,7 +177,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.45, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-2.071705822117269, -1.698205362190483, -1.5481070465189701, -1.6225315]
+"values": [-2.071705822117269, -1.698205362190483, -1.54810704651897, -1.6225315]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -161,7 +189,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.45, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.19198621771937624, -0.9407324668249433, 0.555014702134197, -1.4497777]
+"values": [-0.19198621771937624, -0.9407324668249432, 0.555014702134197, -1.4497777]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -666,11 +694,17 @@ scale = Vector2(0.32535243, 0.32535243)
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
 scale = Vector2(0.99999976, 0.99999976)
 
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
+scale = Vector2(0.9999996, 0.9999996)
+
+[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
+scale = Vector2(0.99999964, 0.99999964)
+
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.9999995, 0.9999995)
+scale = Vector2(0.99999917, 0.99999917)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.99999976, 0.99999976)
+scale = Vector2(0.9999997, 0.9999997)
 
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")

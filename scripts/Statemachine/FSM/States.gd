@@ -41,20 +41,7 @@ class DASH extends IState:
 				character.frictionMultipiler /= 0.5
 				fsm.changeState(IDLE)
 		)
-		if character is PlayerBase:
-			LayerUtil.belong(character, {
-				LayerUtil.Layers.GHOST_ENTITY: true,
-				LayerUtil.Layers.PLAYER: false
-			})
-			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: false})
 		return "DASH"
-	func exit() -> void:
-		if character is PlayerBase:
-			LayerUtil.belong(character, {
-				LayerUtil.Layers.GHOST_ENTITY: false,
-				LayerUtil.Layers.PLAYER: true
-			})
-			LayerUtil.mask(character, {LayerUtil.Layers.ENEMY: true})
 
 class PARRY_START extends IState:
 	var maxHoldTime: float = 1000
@@ -84,6 +71,7 @@ class CONVERSED extends IState:
 				character.fsm.changeState(IDLE)
 		)
 		character.strengthThrottle.flag()
+		character.unfollow()
 		return "CONVERSED"
 	func exit() -> void:
 		character.storeStrength(character.maxStrength)
