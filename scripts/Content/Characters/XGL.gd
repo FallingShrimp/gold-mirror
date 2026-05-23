@@ -20,7 +20,7 @@ func ai(delta: float):
 				elif focusingEntity.position.distance_to(position) > 350 || targetDirection != direction:
 					fsm.changeState(States.WALK, [targetDirection])
 				else:
-					fsm.changeState(States.ATTACK, [MathUtil.randomChoiceFromWeights([1, 2], [5, 1])])
+					fsm.changeState(States.ATTACK, [MathUtil.randomChoiceFromWeights([1, 2], [4, 1])])
 func createAttack(id: int) -> void:
 	match id:
 		1:
