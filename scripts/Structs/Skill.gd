@@ -24,14 +24,13 @@ var cooldownTimer: CooldownController = null
 func _ready():
 	register()
 	cooldownTimer = CooldownController.new(cooldown)
+	cooldownTimer.cold.connect(func(): animator.play("show"))
+	cooldownTimer.hot.connect(func(): animator.play("hide"))
 	iconTexture.texture = icon
 	await get_tree().process_frame
 	spawn()
 func _physics_process(_delta):
-	if !animator.isFlagged("show") && cooldownTimer.canStart():
-		animator.play("show")
-	elif animator.isFlagged("show") && !cooldownTimer.canStart():
-		animator.play("hide")
+	cooldownTimer.eventLoop()
 
 func register():
 	pass

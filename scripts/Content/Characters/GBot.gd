@@ -11,9 +11,9 @@ func _ready():
 				States.ATTACK:
 					if !emittedForNextAttack:
 						var toIdle = true
-						if fsm.currentState.arguments[0] == 1 && enoughStrength(25):
-							var holdTime = await holdup("attack", 1000)
-							if holdTime == 1000:
+						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && enoughStrength(25):
+							var holdTime = await holdup("attack", 500)
+							if holdTime == 500:
 								useStrength(25)
 								emittedForNextAttack = true
 								fsm.changeState(States.ATTACK, [HEAVY_SHOT])

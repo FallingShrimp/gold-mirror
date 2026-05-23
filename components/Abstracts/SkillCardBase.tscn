@@ -17,6 +17,32 @@ border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
+[sub_resource type="Curve" id="Curve_a4vmb"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_h6aig"]
+curve = SubResource("Curve_a4vmb")
+
+[sub_resource type="Curve" id="Curve_od8pc"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hfo6c"]
+curve = SubResource("Curve_od8pc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a4vmb"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(13, 0, 0)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+gravity = Vector3(0, -98, 0)
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_hfo6c")
+alpha_curve = SubResource("CurveTexture_h6aig")
+
 [sub_resource type="Animation" id="Animation_h6aig"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -27,8 +53,20 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1, -0.125, 0, 0.125, 0),
+"points": PackedFloat32Array(0.5, -0.125, 0, 0.125, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("fire:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_od8pc"]
@@ -60,6 +98,18 @@ tracks/1/keys = {
 "method": &"flag"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fire:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_a4vmb"]
 resource_name = "hide"
@@ -90,6 +140,18 @@ tracks/1/keys = {
 "method": &"unflag"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("fire:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h6aig"]
 _data = {
@@ -99,8 +161,17 @@ _data = {
 }
 
 [node name="SkillCardBase" type="PanelContainer" unique_id=488464843]
+modulate = Color(1, 1, 1, 0.5)
 theme_override_styles/panel = SubResource("StyleBoxFlat_h6aig")
 script = ExtResource("1_y8un4")
+
+[node name="fire" type="GPUParticles2D" parent="." unique_id=766539018]
+z_index = -1
+position = Vector2(17.5, 1)
+emitting = false
+amount = 50
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a4vmb")
 
 [node name="icon" type="TextureRect" parent="." unique_id=754378529]
 unique_name_in_owner = true
