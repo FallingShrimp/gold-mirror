@@ -48,7 +48,6 @@ func die():
 
 func publicDie():
 	if dieing: return
-	if isPlayer(): return
 	dieing = true
 	died.emit()
 	await die()

@@ -10,6 +10,7 @@ func _ready():
 	LayerUtil.config(self , [LayerUtil.Layers.PLAYER], [LayerUtil.Layers.WALL])
 	WorldManager.playerInstance = self
 	stateBar.hide()
+	died.connect(func(): CameraManager.extreme(self ))
 	await get_tree().process_frame
 	PlayerInterface.instance.playerStateBar.initCharacter(self )
 func ai(delta: float):
