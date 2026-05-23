@@ -149,12 +149,9 @@ tracks/6/path = NodePath("%texture/..")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(2, 2.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(2.75),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"fixDirection"
-}, {
 "args": [],
 "method": &"fixDirection"
 }]
@@ -162,7 +159,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_w6duw"]
 resource_name = "ATTACK2"
-length = 5.0
+length = 4.0
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -593,6 +590,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%skeleton/hip:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_l8grr"]
 resource_name = "walk"
@@ -663,7 +672,6 @@ position = Vector2(0, 52)
 [node name="hip" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1819370648]
 position = Vector2(0, -50)
 rotation = -1.5707964
-scale = Vector2(1e-05, 1)
 rest = Transform2D(1, 0, 0, 1, 0, -173)
 
 [node name="body" parent="texture/skeleton/hip" index="0" unique_id=192538903]
@@ -723,7 +731,7 @@ process_material = SubResource("ParticleProcessMaterial_webv5")
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.0999077
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.99999887, 0.99999887)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -734,8 +742,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261427
-scale = Vector2(0.9999997, 0.9999997)
+rotation = 0.18261428
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 

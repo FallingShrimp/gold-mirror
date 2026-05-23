@@ -27,6 +27,14 @@ func ai(_delta: float):
 
 func shake(millseconds: float, intensity: float):
 	CameraManager.shake(millseconds, intensity)
+func timeScale(value: float, millseconds: float):
+	Engine.time_scale *= value
+	await TimeUtil.millseconds(millseconds)
+	Engine.time_scale /= value
+func extremePlayer(millseconds: float):
+	CameraManager.extreme(WorldManager.playerInstance)
+	await TimeUtil.millseconds(millseconds)
+	CameraManager.extremeStop()
 func shot():
 	particles.emitting = true
 	if autoplayAnimation:

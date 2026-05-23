@@ -17,13 +17,24 @@ func ai(delta: float):
 			States.WALK, States.IDLE, States.JUMP:
 				if !is_on_floor():
 					fsm.changeState(States.FALLING)
-				elif distanceToFocusing() < 200:
-					fsm.changeState(States.WALK, [-targetDirection])
-				elif distanceToFocusing() > 350 || targetDirection != direction:
-					fsm.changeState(States.WALK, [targetDirection])
 				else:
-					# fsm.changeState(States.ATTACK, [MathUtil.randomChoiceFromWeights([1, 2, 3], [7, 3, 1])])
-					fsm.changeState(States.ATTACK, [3])
+					var wanting = attackCounter % 3 + 1
+					if wanting in [3]:
+						if distanceToFocusing() < 500:
+							fsm.changeState(States.WALK, [-targetDirection])
+						elif distanceToFocusing() > 1500 || targetDirection != direction:
+							fsm.changeState(States.WALK, [targetDirection])
+						else:
+							fsm.changeState(States.ATTACK, [wanting])
+							attackCounter += 1
+					else:
+						if distanceToFocusing() < 200:
+							fsm.changeState(States.WALK, [-targetDirection])
+						elif distanceToFocusing() > 350 || targetDirection != direction:
+							fsm.changeState(States.WALK, [targetDirection])
+						else:
+							fsm.changeState(States.ATTACK, [wanting])
+							attackCounter += 1
 func createAttack(id: int) -> void:
 	match id:
 		1:

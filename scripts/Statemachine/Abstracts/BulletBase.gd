@@ -82,6 +82,7 @@ func handleCollision(node: CollisionObject2D):
 							for i in 3:
 								var positiox = position + MathUtil.sampleInCircle(100)
 								ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
+								EffectPlayer.play("PerfectDash", position, 0)
 					return
 				elif entity.fsm.currentState is States.PARRY_START:
 					if canParry && (entity.direction != getDirection() || verticalDirection):
