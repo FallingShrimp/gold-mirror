@@ -633,11 +633,14 @@ currentMagic = Vector2(0, 0)
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
-[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" parent_id_path=PackedInt32Array(410263788) index="0" unique_id=843647080]
+[node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 scale = Vector2(0.9999996, 0.9999996)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.9999996, 0.9999996)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
 scale = Vector2(0.9999997, 0.9999997)
@@ -654,7 +657,7 @@ position = Vector2(-76.83977, -614.718)
 rotation = 0.3265123
 
 [node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=662818464]
-position = Vector2(319.65335, -402.6403)
+position = Vector2(301.21182, -393.41953)
 
 [node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)

@@ -113,7 +113,7 @@ class MAGIC extends IState:
 		match currentCard.emitType:
 			SkillCard.EmitType.JUST_CLICK:
 				character.useMagic(currentCard.useMagic)
-				currentCard.attack()
+				await currentCard.attack()
 				fsm.changeState(MAGIC_EXIT)
 			SkillCard.EmitType.HOLD_RESTART:
 				character.useMagic(currentCard.useMagic)

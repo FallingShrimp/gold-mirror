@@ -2,6 +2,7 @@ extends Area2D
 class_name BulletBase
 
 signal destroied()
+signal hitEntity(entity: EntityBase)
 
 enum MotionType {
 	SWING,
@@ -105,6 +106,7 @@ func handleCollision(node: CollisionObject2D):
 			EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
 			entity.takeDamage(baseDamage)
 			entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
+			hitEntity.emit(entity)
 			if !penetrate:
 				publicDestroy()
 

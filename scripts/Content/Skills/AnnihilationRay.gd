@@ -7,5 +7,6 @@ func holdStart(_time: float):
 		if bullet is LaserBaseBullet:
 			laser = bullet
 			laser.destroied.connect(toHoldEnd)
+			player.impact(Vector2.from_angle(laser.rotation) * -3500)
 func holdEnd(_continued: float):
 	laser.publicDestroy()
