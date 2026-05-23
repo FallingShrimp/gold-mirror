@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ce5ljachmwsp8"]
 
-[ext_resource type="Script" uid="uid://bfi2shf85pc5j" path="res://scripts/Statemachine/PlayerInterface.gd" id="1_mxaxt"]
+[ext_resource type="Script" uid="uid://bfi2shf85pc5j" path="res://scripts/Statemachine/UI/PlayerInterface.gd" id="1_mxaxt"]
 [ext_resource type="PackedScene" uid="uid://qbxbo1b510ta" path="res://components/Boxes/PlayerState.tscn" id="2_mxaxt"]
 
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byk7vgl2igwga"]
 
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_te66c"]
-[ext_resource type="Script" uid="uid://cphhpao43ivv3" path="res://scripts/Statemachine/Bossbar.gd" id="2_r1od1"]
+[ext_resource type="Script" uid="uid://cphhpao43ivv3" path="res://scripts/Statemachine/UI/Bossbar.gd" id="2_r1od1"]
 
 [sub_resource type="Animation" id="Animation_r1od1"]
 length = 0.001

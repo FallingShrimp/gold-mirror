@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://byn7d8frmp314"]
 
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
-[ext_resource type="Script" uid="uid://cbfsgu3wmt418" path="res://scripts/Statemachine/CharacterBase.gd" id="2_0cve1"]
+[ext_resource type="Script" uid="uid://cbfsgu3wmt418" path="res://scripts/Statemachine/Abstracts/CharacterBase.gd" id="2_0cve1"]
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="3_0cve1"]
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]

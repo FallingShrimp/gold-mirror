@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vmsdn7bwdk0l"]
 
 [ext_resource type="Script" uid="uid://8ut4c7bih76n" path="res://scripts/Structs/Skill.gd" id="1_y8un4"]
-[ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/FlaggedAnimator.gd" id="2_a4vmb"]
+[ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/UI/FlaggedAnimator.gd" id="2_a4vmb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6aig"]
 content_margin_left = 5.0

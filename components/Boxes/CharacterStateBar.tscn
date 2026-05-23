@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://v5w64ehq8nq3"]
 
-[ext_resource type="Script" uid="uid://dl2rknlv2job2" path="res://scripts/Statemachine/CharacterStateBar.gd" id="1_pdxj7"]
+[ext_resource type="Script" uid="uid://dl2rknlv2job2" path="res://scripts/Statemachine/UI/CharacterStateBar.gd" id="1_pdxj7"]
 [ext_resource type="PackedScene" uid="uid://cloit07mtgepd" path="res://components/Boxes/ColorBar.tscn" id="2_dvjik"]
 [ext_resource type="PackedScene" uid="uid://brdqq2yu2maoe" path="res://components/Boxes/RingColorBar.tscn" id="3_v5f3w"]
 

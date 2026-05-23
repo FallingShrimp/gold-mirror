@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://qbxbo1b510ta"]
 
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_0v5js"]
-[ext_resource type="Script" uid="uid://cn7gpowvewoa8" path="res://scripts/Statemachine/PlayerState.gd" id="2_32xvi"]
-[ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/RingColorBar.gd" id="2_bxmq7"]
+[ext_resource type="Script" uid="uid://cn7gpowvewoa8" path="res://scripts/Statemachine/UI/PlayerState.gd" id="2_32xvi"]
+[ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/UI/RingColorBar.gd" id="2_bxmq7"]
 [ext_resource type="PackedScene" uid="uid://c4jy3f6g1op8g" path="res://components/Boxes/MagicVector.tscn" id="3_m3ysf"]
 
 [node name="PlayerState" unique_id=2012763349 instance=ExtResource("1_0v5js")]

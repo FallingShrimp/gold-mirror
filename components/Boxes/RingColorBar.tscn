@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://brdqq2yu2maoe"]
 
-[ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/RingColorBar.gd" id="1_cknvj"]
+[ext_resource type="Script" uid="uid://dliu8xyocj1h" path="res://scripts/Statemachine/UI/RingColorBar.gd" id="1_cknvj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cknvj"]
 bg_color = Color(0, 0, 0, 1)

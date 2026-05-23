@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cloit07mtgepd"]
 
-[ext_resource type="Script" uid="uid://d3vmtp03qb1rr" path="res://scripts/Statemachine/ColorBar.gd" id="1_55urc"]
+[ext_resource type="Script" uid="uid://d3vmtp03qb1rr" path="res://scripts/Statemachine/UI/ColorBar.gd" id="1_55urc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_55urc"]
 bg_color = Color(0, 0, 0, 0.6)
