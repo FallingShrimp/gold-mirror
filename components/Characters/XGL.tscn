@@ -526,7 +526,7 @@ strengthRegeneration = 5.0
 magicRegeneration = 5.0
 currentStrength = 0.0
 currentMagic = Vector2(0, 0)
-maxHealth = 1000.0
+maxHealth = 500.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 position = Vector2(0, 52)
@@ -584,7 +584,7 @@ length = 27.034
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.0999077
-scale = Vector2(0.99999917, 0.99999917)
+scale = Vector2(0.9999991, 0.9999991)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]

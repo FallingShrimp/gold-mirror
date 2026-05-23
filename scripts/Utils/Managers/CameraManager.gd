@@ -18,7 +18,7 @@ func _ready():
 func _physics_process(delta):
 	if extreming:
 		if is_instance_valid(extremingNode):
-			position = extremingNode.global_position + constantOffset / 2.0
+			position = extremingNode.global_position + constantOffset
 			position += MathUtil.sampleInCircle(shakeIntensity)
 		else:
 			extremeStop()
