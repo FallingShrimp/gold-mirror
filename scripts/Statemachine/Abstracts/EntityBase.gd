@@ -51,7 +51,7 @@ func publicDie():
 	dieing = true
 	died.emit()
 	await die()
-	queue_free()
+	if !isPlayer(): queue_free()
 	dieing = false
 func takeDamage(amount: float):
 	if invincible: return
