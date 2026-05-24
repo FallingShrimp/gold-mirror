@@ -9,6 +9,9 @@
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qt0"]
+size = Vector2(1098, 61)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv5hy"]
 size = Vector2(509, 1494)
 
@@ -47,6 +50,21 @@ offset_top = -28.0
 offset_right = 12930.0
 offset_bottom = 40.0
 
+[node name="floor2" type="StaticBody2D" parent="." unique_id=576685664]
+position = Vector2(2377, -269)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor2" unique_id=795625581]
+position = Vector2(123, 116.5)
+shape = SubResource("RectangleShape2D_y8qt0")
+
+[node name="texture" type="ColorRect" parent="floor2" unique_id=1007722966]
+offset_left = -429.0
+offset_top = 90.0
+offset_right = 676.0
+offset_bottom = 158.0
+
 [node name="tutorial" type="Label" parent="." unique_id=254397984]
 offset_left = -1683.0
 offset_top = -27.0
@@ -57,9 +75,7 @@ W - 跳
 连续按J - 3段普攻
 第3段普攻后长按J - 重击
 K - 格挡
-Shift - 冲刺
-数字1 - 湮灭射线
-数字2 - 魔法飞弹"
+Shift - 冲刺"
 
 [node name="tutorial2" type="Label" parent="." unique_id=761341199]
 offset_left = -1219.0
@@ -81,12 +97,15 @@ text = "闪避穿过飞弹时可短暂减慢时间流速，观察局势，
 需使用闪避来规避伤害。"
 
 [node name="tutorial4" type="Label" parent="." unique_id=934270149]
-offset_left = 2791.0
-offset_top = 55.0
-offset_right = 3346.0
-offset_bottom = 338.0
+offset_left = 1956.0
+offset_top = 12.0
+offset_right = 2511.0
+offset_bottom = 295.0
 text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
-倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。"
+倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。
+
+数字1 - 湮灭射线
+数字2 - 魔法飞弹"
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-1762, 14)
@@ -104,7 +123,7 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger1" unique_id=885102340]
-position = Vector2(203, -274)
+position = Vector2(479, -216)
 
 [node name="trigger2" type="Area2D" parent="." unique_id=372641176 node_paths=PackedStringArray("spawnPosition")]
 position = Vector2(1526, 24)
@@ -119,7 +138,7 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger2" unique_id=1841897942]
-position = Vector2(203, -274)
+position = Vector2(1149, -962)
 
 [node name="trigger3" type="Area2D" parent="." unique_id=662464736 node_paths=PackedStringArray("spawnPosition")]
 position = Vector2(4060, 24)
@@ -134,4 +153,4 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
-position = Vector2(203, -274)
+position = Vector2(3160, -1082)
