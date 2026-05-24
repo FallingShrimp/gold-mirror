@@ -9,10 +9,13 @@ static var instance: PlayerInterface = null
 @onready var animator: FlaggedAnimator = $%animator
 @onready var warningContainer: Control = $%warningContainer
 @onready var entityName: Label = $%entityName
+@onready var focuser: Control = $%focuser
+@onready var mask: Polygon2D = $%mask
 
 func _ready():
 	instance = self
 	NodeUtil.clearChildren(bossbars)
+	mask.hide()
 
 func rebuildInfo():
 	var children = bossbars.get_children()
@@ -46,3 +49,31 @@ static func showBossWarning(displayName: String = "BossName", loopTimes: int = 5
 	instance.animator.play("bosswarninghide")
 	await instance.animator.animation_finished
 	WorldManager.sceneTree.paused = false
+static func focusNode(positiox: Vector2, radius: float, cornerDetails: int = 64):
+	for entity in WorldManager.sceneTree.get_nodes_in_group("enemy"):
+		if entity is EnemyBase:
+			entity.process_mode = Node.PROCESS_MODE_DISABLED
+	var polygon: Array[Vector2] = []
+	var center = positiox
+	var halfWidth = instance.focuser.size.x / 2.0
+	var halfHeight = instance.focuser.size.y / 2.0
+	polygon.append(Vector2(0, 0))
+	polygon.append(Vector2(halfWidth * 2, 0))
+	polygon.append(Vector2(halfWidth * 2, halfHeight * 2))
+	polygon.append(Vector2(0, halfHeight * 2))
+	polygon.append(Vector2(0, 0))
+	for i in cornerDetails + 1:
+		var angle = PI * 2.0 * i / cornerDetails + PI / 2
+		var x = center.x + radius * cos(angle)
+		var y = center.y - radius * sin(angle)
+		polygon.append(Vector2(x, y))
+	instance.mask.polygon = polygon
+	instance.mask.show()
+	for i in polygon:
+		print(i.x, ",", i.y, ",")
+static func unfocus():
+	for entity in WorldManager.sceneTree.get_nodes_in_group("enemy"):
+		if entity is EnemyBase:
+			entity.process_mode = Node.PROCESS_MODE_DISABLED
+	instance.mask.hide()
+	instance.mask.polygon = []

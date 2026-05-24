@@ -89,11 +89,14 @@ tracks/6/path = NodePath("%texture/..")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5, 1.9),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"alert"
+}, {
+"args": [],
+"method": &"tutorialFocus"
 }]
 }
 
@@ -323,6 +326,7 @@ height = 328.0
 [node name="Blued" unique_id=948564138 instance=ExtResource("1_fwuin")]
 script = ExtResource("2_onkpg")
 showBossWarning = false
+gravityScale = 1.0
 movementSpeed = 1.5
 maxStrength = 20.0
 maxHealth = 75.0
