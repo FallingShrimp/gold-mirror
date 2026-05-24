@@ -99,6 +99,7 @@ script = ExtResource("2_1gn25")
 shakeIntensity = 200.0
 baseDamage = 50.0
 motionType = 3
+canParry = false
 lifetime = 5000.0
 penetrate = true
 spawnSound = &"spawn"

@@ -133,6 +133,9 @@ _data = {
 oneShot = true
 autoplayAnimation = &"spawn"
 
+[node name="animationSound" parent="." index="1" unique_id=1671469331]
+volume_db = 10.0
+
 [node name="animator" parent="." index="2" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_w4ayu")
 

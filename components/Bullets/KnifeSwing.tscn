@@ -6,6 +6,7 @@
 size = Vector2(83, 178)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_ov6p8")]
+canDash = false
 lifetime = 100.0
 knockback = 0.1
 impulse = 5.0

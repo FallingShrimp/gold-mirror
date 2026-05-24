@@ -140,6 +140,7 @@ _data = {
 script = ExtResource("2_rugh7")
 baseDamage = 20.0
 motionType = 2
+canParry = false
 lifetime = 5000.0
 speed = 0.0
 spawnSound = &"spawn"

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dtt30mrkyo6b8"]
+[gd_scene format=3 uid="uid://b2ouek1spp4gn"]
 
 [ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_hvwjq"]
 [ext_resource type="Script" uid="uid://xybghc27ck06" path="res://scripts/Content/Bullets/Presets/Forward.gd" id="2_7dtxt"]
@@ -131,6 +131,7 @@ radius = 24.186773
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_hvwjq")]
 script = ExtResource("2_7dtxt")
 motionType = 4
+canParry = false
 lifetime = 2000.0
 speed = 1000.0
 destroyAnimation = &"destroy"
