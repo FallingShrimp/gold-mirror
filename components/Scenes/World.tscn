@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://cnw8gnfh3klpc"]
 
-[ext_resource type="PackedScene" uid="uid://bki1gffoosyve" path="res://components/Characters/XGL.tscn" id="1_lnjql"]
 [ext_resource type="Script" uid="uid://dsj6rgpmtljc1" path="res://scripts/Utils/Managers/WorldManager.gd" id="1_sbdvw"]
 [ext_resource type="PackedScene" uid="uid://cricq0wagb4pe" path="res://components/Characters/GBot.tscn" id="2_0ci2v"]
 [ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/backgrounds/yuanshen.webp" id="2_lu72f"]
 [ext_resource type="Script" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
+[ext_resource type="Script" uid="uid://cbdhox7s4vfeh" path="res://scripts/Statemachine/Triggers/PlayerTriggerArea.gd" id="6_5pkqg"]
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
-[ext_resource type="PackedScene" uid="uid://uupyoe35coad" path="res://components/Characters/Blued.tscn" id="7_5pkqg"]
-[ext_resource type="PackedScene" uid="uid://cy4l5ron5qnca" path="res://components/Characters/Pinked.tscn" id="8_pv5hy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pv5hy"]
+size = Vector2(509, 1494)
 
 [node name="World" type="Node2D" unique_id=1785129246]
 script = ExtResource("1_sbdvw")
@@ -69,20 +70,20 @@ text = "在合适的时机按下格挡可振晕敌人，
 但不精准的格挡可能会振晕自己。"
 
 [node name="tutorial3" type="Label" parent="." unique_id=772236376]
-offset_left = -699.0
+offset_left = 575.0
 offset_top = 23.0
-offset_right = -144.0
+offset_right = 1130.0
 offset_bottom = 306.0
-text = "冲刺穿过飞弹时可短暂减慢时间流速，观察局势，
+text = "闪避穿过飞弹时可短暂减慢时间流速，观察局势，
 同时可以从飞弹中擦取法力。
 
 敌人的下砸与飞弹无法被格挡，
 需使用闪避来规避伤害。"
 
 [node name="tutorial4" type="Label" parent="." unique_id=934270149]
-offset_left = -77.0
+offset_left = 2791.0
 offset_top = 55.0
-offset_right = 478.0
+offset_right = 3346.0
 offset_bottom = 338.0
 text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
 倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。"
@@ -90,11 +91,47 @@ text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-1762, 14)
 
-[node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
-position = Vector2(12872, -529)
+[node name="trigger1" type="Area2D" parent="." unique_id=1264210951 node_paths=PackedStringArray("spawnPosition")]
+position = Vector2(-379, 24)
+script = ExtResource("6_5pkqg")
+spawnPosition = NodePath("anchor")
+spawnEnemy = &"Blued"
+triggerOnce = true
+metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
-[node name="Blued" parent="." unique_id=210776903 instance=ExtResource("7_5pkqg")]
-position = Vector2(-855, -52)
+[node name="hitbox" type="CollisionShape2D" parent="trigger1" unique_id=1858130045]
+position = Vector2(-261, -523)
+shape = SubResource("RectangleShape2D_pv5hy")
 
-[node name="Pinked" parent="." unique_id=1804274899 instance=ExtResource("8_pv5hy")]
-position = Vector2(-196, -42)
+[node name="anchor" type="Node2D" parent="trigger1" unique_id=885102340]
+position = Vector2(203, -274)
+
+[node name="trigger2" type="Area2D" parent="." unique_id=372641176 node_paths=PackedStringArray("spawnPosition")]
+position = Vector2(1526, 24)
+script = ExtResource("6_5pkqg")
+spawnPosition = NodePath("anchor")
+spawnEnemy = &"Pinked"
+triggerOnce = true
+metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
+
+[node name="hitbox" type="CollisionShape2D" parent="trigger2" unique_id=1174643710]
+position = Vector2(-261, -523)
+shape = SubResource("RectangleShape2D_pv5hy")
+
+[node name="anchor" type="Node2D" parent="trigger2" unique_id=1841897942]
+position = Vector2(203, -274)
+
+[node name="trigger3" type="Area2D" parent="." unique_id=662464736 node_paths=PackedStringArray("spawnPosition")]
+position = Vector2(4060, 24)
+script = ExtResource("6_5pkqg")
+spawnPosition = NodePath("anchor")
+spawnEnemy = &"XGL"
+triggerOnce = true
+metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
+
+[node name="hitbox" type="CollisionShape2D" parent="trigger3" unique_id=173321599]
+position = Vector2(-261, -523)
+shape = SubResource("RectangleShape2D_pv5hy")
+
+[node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
+position = Vector2(203, -274)
