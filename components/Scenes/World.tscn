@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
 [ext_resource type="PackedScene" uid="uid://uupyoe35coad" path="res://components/Characters/Blued.tscn" id="7_5pkqg"]
+[ext_resource type="PackedScene" uid="uid://cy4l5ron5qnca" path="res://components/Characters/Pinked.tscn" id="8_pv5hy"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
 
@@ -83,4 +84,7 @@ position = Vector2(-1762, 14)
 position = Vector2(12872, -529)
 
 [node name="Blued" parent="." unique_id=210776903 instance=ExtResource("7_5pkqg")]
-position = Vector2(-1417, 96)
+position = Vector2(-153, -126)
+
+[node name="Pinked" parent="." unique_id=1804274899 instance=ExtResource("8_pv5hy")]
+position = Vector2(59, -127)
