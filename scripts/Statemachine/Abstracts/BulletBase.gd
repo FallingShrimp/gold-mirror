@@ -23,6 +23,7 @@ enum MotionType {
 @export var magic: Vector2 = Vector2.ZERO
 @export var spawnSound: StringName = ""
 @export var spawnAnimation: StringName = ""
+@export var destroyAnimation: StringName = ""
 @export var verticalDirection: bool = false
 
 @onready var sounds: SoundStage = $%sounds
@@ -61,6 +62,9 @@ func publicDestroy():
 	if destroying: return
 	destroying = true
 	await destroy()
+	if destroyAnimation:
+		animator.play(destroyAnimation)
+		await animator.animation_finished
 	destroied.emit()
 	queue_free()
 	destroying = false

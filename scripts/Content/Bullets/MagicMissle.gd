@@ -12,6 +12,3 @@ func ai(delta: float):
 	speed = speedV2.length()
 	rotation = speedV2.angle()
 	PresetBulletAI.forward(self , delta)
-func destroy():
-	animator.play("destroy")
-	await animator.animation_finished

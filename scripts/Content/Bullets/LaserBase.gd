@@ -20,6 +20,4 @@ func register():
 	CameraManager.shake(lifetime, shakeIntensity, func(_c, initial: float, rest: float): return initial * rest)
 	hitEntity.connect(func(e: EntityBase): e.impact(Vector2.from_angle(rotation) * 500))
 func destroy():
-	animator.play("hide")
-	await animator.animation_finished
 	CameraManager.shakeStop()

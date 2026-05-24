@@ -81,9 +81,11 @@ unique_name_in_owner = true
 position = Vector2(-1762, 14)
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
+visible = false
 position = Vector2(12872, -529)
 
 [node name="Blued" parent="." unique_id=210776903 instance=ExtResource("7_5pkqg")]
+visible = false
 position = Vector2(-153, -126)
 
 [node name="Pinked" parent="." unique_id=1804274899 instance=ExtResource("8_pv5hy")]
