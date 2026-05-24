@@ -6,14 +6,23 @@
 [ext_resource type="Script" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
 [ext_resource type="Script" uid="uid://cbdhox7s4vfeh" path="res://scripts/Statemachine/Triggers/PlayerTriggerArea.gd" id="6_5pkqg"]
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
+[ext_resource type="Script" uid="uid://3hs2lxoxhdgi" path="res://scripts/Statemachine/Triggers/BreakableWall.gd" id="7_5pkqg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qt0"]
-size = Vector2(1098, 61)
+size = Vector2(409, 61)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5pkqg"]
+font_size = 25
+font_color = Color(1, 0, 0, 1)
+outline_color = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv5hy"]
 size = Vector2(509, 1494)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x3jtm"]
+size = Vector2(201, 967)
 
 [node name="World" type="Node2D" unique_id=1785129246]
 script = ExtResource("1_sbdvw")
@@ -56,13 +65,13 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="hitbox" type="CollisionShape2D" parent="floor2" unique_id=795625581]
-position = Vector2(123, 116.5)
+position = Vector2(-221.5, 116.5)
 shape = SubResource("RectangleShape2D_y8qt0")
 
 [node name="texture" type="ColorRect" parent="floor2" unique_id=1007722966]
 offset_left = -429.0
 offset_top = 90.0
-offset_right = 676.0
+offset_right = -15.0
 offset_bottom = 158.0
 
 [node name="tutorial" type="Label" parent="." unique_id=254397984]
@@ -86,9 +95,9 @@ text = "在合适的时机按下格挡可振晕敌人，
 但不精准的格挡可能会振晕自己。"
 
 [node name="tutorial3" type="Label" parent="." unique_id=772236376]
-offset_left = 575.0
+offset_left = 603.0
 offset_top = 23.0
-offset_right = 1130.0
+offset_right = 1158.0
 offset_bottom = 306.0
 text = "闪避穿过飞弹时可短暂减慢时间流速，观察局势，
 同时可以从飞弹中擦取法力。
@@ -106,6 +115,22 @@ text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，
 
 数字1 - 湮灭射线
 数字2 - 魔法飞弹"
+
+[node name="tutorial5" type="Label" parent="." unique_id=995257104]
+offset_left = 3870.0
+offset_top = 12.0
+offset_right = 4425.0
+offset_bottom = 295.0
+text = "使用强力攻击即可打碎部分墙体。
+如重击、湮灭射线等。"
+
+[node name="tutorial6" type="Label" parent="." unique_id=604148281]
+offset_left = 5501.0
+offset_top = 12.0
+offset_right = 6056.0
+offset_bottom = 295.0
+text = "前方有强大敌人，做好准备。"
+label_settings = SubResource("LabelSettings_5pkqg")
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-1762, 14)
@@ -138,10 +163,10 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger2" unique_id=1841897942]
-position = Vector2(1149, -962)
+position = Vector2(631, -436)
 
 [node name="trigger3" type="Area2D" parent="." unique_id=662464736 node_paths=PackedStringArray("spawnPosition")]
-position = Vector2(4060, 24)
+position = Vector2(6507, 24)
 script = ExtResource("6_5pkqg")
 spawnPosition = NodePath("anchor")
 spawnEnemy = &"XGL"
@@ -154,3 +179,19 @@ shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
 position = Vector2(3160, -1082)
+
+[node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
+position = Vector2(4395, 0)
+script = ExtResource("7_5pkqg")
+metadata/_custom_type_script = "uid://3hs2lxoxhdgi"
+
+[node name="hitbox" type="CollisionShape2D" parent="wall1" unique_id=1015467087]
+position = Vector2(-90.5, -242.5)
+shape = SubResource("RectangleShape2D_x3jtm")
+
+[node name="texture" type="ColorRect" parent="wall1" unique_id=1976444159]
+offset_left = -194.0
+offset_top = -735.0
+offset_right = 14.0
+offset_bottom = 263.0
+color = Color(0.51753736, 0.31858617, 0, 1)

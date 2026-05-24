@@ -97,7 +97,7 @@ size = Vector2(1000, 50)
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_5066b")]
 script = ExtResource("2_1gn25")
 shakeIntensity = 200.0
-baseDamage = 15.0
+baseDamage = 50.0
 motionType = 3
 lifetime = 5000.0
 penetrate = true
