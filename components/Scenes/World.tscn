@@ -16,42 +16,20 @@ script = ExtResource("1_sbdvw")
 
 [node name="player" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
 
+[node name="camera" type="Camera2D" parent="." unique_id=2047599218]
+process_callback = 0
+position_smoothing_enabled = true
+script = ExtResource("4_6km7c")
+constantOffset = Vector2(0, -150)
+
+[node name="animator" type="AnimationPlayer" parent="camera" unique_id=735721622]
+unique_name_in_owner = true
+
 [node name="background" type="Sprite2D" parent="." unique_id=245469242]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(205, -37)
 texture = ExtResource("2_lu72f")
 metadata/_edit_lock_ = true
-
-[node name="tutorial" type="Label" parent="." unique_id=254397984]
-offset_left = -1638.0
-offset_top = -43.0
-offset_right = -1466.0
-offset_bottom = 162.0
-text = "AD - 左右移动
-W - 跳
-连续按J - 3段普攻
-第3段普攻后长按J - 重击
-K - 格挡
-Shift - 冲刺
-数字1 - 湮灭射线
-数字2 - 魔法飞弹"
-
-[node name="tutorial2" type="Label" parent="." unique_id=761341199]
-offset_left = -1422.0
-offset_top = -123.0
-offset_right = -867.0
-offset_bottom = 160.0
-text = "在合适的时机按下格挡可振晕敌人，
-但不精准的格挡可能会振晕自己。
-
-冲刺穿过飞弹时可短暂减慢时间流速，观察局势，
-同时可以从飞弹中擦取法力。
-
-魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
-倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。
-
-敌人的下砸与飞弹无法被格挡，
-需使用闪避来规避伤害。"
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 271)
@@ -68,25 +46,55 @@ offset_top = -28.0
 offset_right = 12930.0
 offset_bottom = 40.0
 
-[node name="camera" type="Camera2D" parent="." unique_id=2047599218]
-process_callback = 0
-position_smoothing_enabled = true
-script = ExtResource("4_6km7c")
-constantOffset = Vector2(0, -150)
+[node name="tutorial" type="Label" parent="." unique_id=254397984]
+offset_left = -1683.0
+offset_top = -27.0
+offset_right = -1511.0
+offset_bottom = 178.0
+text = "AD - 左右移动
+W - 跳
+连续按J - 3段普攻
+第3段普攻后长按J - 重击
+K - 格挡
+Shift - 冲刺
+数字1 - 湮灭射线
+数字2 - 魔法飞弹"
 
-[node name="animator" type="AnimationPlayer" parent="camera" unique_id=735721622]
-unique_name_in_owner = true
+[node name="tutorial2" type="Label" parent="." unique_id=761341199]
+offset_left = -1219.0
+offset_top = 64.0
+offset_right = -664.0
+offset_bottom = 347.0
+text = "在合适的时机按下格挡可振晕敌人，
+但不精准的格挡可能会振晕自己。"
+
+[node name="tutorial3" type="Label" parent="." unique_id=772236376]
+offset_left = -699.0
+offset_top = 23.0
+offset_right = -144.0
+offset_bottom = 306.0
+text = "冲刺穿过飞弹时可短暂减慢时间流速，观察局势，
+同时可以从飞弹中擦取法力。
+
+敌人的下砸与飞弹无法被格挡，
+需使用闪避来规避伤害。"
+
+[node name="tutorial4" type="Label" parent="." unique_id=934270149]
+offset_left = -77.0
+offset_top = 55.0
+offset_right = 478.0
+offset_bottom = 338.0
+text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
+倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。"
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-1762, 14)
 
 [node name="XGL" parent="." unique_id=1220517781 instance=ExtResource("1_lnjql")]
-visible = false
 position = Vector2(12872, -529)
 
 [node name="Blued" parent="." unique_id=210776903 instance=ExtResource("7_5pkqg")]
-visible = false
-position = Vector2(-153, -126)
+position = Vector2(-855, -52)
 
 [node name="Pinked" parent="." unique_id=1804274899 instance=ExtResource("8_pv5hy")]
-position = Vector2(59, -127)
+position = Vector2(-196, -42)

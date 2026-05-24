@@ -252,6 +252,8 @@ height = 292.0
 
 [node name="Pinked" unique_id=948564138 instance=ExtResource("1_82o42")]
 script = ExtResource("2_uabta")
+movementSpeed = 0.25
+maxHealth = 50.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.6041607, 0.6041607)
@@ -422,6 +424,9 @@ position = Vector2(-19, -244)
 
 [node name="attack1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="1" unique_id=1035475539]
 position = Vector2(87, -217)
+
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=1928249835]
+position = Vector2(96.000946, -235.0368)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 position = Vector2(0, -9)
