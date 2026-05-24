@@ -125,6 +125,9 @@ _data = {
 &"destroy": SubResource("Animation_7dtxt")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7dtxt"]
+radius = 24.186773
+
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_hvwjq")]
 script = ExtResource("2_7dtxt")
 motionType = 4
@@ -145,3 +148,6 @@ process_material = SubResource("ParticleProcessMaterial_p0w8x")
 
 [node name="animator" parent="texture" parent_id_path=PackedInt32Array(556042530) index="1" unique_id=375031096]
 libraries/ = SubResource("AnimationLibrary_j5xf0")
+
+[node name="hitbox" parent="." index="2" unique_id=1273022028]
+shape = SubResource("CircleShape2D_7dtxt")

@@ -246,6 +246,10 @@ _data = {
 &"WALK": SubResource("Animation_1dcjs")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w4uw7"]
+radius = 49.0
+height = 292.0
+
 [node name="Pinked" unique_id=948564138 instance=ExtResource("1_82o42")]
 script = ExtResource("2_uabta")
 
@@ -427,6 +431,7 @@ position = Vector2(0, 266)
 
 [node name="shape" parent="hurtbox" index="0" unique_id=1412400232]
 position = Vector2(-1, -399)
+shape = SubResource("CapsuleShape2D_w4uw7")
 
 [node name="stateBar" parent="." index="3" unique_id=2012763349]
 position = Vector2(0, -267)
