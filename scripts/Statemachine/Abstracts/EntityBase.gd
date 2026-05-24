@@ -78,3 +78,5 @@ func getAnchorRotation(namx: String):
 		return 0
 func impact(delta: Vector2):
 	velocity += delta
+func alert(anchor: String = "alert"):
+	EffectPlayer.play("GoldenStar4", getAnchorPosition(anchor), 0)

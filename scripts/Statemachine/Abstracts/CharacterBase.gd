@@ -173,5 +173,3 @@ func storeItem(delta: Dictionary[ContentManager.ItemType, int]):
 	for item in delta:
 		inventory[item] = clamp(inventory[item] + delta[item], 0, inventoryMax.get(item, INF))
 	itemStored.emit(delta)
-func alert():
-	EffectPlayer.play("GoldenStar4", getAnchorPosition("alert"), 0)
