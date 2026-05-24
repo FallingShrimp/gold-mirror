@@ -16,7 +16,7 @@ func ai(delta: float):
 	else:
 		hitbox.disabled = true
 	var hb = hitbox.shape as RectangleShape2D
-	hb.size.x = effect.currentLength + 10
+	hb.size.x = effect.currentLength + effect.laserHeight
 	hitbox.position.x = effect.currentLength / 2
 func register():
 	effect.shot()
