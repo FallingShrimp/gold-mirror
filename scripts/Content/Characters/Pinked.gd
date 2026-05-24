@@ -26,6 +26,6 @@ func ai(delta: float):
 func createAttack(id: int) -> void:
 	match id:
 		1:
-			BulletBase.create("NoteStar", getAnchorPosition("attack1"), directionAsRotation(), self )
+			BulletBase.create("NoteStar", getAnchorPosition("attack1"), getAnchorPosition("attack1").angle_to_point(focusingEntity.position), self )
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 20
