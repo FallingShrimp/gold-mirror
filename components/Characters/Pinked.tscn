@@ -301,7 +301,7 @@ height = 292.0
 [node name="Pinked" unique_id=948564138 instance=ExtResource("1_82o42")]
 script = ExtResource("2_uabta")
 movementSpeed = 0.25
-maxHealth = 50.0
+maxHealth = 200.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.6041607, 0.6041607)
@@ -367,7 +367,7 @@ rest = Transform2D(0.6816894, 0.7316412, -0.7316412, 0.6816894, 90.346176, -54.4
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(122.21703, 13.856594)
 rotation = -1.4236965
-scale = Vector2(0.9999994, 0.9999994)
+scale = Vector2(0.99999934, 0.99999934)
 rest = Transform2D(0.1465698, -0.9891998, 0.9891998, 0.1465698, 122.21703, 13.856594)
 length = 32.842
 
