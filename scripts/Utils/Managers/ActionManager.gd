@@ -13,18 +13,13 @@ enum PlayerAction {
 }
 
 static var instance: ActionManager = null
-static var enables: Array = [
-	PlayerAction.ATTACK,
-	PlayerAction.PARRY,
-	PlayerAction.MOVE,
-	PlayerAction.DASH,
-	PlayerAction.JUMP,
-	PlayerAction.MAGIC
-]
+static var enables: Array[PlayerAction] = []
 
 func _ready():
 	instance = self
 
+static func _static_init() -> void:
+	enableAll()
 static func emitDid(action: PlayerAction):
 	instance.did.emit(action)
 static func disable(action: PlayerAction):
@@ -33,7 +28,7 @@ static func disable(action: PlayerAction):
 static func enable(action: PlayerAction):
 	if action not in enables:
 		enables.append(action)
-static func justEnable(actions: Array):
+static func justEnable(actions: Array[PlayerAction]):
 	enables = actions.duplicate()
 static func enableAll():
 	enables = []

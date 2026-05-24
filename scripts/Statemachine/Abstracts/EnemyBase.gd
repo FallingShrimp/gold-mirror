@@ -35,11 +35,5 @@ func isPlayer() -> bool:
 func fixDirection():
 	if is_instance_valid(focusingEntity):
 		direction = sign(focusingEntity.position.x - position.x)
-func tutorialFocus(text: String, allowActions: Array):
-	PlayerInterface.focusNode(get_viewport_transform() * ((getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2), 300)
-	PlayerInterface.tip(text)
-	ActionManager.justEnable(allowActions)
-	await ActionManager.instance.did
-	ActionManager.enableAll()
-	PlayerInterface.tipExit()
-	PlayerInterface.unfocus()
+func tutorial1():
+	pass
