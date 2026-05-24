@@ -81,8 +81,8 @@ offset_right = -1511.0
 offset_bottom = 178.0
 text = "AD - 左右移动
 W - 跳
-连续按J - 3段普攻
-第3段普攻后长按J - 重击
+J-J-J : 3段普攻
+J-J-长按J : 重击
 K - 格挡
 Shift - 冲刺"
 
