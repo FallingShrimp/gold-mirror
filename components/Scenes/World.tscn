@@ -140,6 +140,7 @@ position = Vector2(-379, 24)
 script = ExtResource("6_5pkqg")
 spawnPosition = NodePath("anchor")
 spawnEnemy = &"Blued"
+spawnDirection = -1
 triggerOnce = true
 metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
@@ -155,6 +156,7 @@ position = Vector2(1526, 24)
 script = ExtResource("6_5pkqg")
 spawnPosition = NodePath("anchor")
 spawnEnemy = &"Pinked"
+spawnDirection = -1
 triggerOnce = true
 metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
@@ -170,6 +172,7 @@ position = Vector2(6507, 24)
 script = ExtResource("6_5pkqg")
 spawnPosition = NodePath("anchor")
 spawnEnemy = &"XGL"
+spawnDirection = -1
 triggerOnce = true
 metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
@@ -178,7 +181,7 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
-position = Vector2(3160, -1082)
+position = Vector2(1444, -234)
 
 [node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
 position = Vector2(4395, 0)

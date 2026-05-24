@@ -3,6 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="1_te66c"]
 [ext_resource type="Script" uid="uid://cphhpao43ivv3" path="res://scripts/Statemachine/UI/Bossbar.gd" id="2_r1od1"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_r1od1"]
+font_size = 20
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Animation" id="Animation_r1od1"]
 length = 0.001
 tracks/0/type = "bezier"
@@ -96,6 +101,17 @@ rotation = 0.7853982
 innerR = 13.0
 outerR = 20.0
 
-[node name="animator" type="AnimationPlayer" parent="." index="2" unique_id=259934410]
+[node name="name" type="Label" parent="." index="2" unique_id=927621605]
+unique_name_in_owner = true
+offset_left = -100.0
+offset_top = -74.0
+offset_right = 100.0
+offset_bottom = 126.0
+text = "BossName"
+label_settings = SubResource("LabelSettings_r1od1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="animator" type="AnimationPlayer" parent="." index="3" unique_id=259934410]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_r1od1")

@@ -8,6 +8,7 @@ enum TriggerType {
 @export var type: TriggerType = TriggerType.SPAWN_ENEMY
 @export var spawnPosition: Node2D = null
 @export var spawnEnemy: StringName = ""
+@export var spawnDirection: CharacterBase.Direction = CharacterBase.Direction.RIGHT
 @export var triggerOnce: bool = false
 
 var trigged: bool = false
@@ -18,6 +19,6 @@ func _ready():
 			if triggerOnce && trigged: return
 			if body is PlayerBase:
 				if type == TriggerType.SPAWN_ENEMY:
-					CharacterBase.create(spawnEnemy, spawnPosition.global_position)
+					CharacterBase.create(spawnEnemy, spawnPosition.global_position, spawnDirection)
 					trigged = true
 	)

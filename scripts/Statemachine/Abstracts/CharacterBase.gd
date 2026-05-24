@@ -174,8 +174,9 @@ func storeItem(delta: Dictionary[ContentManager.ItemType, int]):
 		inventory[item] = clamp(inventory[item] + delta[item], 0, inventoryMax.get(item, INF))
 	itemStored.emit(delta)
 
-static func create(namx: String, positiox: Vector2):
+static func create(namx: String, positiox: Vector2, directiox: Direction):
 	var instance = load("res://components/Characters/%s.tscn" % namx).instantiate() as CharacterBase
 	instance.position = positiox
+	instance.direction = directiox
 	WorldManager.rootNode.add_child.call_deferred(instance)
 	return instance

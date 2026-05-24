@@ -4,6 +4,7 @@ class_name EntityBase
 signal damageTaken(amount: float)
 signal died()
 
+@export var displayName: String = "EntityName"
 @export var maxHealth: float = 100
 @export var invincible: bool = false
 
