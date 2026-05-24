@@ -753,6 +753,18 @@ strengthRegeneration = 20.0
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
+[node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
+scale = Vector2(0.99999976, 0.99999976)
+
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
+scale = Vector2(0.9999996, 0.9999996)
+
+[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
+scale = Vector2(0.9999998, 0.9999998)
+
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
@@ -772,6 +784,9 @@ position = Vector2(76.83975, -811.42773)
 
 [node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
+
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=108014891]
+position = Vector2(0, -977.4016)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 visible = false

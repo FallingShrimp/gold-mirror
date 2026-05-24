@@ -723,7 +723,7 @@ process_material = SubResource("ParticleProcessMaterial_webv5")
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.0999077
-scale = Vector2(0.9999985, 0.9999985)
+scale = Vector2(0.99999833, 0.99999833)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -735,7 +735,7 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
 rotation = 0.18261428
-scale = Vector2(0.9999995, 0.9999995)
+scale = Vector2(0.9999994, 0.9999994)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -843,9 +843,11 @@ position = Vector2(119, -240)
 [node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=490380349]
 position = Vector2(3, -219)
 
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=108014891]
+position = Vector2(0, -376)
+
 [node name="bossmusic" parent="texture/sounds" parent_id_path=PackedInt32Array(1330768803) index="0" unique_id=559295679]
 stream = ExtResource("9_w6duw")
-volume_db = -10.0
 parameters/looping = true
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]

@@ -318,7 +318,6 @@ rest = Transform2D(1, 0, 0, 1, 3, -157)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(61.000008, 20.000002)
-scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, -0.45436627, 0.45436627, 0.89081466, 61.000008, 20.000002)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
@@ -345,7 +344,7 @@ length = 397.935
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" index="2" unique_id=24930383]
 position = Vector2(-13.000003, -14)
-scale = Vector2(0.99999976, 0.99999976)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(-0.8858915, 0.46389204, -0.46389204, -0.8858915, -13.000003, -14)
 length = 39.031
 
@@ -452,6 +451,9 @@ position = Vector2(285.85593, -321.3765)
 
 [node name="alert2" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=1048185128]
 position = Vector2(-397.49197, -820.35583)
+
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=108014891]
+position = Vector2(0, -615.6897)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
 position = Vector2(0, -10)
