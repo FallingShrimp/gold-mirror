@@ -117,18 +117,18 @@ text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，
 数字2 - 魔法飞弹"
 
 [node name="tutorial5" type="Label" parent="." unique_id=995257104]
-offset_left = 3870.0
+offset_left = 2975.0
 offset_top = 12.0
-offset_right = 4425.0
+offset_right = 3530.0
 offset_bottom = 295.0
 text = "使用强力攻击即可打碎部分墙体。
 如重击、湮灭射线等。"
 
 [node name="tutorial6" type="Label" parent="." unique_id=604148281]
-offset_left = 5501.0
-offset_top = 12.0
-offset_right = 6056.0
-offset_bottom = 295.0
+offset_left = 2974.0
+offset_top = 70.0
+offset_right = 3529.0
+offset_bottom = 353.0
 text = "前方有强大敌人，做好准备。"
 label_settings = SubResource("LabelSettings_5pkqg")
 
@@ -168,7 +168,7 @@ shape = SubResource("RectangleShape2D_pv5hy")
 position = Vector2(631, -436)
 
 [node name="trigger3" type="Area2D" parent="." unique_id=662464736 node_paths=PackedStringArray("spawnPosition")]
-position = Vector2(6507, 24)
+position = Vector2(4178, 24)
 script = ExtResource("6_5pkqg")
 spawnPosition = NodePath("anchor")
 spawnEnemy = &"XGL"
@@ -184,7 +184,7 @@ shape = SubResource("RectangleShape2D_pv5hy")
 position = Vector2(1444, -234)
 
 [node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
-position = Vector2(4395, 0)
+position = Vector2(3500, 0)
 script = ExtResource("7_5pkqg")
 metadata/_custom_type_script = "uid://3hs2lxoxhdgi"
 

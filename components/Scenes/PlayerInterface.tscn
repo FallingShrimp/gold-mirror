@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://qbxbo1b510ta" path="res://components/Boxes/PlayerState.tscn" id="2_mxaxt"]
 [ext_resource type="Shader" uid="uid://dpxnfw6cm275k" path="res://shaders/HorseTexture.gdshader" id="3_tkxrk"]
 [ext_resource type="AudioStream" uid="uid://bqrx1pn5lc2x3" path="res://resources/sounds/warning.mp3" id="5_c6y25"]
+[ext_resource type="AudioStream" uid="uid://dmyu2gf6odxlr" path="res://resources/sounds/machine-tick.wav" id="6_08moi"]
+[ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/UI/FlaggedAnimator.gd" id="7_nqy15"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_i40r1"]
 shader = ExtResource("3_tkxrk")
@@ -71,8 +73,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_nqy15"]
 resource_name = "show"
-length = 0.5
-step = 0.1
+length = 0.75
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -80,9 +82,9 @@ tracks/0/path = NodePath("bosswarning:scale:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(2, 0, 0),
+"handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -0.25, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.25, 0.5)
+"times": PackedFloat32Array(0.25, 0.5, 0.75)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -91,7 +93,7 @@ tracks/1/path = NodePath("bosswarning:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.25, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
@@ -103,10 +105,25 @@ tracks/2/path = NodePath("bosswarning:scale:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(2, 0),
+"handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(1, 0, 0, 0, 0, 0.2, -0.25, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.25)
+"times": PackedFloat32Array(0.25, 0.5)
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%animator/audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_08moi")
+}],
+"times": PackedFloat32Array(0.25)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="Animation" id="Animation_08moi"]
 resource_name = "bosswarningloop"
@@ -140,10 +157,24 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%animator")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emitLoop"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_c6y25"]
 resource_name = "show"
-length = 0.5
+length = 0.75
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -180,6 +211,21 @@ tracks/2/keys = {
 "update": 1,
 "values": [1.0]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%animator/audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_08moi")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_08moi"]
 _data = {
@@ -190,6 +236,7 @@ _data = {
 }
 
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
+process_mode = 3
 
 [node name="root" type="Control" parent="." unique_id=979726907]
 layout_mode = 3
@@ -259,16 +306,17 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mxaxt")
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_tkxrk")
 
-[node name="container" type="VBoxContainer" parent="root/bosswarning/horse" unique_id=1214953832]
+[node name="warningContainer" type="VBoxContainer" parent="root/bosswarning/horse" unique_id=1214953832]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="logo" type="Label" parent="root/bosswarning/horse/container" unique_id=896109501]
+[node name="logo" type="Label" parent="root/bosswarning/horse/warningContainer" unique_id=896109501]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "- WARNING -"
 label_settings = SubResource("LabelSettings_mxaxt")
 
-[node name="coming" type="Label" parent="root/bosswarning/horse/container" unique_id=1491439241]
+[node name="coming" type="Label" parent="root/bosswarning/horse/warningContainer" unique_id=1491439241]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "GREAT ENEMY COMING !!!"
@@ -284,5 +332,6 @@ label_settings = SubResource("LabelSettings_mxaxt")
 [node name="animator" type="AnimationPlayer" parent="root" unique_id=230790374]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_08moi")
+script = ExtResource("7_nqy15")
 
-[node name="audio" type="AudioStreamPlayer2D" parent="root/animator" unique_id=522361792]
+[node name="audio" type="AudioStreamPlayer" parent="root/animator" unique_id=333666753]

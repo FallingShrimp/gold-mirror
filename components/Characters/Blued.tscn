@@ -304,7 +304,6 @@ tracks/1/keys = {
 "values": [0.47166082, 1.2932889757277986, 0.47166082]
 }
 
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onkpg"]
 _data = {
 &"ATTACK1": SubResource("Animation_i4t83"),
@@ -323,6 +322,8 @@ height = 328.0
 
 [node name="Blued" unique_id=948564138 instance=ExtResource("1_fwuin")]
 script = ExtResource("2_onkpg")
+showBossWarning = false
+movementSpeed = 1.5
 maxStrength = 20.0
 maxHealth = 75.0
 
@@ -354,16 +355,18 @@ length = 79.206
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-62.999992, 24)
+rotation = 3.09
 rest = Transform2D(-0.9986515, 0.05191462, -0.05191462, -0.9986515, -62.999992, 24)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(23.127556, -78.90573)
+rotation = -1.62
 rest = Transform2D(-0.0517121, -0.99866146, 0.99866146, -0.0517121, 23.127556, -78.90573)
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(77.78824, 6.082773)
-rotation = -1.0171863
-scale = Vector2(0.9999998, 0.9999998)
+rotation = -1.01
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.52576137, -0.8506319, 0.8506319, 0.52576137, 77.78824, 6.082773)
 length = 397.935
 

@@ -12,3 +12,6 @@ func die():
 	animator.play("die")
 	await animator.animation_finished
 	queue_free()
+func showAnimation():
+	animator.play("show")
+	await animator.animation_finished

@@ -1,6 +1,8 @@
 extends CharacterBase
 class_name EnemyBase
 
+@export var showBossWarning: bool = false
+
 func _ready():
 	super._ready()
 	add_to_group("enemy")
@@ -18,6 +20,9 @@ func _ready():
 					myBossbar.die()
 		)
 		soundStage.play("bossmusic")
+	if showBossWarning:
+		await PlayerInterface.showBossWarning(displayName)
+		myBossbar.showAnimation()
 
 func ai(_delta: float):
 	if !is_instance_valid(focusingEntity):

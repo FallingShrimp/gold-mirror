@@ -2,6 +2,8 @@
 extends AnimationPlayer
 class_name FlaggedAnimator
 
+signal animationLooped()
+
 var states: Dictionary[String, bool] = {}
 
 func setFlag(namx: String, state: bool):
@@ -12,3 +14,5 @@ func unflag(namx: String):
 	states[namx] = false
 func isFlagged(namx: String) -> bool:
 	return states.get(namx, false)
+func emitLoop():
+	animationLooped.emit()
