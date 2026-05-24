@@ -3,25 +3,25 @@
 [ext_resource type="PackedScene" uid="uid://bki1gffoosyve" path="res://components/Characters/XGL.tscn" id="1_lnjql"]
 [ext_resource type="Script" uid="uid://dsj6rgpmtljc1" path="res://scripts/Utils/Managers/WorldManager.gd" id="1_sbdvw"]
 [ext_resource type="PackedScene" uid="uid://cricq0wagb4pe" path="res://components/Characters/GBot.tscn" id="2_0ci2v"]
-[ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/ef9ae02660a54b454d76fab2d44b760f_2197140261677047264.webp" id="2_lu72f"]
-[ext_resource type="Script" uid="uid://cadoijncfda6r" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
+[ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/backgrounds/yuanshen.webp" id="2_lu72f"]
+[ext_resource type="Script" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
-[ext_resource type="PackedScene" uid="uid://cgvmo88taxqa8" path="res://components/Characters/Blued.tscn" id="7_5pkqg"]
+[ext_resource type="PackedScene" uid="uid://uupyoe35coad" path="res://components/Characters/Blued.tscn" id="7_5pkqg"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
 
 [node name="World" type="Node2D" unique_id=1785129246]
 script = ExtResource("1_sbdvw")
 
-[node name="PlayerInterface" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
+[node name="player" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
 
-[node name="Ef9Ae02660a54b454d76Fab2d44b760f2197140261677047264" type="Sprite2D" parent="." unique_id=245469242]
+[node name="background" type="Sprite2D" parent="." unique_id=245469242]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(205, -37)
 texture = ExtResource("2_lu72f")
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="." unique_id=254397984]
+[node name="tutorial" type="Label" parent="." unique_id=254397984]
 offset_left = -1638.0
 offset_top = -43.0
 offset_right = -1466.0
@@ -35,7 +35,7 @@ Shift - 冲刺
 数字1 - 湮灭射线
 数字2 - 魔法飞弹"
 
-[node name="Label2" type="Label" parent="." unique_id=761341199]
+[node name="tutorial2" type="Label" parent="." unique_id=761341199]
 offset_left = -1422.0
 offset_top = -123.0
 offset_right = -867.0
@@ -52,28 +52,28 @@ text = "在合适的时机按下格挡可振晕敌人，
 敌人的下砸与飞弹无法被格挡，
 需使用闪避来规避伤害。"
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1697715685]
-position = Vector2(241, 270)
+[node name="floor" type="StaticBody2D" parent="." unique_id=1697715685]
+position = Vector2(241, 271)
 collision_layer = 7
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=568404488]
+[node name="hitbox" type="CollisionShape2D" parent="floor" unique_id=568404488]
 position = Vector2(171, -30)
 shape = SubResource("WorldBoundaryShape2D_lu72f")
 
-[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=275736625]
+[node name="texture" type="ColorRect" parent="floor" unique_id=275736625]
 offset_left = -2026.0
 offset_top = -28.0
 offset_right = 12930.0
 offset_bottom = 40.0
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=2047599218]
+[node name="camera" type="Camera2D" parent="." unique_id=2047599218]
 process_callback = 0
 position_smoothing_enabled = true
 script = ExtResource("4_6km7c")
 constantOffset = Vector2(0, -150)
 
-[node name="animator" type="AnimationPlayer" parent="Camera2D" unique_id=735721622]
+[node name="animator" type="AnimationPlayer" parent="camera" unique_id=735721622]
 unique_name_in_owner = true
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
