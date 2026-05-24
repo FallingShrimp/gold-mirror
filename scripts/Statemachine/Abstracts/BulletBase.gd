@@ -15,6 +15,7 @@ enum MotionType {
 @export var baseDamage: float = 10
 @export var motionType: MotionType = MotionType.SWING
 @export var canParry: bool = true
+@export var canDash: bool = true
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
 @export var knockback: float = 0
@@ -82,13 +83,14 @@ func handleCollisionArea(node: CollisionObject2D):
 				if entity.invincible:
 					return
 				elif entity.fsm.currentState is States.DASH:
-					if motionType == MotionType.DANMAKU:
-						if launcher is CharacterBase:
-							for i in 3:
-								var positiox = position + MathUtil.sampleInCircle(100)
-								ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
-								EffectPlayer.play("PerfectDash", position, 0)
-					return
+					if canDash:
+						if motionType == MotionType.DANMAKU:
+							if launcher is CharacterBase:
+								for i in 3:
+									var positiox = position + MathUtil.sampleInCircle(100)
+									ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
+									EffectPlayer.play("PerfectDash", position, 0)
+						return
 				elif entity.fsm.currentState is States.PARRY_START:
 					if canParry && (entity.direction != getDirection() || verticalDirection):
 						var parryState = entity.fsm.currentState as States.PARRY_START

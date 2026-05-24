@@ -40,9 +40,33 @@ unique_name_in_owner = true
 
 [node name="background" type="Sprite2D" parent="." unique_id=245469242]
 modulate = Color(1, 1, 1, 0.1764706)
-position = Vector2(205, -37)
+position = Vector2(-538, -37)
 texture = ExtResource("2_lu72f")
-metadata/_edit_lock_ = true
+
+[node name="background2" type="Sprite2D" parent="." unique_id=2105149944]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(1956, -37)
+texture = ExtResource("2_lu72f")
+
+[node name="background3" type="Sprite2D" parent="." unique_id=244782096]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(4467, -37)
+texture = ExtResource("2_lu72f")
+
+[node name="background4" type="Sprite2D" parent="." unique_id=957681418]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(6964, -37)
+texture = ExtResource("2_lu72f")
+
+[node name="background5" type="Sprite2D" parent="." unique_id=431879286]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(9458, -37)
+texture = ExtResource("2_lu72f")
+
+[node name="background6" type="Sprite2D" parent="." unique_id=376210779]
+modulate = Color(1, 1, 1, 0.1764706)
+position = Vector2(11969, -37)
+texture = ExtResource("2_lu72f")
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 271)
@@ -81,18 +105,20 @@ offset_right = -1511.0
 offset_bottom = 178.0
 text = "AD - 左右移动
 W - 跳
-J-J-J : 3段普攻
+J-J-J : 3段普通攻击
 J-J-长按J : 重击
-K - 格挡
-Shift - 冲刺"
+按住K - 格挡
+Shift - 闪避"
 
 [node name="tutorial2" type="Label" parent="." unique_id=761341199]
 offset_left = -1219.0
-offset_top = 64.0
+offset_top = 26.0
 offset_right = -664.0
-offset_bottom = 347.0
+offset_bottom = 309.0
 text = "在合适的时机按下格挡可振晕敌人，
-但不精准的格挡可能会振晕自己。"
+但不精准的格挡可能会振晕自己。
+
+闪避无法穿过物理攻击。"
 
 [node name="tutorial3" type="Label" parent="." unique_id=772236376]
 offset_left = 603.0
@@ -181,7 +207,7 @@ position = Vector2(-261, -523)
 shape = SubResource("RectangleShape2D_pv5hy")
 
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
-position = Vector2(1444, -234)
+position = Vector2(741, -234)
 
 [node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
 position = Vector2(3500, 0)
