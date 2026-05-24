@@ -29,5 +29,3 @@ func createAttack(id: int) -> void:
 			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 25
-func tutorialFocus():
-	PlayerInterface.focusNode(get_viewport_transform() * ((getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2), 300)

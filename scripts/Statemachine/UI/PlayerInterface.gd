@@ -11,11 +11,14 @@ static var instance: PlayerInterface = null
 @onready var entityName: Label = $%entityName
 @onready var focuser: Control = $%focuser
 @onready var mask: Polygon2D = $%mask
+@onready var tipBox: Control = $%tip
+@onready var tipLabel: Label = $%tipLabel
 
 func _ready():
 	instance = self
 	NodeUtil.clearChildren(bossbars)
 	mask.hide()
+	tipExit()
 
 func rebuildInfo():
 	var children = bossbars.get_children()
@@ -69,11 +72,14 @@ static func focusNode(positiox: Vector2, radius: float, cornerDetails: int = 64)
 		polygon.append(Vector2(x, y))
 	instance.mask.polygon = polygon
 	instance.mask.show()
-	for i in polygon:
-		print(i.x, ",", i.y, ",")
 static func unfocus():
 	for entity in WorldManager.sceneTree.get_nodes_in_group("enemy"):
 		if entity is EnemyBase:
-			entity.process_mode = Node.PROCESS_MODE_DISABLED
+			entity.process_mode = Node.PROCESS_MODE_INHERIT
 	instance.mask.hide()
 	instance.mask.polygon = []
+static func tip(text: String):
+	instance.tipLabel.text = text
+	instance.tipBox.show()
+static func tipExit():
+	instance.tipBox.hide()

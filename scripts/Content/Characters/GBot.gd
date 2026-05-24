@@ -11,7 +11,7 @@ func _ready():
 				States.ATTACK:
 					if !emittedForNextAttack:
 						var toIdle = true
-						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && enoughStrength(25):
+						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
 							var holdTime = await holdup("attack", 500)
 							if holdTime == 500:
 								useStrength(25)
@@ -19,6 +19,7 @@ func _ready():
 								fsm.changeState(States.ATTACK, [HEAVY_SHOT])
 								attackCounter = 0
 								toIdle = false
+								ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 						if toIdle:
 							attackCounter = 0
 							fsm.changeState(States.IDLE)
@@ -45,19 +46,24 @@ func ai(delta: float):
 			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && !is_on_floor():
 				fsm.changeState(States.FALLING)
 			elif fsm.stateIs() not in [States.JUMP]:
-				if Input.is_action_just_pressed("parry"):
+				if Input.is_action_just_pressed("parry") && ActionManager.canI(ActionManager.PlayerAction.PARRY):
 					fsm.changeState(States.PARRY_START)
-				elif Input.is_action_pressed("attack"):
+					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
+				elif Input.is_action_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK):
 					if Input.is_action_just_pressed("attack") && useStrength(attackCounter):
 						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
 							attackCounter += 1
-				elif Input.is_action_just_pressed("dash"):
+							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+				elif Input.is_action_just_pressed("dash") && ActionManager.canI(ActionManager.PlayerAction.DASH):
 					if useStrength(10):
 						fsm.changeState(States.DASH, [direction])
-				elif Input.is_action_just_pressed("jump"):
+						ActionManager.emitDid(ActionManager.PlayerAction.DASH)
+				elif Input.is_action_just_pressed("jump") && ActionManager.canI(ActionManager.PlayerAction.JUMP):
 					fsm.changeState(States.JUMP, [1])
-				elif Input.is_action_pressed("moving"):
+					ActionManager.emitDid(ActionManager.PlayerAction.JUMP)
+				elif Input.is_action_pressed("moving") && ActionManager.canI(ActionManager.PlayerAction.MOVE):
 					fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
+					ActionManager.emitDid(ActionManager.PlayerAction.MOVE)
 				else:
 					var useSkill = -1
 					for i in 3:
@@ -71,8 +77,9 @@ func ai(delta: float):
 					if useSkill >= 0:
 						if len(skills) > useSkill:
 							var card: SkillCard = skills[useSkill]
-							if card.cooldownTimer.start():
+							if card.cooldownTimer.start() && ActionManager.canI(ActionManager.PlayerAction.MAGIC):
 								fsm.changeState(States.MAGIC, [card, useSkill])
+								ActionManager.emitDid(ActionManager.PlayerAction.MAGIC)
 							else:
 								print("Not cooldowned skill %d" % (useSkill + 1))
 						else:
@@ -80,11 +87,18 @@ func ai(delta: float):
 					elif fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
-			if Input.is_action_just_pressed("attack") && WorldManager.getCurrentTime() - lastAttackTime > attackTime && useStrength(attackCounter) && !emittedForNextAttack:
+			if (
+				Input.is_action_just_pressed("attack")
+				 && WorldManager.getCurrentTime() - lastAttackTime > attackTime
+				  && useStrength(attackCounter)
+				   && !emittedForNextAttack
+					&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
+			):
 				emittedForNextAttack = true
 				await animator.animation_finished
 				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
 				attackCounter += 1
+				ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 		States.MAGIC:
 			var currentState = fsm.currentState as States.MAGIC
 			for i in 3:
@@ -92,7 +106,7 @@ func ai(delta: float):
 				if currentState.currentCard && currentState.arguments[1] == i:
 					match currentState.currentCard.emitType:
 						SkillCard.EmitType.HOLD_RESTART:
-							if Input.is_action_pressed(skillInputId):
+							if Input.is_action_pressed(skillInputId) && ActionManager.canI(ActionManager.PlayerAction.MAGIC):
 								if !currentState.attacking && currentState.currentCard.cooldownTimer.start():
 									currentState.doAttack()
 							else:

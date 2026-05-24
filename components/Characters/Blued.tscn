@@ -95,7 +95,7 @@ tracks/6/keys = {
 "args": [],
 "method": &"alert"
 }, {
-"args": [],
+"args": ["敌人即将攻击，按下K进行格挡，规避伤害。", [1]],
 "method": &"tutorialFocus"
 }]
 }
@@ -146,6 +146,20 @@ tracks/2/keys = {
 "method": &"dart"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%texture/..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["敌人即将攻击，按下K进行格挡，规避伤害。", [1]],
+"method": &"tutorialFocus"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2aty5"]
 resource_name = "CONVERSED"
@@ -186,6 +200,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [3.09, -0.5009094953223724, 2.34223185617639, 2.34223185617639, 3.09]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%texture/..")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.1000001),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["敌人被震晕了！赶快近身连按J进行反击。", [0, 5, 2]],
+"method": &"tutorialFocus"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_v7sbe"]
@@ -348,6 +376,7 @@ rest = Transform2D(1, 0, 0, 1, 3, -157)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(61.000008, 20.000002)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, -0.45436627, 0.45436627, 0.89081466, 61.000008, 20.000002)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
@@ -360,6 +389,7 @@ length = 79.206
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-62.999992, 24)
 rotation = 3.09
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.9986515, 0.05191462, -0.05191462, -0.9986515, -62.999992, 24)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]

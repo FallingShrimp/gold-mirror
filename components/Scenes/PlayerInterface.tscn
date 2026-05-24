@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://ce5ljachmwsp8"]
 
+[ext_resource type="Script" uid="uid://ro3yggcjgoby" path="res://scripts/Utils/Managers/ActionManager.gd" id="1_2ykpt"]
 [ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/backgrounds/yuanshen.webp" id="1_i40r1"]
 [ext_resource type="Script" uid="uid://bfi2shf85pc5j" path="res://scripts/Statemachine/UI/PlayerInterface.gd" id="1_mxaxt"]
 [ext_resource type="PackedScene" uid="uid://qbxbo1b510ta" path="res://components/Boxes/PlayerState.tscn" id="2_mxaxt"]
@@ -247,9 +248,20 @@ content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
 bg_color = Color(1, 1, 1, 0.2)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
 
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
 process_mode = 3
+
+[node name="ActionManager" type="Node" parent="." unique_id=1017328394]
+script = ExtResource("1_2ykpt")
+metadata/_custom_type_script = "uid://ro3yggcjgoby"
 
 [node name="root" type="Control" parent="." unique_id=979726907]
 layout_mode = 3
@@ -364,20 +376,23 @@ unique_name_in_owner = true
 color = Color(0, 0, 0, 0.6)
 polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
 
-[node name="PanelContainer" type="PanelContainer" parent="root/focuser/mask" unique_id=651255892]
+[node name="tip" type="PanelContainer" parent="root/focuser" unique_id=651255892]
+unique_name_in_owner = true
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 620.0
-offset_top = 340.0
-offset_right = 660.0
-offset_bottom = 380.0
+offset_left = -118.5
+offset_top = -31.5
+offset_right = 118.5
+offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xi87")
 
-[node name="Label" type="Label" parent="root/focuser/mask/PanelContainer" unique_id=728304705]
+[node name="tipLabel" type="Label" parent="root/focuser/tip" unique_id=728304705]
+unique_name_in_owner = true
 layout_mode = 2
 text = "敌人即将攻击，按下K格挡。"
