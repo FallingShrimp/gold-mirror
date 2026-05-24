@@ -18,7 +18,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 
 @export var isBoss: bool = false
 @export var attackTime: float = 50.0
-@export var mass: float = 1
+@export var gravityScale: float = 1.0
 @export var movementSpeed: float = 1.0
 @export var maxStrength: float = 100
 @export var maxMagicLength: float = 100
@@ -91,7 +91,7 @@ func _physics_process(delta):
 		if position.distance_to(followingPosition) <= followingAutoExit:
 			unfollow()
 	else:
-		velocity += Vector2(0, GRAVITY * delta)
+		velocity += Vector2(0, GRAVITY * gravityScale * delta)
 		if frictable:
 			velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
 		move_and_slide()

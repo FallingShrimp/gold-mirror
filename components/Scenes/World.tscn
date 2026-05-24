@@ -8,10 +8,17 @@
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
 [ext_resource type="Script" uid="uid://3hs2lxoxhdgi" path="res://scripts/Statemachine/Triggers/BreakableWall.gd" id="7_5pkqg"]
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_lu72f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pkqg"]
+size = Vector2(14957, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tu2wq"]
+size = Vector2(411, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qt0"]
-size = Vector2(409, 61)
+size = Vector2(1268, 61)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pv5hy"]
+normal = Vector2(1, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5pkqg"]
 font_size = 25
@@ -20,6 +27,8 @@ outline_color = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pv5hy"]
 size = Vector2(509, 1494)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5pkqg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x3jtm"]
 size = Vector2(201, 967)
@@ -42,31 +51,37 @@ unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(-538, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="background2" type="Sprite2D" parent="." unique_id=2105149944]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(1956, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="background3" type="Sprite2D" parent="." unique_id=244782096]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(4467, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="background4" type="Sprite2D" parent="." unique_id=957681418]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(6964, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="background5" type="Sprite2D" parent="." unique_id=431879286]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(9458, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="background6" type="Sprite2D" parent="." unique_id=376210779]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(11969, -37)
 texture = ExtResource("2_lu72f")
+metadata/_edit_lock_ = true
 
 [node name="floor" type="StaticBody2D" parent="." unique_id=1697715685]
 position = Vector2(241, 271)
@@ -74,8 +89,8 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="hitbox" type="CollisionShape2D" parent="floor" unique_id=568404488]
-position = Vector2(171, -30)
-shape = SubResource("WorldBoundaryShape2D_lu72f")
+position = Vector2(5453.5, 4)
+shape = SubResource("RectangleShape2D_5pkqg")
 
 [node name="texture" type="ColorRect" parent="floor" unique_id=275736625]
 offset_left = -2026.0
@@ -90,7 +105,7 @@ collision_mask = 7
 
 [node name="hitbox" type="CollisionShape2D" parent="floor2" unique_id=795625581]
 position = Vector2(-221.5, 116.5)
-shape = SubResource("RectangleShape2D_y8qt0")
+shape = SubResource("RectangleShape2D_tu2wq")
 
 [node name="texture" type="ColorRect" parent="floor2" unique_id=1007722966]
 offset_left = -429.0
@@ -98,27 +113,51 @@ offset_top = 90.0
 offset_right = -15.0
 offset_bottom = 158.0
 
+[node name="floor3" type="StaticBody2D" parent="." unique_id=294894309]
+position = Vector2(-1862, 284)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor3" unique_id=1453811932]
+position = Vector2(-651, 116.5)
+shape = SubResource("RectangleShape2D_y8qt0")
+
+[node name="hitbox2" type="CollisionShape2D" parent="floor3" unique_id=429332095]
+position = Vector2(-1288, -6)
+shape = SubResource("WorldBoundaryShape2D_pv5hy")
+
+[node name="texture" type="ColorRect" parent="floor3" unique_id=1219158444]
+offset_left = -1286.0
+offset_top = 90.0
+offset_right = -15.0
+offset_bottom = 158.0
+
+[node name="texture2" type="ColorRect" parent="floor3" unique_id=80077713]
+offset_left = -1325.0
+offset_top = -604.0
+offset_right = -1294.0
+offset_bottom = 92.0
+
 [node name="tutorial" type="Label" parent="." unique_id=254397984]
 offset_left = -1683.0
-offset_top = -27.0
+offset_top = 56.0
 offset_right = -1511.0
-offset_bottom = 178.0
-text = "AD - 左右移动
-W - 跳
-J-J-J : 3段普通攻击
-J-J-长按J : 重击
-按住K - 格挡
-Shift - 闪避"
+offset_bottom = 261.0
+text = "J-J-J : 3段普通攻击
+按住K - 格挡"
 
 [node name="tutorial2" type="Label" parent="." unique_id=761341199]
-offset_left = -1219.0
+offset_left = -1468.0
 offset_top = 26.0
-offset_right = -664.0
+offset_right = -913.0
 offset_bottom = 309.0
-text = "在合适的时机按下格挡可振晕敌人，
-但不精准的格挡可能会振晕自己。
+text = "闪避无法穿过物理攻击，
+但在合适的时机按下格挡可振晕敌人，
+而不精准的格挡可能会振晕自己。
 
-闪避无法穿过物理攻击。"
+观察敌人血条右侧的黄色体力条，当敌人体力耗尽时会进入疲劳状态。
+完美格挡将会大量消耗敌人的体力，
+但不精准的格挡会消耗自身的体力。"
 
 [node name="tutorial3" type="Label" parent="." unique_id=772236376]
 offset_left = 603.0
@@ -139,27 +178,35 @@ offset_bottom = 295.0
 text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
 倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。
 
-数字1 - 湮灭射线
-数字2 - 魔法飞弹"
+按住数字1 - 湮灭射线
+点按数字2 - 魔法飞弹"
 
 [node name="tutorial5" type="Label" parent="." unique_id=995257104]
 offset_left = 2975.0
 offset_top = 12.0
 offset_right = 3530.0
 offset_bottom = 295.0
-text = "使用强力攻击即可打碎部分墙体。
-如重击、湮灭射线等。"
+text = "使用强力攻击即可打碎易碎墙体。
+
+J-J-长按J : 重击
+按住数字1：湮灭射线"
 
 [node name="tutorial6" type="Label" parent="." unique_id=604148281]
 offset_left = 2974.0
-offset_top = 70.0
+offset_top = 132.0
 offset_right = 3529.0
-offset_bottom = 353.0
+offset_bottom = 415.0
 text = "前方有强大敌人，做好准备。"
 label_settings = SubResource("LabelSettings_5pkqg")
 
-[node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
-position = Vector2(-1762, 14)
+[node name="tutorial7" type="Label" parent="." unique_id=1394653579]
+offset_left = -2971.0
+offset_top = 98.0
+offset_right = -2799.0
+offset_bottom = 303.0
+text = "AD - 左右移动
+W - 跳
+Shift - 闪避"
 
 [node name="trigger1" type="Area2D" parent="." unique_id=1264210951 node_paths=PackedStringArray("spawnPosition")]
 position = Vector2(-379, 24)
@@ -209,6 +256,16 @@ shape = SubResource("RectangleShape2D_pv5hy")
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
 position = Vector2(741, -234)
 
+[node name="triggerVoid" type="Area2D" parent="." unique_id=1662930693]
+position = Vector2(4178, 24)
+script = ExtResource("6_5pkqg")
+type = 1
+metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
+
+[node name="hitbox" type="CollisionShape2D" parent="triggerVoid" unique_id=1987613435]
+position = Vector2(-6352, 876)
+shape = SubResource("WorldBoundaryShape2D_5pkqg")
+
 [node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
 position = Vector2(3500, 0)
 script = ExtResource("7_5pkqg")
@@ -224,3 +281,7 @@ offset_top = -735.0
 offset_right = 14.0
 offset_bottom = 263.0
 color = Color(0.51753736, 0.31858617, 0, 1)
+
+[node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
+position = Vector2(-3079, 369)
+gravityScale = 1.0

@@ -2,7 +2,8 @@ extends Area2D
 class_name PlayerTriggerArea
 
 enum TriggerType {
-	SPAWN_ENEMY
+	SPAWN_ENEMY,
+	VOID_AREA
 }
 
 @export var type: TriggerType = TriggerType.SPAWN_ENEMY
@@ -18,7 +19,11 @@ func _ready():
 		func(body: Node2D):
 			if triggerOnce && trigged: return
 			if body is PlayerBase:
-				if type == TriggerType.SPAWN_ENEMY:
-					CharacterBase.create(spawnEnemy, spawnPosition.global_position, spawnDirection)
-					trigged = true
+				match type:
+					TriggerType.SPAWN_ENEMY:
+						CharacterBase.create(spawnEnemy, spawnPosition.global_position, spawnDirection)
+						trigged = true
+					TriggerType.VOID_AREA:
+						body.takeDamage(1145141919810)
+						body.velocity.y *= 0
 	)
