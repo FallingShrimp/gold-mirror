@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://cgvmo88taxqa8"]
+[gd_scene format=3 uid="uid://uupyoe35coad"]
 
 [ext_resource type="PackedScene" uid="uid://gmit1n7i3rvf" path="res://components/Abstracts/Characters/Humanoid.tscn" id="1_fwuin"]
 [ext_resource type="Texture2D" uid="uid://bjbypb3di3vwo" path="res://resources/characters/blued/textures/bone.png" id="2_gvjqm"]
-[ext_resource type="Script" uid="uid://cgn615oq4sx" path="res://scripts/Content/Characters/Blued.gd" id="2_onkpg"]
+[ext_resource type="Script" path="res://scripts/Content/Characters/Blued.gd" id="2_onkpg"]
 [ext_resource type="Texture2D" uid="uid://b8b6vj8a51e5i" path="res://resources/characters/blued/textures/weapon.png" id="3_1dcjs"]
 
 [sub_resource type="Animation" id="Animation_i4t83"]
@@ -123,7 +123,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1, 2, 9, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.47166082, -3.014183618194207, -0.9948376736367679, -0.9948376736367679, -0.47166082]
+"values": [-0.47166082, -3.014183618194207, -0.994837673636768, -0.994837673636768, -0.47166082]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -163,7 +163,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-1.01, 0.11170107212763669]
+"values": [-1.01, 0.11170107212763668]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -370,7 +370,8 @@ height = 328.0
 
 [node name="Blued" unique_id=948564138 instance=ExtResource("1_fwuin")]
 script = ExtResource("2_onkpg")
-maxStrength = 30.0
+maxStrength = 20.0
+maxHealth = 75.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.5912069, 0.5912069)
@@ -390,7 +391,6 @@ rest = Transform2D(1, 0, 0, 1, 3, -157)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(61.000008, 20.000002)
-scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, -0.45436627, 0.45436627, 0.89081466, 61.000008, 20.000002)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
