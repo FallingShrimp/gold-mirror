@@ -16,9 +16,9 @@ func ai(delta: float):
 				if !is_on_floor():
 					fsm.changeState(States.FALLING)
 				else:
-					if distanceToFocusing() < 100:
+					if distanceToFocusing() < 150:
 						fsm.changeState(States.WALK, [-targetDirection])
-					elif distanceToFocusing() > 250 || targetDirection != direction:
+					elif distanceToFocusing() > 300 || targetDirection != direction:
 						fsm.changeState(States.WALK, [targetDirection])
 					else:
 						fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
