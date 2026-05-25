@@ -11,14 +11,11 @@ static var instance: PlayerInterface = null
 @onready var entityName: Label = $%entityName
 @onready var focuser: Control = $%focuser
 @onready var mask: Polygon2D = $%mask
-@onready var tipBox: Control = $%tip
-@onready var tipLabel: Label = $%tipLabel
 
 func _ready():
 	instance = self
 	NodeUtil.clearChildren(bossbars)
 	mask.hide()
-	tipExit()
 
 func rebuildInfo():
 	var children = bossbars.get_children()
@@ -76,8 +73,3 @@ static func unfocus():
 	WorldManager.playerInstance.process_mode = Node.PROCESS_MODE_INHERIT
 	instance.mask.hide()
 	instance.mask.polygon = []
-static func tip(text: String):
-	instance.tipLabel.text = text
-	instance.tipBox.show()
-static func tipExit():
-	instance.tipBox.hide()

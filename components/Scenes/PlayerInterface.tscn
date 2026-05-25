@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dmyu2gf6odxlr" path="res://resources/sounds/machine-tick.wav" id="6_08moi"]
 [ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/UI/FlaggedAnimator.gd" id="7_nqy15"]
 [ext_resource type="Shader" uid="uid://cnmx41xks0jk7" path="res://shaders/DigAHole.gdshader" id="8_8xi87"]
+[ext_resource type="Script" uid="uid://djtqrkydkoy5i" path="res://scripts/Utils/Managers/StoryManager.gd" id="10_rsemd"]
 
 [sub_resource type="Animation" id="Animation_i40r1"]
 length = 0.001
@@ -247,7 +248,7 @@ content_margin_left = 20.0
 content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
-bg_color = Color(1, 1, 1, 0.2)
+bg_color = Color(0, 0, 0, 0.5)
 border_width_left = 10
 border_width_right = 10
 border_color = Color(1, 1, 1, 1)
@@ -376,14 +377,13 @@ unique_name_in_owner = true
 color = Color(0, 0, 0, 0.6)
 polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
 
-[node name="tip" type="PanelContainer" parent="root/focuser" unique_id=651255892]
-unique_name_in_owner = true
+[node name="StoryManager" type="PanelContainer" parent="root" unique_id=651255892]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 0.3
 anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_bottom = 0.3
 offset_left = -118.5
 offset_top = -31.5
 offset_right = 118.5
@@ -391,8 +391,9 @@ offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xi87")
+script = ExtResource("10_rsemd")
 
-[node name="tipLabel" type="Label" parent="root/focuser/tip" unique_id=728304705]
+[node name="text" type="Label" parent="root/StoryManager" unique_id=728304705]
 unique_name_in_owner = true
 layout_mode = 2
 text = "敌人即将攻击，按下K格挡。"

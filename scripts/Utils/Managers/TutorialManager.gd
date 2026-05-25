@@ -6,9 +6,9 @@ static func tutorialFocus(name: String, position: Vector2, text: String, allowAc
 	if focused.get(name, false): return
 	focused[name] = true
 	PlayerInterface.focusNode(WorldManager.rootNode.get_viewport_transform() * position, 300)
-	PlayerInterface.tip(text)
+	StoryManager.text(text, false)
 	ActionManager.justEnable(allowActions)
 	await ActionManager.instance.did
 	ActionManager.enableAll()
-	PlayerInterface.tipExit()
+	StoryManager.close()
 	PlayerInterface.unfocus()
