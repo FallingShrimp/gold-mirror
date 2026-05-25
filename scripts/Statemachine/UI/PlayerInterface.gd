@@ -53,9 +53,8 @@ static func showBossWarning(displayName: String = "BossName", loopTimes: int = 5
 	await instance.animator.animation_finished
 	WorldManager.sceneTree.paused = false
 static func focusNode(positiox: Vector2, radius: float, cornerDetails: int = 64):
-	for entity in WorldManager.sceneTree.get_nodes_in_group("enemy"):
-		if entity is EnemyBase:
-			entity.process_mode = Node.PROCESS_MODE_DISABLED
+	WorldManager.sceneTree.paused = true
+	WorldManager.playerInstance.process_mode = Node.PROCESS_MODE_ALWAYS
 	var polygon: Array[Vector2] = []
 	var center = positiox
 	var halfWidth = instance.focuser.size.x / 2.0
@@ -73,9 +72,8 @@ static func focusNode(positiox: Vector2, radius: float, cornerDetails: int = 64)
 	instance.mask.polygon = polygon
 	instance.mask.show()
 static func unfocus():
-	for entity in WorldManager.sceneTree.get_nodes_in_group("enemy"):
-		if entity is EnemyBase:
-			entity.process_mode = Node.PROCESS_MODE_INHERIT
+	WorldManager.sceneTree.paused = false
+	WorldManager.playerInstance.process_mode = Node.PROCESS_MODE_INHERIT
 	instance.mask.hide()
 	instance.mask.polygon = []
 static func tip(text: String):

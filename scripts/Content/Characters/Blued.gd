@@ -29,3 +29,35 @@ func createAttack(id: int) -> void:
 			BulletBase.create("BroomSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount > 25
+func focus1():
+	TutorialManager.tutorialFocus(
+		"parry1",
+		(getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2,
+		"敌人即将攻击，按下K进行格挡，规避伤害。",
+		[
+			ActionManager.PlayerAction.MOVE,
+			ActionManager.PlayerAction.PARRY
+		]
+	)
+func focus2():
+	TutorialManager.tutorialFocus(
+		"parry2",
+		(getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2,
+		"放轻松，我会为你暂停世界，继续按下K格挡。",
+		[
+			ActionManager.PlayerAction.MOVE,
+			ActionManager.PlayerAction.PARRY
+		]
+	)
+func focus3():
+	TutorialManager.tutorialFocus(
+		"attack1",
+		(getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2,
+		"敌人被震晕了！疲劳状态下的敌人将会获得易伤+50%，趁现在近身敌人进行反击。",
+		[
+			ActionManager.PlayerAction.MOVE,
+			ActionManager.PlayerAction.DASH,
+			ActionManager.PlayerAction.ATTACK,
+			ActionManager.PlayerAction.MAGIC
+		]
+	)

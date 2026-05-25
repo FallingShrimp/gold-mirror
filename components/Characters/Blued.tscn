@@ -95,8 +95,8 @@ tracks/6/keys = {
 "args": [],
 "method": &"alert"
 }, {
-"args": ["敌人即将攻击，按下K进行格挡，规避伤害。", [1]],
-"method": &"tutorialFocus"
+"args": [],
+"method": &"focus1"
 }]
 }
 
@@ -156,8 +156,8 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["敌人即将攻击，按下K进行格挡，规避伤害。", [1]],
-"method": &"tutorialFocus"
+"args": [],
+"method": &"focus2"
 }]
 }
 
@@ -211,8 +211,8 @@ tracks/3/keys = {
 "times": PackedFloat32Array(2.1000001),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["敌人被震晕了！赶快近身连按J进行反击。", [0, 5, 2]],
-"method": &"tutorialFocus"
+"args": [],
+"method": &"focus3"
 }]
 }
 

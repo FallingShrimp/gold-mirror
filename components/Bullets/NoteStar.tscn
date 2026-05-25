@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2ouek1spp4gn"]
 
 [ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_hvwjq"]
-[ext_resource type="Script" uid="uid://xybghc27ck06" path="res://scripts/Content/Bullets/Presets/Forward.gd" id="2_7dtxt"]
+[ext_resource type="Script" uid="uid://pd7qaal3gxfp" path="res://scripts/Content/Bullets/NoteStar.gd" id="2_7dtxt"]
 [ext_resource type="Texture2D" uid="uid://dqu35ilbvn026" path="res://resources/bullets/note-star/star.svg" id="2_d3n7i"]
 
 [sub_resource type="Curve" id="Curve_d3n7i"]
@@ -132,8 +132,7 @@ radius = 24.186773
 script = ExtResource("2_7dtxt")
 motionType = 4
 canParry = false
-lifetime = 2000.0
-speed = 1000.0
+lifetime = 3000.0
 destroyAnimation = &"destroy"
 
 [node name="textureSprite" parent="texture" parent_id_path=PackedInt32Array(556042530) index="0" unique_id=515101659]
