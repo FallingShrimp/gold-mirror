@@ -34,6 +34,25 @@ func _ready():
 	handleHoldon("attack")
 	installSkill(SkillCard.createCard("AnnihilationRay"))
 	installSkill(SkillCard.createCard("MagicMissle"))
+	await get_tree().process_frame
+	if StoryManager.playOnce("start"):
+		match await StoryManager.text(Characters.CreatorOrHacker, "你好，能听见吗？", [
+			"能听到。"
+		]):
+			0:
+				match await StoryManager.text(Characters.CreatorOrHacker, "好的，介绍一下你自己。", [
+					"我是由Hoohle公司研发的最新AI语言模型Hemini 11.45 Pro。",
+					"我的职责是清除该计算机中的所有恶意程序。",
+					"我不知道我是谁。"
+				]):
+					0, 1:
+						await StoryManager.text(Characters.CreatorOrHacker, "好的，继续前进吧，你的用户界面已被抽象为多模态格式，继续前进来查看你的系统权限。")
+						StoryManager.close()
+					2:
+						await StoryManager.text(Characters.CreatorOrHacker, "唉，看来%s的系统提示词又注入失败了。" % WorldManager.playerInstance.displayName)
+						await StoryManager.text(Characters.System, "[ - 正在销毁%s... ]" % WorldManager.playerInstance.displayName)
+						WorldManager.playerInstance.takeDamage(1145141919810)
+						StoryManager.close()
 func ai(delta: float):
 	super.ai(delta)
 	match fsm.stateIs():

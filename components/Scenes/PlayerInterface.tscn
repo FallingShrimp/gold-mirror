@@ -393,7 +393,15 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xi87")
 script = ExtResource("10_rsemd")
 
-[node name="text" type="Label" parent="root/StoryManager" unique_id=728304705]
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager" unique_id=445125888]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="text" type="Label" parent="root/StoryManager/wrapper" unique_id=728304705]
 unique_name_in_owner = true
 layout_mode = 2
 text = "敌人即将攻击，按下K格挡。"
+
+[node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=512762767]
+unique_name_in_owner = true
+layout_mode = 2
