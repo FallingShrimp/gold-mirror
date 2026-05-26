@@ -257,6 +257,10 @@ corner_radius_top_left = 15
 corner_radius_bottom_right = 15
 corner_detail = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_rsemd"]
+font_size = 10
+font_color = Color(0.5, 0.5, 0.5, 1)
+
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
 process_mode = 3
 
@@ -405,3 +409,10 @@ text = "敌人即将攻击，按下K格挡。"
 [node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=512762767]
 unique_name_in_owner = true
 layout_mode = 2
+
+[node name="tip" type="Label" parent="root/StoryManager/wrapper" unique_id=1412022063]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "按下W、J或空格继续..."
+label_settings = SubResource("LabelSettings_rsemd")

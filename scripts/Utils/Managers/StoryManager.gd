@@ -8,6 +8,7 @@ enum Character {
 }
 
 @onready var textLabel: Label = $%text
+@onready var textTip: Label = $%tip
 @onready var optionsBox: Control = $%options
 var canClick: bool = true
 
@@ -43,12 +44,14 @@ static func playOnce(id: String):
 		return true
 static func isPlayed(id: String) -> bool:
 	return id in played
-static func text(_character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true):
+static func text(_character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true) -> int:
+	ActionManager.justEnable([])
 	instance.show()
 	instance.canClick = false
 	instance.textLabel.text = texx
 	NodeUtil.clearChildren(instance.optionsBox)
 	if len(options) > 0:
+		instance.textTip.hide()
 		instance.optionsBox.show()
 		for i in len(options):
 			var optionBox = TalkOption.create()
@@ -56,9 +59,15 @@ static func text(_character: GDScript, texx: String, options: Array[String] = []
 			optionBox.apply(options[i], i)
 			await TimeUtil.millseconds(100)
 	else:
+		if canClicx:
+			instance.textTip.show()
+		else:
+			instance.textTip.hide()
 		instance.optionsBox.hide()
 	instance.canClick = canClicx
-	return await instance.clickHide
+	var result = await instance.clickHide
+	ActionManager.enableAll()
+	return result
 static func close():
 	instance.canClick = false
 	instance.hide()
