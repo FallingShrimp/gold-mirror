@@ -29,7 +29,7 @@ static func addBossBarFor(character: CharacterBase) -> Bossbar:
 	instance.bossbars.add_child(bossbar)
 	bossbar.initCharacter(character)
 	return bossbar
-static func showBossWarning(displayName: String = "BossName", loopTimes: int = 5):
+static func showBossWarning(displayName: String = "BossName", loopTimes: int = 3):
 	WorldManager.sceneTree.paused = true
 	instance.warningContainer.show()
 	instance.entityName.hide()
@@ -45,7 +45,7 @@ static func showBossWarning(displayName: String = "BossName", loopTimes: int = 5
 	instance.entityName.show()
 	instance.animator.play("bosswarningshow")
 	await instance.animator.animation_finished
-	await TimeUtil.millseconds(loopTimes * 500.0)
+	await TimeUtil.millseconds(3000)
 	instance.animator.play("bosswarninghide")
 	await instance.animator.animation_finished
 	WorldManager.sceneTree.paused = false

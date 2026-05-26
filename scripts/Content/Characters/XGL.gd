@@ -7,6 +7,11 @@ func _ready():
 			if fsm.currentState is States.ATTACK:
 				fsm.changeState(States.IDLE)
 	)
+	died.connect(
+		func():
+			if StoryManager.playOnce("xgl-die"):
+				StoryManager.text(Characters.XGL, "测试", [], false)
+	)
 func ai(delta: float):
 	super.ai(delta)
 	if is_instance_valid(focusingEntity) && focusingEntity is EntityBase:

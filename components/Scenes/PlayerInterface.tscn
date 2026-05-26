@@ -375,6 +375,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
 
 [node name="mask" type="Polygon2D" parent="root/focuser" unique_id=179126428]
 unique_name_in_owner = true
@@ -384,9 +385,9 @@ polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
 [node name="StoryManager" type="PanelContainer" parent="root" unique_id=651255892]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.5
+anchor_left = 0.4
 anchor_top = 0.3
-anchor_right = 0.5
+anchor_right = 0.6
 anchor_bottom = 0.3
 offset_left = -118.5
 offset_top = -31.5
@@ -403,12 +404,16 @@ theme_override_constants/separation = 15
 
 [node name="text" type="Label" parent="root/StoryManager/wrapper" unique_id=728304705]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "敌人即将攻击，按下K格挡。"
+text = "敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。"
+autowrap_mode = 3
 
 [node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=512762767]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 8
+alignment = 2
 
 [node name="tip" type="Label" parent="root/StoryManager/wrapper" unique_id=1412022063]
 unique_name_in_owner = true

@@ -5,6 +5,7 @@ var MAX_ATTACK_PERIOD = 3
 
 func _ready():
 	super._ready()
+	displayName = "Instance #%d" % randi_range(1111, 9999)
 	animator.animation_finished.connect(
 		func(_n):
 			match fsm.stateIs():
@@ -46,7 +47,7 @@ func _ready():
 					"我不知道我是谁。"
 				]):
 					0, 1:
-						await StoryManager.text(Characters.CreatorOrHacker, "好的，继续前进吧，你的用户界面已被抽象为多模态格式，继续前进来查看你的系统权限。")
+						await StoryManager.text(Characters.CreatorOrHacker, "好的，继续前进吧，你的系统界面已被抽象为多模态格式，继续前进来查看你的操作权限。")
 						StoryManager.close()
 					2:
 						await StoryManager.text(Characters.CreatorOrHacker, "唉，看来%s的系统提示词又注入失败了。" % WorldManager.playerInstance.displayName)
