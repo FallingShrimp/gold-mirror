@@ -37,7 +37,8 @@ func focus1():
 		[
 			ActionManager.PlayerAction.MOVE,
 			ActionManager.PlayerAction.PARRY
-		]
+		],
+		[ActionManager.PlayerAction.PARRY]
 	)
 func focus2():
 	TutorialManager.tutorialFocus(
@@ -47,7 +48,8 @@ func focus2():
 		[
 			ActionManager.PlayerAction.MOVE,
 			ActionManager.PlayerAction.PARRY
-		]
+		],
+		[ActionManager.PlayerAction.PARRY]
 	)
 func focus3():
 	TutorialManager.tutorialFocus(
@@ -59,5 +61,9 @@ func focus3():
 			ActionManager.PlayerAction.DASH,
 			ActionManager.PlayerAction.ATTACK,
 			ActionManager.PlayerAction.MAGIC
+		],
+		[
+			ActionManager.PlayerAction.ATTACK,
+			ActionManager.PlayerAction.MAGIC,
 		]
 	)
