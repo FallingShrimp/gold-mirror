@@ -33,7 +33,7 @@ func focus1():
 	TutorialManager.tutorialFocus(
 		"parry1",
 		(getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2,
-		"敌人即将攻击，按下K进行格挡，规避伤害。",
+		"敌人已经摆出了架势，按下K进行格挡，招架敌人的攻击，注意格挡的方向。",
 		[
 			ActionManager.PlayerAction.MOVE,
 			ActionManager.PlayerAction.PARRY

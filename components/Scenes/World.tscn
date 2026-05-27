@@ -269,6 +269,7 @@ shape = SubResource("WorldBoundaryShape2D_5pkqg")
 [node name="wall1" type="StaticBody2D" parent="." unique_id=656275594]
 position = Vector2(3500, 0)
 script = ExtResource("7_5pkqg")
+minDamage = 15.0
 metadata/_custom_type_script = "uid://3hs2lxoxhdgi"
 
 [node name="hitbox" type="CollisionShape2D" parent="wall1" unique_id=1015467087]

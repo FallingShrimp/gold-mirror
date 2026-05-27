@@ -4,7 +4,7 @@ class_name LaserBaseBullet
 @export var shakeIntensity: float = 100
 
 @onready var effect: LaserBase = $%effect
-var dotTimer: CooldownController = CooldownController.new(500)
+var dotTimer: CooldownController = CooldownController.new(250)
 
 func ai(delta: float):
 	if launcher is CharacterBase:

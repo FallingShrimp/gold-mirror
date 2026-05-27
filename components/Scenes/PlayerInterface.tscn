@@ -434,7 +434,14 @@ text = "SayerName"
 label_settings = SubResource("LabelSettings_fpxut")
 autowrap_mode = 3
 
-[node name="text" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=728304705]
+[node name="content" type="HBoxContainer" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=518416560]
+layout_mode = 2
+
+[node name="para" type="Control" parent="root/StoryManager/wrapper/wrapper2/wrapper/content" unique_id=1339047802]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="text" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper/content" unique_id=728304705]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2

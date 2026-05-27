@@ -13,4 +13,4 @@ class System extends StoryObject.StoryCharacter:
 		displayName = ""
 class XGL extends StoryObject.StoryCharacter:
 	func register():
-		displayName = "熊谷凌"
+		displayName = "你的老母"

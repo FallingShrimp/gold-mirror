@@ -10,7 +10,7 @@ func _ready():
 	died.connect(
 		func():
 			if StoryManager.playOnce("xgl-die"):
-				StoryManager.text(Characters.XGL, "测试", [], false)
+				StoryManager.text(Characters.XGL, "我还会回来的！！！", [], false)
 	)
 func ai(delta: float):
 	super.ai(delta)
