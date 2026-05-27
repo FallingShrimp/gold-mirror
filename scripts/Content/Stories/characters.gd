@@ -7,6 +7,7 @@ class GBot extends StoryObject.StoryCharacter:
 class CreatorOrHacker extends StoryObject.StoryCharacter:
 	func register():
 		displayName = "？？？"
+		avatar = load("res://resources/avatars/someone.png")
 class System extends StoryObject.StoryCharacter:
 	func register():
 		displayName = ""

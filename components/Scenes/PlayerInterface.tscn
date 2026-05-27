@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://cnmx41xks0jk7" path="res://shaders/DigAHole.gdshader" id="8_8xi87"]
 [ext_resource type="Script" uid="uid://djtqrkydkoy5i" path="res://scripts/Utils/Managers/StoryManager.gd" id="10_rsemd"]
 [ext_resource type="Texture2D" uid="uid://ibotowbt5lx3" path="res://icon.svg" id="11_fpxut"]
+[ext_resource type="Theme" uid="uid://jov4oqiexxq3" path="res://themes/main.tres" id="12_21viu"]
 
 [sub_resource type="Animation" id="Animation_i40r1"]
 length = 0.001
@@ -259,8 +260,11 @@ corner_radius_bottom_right = 15
 corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_fpxut"]
-font_size = 14
+font_size = 18
 outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_21viu"]
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_rsemd"]
 font_size = 10
@@ -281,6 +285,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mxaxt")
+metadata/_edit_group_ = true
 
 [node name="animator" type="AnimationPlayer" parent="root" unique_id=230790374]
 unique_name_in_owner = true
@@ -401,6 +406,7 @@ script = ExtResource("10_rsemd")
 
 [node name="wrapper" type="VBoxContainer" parent="root/StoryManager" unique_id=878333162]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="wrapper2" type="HBoxContainer" parent="root/StoryManager/wrapper" unique_id=1217567796]
 layout_mode = 2
@@ -435,23 +441,26 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "TalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkT"
+label_settings = SubResource("LabelSettings_21viu")
 autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="root/StoryManager/wrapper" unique_id=1226665785]
+layout_mode = 2
+theme = ExtResource("12_21viu")
 
 [node name="wrapper" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=445125888]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 15
+theme_override_constants/separation = 0
 
 [node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper/wrapper" unique_id=512762767]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-size_flags_horizontal = 8
-alignment = 2
+alignment = 1
 
 [node name="tip" type="Label" parent="root/StoryManager/wrapper/wrapper" unique_id=1412022063]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-text = "按下W、J或空格继续..."
+text = "按下F或E继续..."
 label_settings = SubResource("LabelSettings_rsemd")

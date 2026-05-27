@@ -30,7 +30,7 @@ func _process(_delta):
 					hide()
 					clickHide.emit(i)
 					break
-		elif Input.is_action_just_pressed("next_story"):
+		elif Input.is_action_just_pressed("interact"):
 			hide()
 			clickHide.emit(-1)
 
