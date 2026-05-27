@@ -3,10 +3,8 @@ class_name StoryManager
 
 signal clickHide(index: int)
 
-enum Character {
-	G_BOT
-}
-
+@onready var avatarTexture: TextureRect = $%avatar
+@onready var sayerLabel: Label = $%sayer
 @onready var textLabel: Label = $%text
 @onready var textTip: Label = $%tip
 @onready var optionsBox: Control = $%options
@@ -44,8 +42,20 @@ static func playOnce(id: String):
 		return true
 static func isPlayed(id: String) -> bool:
 	return id in played
-static func text(_character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true) -> int:
+static func text(character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true) -> int:
 	ActionManager.justEnable([])
+	var characterInstance = character.new()
+	if characterInstance is StoryObject.StoryCharacter:
+		if characterInstance.avatar:
+			instance.avatarTexture.texture = characterInstance.avatar
+			instance.avatarTexture.show()
+		else:
+			instance.avatarTexture.hide()
+		if characterInstance.displayName:
+			instance.sayerLabel.text = characterInstance.displayName
+			instance.sayerLabel.show()
+		else:
+			instance.sayerLabel.hide()
 	instance.show()
 	instance.canClick = false
 	instance.textLabel.text = texx

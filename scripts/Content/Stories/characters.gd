@@ -3,16 +3,13 @@ class_name Characters
 class GBot extends StoryObject.StoryCharacter:
 	func register():
 		displayName = "G-Bot"
-		type = StoryManager.Character.G_BOT
+		avatar = load("res://resources/avatars/gbot.svg")
 class CreatorOrHacker extends StoryObject.StoryCharacter:
 	func register():
-		displayName = "G-Bot"
-		type = StoryManager.Character.G_BOT
+		displayName = "？？？"
 class System extends StoryObject.StoryCharacter:
 	func register():
-		displayName = "G-Bot"
-		type = StoryManager.Character.G_BOT
+		displayName = ""
 class XGL extends StoryObject.StoryCharacter:
 	func register():
-		displayName = "G-Bot"
-		type = StoryManager.Character.G_BOT
+		displayName = "熊谷凌"

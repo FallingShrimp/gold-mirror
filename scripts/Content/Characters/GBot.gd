@@ -43,7 +43,7 @@ func _ready():
 			0:
 				match await StoryManager.text(Characters.CreatorOrHacker, "好的，介绍一下你自己。", [
 					"我是由Hoohle公司研发的最新AI语言模型Hemini 11.45 Pro。",
-					"我的职责是清除该计算机中的所有恶意程序。",
+					"我的名字是G-Bot，我的职责是清除该计算机中的所有恶意程序。",
 					"我不知道我是谁。"
 				]):
 					0, 1:

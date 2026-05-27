@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/UI/FlaggedAnimator.gd" id="7_nqy15"]
 [ext_resource type="Shader" uid="uid://cnmx41xks0jk7" path="res://shaders/DigAHole.gdshader" id="8_8xi87"]
 [ext_resource type="Script" uid="uid://djtqrkydkoy5i" path="res://scripts/Utils/Managers/StoryManager.gd" id="10_rsemd"]
+[ext_resource type="Texture2D" uid="uid://ibotowbt5lx3" path="res://icon.svg" id="11_fpxut"]
 
 [sub_resource type="Animation" id="Animation_i40r1"]
 length = 0.001
@@ -257,6 +258,10 @@ corner_radius_top_left = 15
 corner_radius_bottom_right = 15
 corner_detail = 1
 
+[sub_resource type="LabelSettings" id="LabelSettings_fpxut"]
+font_size = 14
+outline_size = 1
+
 [sub_resource type="LabelSettings" id="LabelSettings_rsemd"]
 font_size = 10
 font_color = Color(0.5, 0.5, 0.5, 1)
@@ -389,33 +394,62 @@ anchor_left = 0.4
 anchor_top = 0.3
 anchor_right = 0.6
 anchor_bottom = 0.3
-offset_left = -118.5
-offset_top = -31.5
-offset_right = 118.5
-offset_bottom = 31.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_8xi87")
 script = ExtResource("10_rsemd")
 
-[node name="wrapper" type="VBoxContainer" parent="root/StoryManager" unique_id=445125888]
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager" unique_id=878333162]
+layout_mode = 2
+
+[node name="wrapper2" type="HBoxContainer" parent="root/StoryManager/wrapper" unique_id=1217567796]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="text" type="Label" parent="root/StoryManager/wrapper" unique_id=728304705]
+[node name="avatar" type="TextureRect" parent="root/StoryManager/wrapper/wrapper2" unique_id=216589132]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("11_fpxut")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager/wrapper/wrapper2" unique_id=1230649923]
+layout_mode = 2
+
+[node name="sayer" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=2076664318]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
-text = "敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。敌人即将攻击，按下K格挡。"
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "SayerName"
+label_settings = SubResource("LabelSettings_fpxut")
 autowrap_mode = 3
 
-[node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=512762767]
+[node name="text" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=728304705]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "TalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkT"
+autowrap_mode = 3
+
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=445125888]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 15
+
+[node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper/wrapper" unique_id=512762767]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 alignment = 2
 
-[node name="tip" type="Label" parent="root/StoryManager/wrapper" unique_id=1412022063]
+[node name="tip" type="Label" parent="root/StoryManager/wrapper/wrapper" unique_id=1412022063]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
