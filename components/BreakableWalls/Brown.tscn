@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bwsco56hipmjf"]
+
+[ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_y2wre"]
+[ext_resource type="Script" uid="uid://d1mnrrvlq2e76" path="res://scripts/Statemachine/Abstracts/WallBase.gd" id="2_x4anv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y2wre"]
+size = Vector2(40, 500)
+
+[node name="Brown" unique_id=63274235 instance=ExtResource("1_y2wre")]
+script = ExtResource("2_x4anv")
+maxHealth = 500.0
+
+[node name="ColorRect" type="ColorRect" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=486670367]
+offset_left = -20.0
+offset_top = -250.0
+offset_right = 20.0
+offset_bottom = 250.0
+color = Color(0.48027045, 0.24655038, 0, 1)
+
+[node name="movebox" parent="." index="1" unique_id=1108104038]
+shape = SubResource("RectangleShape2D_y2wre")
+
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
+shape = SubResource("RectangleShape2D_y2wre")

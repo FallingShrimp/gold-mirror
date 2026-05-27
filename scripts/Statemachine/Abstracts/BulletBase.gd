@@ -38,7 +38,6 @@ func _ready():
 	register()
 	add_to_group("bullet")
 	area_entered.connect(handleCollisionArea)
-	body_entered.connect(handleCollisionBody)
 	if spawnSound:
 		sounds.play(spawnSound)
 	if spawnAnimation:
@@ -126,10 +125,6 @@ func handleCollisionArea(node: CollisionObject2D):
 			hitEntity.emit(entity)
 			if !penetrate:
 				publicDestroy()
-func handleCollisionBody(body: Node2D):
-	if body is BreakableWall:
-		if ContentUtil.canDamageWall(self , body):
-			body.handleBroke(self )
 
 static func create(namx: String, positiox: Vector2, rotatiox: float, launchex: EntityBase) -> Array[BulletBase]:
 	var instance = load("res://components/Bullets/%s.tscn" % namx).instantiate() as BulletBase

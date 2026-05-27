@@ -20,11 +20,6 @@ static func findClosetEntity(to: Vector2, validator: Callable = func(_e: EntityB
 				lastDistance = currentDistance
 	return result
 
-static func canDamageWall(bullet: BulletBase, wall: BreakableWall) -> bool:
-	if !is_instance_valid(bullet) || !is_instance_valid(wall): return false
-	if !is_instance_valid(bullet.launcher): return false
-	if bullet.launcher.isPlayer() == wall.isPlayer: return false
-	return true
 static func canDamageEntity(bullet: BulletBase, entity: EntityBase) -> bool:
 	if !is_instance_valid(bullet) || !is_instance_valid(entity): return false
 	if !is_instance_valid(bullet.launcher): return false

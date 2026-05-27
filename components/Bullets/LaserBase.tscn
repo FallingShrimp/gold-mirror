@@ -118,7 +118,7 @@ libraries/ = SubResource("AnimationLibrary_xrnfc")
 
 [node name="effect" parent="texture" index="2" unique_id=685466674 instance=ExtResource("2_nvb0p")]
 unique_name_in_owner = true
-maxLength = 4000.0
+maxLength = 10000.0
 penetrate = false
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]
