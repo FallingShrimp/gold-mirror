@@ -45,7 +45,7 @@ emission_box_extents = Vector3(1, 40, 1)
 spread = 40.0
 initial_velocity_min = 100.0
 initial_velocity_max = 1000.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, 980, 0)
 damping_min = 1000.00006
 damping_max = 2000.0001
 damping_curve = SubResource("CurveTexture_webv5")
@@ -677,6 +677,7 @@ height = 264.0
 script = ExtResource("2_sowdv")
 showBossWarning = true
 isBoss = true
+gravityScale = 1.0
 movementSpeed = 2.0
 displayName = "你的老母"
 maxHealth = 1000.0
@@ -711,19 +712,19 @@ length = 56.075
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-26, 11)
-rotation = 2.995
+rotation = 2.57
 rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(34.56015, -32.040535)
-rotation = -1.345
+rotation = -1.57
 scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.00047107134, -0.9999998, 0.9999998, 0.00047107134, 34.56015, -32.040535)
 length = 258.29
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(30.594189, 24.515202)
-rotation = 0.9650001
+rotation = -0.63
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8062232, -0.59161115, 0.59161115, 0.8062232, 30.594189, 24.515202)
 length = 118.612
@@ -756,8 +757,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.1826143
-scale = Vector2(0.9999992, 0.9999992)
+rotation = 0.18261433
+scale = Vector2(0.9999991, 0.9999991)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 

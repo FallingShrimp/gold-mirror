@@ -15,6 +15,7 @@ func spawn():
 	particles.process_material = particles.process_material.duplicate()
 	particleMaterial = particles.process_material
 	applyLength()
+	particles.amount = round(currentLength * 0.2)
 func ai(_delta: float):
 	applyLength()
 

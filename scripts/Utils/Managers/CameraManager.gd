@@ -10,6 +10,7 @@ var shakeIntensity: float = 0
 var shaking: bool = false
 var extremingNode: Node2D = null
 var extreming: bool = false
+var extremingOffset: float = 1
 
 static var instance: CameraManager = null
   
@@ -18,7 +19,7 @@ func _ready():
 func _physics_process(delta):
 	if extreming:
 		if is_instance_valid(extremingNode):
-			position = extremingNode.global_position + constantOffset
+			position = extremingNode.global_position + constantOffset * extremingOffset
 			position += MathUtil.sampleInCircle(shakeIntensity)
 		else:
 			extremeStop()
@@ -45,6 +46,10 @@ static func extreme(something: Node2D):
 static func extremeStop():
 	instance.extreming = false
 	instance.extremingNode = null
+static func autoExtreme(something: Node2D, millseconds: float):
+	extreme(something)
+	await TimeUtil.millseconds(millseconds)
+	extremeStop()
 
 static func playAnimation(animation: String):
 	instance.animator.play(animation)
