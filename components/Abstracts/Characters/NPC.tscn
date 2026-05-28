@@ -7,6 +7,10 @@
 radius = 37.0
 height = 212.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uc8g8"]
+radius = 7.0
+height = 50.0
+
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_r7c41")]
 gravityScale = 1.0
 
@@ -34,7 +38,9 @@ position = Vector2(0, -103)
 shape = SubResource("CapsuleShape2D_ufyho")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
-position = Vector2(0, -97)
+position = Vector2(13, -97)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_uc8g8")
 
 [node name="stateBar" parent="." index="3" unique_id=2012763349]
 visible = false
