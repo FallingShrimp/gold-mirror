@@ -5,28 +5,6 @@
 
 [sub_resource type="Animation" id="Animation_lo4os"]
 length = 0.001
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("circle/core:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("circle:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_wem6g"]
 resource_name = "loop"
@@ -63,7 +41,7 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_wem6g"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_lc0f8"]
@@ -83,7 +61,7 @@ colors = PackedColorArray(1, 0, 0, 1, 0.5, 0, 0, 1)
 gradient = SubResource("Gradient_wem6g")
 
 [sub_resource type="Curve" id="Curve_1w5nr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.2, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_jpftc"]
@@ -104,6 +82,7 @@ color_initial_ramp = SubResource("GradientTexture1D_lc0f8")
 alpha_curve = SubResource("CurveTexture_lc0f8")
 
 [node name="Savepoint" type="Node2D" unique_id=1054150875]
+scale = Vector2(0.5, 0.5)
 
 [node name="animator" type="AnimationPlayer" parent="." unique_id=936113700]
 libraries/ = SubResource("AnimationLibrary_lc0f8")
@@ -115,6 +94,7 @@ color = Color(0.2, 0.2, 0.2, 1)
 polygon = PackedVector2Array(-60, 60, 60, 60, 120, -15, 30, 30, -30, 30, -120, -15)
 
 [node name="circle" type="Polygon2D" parent="." unique_id=1871315694]
+position = Vector2(0, -180)
 polygon = PackedVector2Array(130, 0, 65.00327, 112.58141, -64.993454, 112.58708, -130, 0.011332591, -65.013084, -112.575745, 64.98361, -112.59276, 130, -0.022665182, 115, 0, 57.50289, -99.59125, -57.494213, -99.59627, -115, -0.010024984, -57.511578, 99.586235, 57.485508, 99.60129, 115, 0.020049969)
 script = ExtResource("1_lo4os")
 cornerDetails = 6
@@ -149,7 +129,8 @@ polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
 [node name="text" type="GPUParticles2D" parent="." unique_id=1420226831]
 position = Vector2(0, -176.53963)
 scale = Vector2(1.0000001, 1.0000001)
-amount = 30
+amount = 20
 texture = ExtResource("2_wem6g")
 lifetime = 2.5
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_1w5nr")

@@ -6,7 +6,7 @@ class_name RingPolygon
 @export var outerRadius: float = 100
 @export var innerRadius: float = 50
 
-func _process(_delta):
+func _ready():
 	polygon = getPolygon()
 
 func createCircle(radius: float, direction: int) -> Array[Vector2]:
