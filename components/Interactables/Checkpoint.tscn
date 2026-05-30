@@ -149,3 +149,6 @@ shape = SubResource("RectangleShape2D_tqa34")
 
 [node name="keys" parent="." index="2" unique_id=3039827]
 position = Vector2(0, -205)
+
+[node name="keysBtn" parent="keys/anchor" parent_id_path=PackedInt32Array(985648007) index="0" unique_id=206390935]
+complement = "RSA终端"

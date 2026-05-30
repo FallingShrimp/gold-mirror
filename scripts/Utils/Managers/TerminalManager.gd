@@ -18,6 +18,10 @@ func _physics_process(_delta):
 
 static func showPanel():
 	WorldManager.sceneTree.paused = true
+	instance.formatter.setData("gameProgress", GameBusManager.gameProgress)
+	instance.formatter.setData("healthPercent", WorldManager.playerInstance.getHealthPercent())
+	instance.formatter.setData("maxHealth", WorldManager.playerInstance.maxHealth)
+	instance.formatter.setData("strengthPercent", 1 - WorldManager.playerInstance.getStrengthPercent())
 	instance.terminalEdit.text = instance.formatter.getOutput()
 	PlayerInterface.instance.animator.play("terminalshow")
 	await PlayerInterface.instance.animator.animation_finished

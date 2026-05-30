@@ -145,6 +145,8 @@ func storeStrength(amount: float, justChanged: bool = false):
 		strengthChanged.emit(currentStrength)
 	else:
 		strengthIncreased.emit(amount)
+func getStrengthPercent():
+	return currentStrength / maxStrength
 func useMagic(delta: Vector2):
 	currentMagic = (currentMagic - delta).limit_length(maxMagicLength)
 	magicChanged.emit(currentMagic)

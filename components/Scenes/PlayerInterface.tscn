@@ -678,7 +678,7 @@ script = ExtResource("15_ps8fa")
 template = "Welcome to HoohleSim 11.45 LTS (GNU/Hinox 3.1.0 x86_64)
 
   System load:  $gameProgress$
-  Usage of /:  $healthPercent$ of $maxHealth$
+  Usage of /:  $healthPercent$ of $maxHealth$GB
   Memory usage:  $strengthPercent$
 
 Last login: Sat May 30 19:00:00 2026 from 192.168.1.1
