@@ -21,6 +21,9 @@ corner_radius_bottom_left = 1000
 
 [sub_resource type="LabelSettings" id="LabelSettings_1xaeb"]
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_1xaeb"]
+color = Color(1, 1, 1, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_sgnje"]
 font_size = 13
 font_color = Color(0.7, 0.7, 0.7, 1)
@@ -41,9 +44,13 @@ label_settings = SubResource("LabelSettings_1xaeb")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="sep" type="HSeparator" parent="wrapper" unique_id=377168160]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_1xaeb")
+
 [node name="complement" type="Label" parent="wrapper" unique_id=306472857]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 text = "格挡"
 label_settings = SubResource("LabelSettings_sgnje")

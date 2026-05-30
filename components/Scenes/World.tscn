@@ -37,6 +37,10 @@ script = ExtResource("1_sbdvw")
 
 [node name="player" parent="." unique_id=1885772131 instance=ExtResource("6_y8qt0")]
 
+[node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
+z_index = 1
+position = Vector2(-3079, 369)
+
 [node name="camera" type="Camera2D" parent="." unique_id=2047599218]
 process_callback = 0
 position_smoothing_enabled = true
@@ -249,9 +253,6 @@ position = Vector2(-2528, 373)
 
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
 position = Vector2(3438, 0)
-
-[node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
-position = Vector2(-3079, 369)
 
 [node name="a1" parent="." unique_id=992497559 instance=ExtResource("9_x3jtm")]
 offset_left = -1729.0

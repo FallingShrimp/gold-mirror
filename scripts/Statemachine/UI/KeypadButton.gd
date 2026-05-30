@@ -7,6 +7,7 @@ class_name KeypadButton
 @export_tool_button("重建") var refresh = rebuildInfo
 
 @onready var textLabel: Label = $%text
+@onready var sep: Control = $%sep
 @onready var complementLabel: Label = $%complement
 
 func _ready():
@@ -16,8 +17,10 @@ func rebuildInfo():
 	textLabel.text = " / ".join(keys)
 	if complement:
 		complementLabel.text = complement
+		sep.show()
 		complementLabel.show()
 	else:
+		sep.hide()
 		complementLabel.hide()
 
 static func create(keyx: Array[String] = []):
