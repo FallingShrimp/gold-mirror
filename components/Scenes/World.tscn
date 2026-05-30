@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/backgrounds/yuanshen.webp" id="2_lu72f"]
 [ext_resource type="Script" uid="uid://cadoijncfda6r" path="res://scripts/Utils/Managers/CameraManager.gd" id="4_6km7c"]
 [ext_resource type="Script" uid="uid://cbdhox7s4vfeh" path="res://scripts/Statemachine/Triggers/PlayerTriggerArea.gd" id="6_5pkqg"]
-[ext_resource type="PackedScene" uid="uid://cxqwac0s1gjmr" path="res://components/CommonObjects/Savepoint.tscn" id="6_pv5hy"]
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
 [ext_resource type="PackedScene" uid="uid://bwsco56hipmjf" path="res://components/BreakableWalls/Brown.tscn" id="7_5pkqg"]
+[ext_resource type="PackedScene" uid="uid://u58q3unthwop" path="res://components/Interactables/Checkpoint.tscn" id="8_pv5hy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pkqg"]
 size = Vector2(14957, 66)
@@ -264,11 +264,11 @@ metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 position = Vector2(-6352, 876)
 shape = SubResource("WorldBoundaryShape2D_5pkqg")
 
-[node name="save1" parent="." unique_id=1054150875 instance=ExtResource("6_pv5hy")]
-position = Vector2(2774, 239)
-
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
 position = Vector2(3438, 0)
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-3079, 369)
+
+[node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
+position = Vector2(2719, 245)

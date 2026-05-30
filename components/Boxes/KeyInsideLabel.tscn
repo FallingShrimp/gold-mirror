@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cghgso20lrlhn"]
+
+[ext_resource type="Script" uid="uid://bf83tcgfmnne2" path="res://scripts/Statemachine/UI/KeyInsideLabel.gd" id="1_8kpwc"]
+
+[node name="KeyInsideLabel" type="HBoxContainer" unique_id=992497559]
+alignment = 1
+script = ExtResource("1_8kpwc")
+text = "按下[parry]时触发动作"

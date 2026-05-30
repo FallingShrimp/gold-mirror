@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bqhfk57jev48v"]
+
+[ext_resource type="Script" uid="uid://cmhlyhw3j7yq3" path="res://scripts/Statemachine/UI/KeypadButton.gd" id="1_1xaeb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xaeb"]
+content_margin_left = 7.0
+content_margin_top = 2.0
+content_margin_right = 7.0
+content_margin_bottom = 2.0
+bg_color = Color(0, 0, 0, 0.6)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 1000
+corner_radius_top_right = 1000
+corner_radius_bottom_right = 1000
+corner_radius_bottom_left = 1000
+
+[sub_resource type="LabelSettings" id="LabelSettings_1xaeb"]
+font_size = 13
+
+[node name="KeypadButton" type="PanelContainer" unique_id=206390935]
+theme_override_styles/panel = SubResource("StyleBoxFlat_1xaeb")
+script = ExtResource("1_1xaeb")
+keys = Array[String](["K"])
+
+[node name="text" type="Label" parent="." unique_id=2144092014]
+unique_name_in_owner = true
+layout_mode = 2
+text = "K"
+label_settings = SubResource("LabelSettings_1xaeb")
