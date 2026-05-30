@@ -6,7 +6,8 @@ enum DataType {
 	FLOAT,
 	PERCENT,
 	ANGLE,
-	FREQUENCY
+	FREQUENCY,
+	MEMORY
 }
 
 @export_multiline var template: String = ""
@@ -31,6 +32,8 @@ func buildData(type: DataType, value: float) -> String:
 			return "%.1f°" % value
 		DataType.FREQUENCY:
 			return "%dHz" % value
+		DataType.MEMORY:
+			return "%dGB" % value
 		_:
 			return ""
 func getOutput() -> String:
