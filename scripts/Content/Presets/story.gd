@@ -15,5 +15,5 @@ static func fallIntoVoid():
 			await StoryManager.text(Characters.CreatorOrHacker, "再给你一次机会！", [], true, true)
 			WorldManager.playerInstance.position += Vector2(-200, -400)
 		_:
-			await StoryManager.text(Characters.CreatorOrHacker, "真是无可救药。", [], true, true)
+			await StoryManager.text(Characters.CreatorOrHacker, "真是无可救药，我不想管了。", [], true, true)
 			WorldManager.playerInstance.takeDamage(1145141919810)
