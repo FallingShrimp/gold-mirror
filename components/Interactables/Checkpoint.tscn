@@ -31,7 +31,7 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "handle_modes": PackedInt32Array(2, 0),
-"points": PackedFloat32Array(-180, 0, 0, 1, 20, -180, -1, -20, 0, 0),
+"points": PackedFloat32Array(-180, 0, 0, 1, 40, -180, -1, -40, 0, 0),
 "times": PackedFloat32Array(0, 2)
 }
 
@@ -88,7 +88,7 @@ size = Vector2(260, 140)
 [node name="Checkpoint" unique_id=319335013 instance=ExtResource("1_3byaa")]
 
 [node name="texture" parent="." index="0" unique_id=643970963]
-scale = Vector2(0.4683365, 0.4683365)
+scale = Vector2(0.6, 0.6)
 
 [node name="animator" parent="texture" index="1" unique_id=2020851420]
 libraries/ = SubResource("AnimationLibrary_tqa34")
@@ -100,7 +100,7 @@ color = Color(0.2, 0.2, 0.2, 1)
 polygon = PackedVector2Array(-60, 60, 60, 60, 120, -15, 30, 30, -30, 30, -120, -15)
 
 [node name="circle" type="Polygon2D" parent="texture" index="3" unique_id=664721359]
-position = Vector2(0, -174.98918)
+position = Vector2(0, -171.24608)
 polygon = PackedVector2Array(130, 0, 65.00327, 112.58141, -64.993454, 112.58708, -130, 0.011332591, -65.013084, -112.575745, 64.98361, -112.59276, 130, -0.022665182, 115, 0, 57.50289, -99.59125, -57.494213, -99.59627, -115, -0.010024984, -57.511578, 99.586235, 57.485508, 99.60129, 115, 0.020049969)
 script = ExtResource("2_tqa34")
 cornerDetails = 6
@@ -108,7 +108,7 @@ outerRadius = 130.0
 innerRadius = 115.0
 
 [node name="core" type="Polygon2D" parent="texture/circle" index="0" unique_id=1095262286]
-rotation = 2.7774692
+rotation = 1.4187903
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(90, 0, 0.00392282, 90, -90, 0.00784564, -0.011800647, -90, 90, -0.01569128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 script = ExtResource("2_tqa34")
