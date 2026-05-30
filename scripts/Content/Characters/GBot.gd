@@ -5,7 +5,6 @@ var MAX_ATTACK_PERIOD = 3
 
 func _ready():
 	super._ready()
-	displayName = "Instance #%d" % randi_range(1111, 9999)
 	animator.animation_finished.connect(
 		func(_n):
 			match fsm.stateIs():

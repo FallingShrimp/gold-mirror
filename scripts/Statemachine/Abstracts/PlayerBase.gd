@@ -3,9 +3,12 @@ class_name PlayerBase
 
 var inputHoldStart: Dictionary[String, float] = {}
 var skills: Array[SkillCard] = []
+var instanceId: int
 
 func _ready():
 	super._ready()
+	instanceId = randi_range(1234, 9876)
+	displayName = "Instance #%d" % instanceId
 	add_to_group("player")
 	LayerUtil.config(self , [LayerUtil.Layers.PLAYER], [LayerUtil.Layers.WALL])
 	WorldManager.playerInstance = self
