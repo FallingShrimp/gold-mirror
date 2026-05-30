@@ -2,7 +2,7 @@
 extends HBoxContainer
 class_name KeyInsideLabel
 
-@export var text: String = "按下[action]时触发动作"
+@export_multiline var text: String = "按下[action]时触发动作"
 @export_tool_button("重建") var rebuildBtn = rebuild
 
 func _ready():

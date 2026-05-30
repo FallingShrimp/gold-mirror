@@ -11,7 +11,7 @@ signal clickHide(index: int)
 var canClick: bool = true
 
 static var instance: StoryManager
-static var played: Array[String] = []
+static var playedCount: Dictionary[String, int] = {}
 
 func _ready():
 	instance = self
@@ -38,11 +38,19 @@ static func playOnce(id: String):
 	if isPlayed(id):
 		return false
 	else:
-		played.append(id)
+		if id not in playedCount:
+			playedCount[id] = 0
+		playedCount[id] += 1
 		return true
+static func playTimes(id: String) -> int:
+	var current = playedCount.get(id, 0)
+	playedCount[id] = current + 1
+	return current
 static func isPlayed(id: String) -> bool:
-	return id in played
-static func text(character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true) -> int:
+	return playTimes(id) > 0
+static func text(character: GDScript, texx: String, options: Array[String] = [], canClicx: bool = true, pause: bool = false) -> int:
+	if pause:
+		WorldManager.sceneTree.paused = true
 	ActionManager.justEnable([])
 	var characterInstance = character.new()
 	if characterInstance is StoryObject.StoryCharacter:
@@ -77,6 +85,8 @@ static func text(character: GDScript, texx: String, options: Array[String] = [],
 	instance.canClick = canClicx
 	var result = await instance.clickHide
 	ActionManager.enableAll()
+	if pause:
+		WorldManager.sceneTree.paused = false
 	return result
 static func close():
 	instance.canClick = false

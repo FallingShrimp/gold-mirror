@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ce5ljachmwsp8" path="res://components/Scenes/PlayerInterface.tscn" id="6_y8qt0"]
 [ext_resource type="PackedScene" uid="uid://bwsco56hipmjf" path="res://components/BreakableWalls/Brown.tscn" id="7_5pkqg"]
 [ext_resource type="PackedScene" uid="uid://u58q3unthwop" path="res://components/Interactables/Checkpoint.tscn" id="8_pv5hy"]
+[ext_resource type="PackedScene" uid="uid://cghgso20lrlhn" path="res://components/Boxes/KeyInsideLabel.tscn" id="9_x3jtm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5pkqg"]
 size = Vector2(14957, 66)
@@ -16,7 +17,7 @@ size = Vector2(14957, 66)
 size = Vector2(411, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y8qt0"]
-size = Vector2(1268, 61)
+size = Vector2(1195, 61)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_pv5hy"]
 normal = Vector2(1, 0)
@@ -117,7 +118,7 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="hitbox" type="CollisionShape2D" parent="floor3" unique_id=1453811932]
-position = Vector2(-651, 116.5)
+position = Vector2(-687.5, 116.5)
 shape = SubResource("RectangleShape2D_y8qt0")
 
 [node name="hitbox2" type="CollisionShape2D" parent="floor3" unique_id=429332095]
@@ -127,7 +128,7 @@ shape = SubResource("WorldBoundaryShape2D_pv5hy")
 [node name="texture" type="ColorRect" parent="floor3" unique_id=1219158444]
 offset_left = -1286.0
 offset_top = 90.0
-offset_right = -15.0
+offset_right = -87.0
 offset_bottom = 158.0
 
 [node name="texture2" type="ColorRect" parent="floor3" unique_id=80077713]
@@ -135,14 +136,6 @@ offset_left = -1325.0
 offset_top = -604.0
 offset_right = -1294.0
 offset_bottom = 92.0
-
-[node name="tutorial" type="Label" parent="." unique_id=254397984]
-offset_left = -1683.0
-offset_top = 56.0
-offset_right = -1511.0
-offset_bottom = 261.0
-text = "J-J-J : 3段普通攻击
-按住K - 格挡"
 
 [node name="tutorial2" type="Label" parent="." unique_id=761341199]
 offset_left = -1468.0
@@ -174,20 +167,14 @@ offset_top = 12.0
 offset_right = 2511.0
 offset_bottom = 295.0
 text = "魔法技能需要消耗法力，观察界面左下角的阴阳轮盘，指针指向当前法力储量。
-倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。
-
-按住数字1 - 湮灭射线
-点按数字2 - 魔法飞弹"
+倘若指针指向轮盘左侧，此时体力无法自动恢复，需等待法力恢复至轮盘中间。"
 
 [node name="tutorial5" type="Label" parent="." unique_id=995257104]
 offset_left = 2975.0
 offset_top = 12.0
 offset_right = 3530.0
 offset_bottom = 295.0
-text = "造成足够伤害后可打破易碎墙体。
-
-J-J-长按J : 重击
-按住数字1：湮灭射线"
+text = "造成足够伤害后可打破易碎墙体。"
 
 [node name="tutorial6" type="Label" parent="." unique_id=604148281]
 offset_left = 2974.0
@@ -196,15 +183,6 @@ offset_right = 3529.0
 offset_bottom = 415.0
 text = "前方有强大敌人，做好准备。"
 label_settings = SubResource("LabelSettings_5pkqg")
-
-[node name="tutorial7" type="Label" parent="." unique_id=1394653579]
-offset_left = -2971.0
-offset_top = 98.0
-offset_right = -2799.0
-offset_bottom = 303.0
-text = "AD - 左右移动
-W - 跳
-Shift - 闪避"
 
 [node name="trigger1" type="Area2D" parent="." unique_id=1264210951 node_paths=PackedStringArray("spawnPosition")]
 position = Vector2(-379, 24)
@@ -254,15 +232,20 @@ shape = SubResource("RectangleShape2D_pv5hy")
 [node name="anchor" type="Node2D" parent="trigger3" unique_id=1785626314]
 position = Vector2(741, -234)
 
-[node name="triggerVoid" type="Area2D" parent="." unique_id=1662930693]
-position = Vector2(4178, 24)
+[node name="triggerVoid" type="Area2D" parent="." unique_id=833547623]
+position = Vector2(4178, 16)
 script = ExtResource("6_5pkqg")
-type = 1
+type = 2
+allowEnemy = true
+storyPreset = &"fallIntoVoid"
 metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
-[node name="hitbox" type="CollisionShape2D" parent="triggerVoid" unique_id=1987613435]
+[node name="hitbox" type="CollisionShape2D" parent="triggerVoid" unique_id=219547842]
 position = Vector2(-6352, 876)
 shape = SubResource("WorldBoundaryShape2D_5pkqg")
+
+[node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
+position = Vector2(2719, 245)
 
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
 position = Vector2(3438, 0)
@@ -270,5 +253,65 @@ position = Vector2(3438, 0)
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 position = Vector2(-3079, 369)
 
-[node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
-position = Vector2(2719, 245)
+[node name="a1" parent="." unique_id=992497559 instance=ExtResource("9_x3jtm")]
+offset_left = -1729.0
+offset_top = 116.0
+offset_right = -1514.0
+offset_bottom = 139.0
+text = "[attack]-[attack]-[attack] : 3段普通攻击"
+
+[node name="a2" parent="." unique_id=1113432025 instance=ExtResource("9_x3jtm")]
+offset_left = -1725.0
+offset_top = 147.0
+offset_right = -1510.0
+offset_bottom = 170.0
+text = "按住[parry] - 格挡"
+
+[node name="a3" parent="." unique_id=1507592490 instance=ExtResource("9_x3jtm")]
+offset_left = 2040.0
+offset_top = 84.0
+offset_right = 2255.0
+offset_bottom = 107.0
+text = "按住[skill1] - 湮灭射线"
+
+[node name="a4" parent="." unique_id=266147576 instance=ExtResource("9_x3jtm")]
+offset_left = 2040.0
+offset_top = 111.0
+offset_right = 2255.0
+offset_bottom = 134.0
+text = "点按[skill2] - 魔法飞弹"
+
+[node name="a5" parent="." unique_id=762949054 instance=ExtResource("9_x3jtm")]
+offset_left = 3000.0
+offset_top = 49.0
+offset_right = 3215.0
+offset_bottom = 72.0
+text = "[attack]-[attack]-长按[attack] : 重击"
+
+[node name="a6" parent="." unique_id=1799132617 instance=ExtResource("9_x3jtm")]
+offset_left = 3005.0
+offset_top = 77.0
+offset_right = 3220.0
+offset_bottom = 100.0
+text = "按住[skill1]：湮灭射线"
+
+[node name="a7" parent="." unique_id=2049610526 instance=ExtResource("9_x3jtm")]
+offset_left = -2852.0
+offset_top = 103.0
+offset_right = -2637.0
+offset_bottom = 126.0
+text = "[move_left][move_right] - 移动"
+
+[node name="a8" parent="." unique_id=104913764 instance=ExtResource("9_x3jtm")]
+offset_left = -2852.0
+offset_top = 133.0
+offset_right = -2637.0
+offset_bottom = 156.0
+text = "[jump] - 跳"
+
+[node name="a9" parent="." unique_id=1333162354 instance=ExtResource("9_x3jtm")]
+offset_left = -2852.0
+offset_top = 162.0
+offset_right = -2637.0
+offset_bottom = 185.0
+text = "[dash] - 闪避"

@@ -32,3 +32,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "K"
 label_settings = SubResource("LabelSettings_1xaeb")
+horizontal_alignment = 1
+vertical_alignment = 1
