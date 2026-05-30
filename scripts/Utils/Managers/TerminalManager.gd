@@ -31,3 +31,5 @@ static func hidePanel():
 	PlayerInterface.instance.animator.play("terminalhide")
 	await PlayerInterface.instance.animator.animation_finished
 	WorldManager.sceneTree.paused = false
+static func write(content: String):
+	instance.terminalEdit.text += content

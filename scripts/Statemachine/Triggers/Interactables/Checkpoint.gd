@@ -1,5 +1,8 @@
 @tool
 extends InteractableBase
 
+@export var id: String = ""
+
 func interact(_player: PlayerBase):
-	TerminalManager.showPanel()
+	await TerminalManager.showPanel()
+	TerminalManager.write("")
