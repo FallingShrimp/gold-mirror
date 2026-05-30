@@ -245,7 +245,7 @@ position = Vector2(-6352, 876)
 shape = SubResource("WorldBoundaryShape2D_5pkqg")
 
 [node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
-position = Vector2(2719, 245)
+position = Vector2(-2528, 373)
 
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
 position = Vector2(3438, 0)

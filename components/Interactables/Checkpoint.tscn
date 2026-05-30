@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://u58q3unthwop"]
 
 [ext_resource type="PackedScene" uid="uid://di787xb1ooaou" path="res://components/Abstracts/InteractableBase.tscn" id="1_3byaa"]
+[ext_resource type="Script" uid="uid://d1od0dh5q5fc8" path="res://scripts/Statemachine/Triggers/Interactables/Checkpoint.gd" id="2_h4vn5"]
 [ext_resource type="Script" uid="uid://gvmprobppned" path="res://scripts/Statemachine/Polygons/RingPolygon.gd" id="2_tqa34"]
 [ext_resource type="Texture2D" uid="uid://dblnwp8gbarqr" path="res://resources/effects/access-denied.png" id="3_h4vn5"]
 
@@ -83,9 +84,10 @@ color_initial_ramp = SubResource("GradientTexture1D_lc0f8")
 alpha_curve = SubResource("CurveTexture_lc0f8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqa34"]
-size = Vector2(260, 140)
+size = Vector2(260, 181)
 
 [node name="Checkpoint" unique_id=319335013 instance=ExtResource("1_3byaa")]
+script = ExtResource("2_h4vn5")
 
 [node name="texture" parent="." index="0" unique_id=643970963]
 scale = Vector2(0.6, 0.6)
@@ -100,7 +102,7 @@ color = Color(0.2, 0.2, 0.2, 1)
 polygon = PackedVector2Array(-60, 60, 60, 60, 120, -15, 30, 30, -30, 30, -120, -15)
 
 [node name="circle" type="Polygon2D" parent="texture" index="3" unique_id=664721359]
-position = Vector2(0, -171.24608)
+position = Vector2(0, -180)
 polygon = PackedVector2Array(130, 0, 65.00327, 112.58141, -64.993454, 112.58708, -130, 0.011332591, -65.013084, -112.575745, 64.98361, -112.59276, 130, -0.022665182, 115, 0, 57.50289, -99.59125, -57.494213, -99.59627, -115, -0.010024984, -57.511578, 99.586235, 57.485508, 99.60129, 115, 0.020049969)
 script = ExtResource("2_tqa34")
 cornerDetails = 6
@@ -108,7 +110,6 @@ outerRadius = 130.0
 innerRadius = 115.0
 
 [node name="core" type="Polygon2D" parent="texture/circle" index="0" unique_id=1095262286]
-rotation = 1.4187903
 color = Color(0, 0, 0, 1)
 polygon = PackedVector2Array(90, 0, 0.00392282, 90, -90, 0.00784564, -0.011800647, -90, 90, -0.01569128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 script = ExtResource("2_tqa34")
@@ -143,5 +144,8 @@ local_coords = true
 process_material = SubResource("ParticleProcessMaterial_a5qmu")
 
 [node name="hitbox" parent="." index="1" unique_id=312346846]
-position = Vector2(0, -70)
+position = Vector2(0, -90.5)
 shape = SubResource("RectangleShape2D_tqa34")
+
+[node name="keys" parent="." index="2" unique_id=3039827]
+position = Vector2(0, -205)
