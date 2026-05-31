@@ -78,25 +78,24 @@ tracks/2/keys = {
 "points": PackedFloat32Array(0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.3, 0.7, 0.99999994)
 }
-tracks/3/type = "audio"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("animationSound")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_vuewf")
-}],
-"times": PackedFloat32Array(0.7)
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2000.0, 200.0],
+"method": &"shake"
+}]
 }
-tracks/3/use_blend = true
 tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("animationSound")
+tracks/4/path = NodePath("backgroundSound")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -108,20 +107,21 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/4/use_blend = true
-tracks/5/type = "method"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".")
+tracks/5/path = NodePath("backgroundSound")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [2000.0, 200.0],
-"method": &"shake"
-}]
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_vuewf")
+}],
+"times": PackedFloat32Array(0.7)
 }
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4ayu"]
 _data = {
@@ -136,13 +136,13 @@ autoplayAnimation = &"spawn"
 [node name="animationSound" parent="." index="1" unique_id=1671469331]
 volume_db = 10.0
 
-[node name="animator" parent="." index="2" unique_id=138184434]
+[node name="animator" parent="." index="3" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_w4ayu")
 
-[node name="shader" parent="." index="3" unique_id=784770636]
+[node name="shader" parent="." index="4" unique_id=784770636]
 visible = false
 
-[node name="texture" parent="." index="5" unique_id=212148538]
+[node name="texture" parent="." index="6" unique_id=212148538]
 modulate = Color(1, 1, 1, 0)
 rotation = -1.5707964
 scale = Vector2(1e-05, 1e-05)

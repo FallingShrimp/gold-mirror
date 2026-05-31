@@ -137,9 +137,21 @@ func ai(delta: float):
 func createAttack(id: int) -> void:
 	match id:
 		1:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 10
 			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 		2:
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 12
+			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
+		3:
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 15
+			EffectPlayer.play("SwordStab", getAnchorPosition("effect2"), directionAsRotation())
+		4:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )
 func parry(_bullet: BulletBase, isPerfect: bool):
