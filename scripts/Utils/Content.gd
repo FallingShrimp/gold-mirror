@@ -23,6 +23,8 @@ static func findClosetEntity(to: Vector2, validator: Callable = func(_e: EntityB
 static func canDamageEntity(bullet: BulletBase, entity: EntityBase) -> bool:
 	if !is_instance_valid(bullet) || !is_instance_valid(entity): return false
 	if !is_instance_valid(bullet.launcher): return false
+	if entity.dieing: return false
+	if bullet.launcher.dieing: return false
 	if bullet.launcher == entity: return false
 	if bullet.launcher.isPlayer() == entity.isPlayer(): return false
 	if entity.invincible: return false

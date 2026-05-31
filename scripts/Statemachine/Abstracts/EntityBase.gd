@@ -56,6 +56,7 @@ func publicDie():
 	dieing = false
 func takeDamage(amount: float):
 	if invincible: return
+	if dieing: return
 	var totalDamage = overrideDamage(amount)
 	currentHealth -= totalDamage
 	currentHealth = clamp(currentHealth, 0, maxHealth)

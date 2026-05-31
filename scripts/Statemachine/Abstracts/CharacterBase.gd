@@ -79,7 +79,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
 	if currentMagic.x < 0:
-		useStrength(strengthRegeneration * 0.25 * delta, false)
+		useStrength(strengthRegeneration * delta, false)
 		storeMagic(Vector2(magicRegeneration * delta, 0))
 	elif strengthThrottle.canExecute():
 		storeStrength(strengthRegeneration * delta, true)

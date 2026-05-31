@@ -19,7 +19,8 @@ scale = Vector2(0.15084699, 0.15084699)
 
 [node name="dick" type="Bone2D" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1480356252]
 position = Vector2(-53.03387, -649.6649)
-rest = Transform2D(1, 0, 0, 1, -53.03387, -649.6649)
+rotation = 3.1415925
+rest = Transform2D(-1, 8.742278e-08, -8.742278e-08, -1, -53.03387, -649.6649)
 auto_calculate_length_and_angle = false
 length = 271.75
 bone_angle = 0.0
@@ -38,7 +39,7 @@ position = Vector2(0, -103)
 shape = SubResource("CapsuleShape2D_ufyho")
 
 [node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
-position = Vector2(13, -97)
+position = Vector2(-28, -97)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_uc8g8")
 
