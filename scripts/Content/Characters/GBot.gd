@@ -13,8 +13,7 @@ func _ready():
 						var toIdle = true
 						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
 							var holdTime = await holdup("attack", 500)
-							if holdTime == 500:
-								useStrength(25)
+							if holdTime == 500 && useStrength(25):
 								emittedForNextAttack = true
 								fsm.changeState(States.ATTACK, [HEAVY_SHOT])
 								attackCounter = 0
@@ -63,7 +62,8 @@ func ai(delta: float):
 				fsm.changeState(States.PARRY_END)
 		States.IDLE, States.WALK, States.JUMP:
 			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && !is_on_floor():
-				fsm.changeState(States.FALLING)
+				if fsm.stateIs() != States.JUMP || velocity.y < 0:
+					fsm.changeState(States.FALLING)
 			elif fsm.stateIs() not in [States.JUMP]:
 				if Input.is_action_just_pressed("parry") && ActionManager.canI(ActionManager.PlayerAction.PARRY):
 					fsm.changeState(States.PARRY_START)
@@ -107,11 +107,11 @@ func ai(delta: float):
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
 			if (
-				Input.is_action_just_pressed("attack")
-				 && WorldManager.getCurrentTime() - lastAttackTime > attackTime
-				  && useStrength(attackCounter)
-				   && !emittedForNextAttack
-					&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
+				!emittedForNextAttack
+				&& Input.is_action_just_pressed("attack")
+				&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
+				&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
+				&& useStrength(attackCounter)
 			):
 				emittedForNextAttack = true
 				await animator.animation_finished
@@ -139,9 +139,7 @@ func createAttack(id: int) -> void:
 		1:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 		2:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
-		3:
-			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+			createAttack(1)
 			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:

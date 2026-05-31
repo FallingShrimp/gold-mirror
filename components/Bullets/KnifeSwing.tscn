@@ -1,15 +1,16 @@
 [gd_scene format=3 uid="uid://dc48rh6o11nsw"]
 
 [ext_resource type="PackedScene" uid="uid://380q0ifu3meq" path="res://components/Abstracts/BulletBase.tscn" id="1_ov6p8"]
+[ext_resource type="Script" uid="uid://ciyoxwmt38lgl" path="res://scripts/Content/Bullets/Presets/LockLauncher.gd" id="2_qgi6r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0gpf"]
-size = Vector2(83, 178)
+size = Vector2(373, 238)
 
 [node name="BulletBase" unique_id=1797257955 instance=ExtResource("1_ov6p8")]
-canDash = false
-lifetime = 100.0
-knockback = 0.1
-impulse = 5.0
+script = ExtResource("2_qgi6r")
+anchor = "attack1"
+lifetime = 200.0
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]
+position = Vector2(-74.5, 0)
 shape = SubResource("RectangleShape2D_d0gpf")

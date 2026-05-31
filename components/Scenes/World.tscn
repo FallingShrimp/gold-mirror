@@ -50,6 +50,9 @@ constantOffset = Vector2(0, -200)
 [node name="animator" type="AnimationPlayer" parent="camera" unique_id=735721622]
 unique_name_in_owner = true
 
+[node name="listener" type="AudioListener2D" parent="camera" unique_id=1133618359]
+current = true
+
 [node name="background" type="Sprite2D" parent="." unique_id=245469242]
 modulate = Color(1, 1, 1, 0.1764706)
 position = Vector2(-538, -37)
@@ -250,6 +253,7 @@ shape = SubResource("WorldBoundaryShape2D_5pkqg")
 
 [node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
 position = Vector2(-2528, 373)
+id = ""
 
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
 position = Vector2(3438, 0)
