@@ -35,7 +35,7 @@ func _ready():
 	installSkill(SkillCard.createCard("AnnihilationRay"))
 	installSkill(SkillCard.createCard("MagicMissle"))
 	await get_tree().process_frame
-	if StoryManager.playOnce("start"):
+	if GameBusManager.isRelease() && StoryManager.playOnce("start"):
 		match await StoryManager.text(Characters.CreatorOrHacker, "你好，能听见吗？", [
 			"能听到。"
 		]):

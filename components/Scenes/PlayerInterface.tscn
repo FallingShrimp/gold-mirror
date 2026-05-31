@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://ibotowbt5lx3" path="res://icon.svg" id="11_fpxut"]
 [ext_resource type="Theme" uid="uid://jov4oqiexxq3" path="res://themes/main.tres" id="12_21viu"]
 [ext_resource type="Script" uid="uid://bfoohmely2qtn" path="res://scripts/Utils/Managers/TerminalManager.gd" id="13_o2xb2"]
-[ext_resource type="FontFile" uid="uid://d4e37a2s46fcy" path="res://resources/fonts/consolas.ttf" id="14_7n53r"]
+[ext_resource type="FontFile" uid="uid://k0nvfw54lyac" path="res://resources/fonts/cascadia-code.ttf" id="14_ps8fa"]
 [ext_resource type="Script" uid="uid://ger4rty4b2g5" path="res://scripts/Statemachine/Controllers/TypedFormatter.gd" id="15_ps8fa"]
 
 [sub_resource type="Animation" id="Animation_i40r1"]
@@ -383,15 +383,8 @@ content_margin_top = 0.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o2xb2"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7n53r"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ps8fa"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0kglu"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f0axj"]
+content_margin_left = 1.0
 
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
 process_mode = 3
@@ -625,20 +618,20 @@ layout_mode = 2
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7n53r")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="root/TerminalManager/wrapper/wrapper" unique_id=1466289286]
+[node name="titlebar" type="HBoxContainer" parent="root/TerminalManager/wrapper/wrapper" unique_id=1466289286]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="titlePre" type="Label" parent="root/TerminalManager/wrapper/wrapper/HBoxContainer" unique_id=1412708397]
+[node name="titlePre" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=1412708397]
 layout_mode = 2
 text = "Instance #"
 
-[node name="titleNumber" type="Label" parent="root/TerminalManager/wrapper/wrapper/HBoxContainer" unique_id=1315874687]
+[node name="titleNumber" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=1315874687]
 unique_name_in_owner = true
 layout_mode = 2
 text = "1145"
 
-[node name="titlePost" type="Label" parent="root/TerminalManager/wrapper/wrapper/HBoxContainer" unique_id=769917941]
+[node name="titlePost" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=769917941]
 layout_mode = 2
 text = " @ root"
 
@@ -647,20 +640,21 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxEmpty_btiq0")
 
-[node name="terminal" type="CodeEdit" parent="root/TerminalManager/wrapper/wrapper2" unique_id=1821502497]
+[node name="terminal" type="TextEdit" parent="root/TerminalManager/wrapper/wrapper2" unique_id=1000794712]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
 theme_override_colors/font_readonly_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
 theme_override_colors/font_placeholder_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
-theme_override_fonts/font = ExtResource("14_7n53r")
+theme_override_fonts/font = ExtResource("14_ps8fa")
 theme_override_font_sizes/font_size = 13
-theme_override_styles/normal = SubResource("StyleBoxEmpty_o2xb2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_7n53r")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ps8fa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ps8fa")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_ps8fa")
-theme_override_styles/completion = SubResource("StyleBoxEmpty_0kglu")
-theme_override_styles/panel = SubResource("StyleBoxEmpty_f0axj")
 editable = false
 context_menu_enabled = false
 emoji_menu_enabled = false
@@ -682,8 +676,7 @@ template = "Welcome to HoohleSim 11.45 LTS (GNU/Hinox 3.1.0 x86_64)
   Memory usage:  $strengthPercent$
 
 Last login: Sat May 30 19:00:00 2026 from 192.168.1.1
-
-root # "
+"
 slot = Dictionary[String, int]({
 "gameProgress": 2,
 "healthPercent": 2,

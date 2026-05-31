@@ -5,4 +5,4 @@ extends InteractableBase
 
 func interact(_player: PlayerBase):
 	await TerminalManager.showPanel()
-	TerminalManager.write("")
+	await TerminalManager.simulateCommand("")
