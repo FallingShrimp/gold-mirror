@@ -120,6 +120,7 @@ libraries/ = SubResource("AnimationLibrary_xrnfc")
 unique_name_in_owner = true
 maxLength = 10000.0
 penetrate = false
+laserHeight = 200.0
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]
 position = Vector2(1000, 0)

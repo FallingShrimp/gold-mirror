@@ -138,6 +138,7 @@ func createAttack(id: int) -> void:
 	match id:
 		1:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
+			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 		2:
 			createAttack(1)
 			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )

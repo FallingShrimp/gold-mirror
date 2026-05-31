@@ -954,20 +954,15 @@ scale = Vector2(0.32535243, 0.32535243)
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
-[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-rotation = 3.09
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
+scale = Vector2(0.9999996, 0.9999996)
 
-[node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
-rotation = -1.62
-
-[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
-rotation = 1.31
-scale = Vector2(0.9999999, 0.9999999)
+[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
+rotation = 1.3102964
 rest = Transform2D(0.2575636, 0.96626127, -0.96626127, 0.2575636, 143.37064, 3.8577828)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-rotation = 2.3596852
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(-0.8858916, 0.4638921, -0.4638921, -0.8858916, -58, -111)
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
@@ -984,20 +979,23 @@ attenuation = 0.0
 [node name="attack1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="0" unique_id=1925192821]
 position = Vector2(531.7311, -430.3026)
 
-[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="1" unique_id=1605478299]
+[node name="effect1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="1" unique_id=1743014059]
+position = Vector2(614.718, -430.3026)
+
+[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=1605478299]
 position = Vector2(-76.83977, -614.718)
 rotation = 0.3265123
 
-[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=662818464]
+[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=662818464]
 position = Vector2(316.57977, -393.41953)
 
-[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=198186523]
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=198186523]
 position = Vector2(76.83975, -811.42773)
 
-[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=490380349]
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
 
-[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=108014891]
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=108014891]
 position = Vector2(0, -977.4016)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
