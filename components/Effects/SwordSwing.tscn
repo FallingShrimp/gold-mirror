@@ -15,7 +15,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.75, -0.1, 0, 0, 0, 0.75, 0, 0, 0.1, 0, 1e-05, 0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.6, -0.1, 0, 0, 0, 0.6, 0, 0, 0.1, 0, 1e-05, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.09914555, 0.3, 0.4)
 }
 tracks/1/type = "bezier"
@@ -46,7 +46,7 @@ libraries/ = SubResource("AnimationLibrary_hhlsn")
 visible = false
 
 [node name="texture" parent="." index="5" unique_id=212148538]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.0018721964)
 rotation = 3.1415927
-scale = Vector2(0.75, 1e-05)
+scale = Vector2(0.6, 0.0014141286)
 texture = ExtResource("2_jk6vw")

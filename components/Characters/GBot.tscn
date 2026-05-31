@@ -951,18 +951,20 @@ strengthRegeneration = 20.0
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
-scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
-scale = Vector2(0.9999996, 0.9999996)
+scale = Vector2(0.9999995, 0.9999995)
+
+[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
+rotation = -0.59
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
-rotation = 1.3102964
+rotation = -0.51
 rest = Transform2D(0.2575636, 0.96626127, -0.96626127, 0.2575636, 143.37064, 3.8577828)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.99999976, 0.99999976)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(-0.8858916, 0.4638921, -0.4638921, -0.8858916, -58, -111)
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
@@ -972,9 +974,6 @@ rotation = 2.7782815
 [node name="animator" parent="texture" index="3" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
-
-[node name="animationAudio" parent="texture/animator" index="0" unique_id=826727874]
-attenuation = 0.0
 
 [node name="attack1" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="0" unique_id=1925192821]
 position = Vector2(531.7311, -430.3026)

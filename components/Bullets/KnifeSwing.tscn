@@ -10,6 +10,7 @@ size = Vector2(373, 238)
 script = ExtResource("2_qgi6r")
 anchor = "attack1"
 lifetime = 200.0
+knockback = 1.0
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]
 position = Vector2(-74.5, 0)
