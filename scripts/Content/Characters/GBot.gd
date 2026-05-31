@@ -140,7 +140,7 @@ func createAttack(id: int) -> void:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 		2:
-			createAttack(1)
+			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:

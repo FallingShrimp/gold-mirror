@@ -2,7 +2,7 @@ shader_type canvas_item;
 uniform float k : hint_range(0.05, 2.0) = 0.3;
 uniform float star_size : hint_range(0.1, 1.5) = 1.0;
 uniform float glow_intensity : hint_range(0.0, 3.0) = 1.5;
-uniform float glow_radius : hint_range(0.5, 4.0) = 2.0;
+uniform float glow_radius : hint_range(0.5, 10.0) = 2.0;
 uniform vec4 star_color : source_color = vec4(1.0, 0.85, 0.1, 1.0);
 uniform vec4 glow_color : source_color = vec4(1.0, 0.5, 0.0, 1.0);
 uniform float rotation : hint_range(0.0, 6.283) = 0.0;

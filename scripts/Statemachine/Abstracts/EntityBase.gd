@@ -80,7 +80,7 @@ func getAnchorRotation(namx: String):
 		return 0
 func impact(delta: Vector2):
 	velocity += delta
-func alert(anchor: String = "alert"):
-	EffectPlayer.play("GoldenStar4", getAnchorPosition(anchor), 0)
+func alert(anchor: String = "alert", danger: bool = false):
+	EffectPlayer.play("%sdenStar4" % ("Re" if danger else "Gol"), getAnchorPosition(anchor), 0)
 func getHealthPercent() -> float:
 	return currentHealth / maxHealth

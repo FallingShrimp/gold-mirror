@@ -26,3 +26,5 @@ unique_name_in_owner = true
 
 [node name="particles" type="GPUParticles2D" parent="." unique_id=2076768246]
 unique_name_in_owner = true
+
+[node name="modulate" type="CanvasModulate" parent="." unique_id=1028396800]
