@@ -15,8 +15,8 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.75, -0.15, 0, 0, 0, 0.75, 0, 0, 0.15, 0, 1e-05, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.4)
+"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.75, -0.1, 0, 0, 0, 0.75, 0, 0, 0.1, 0, 1e-05, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.09914555, 0.3, 0.4)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -25,9 +25,9 @@ tracks/1/path = NodePath("texture:modulate:a")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 2, 0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, -0.15, 0, 0, 0, 1, 0, 0, 0.15, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.15, 0.25, 0.4)
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, -0.1, 0, 0, 0, 1, 0, 0, 0.1, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.09914555, 0.3, 0.4)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhlsn"]
