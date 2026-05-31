@@ -41,10 +41,12 @@ static func playOnce(id: String):
 		if id not in playedCount:
 			playedCount[id] = 0
 		playedCount[id] += 1
+		GameSaveManager.overrideSave()
 		return true
 static func playTimes(id: String) -> int:
 	var current = playedCount.get(id, 0)
 	playedCount[id] = current + 1
+	GameSaveManager.overrideSave()
 	return current
 static func isPlayed(id: String) -> bool:
 	return playTimes(id) > 0
