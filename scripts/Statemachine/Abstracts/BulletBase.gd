@@ -3,6 +3,7 @@ class_name BulletBase
 
 signal destroied()
 signal hitEntity(entity: EntityBase)
+signal hitoutEntity(entity: EntityBase)
 
 enum MotionType {
 	SWING,
@@ -26,6 +27,7 @@ enum MotionType {
 @export var spawnAnimation: StringName = ""
 @export var destroyAnimation: StringName = ""
 @export var verticalDirection: bool = false
+@export var freezeMultiplier: float = 1.0
 
 @onready var sounds: SoundStage = $%sounds
 @onready var animator: AnimationPlayer = $%animator
@@ -33,15 +35,28 @@ enum MotionType {
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
 var destroying: bool = false
+var freezed: bool = false
 
 func _ready():
 	register()
 	add_to_group("bullet")
-	area_entered.connect(handleCollisionArea)
+	area_entered.connect(handleAreaEnter)
 	if spawnSound:
 		sounds.play(spawnSound)
 	if spawnAnimation:
 		animator.play(spawnAnimation)
+	destroied.connect(func(): hitoutEntity.emit(null))
+	hitEntity.connect(
+		func(_e):
+			if !freezed:
+				launcher.animator.speed_scale *= freezeMultiplier
+				freezed = true
+	)
+	hitoutEntity.connect(
+		func(_e):
+			if freezed:
+				launcher.animator.speed_scale /= freezeMultiplier
+	)
 	await get_tree().process_frame
 	spawn()
 func _physics_process(delta):
@@ -73,7 +88,11 @@ func timePassed():
 	return WorldManager.getCurrentTime() - spawnTime
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
-func handleCollisionArea(node: CollisionObject2D):
+func handleAreaExit(node: Node2D):
+	var entity = ContentUtil.getEntityFromHurtbox(node)
+	if entity is EntityBase:
+		hitoutEntity.emit(entity)
+func handleAreaEnter(node: Node2D):
 	var entity = ContentUtil.getEntityFromHurtbox(node)
 	if entity is EntityBase:
 		if ContentUtil.canDamageEntity(self , entity):
