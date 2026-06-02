@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://cicgxo1yp1shq"]
+
+[ext_resource type="PackedScene" uid="uid://cxp6oy0iktpuh" path="res://components/Abstracts/EffectBase.tscn" id="1_oqrt1"]
+[ext_resource type="AudioStream" uid="uid://3wxr8kd643wo" path="res://resources/sounds/flash.ogg" id="2_oqrt1"]
+[ext_resource type="Shader" uid="uid://b5ofiu5tju4ty" path="res://shaders/RedenStar4.gdshader" id="3_oqrt1"]
+
+[sub_resource type="Animation" id="Animation_wo0v7"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shader:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shader:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mb2mf"]
+resource_name = "spawn"
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shader:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(0, 0, 0, 0.5, 0, 3.14, -0.5, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shader:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2, 2), Vector2(2, 2), Vector2(0, 0)]
+}
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("animationSound")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_oqrt1")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_garu6"]
+_data = {
+&"RESET": SubResource("Animation_wo0v7"),
+&"spawn": SubResource("Animation_mb2mf")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oqrt1"]
+shader = ExtResource("3_oqrt1")
+shader_parameter/k = 0.74700003385256
+shader_parameter/star_size = 0.10500000172762
+shader_parameter/glow_intensity = 1.7190000816525
+shader_parameter/glow_radius = 4.0
+shader_parameter/star_color = Color(1, 0, 0, 1)
+shader_parameter/glow_color = Color(0.8, 0, 0, 1)
+shader_parameter/rotation = 0.0
+
+[node name="EffectBase" unique_id=685466674 instance=ExtResource("1_oqrt1")]
+oneShot = true
+autoplayAnimation = &"spawn"
+
+[node name="animationSound" parent="." index="1" unique_id=1671469331]
+volume_db = 10.0
+
+[node name="animator" parent="." index="2" unique_id=138184434]
+libraries/ = SubResource("AnimationLibrary_garu6")
+
+[node name="shader" parent="." index="3" unique_id=784770636]
+shader = SubResource("ShaderMaterial_oqrt1")

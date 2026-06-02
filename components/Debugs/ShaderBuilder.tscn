@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cabnrn4xfci51"]
+
+[ext_resource type="Script" uid="uid://bxujiuxxd78yj" path="res://scripts/Debug/ShaderBuilder.gd" id="1_7oy24"]
+
+[node name="ShaderBuilder" type="Node2D" unique_id=911252179]
+script = ExtResource("1_7oy24")

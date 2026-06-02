@@ -12,6 +12,8 @@ unique_name_in_owner = true
 
 [node name="animationSound" type="AudioStreamPlayer2D" parent="." unique_id=1671469331]
 
+[node name="backgroundSound" type="AudioStreamPlayer" parent="." unique_id=611407377]
+
 [node name="animator" type="AnimationPlayer" parent="." unique_id=138184434]
 unique_name_in_owner = true
 
@@ -26,3 +28,5 @@ unique_name_in_owner = true
 
 [node name="particles" type="GPUParticles2D" parent="." unique_id=2076768246]
 unique_name_in_owner = true
+
+[node name="modulate" type="CanvasModulate" parent="." unique_id=1028396800]

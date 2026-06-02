@@ -3,7 +3,9 @@
 [ext_resource type="Script" uid="uid://iccqtq2cyfdi" path="res://scripts/Statemachine/DamageLabel.gd" id="1_j5i5r"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4v5eb"]
-font_color = Color(1, 0, 0, 1)
+font_size = 30
+font_color = Color(1, 0.95912343, 0.6227616, 1)
+outline_size = 2
 
 [sub_resource type="Animation" id="Animation_r7stn"]
 length = 0.001

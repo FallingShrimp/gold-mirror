@@ -3,6 +3,7 @@ class_name BulletBase
 
 signal destroied()
 signal hitEntity(entity: EntityBase)
+signal hitoutEntity(entity: EntityBase)
 
 enum MotionType {
 	SWING,
@@ -15,6 +16,7 @@ enum MotionType {
 @export var baseDamage: float = 10
 @export var motionType: MotionType = MotionType.SWING
 @export var canParry: bool = true
+@export var canDash: bool = true
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
 @export var knockback: float = 0
@@ -23,7 +25,9 @@ enum MotionType {
 @export var magic: Vector2 = Vector2.ZERO
 @export var spawnSound: StringName = ""
 @export var spawnAnimation: StringName = ""
+@export var destroyAnimation: StringName = ""
 @export var verticalDirection: bool = false
+@export var freezeMultiplier: float = 1.0
 
 @onready var sounds: SoundStage = $%sounds
 @onready var animator: AnimationPlayer = $%animator
@@ -31,15 +35,28 @@ enum MotionType {
 @onready var spawnTime: float = WorldManager.getCurrentTime()
 var launcher: EntityBase = null
 var destroying: bool = false
+var freezed: bool = false
 
 func _ready():
 	register()
 	add_to_group("bullet")
-	area_entered.connect(handleCollision)
+	area_entered.connect(handleAreaEnter)
 	if spawnSound:
 		sounds.play(spawnSound)
 	if spawnAnimation:
 		animator.play(spawnAnimation)
+	destroied.connect(func(): hitoutEntity.emit(null))
+	hitEntity.connect(
+		func(_e):
+			if !freezed:
+				launcher.animator.speed_scale *= freezeMultiplier
+				freezed = true
+	)
+	hitoutEntity.connect(
+		func(_e):
+			if freezed:
+				launcher.animator.speed_scale /= freezeMultiplier
+	)
 	await get_tree().process_frame
 	spawn()
 func _physics_process(delta):
@@ -61,6 +78,9 @@ func publicDestroy():
 	if destroying: return
 	destroying = true
 	await destroy()
+	if destroyAnimation:
+		animator.play(destroyAnimation)
+		await animator.animation_finished
 	destroied.emit()
 	queue_free()
 	destroying = false
@@ -68,22 +88,27 @@ func timePassed():
 	return WorldManager.getCurrentTime() - spawnTime
 func getDirection():
 	return sign(Vector2.from_angle(rotation).x)
-func handleCollision(node: CollisionObject2D):
+func handleAreaExit(node: Node2D):
 	var entity = ContentUtil.getEntityFromHurtbox(node)
 	if entity is EntityBase:
-		if ContentUtil.canDamage(self , entity):
+		hitoutEntity.emit(entity)
+func handleAreaEnter(node: Node2D):
+	var entity = ContentUtil.getEntityFromHurtbox(node)
+	if entity is EntityBase:
+		if ContentUtil.canDamageEntity(self , entity):
 			if entity is CharacterBase:
 				entity = entity as CharacterBase
 				if entity.invincible:
 					return
 				elif entity.fsm.currentState is States.DASH:
-					if motionType == MotionType.DANMAKU:
-						if launcher is CharacterBase:
-							for i in 3:
-								var positiox = position + MathUtil.sampleInCircle(100)
-								ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
-								EffectPlayer.play("PerfectDash", position, 0)
-					return
+					if canDash:
+						if motionType == MotionType.DANMAKU:
+							if launcher is CharacterBase:
+								for i in 3:
+									var positiox = position + MathUtil.sampleInCircle(100)
+									ItemBase.create(ContentManager.ItemType.MAGIC_BALL, positiox, (positiox - position).normalized() * 3500)
+									EffectPlayer.play("PerfectDash", position, 0)
+						return
 				elif entity.fsm.currentState is States.PARRY_START:
 					if canParry && (entity.direction != getDirection() || verticalDirection):
 						var parryState = entity.fsm.currentState as States.PARRY_START

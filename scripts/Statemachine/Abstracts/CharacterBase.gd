@@ -18,7 +18,7 @@ const PERFECT_PARRY_WINDOW: float = 200.0
 
 @export var isBoss: bool = false
 @export var attackTime: float = 50.0
-@export var mass: float = 1
+@export var gravityScale: float = 1.0
 @export var movementSpeed: float = 1.0
 @export var maxStrength: float = 100
 @export var maxMagicLength: float = 100
@@ -79,7 +79,7 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	fsm.update(delta)
 	if currentMagic.x < 0:
-		useStrength(strengthRegeneration * 0.25 * delta, false)
+		useStrength(strengthRegeneration * delta, false)
 		storeMagic(Vector2(magicRegeneration * delta, 0))
 	elif strengthThrottle.canExecute():
 		storeStrength(strengthRegeneration * delta, true)
@@ -91,7 +91,7 @@ func _physics_process(delta):
 		if position.distance_to(followingPosition) <= followingAutoExit:
 			unfollow()
 	else:
-		velocity += Vector2(0, GRAVITY * delta)
+		velocity += Vector2(0, GRAVITY * gravityScale * delta)
 		if frictable:
 			velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
 		move_and_slide()
@@ -145,6 +145,8 @@ func storeStrength(amount: float, justChanged: bool = false):
 		strengthChanged.emit(currentStrength)
 	else:
 		strengthIncreased.emit(amount)
+func getStrengthPercent():
+	return currentStrength / maxStrength
 func useMagic(delta: Vector2):
 	currentMagic = (currentMagic - delta).limit_length(maxMagicLength)
 	magicChanged.emit(currentMagic)
@@ -173,3 +175,10 @@ func storeItem(delta: Dictionary[ContentManager.ItemType, int]):
 	for item in delta:
 		inventory[item] = clamp(inventory[item] + delta[item], 0, inventoryMax.get(item, INF))
 	itemStored.emit(delta)
+
+static func create(namx: String, positiox: Vector2, directiox: Direction):
+	var instance = load("res://components/Characters/%s.tscn" % namx).instantiate() as CharacterBase
+	instance.position = positiox
+	instance.direction = directiox
+	WorldManager.rootNode.add_child.call_deferred(instance)
+	return instance

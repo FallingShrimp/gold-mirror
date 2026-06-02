@@ -20,7 +20,7 @@ class ATTACK extends IState:
 
 class JUMP extends IState:
 	func join() -> String:
-		character.impact(Vector2(0, -arguments[0] * 750))
+		character.impact(Vector2(0, -arguments[0] * 1200))
 		character.frictable = false
 		return "JUMP"
 

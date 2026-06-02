@@ -1,9 +1,397 @@
 [gd_scene format=3 uid="uid://ce5ljachmwsp8"]
 
+[ext_resource type="Script" uid="uid://ro3yggcjgoby" path="res://scripts/Utils/Managers/ActionManager.gd" id="1_2ykpt"]
+[ext_resource type="Texture2D" uid="uid://b7rw2yq0chc3c" path="res://resources/backgrounds/yuanshen.webp" id="1_i40r1"]
 [ext_resource type="Script" uid="uid://bfi2shf85pc5j" path="res://scripts/Statemachine/UI/PlayerInterface.gd" id="1_mxaxt"]
 [ext_resource type="PackedScene" uid="uid://qbxbo1b510ta" path="res://components/Boxes/PlayerState.tscn" id="2_mxaxt"]
+[ext_resource type="Shader" uid="uid://dpxnfw6cm275k" path="res://shaders/HorseTexture.gdshader" id="3_tkxrk"]
+[ext_resource type="AudioStream" uid="uid://bqrx1pn5lc2x3" path="res://resources/sounds/warning.mp3" id="5_c6y25"]
+[ext_resource type="AudioStream" uid="uid://dmyu2gf6odxlr" path="res://resources/sounds/machine-tick.wav" id="6_08moi"]
+[ext_resource type="Script" uid="uid://cdsd1t2l3400f" path="res://scripts/Statemachine/UI/FlaggedAnimator.gd" id="7_nqy15"]
+[ext_resource type="Shader" uid="uid://cnmx41xks0jk7" path="res://shaders/DigAHole.gdshader" id="8_8xi87"]
+[ext_resource type="Script" uid="uid://djtqrkydkoy5i" path="res://scripts/Utils/Managers/StoryManager.gd" id="10_rsemd"]
+[ext_resource type="Texture2D" uid="uid://ibotowbt5lx3" path="res://icon.svg" id="11_fpxut"]
+[ext_resource type="Theme" uid="uid://jov4oqiexxq3" path="res://themes/main.tres" id="12_21viu"]
+[ext_resource type="Script" uid="uid://bfoohmely2qtn" path="res://scripts/Utils/Managers/TerminalManager.gd" id="13_o2xb2"]
+[ext_resource type="FontFile" uid="uid://k0nvfw54lyac" path="res://resources/fonts/cascadia-code.ttf" id="14_ps8fa"]
+[ext_resource type="Script" uid="uid://ger4rty4b2g5" path="res://scripts/Statemachine/Controllers/TypedFormatter.gd" id="15_ps8fa"]
+
+[sub_resource type="Animation" id="Animation_i40r1"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bosswarning:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bosswarning:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bosswarning:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TerminalManager:modulate:a")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("TerminalManager:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_nqy15"]
+resource_name = "show"
+length = 0.75
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bosswarning:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0.25, 0.5, 0.75)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bosswarning:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bosswarning:scale:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1, 0, 0, 0, 0, 0.2, -0.25, 0, 0, 0),
+"times": PackedFloat32Array(0.25, 0.5)
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("animator/audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_08moi")
+}],
+"times": PackedFloat32Array(0.25)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_08moi"]
+resource_name = "bosswarningloop"
+length = 0.7
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bosswarning:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 0.1, 1.0]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("animator/audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_c6y25")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("animator")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"emitLoop"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c6y25"]
+resource_name = "show"
+length = 0.75
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("bosswarning:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, -0.3, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bosswarning:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("bosswarning:scale:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("animator/audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_08moi")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/3/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ps8fa"]
+resource_name = "terminalshow"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TerminalManager:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.9, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TerminalManager:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7n53r"]
+resource_name = "terminalshow"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TerminalManager:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.9]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TerminalManager:scale:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_08moi"]
+_data = {
+&"RESET": SubResource("Animation_i40r1"),
+&"bosswarninghide": SubResource("Animation_nqy15"),
+&"bosswarningloop": SubResource("Animation_08moi"),
+&"bosswarningshow": SubResource("Animation_c6y25"),
+&"terminalhide": SubResource("Animation_ps8fa"),
+&"terminalshow": SubResource("Animation_7n53r")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i40r1"]
+shader = ExtResource("3_tkxrk")
+shader_parameter/dark_red = Color(0.48677072, 0, 0, 0.70000005)
+shader_parameter/light_red = Color(0.9063318, 0, 0, 0.702)
+shader_parameter/stripe_count = 20.0000009025
+shader_parameter/speed = 0.10000024225000016
+shader_parameter/angle_degrees = 10.000000475
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxaxt"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tkxrk"]
+content_margin_top = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.60038817, 0.60038817, 0.60038817, 0)
+border_width_top = 10
+border_width_bottom = 10
+border_color = Color(0.3491902, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mxaxt"]
+font_size = 40
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_tkxrk"]
+font_size = 25
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ykpt"]
+shader = ExtResource("8_8xi87")
+shader_parameter/focus_center = Vector2(0.5, 0.5)
+shader_parameter/radius = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xi87"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0, 0, 0, 0.5)
+border_width_left = 10
+border_width_right = 10
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_bottom_right = 15
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_fpxut"]
+font_size = 18
+outline_size = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_21viu"]
+font_size = 14
+
+[sub_resource type="LabelSettings" id="LabelSettings_rsemd"]
+font_size = 10
+font_color = Color(0.5, 0.5, 0.5, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o2xb2"]
+bg_color = Color(0.09411765, 0.09411765, 0.09411765, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_right = 15
+corner_radius_bottom_left = 15
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7n53r"]
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 0.0
+content_margin_bottom = 5.0
+bg_color = Color(0.2, 0.2, 0.2, 1)
+corner_radius_top_right = 13
+corner_detail = 1
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_btiq0"]
+content_margin_left = 10.0
+content_margin_top = 0.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ps8fa"]
+content_margin_left = 1.0
 
 [node name="PlayerInterface" type="CanvasLayer" unique_id=1885772131]
+process_mode = 3
+
+[node name="ActionManager" type="Node" parent="." unique_id=1017328394]
+script = ExtResource("1_2ykpt")
+metadata/_custom_type_script = "uid://ro3yggcjgoby"
 
 [node name="root" type="Control" parent="." unique_id=979726907]
 layout_mode = 3
@@ -13,6 +401,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mxaxt")
+
+[node name="animator" type="AnimationPlayer" parent="root" unique_id=230790374]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_08moi")
+script = ExtResource("7_nqy15")
+
+[node name="audio" type="AudioStreamPlayer" parent="root/animator" unique_id=333666753]
+
+[node name="yuanshen" type="Sprite2D" parent="root" unique_id=1913019654]
+visible = false
+modulate = Color(1, 1, 1, 0.2)
+position = Vector2(715, 351)
+texture = ExtResource("1_i40r1")
 
 [node name="bossbars" type="Control" parent="root" unique_id=1902559509]
 unique_name_in_owner = true
@@ -47,3 +448,238 @@ anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/separation = 10
+
+[node name="bosswarning" type="PanelContainer" parent="root" unique_id=1506008753]
+material = SubResource("ShaderMaterial_i40r1")
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -67.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxaxt")
+
+[node name="horse" type="PanelContainer" parent="root/bosswarning" unique_id=323850371]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tkxrk")
+
+[node name="warningContainer" type="VBoxContainer" parent="root/bosswarning/horse" unique_id=1214953832]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="logo" type="Label" parent="root/bosswarning/horse/warningContainer" unique_id=896109501]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "- WARNING -"
+label_settings = SubResource("LabelSettings_mxaxt")
+
+[node name="coming" type="Label" parent="root/bosswarning/horse/warningContainer" unique_id=1491439241]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "GREAT ENEMY COMING !!!"
+label_settings = SubResource("LabelSettings_tkxrk")
+
+[node name="entityName" type="Label" parent="root/bosswarning/horse" unique_id=987111788]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "BossName"
+label_settings = SubResource("LabelSettings_mxaxt")
+
+[node name="focuser" type="Control" parent="root" unique_id=1019725691]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_2ykpt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="mask" type="Polygon2D" parent="root/focuser" unique_id=179126428]
+unique_name_in_owner = true
+color = Color(0, 0, 0, 0.6)
+polygon = PackedVector2Array(0, 0, 100, 0, 100, 100, 0, 100)
+
+[node name="StoryManager" type="PanelContainer" parent="root" unique_id=651255892]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_top = 0.3
+anchor_right = 0.6
+anchor_bottom = 0.3
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_8xi87")
+script = ExtResource("10_rsemd")
+
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager" unique_id=878333162]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="wrapper2" type="HBoxContainer" parent="root/StoryManager/wrapper" unique_id=1217567796]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="avatar" type="TextureRect" parent="root/StoryManager/wrapper/wrapper2" unique_id=216589132]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+texture = ExtResource("11_fpxut")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager/wrapper/wrapper2" unique_id=1230649923]
+layout_mode = 2
+
+[node name="sayer" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=2076664318]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "SayerName"
+label_settings = SubResource("LabelSettings_fpxut")
+autowrap_mode = 3
+
+[node name="content" type="HBoxContainer" parent="root/StoryManager/wrapper/wrapper2/wrapper" unique_id=518416560]
+layout_mode = 2
+
+[node name="para" type="Control" parent="root/StoryManager/wrapper/wrapper2/wrapper/content" unique_id=1339047802]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="text" type="Label" parent="root/StoryManager/wrapper/wrapper2/wrapper/content" unique_id=728304705]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "TalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkTextTalkT"
+label_settings = SubResource("LabelSettings_21viu")
+autowrap_mode = 3
+
+[node name="HSeparator" type="HSeparator" parent="root/StoryManager/wrapper" unique_id=1226665785]
+layout_mode = 2
+theme = ExtResource("12_21viu")
+
+[node name="wrapper" type="VBoxContainer" parent="root/StoryManager/wrapper" unique_id=445125888]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="options" type="VBoxContainer" parent="root/StoryManager/wrapper/wrapper" unique_id=512762767]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="tip" type="Label" parent="root/StoryManager/wrapper/wrapper" unique_id=1412022063]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+text = "按下F或E继续..."
+label_settings = SubResource("LabelSettings_rsemd")
+
+[node name="TerminalManager" type="PanelContainer" parent="root" unique_id=1352334432]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.1
+anchor_right = 0.8
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1e-05, 1)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_o2xb2")
+script = ExtResource("13_o2xb2")
+infoTemplate = "Welcome to HoohleSim 11.45 LTS (GNU/Hinox 3.1.0 x86_64)
+
+  System load:  $gameProgress$
+  Usage of /:  $healthPercent$ of $maxHealth$GB
+  Memory usage:  $strengthPercent$
+
+Last login: Sat May 30 19:00:00 2026 from 192.168.1.1
+
+root # "
+
+[node name="wrapper" type="VBoxContainer" parent="root/TerminalManager" unique_id=54506061]
+layout_mode = 2
+
+[node name="wrapper" type="PanelContainer" parent="root/TerminalManager/wrapper" unique_id=1150354961]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7n53r")
+
+[node name="titlebar" type="HBoxContainer" parent="root/TerminalManager/wrapper/wrapper" unique_id=1466289286]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="titlePre" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=1412708397]
+layout_mode = 2
+text = "Instance #"
+
+[node name="titleNumber" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=1315874687]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1145"
+
+[node name="titlePost" type="Label" parent="root/TerminalManager/wrapper/wrapper/titlebar" unique_id=769917941]
+layout_mode = 2
+text = " @ root"
+
+[node name="wrapper2" type="PanelContainer" parent="root/TerminalManager/wrapper" unique_id=734671141]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_btiq0")
+
+[node name="terminal" type="TextEdit" parent="root/TerminalManager/wrapper/wrapper2" unique_id=1000794712]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/caret_color = Color(1, 1, 1, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/selection_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
+theme_override_colors/font_readonly_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
+theme_override_colors/font_placeholder_color = Color(0.078431375, 0.6313726, 0.047058824, 1)
+theme_override_fonts/font = ExtResource("14_ps8fa")
+theme_override_font_sizes/font_size = 13
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ps8fa")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ps8fa")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_ps8fa")
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+backspace_deletes_composite_character_enabled = true
+wrap_mode = 1
+autowrap_mode = 1
+caret_type = 1
+caret_blink = true
+caret_draw_when_editable_disabled = true
+caret_multiple = false
+
+[node name="formatter" type="Node" parent="root/TerminalManager" unique_id=1175975570]
+unique_name_in_owner = true
+script = ExtResource("15_ps8fa")
+template = "Welcome to HoohleSim 11.45 LTS (GNU/Hinox 3.1.0 x86_64)
+
+  System load:  $gameProgress$
+  Usage of /:  $healthPercent$ of $maxHealth$
+  Memory usage:  $strengthPercent$
+
+Last login: Sat May 30 19:00:00 2026 from 192.168.1.1
+"
+slot = Dictionary[String, int]({
+"gameProgress": 2,
+"healthPercent": 2,
+"maxHealth": 5,
+"strengthPercent": 2
+})

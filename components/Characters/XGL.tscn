@@ -45,7 +45,7 @@ emission_box_extents = Vector3(1, 40, 1)
 spread = 40.0
 initial_velocity_min = 100.0
 initial_velocity_max = 1000.0
-gravity = Vector3(0, 0, 0)
+gravity = Vector3(0, 980, 0)
 damping_min = 1000.00006
 damping_max = 2000.0001
 damping_curve = SubResource("CurveTexture_webv5")
@@ -58,7 +58,7 @@ alpha_curve = SubResource("CurveTexture_u3h3u")
 [sub_resource type="Animation" id="Animation_46enu"]
 resource_name = "attacjkjk"
 length = 6.3
-step = 0.05
+step = 0.1
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -157,6 +157,20 @@ tracks/6/keys = {
 "method": &"fixDirection"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%texture/..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["alert"],
+"method": &"alert"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_w6duw"]
 resource_name = "ATTACK2"
@@ -202,9 +216,12 @@ tracks/3/path = NodePath("%texture/..")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.4, 1.5, 2.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.2, 1.4, 1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": ["alert2"],
+"method": &"alert"
+}, {
 "args": [3],
 "method": &"createAttack"
 }, {
@@ -291,9 +308,12 @@ tracks/4/path = NodePath("%texture/..")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(2),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.5, 2),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": ["alert3"],
+"method": &"alert"
+}, {
 "args": [5],
 "method": &"createAttack"
 }]
@@ -655,8 +675,11 @@ height = 264.0
 
 [node name="XGL" unique_id=948564138 instance=ExtResource("1_6wly8")]
 script = ExtResource("2_sowdv")
+showBossWarning = true
 isBoss = true
+gravityScale = 1.0
 movementSpeed = 2.0
+displayName = "你的老母"
 maxHealth = 1000.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
@@ -695,14 +718,14 @@ rest = Transform2D(-0.8404201, 0.54193544, -0.54193544, -0.8404201, -26, 11)
 [node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
 position = Vector2(34.56015, -32.040535)
 rotation = -1.57
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.99999964, 0.99999964)
 rest = Transform2D(0.00047107134, -0.9999998, 0.9999998, 0.00047107134, 34.56015, -32.040535)
 length = 258.29
 
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(30.594189, 24.515202)
 rotation = -0.63
-scale = Vector2(0.9999998, 0.9999998)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8062232, -0.59161115, 0.59161115, 0.8062232, 30.594189, 24.515202)
 length = 118.612
 
@@ -723,7 +746,7 @@ process_material = SubResource("ParticleProcessMaterial_webv5")
 [node name="rightleg" parent="texture/skeleton/hip" index="1" unique_id=703145623]
 position = Vector2(-14, 2)
 rotation = 0.0999077
-scale = Vector2(0.9999985, 0.9999985)
+scale = Vector2(0.99999815, 0.99999815)
 rest = Transform2D(0.9950132, 0.09974158, -0.09974158, 0.9950132, -14, 2)
 
 [node name="rightknee" parent="texture/skeleton/hip/rightleg" index="0" unique_id=756090729]
@@ -734,8 +757,8 @@ rest = Transform2D(0.9751414, -0.2215832, 0.2215832, 0.9751414, 0, 43)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" index="0" unique_id=1749461819]
 position = Vector2(-9, 66)
-rotation = 0.18261428
-scale = Vector2(0.9999995, 0.9999995)
+rotation = 0.18261433
+scale = Vector2(0.9999991, 0.9999991)
 rest = Transform2D(0.98337203, 0.18160094, -0.18160094, 0.98337203, -9, 66)
 length = 31.918
 
@@ -843,9 +866,20 @@ position = Vector2(119, -240)
 [node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=490380349]
 position = Vector2(3, -219)
 
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=108014891]
+position = Vector2(0, -376)
+
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=1696176818]
+position = Vector2(-285, -110)
+
+[node name="alert2" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=644525722]
+position = Vector2(287, -197)
+
+[node name="alert3" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=1465035996]
+position = Vector2(153, -370)
+
 [node name="bossmusic" parent="texture/sounds" parent_id_path=PackedInt32Array(1330768803) index="0" unique_id=559295679]
 stream = ExtResource("9_w6duw")
-volume_db = -10.0
 parameters/looping = true
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]

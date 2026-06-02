@@ -11,7 +11,7 @@ var firstUpdated: bool = false
 
 func createState(stateClass: GDScript, arguments: Array = []):
 	return stateClass.new(self , character, arguments)
-func changeState(newStateClass: Variant, arguments: Array = []) -> bool:
+func changeState(newStateClass: Variant, arguments: Array = [], boneReset: bool = true) -> bool:
 	var newState = createState(newStateClass, arguments) if newStateClass is GDScript else newStateClass
 	if newState is IState:
 		if currentState is IState:
@@ -19,7 +19,8 @@ func changeState(newStateClass: Variant, arguments: Array = []) -> bool:
 			currentState.exit()
 			exitState.emit(currentState)
 		var animationName = newState.join()
-		NodeUtil.skeletonMakeRest(character.skeleton)
+		if boneReset:
+			NodeUtil.skeletonMakeRest(character.skeleton)
 		character.animator.play(animationName)
 		joinState.emit(newState, currentState, animationName)
 		currentState = newState

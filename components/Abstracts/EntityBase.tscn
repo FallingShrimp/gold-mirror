@@ -16,13 +16,15 @@ unique_name_in_owner = true
 [node name="animator" type="AnimationPlayer" parent="texture" unique_id=788723809]
 unique_name_in_owner = true
 
-[node name="animationAudio" type="AudioStreamPlayer2D" parent="texture/animator" unique_id=826727874]
+[node name="animationAudio" type="AudioStreamPlayer" parent="texture/animator" unique_id=2028734781]
 unique_name_in_owner = true
 
 [node name="anchors" type="Node2D" parent="texture" unique_id=1302053380]
 unique_name_in_owner = true
 
 [node name="trace" type="Node2D" parent="texture/anchors" unique_id=490380349]
+
+[node name="damage" type="Node2D" parent="texture/anchors" unique_id=108014891]
 
 [node name="sounds" type="Node2D" parent="texture" unique_id=1330768803]
 unique_name_in_owner = true

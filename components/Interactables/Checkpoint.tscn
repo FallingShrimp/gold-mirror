@@ -1,0 +1,154 @@
+[gd_scene format=3 uid="uid://u58q3unthwop"]
+
+[ext_resource type="PackedScene" uid="uid://di787xb1ooaou" path="res://components/Abstracts/InteractableBase.tscn" id="1_3byaa"]
+[ext_resource type="Script" uid="uid://d1od0dh5q5fc8" path="res://scripts/Statemachine/Triggers/Interactables/Checkpoint.gd" id="2_h4vn5"]
+[ext_resource type="Script" uid="uid://gvmprobppned" path="res://scripts/Statemachine/Polygons/RingPolygon.gd" id="2_tqa34"]
+[ext_resource type="Texture2D" uid="uid://dblnwp8gbarqr" path="res://resources/effects/access-denied.png" id="3_h4vn5"]
+
+[sub_resource type="Animation" id="Animation_lo4os"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_wem6g"]
+resource_name = "loop"
+length = 2.0
+loop_mode = 1
+step = 0.1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("circle/core:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 3.14, -0.5, 0, 0, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("circle:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 0),
+"points": PackedFloat32Array(-180, 0, 0, 1, 40, -180, -1, -40, 0, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tqa34"]
+_data = {
+&"RESET": SubResource("Animation_lo4os"),
+&"loop": SubResource("Animation_wem6g")
+}
+
+[sub_resource type="Curve" id="Curve_x7gld"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lc0f8"]
+curve = SubResource("Curve_x7gld")
+
+[sub_resource type="Curve" id="Curve_qfcws"]
+_data = [Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1w5nr"]
+curve = SubResource("Curve_qfcws")
+
+[sub_resource type="Gradient" id="Gradient_7y7rk"]
+colors = PackedColorArray(1, 0, 0, 1, 0.5, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lc0f8"]
+gradient = SubResource("Gradient_7y7rk")
+
+[sub_resource type="Curve" id="Curve_8kse4"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jpftc"]
+curve = SubResource("Curve_8kse4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a5qmu"]
+particle_flag_disable_z = true
+angle_min = -179.99998
+angle_max = 180.00002
+angle_curve = SubResource("CurveTexture_1w5nr")
+direction = Vector3(0, -1, 0)
+spread = 30.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 400, 0)
+scale_curve = SubResource("CurveTexture_jpftc")
+color_initial_ramp = SubResource("GradientTexture1D_lc0f8")
+alpha_curve = SubResource("CurveTexture_lc0f8")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tqa34"]
+size = Vector2(260, 181)
+
+[node name="Checkpoint" unique_id=319335013 instance=ExtResource("1_3byaa")]
+script = ExtResource("2_h4vn5")
+
+[node name="texture" parent="." index="0" unique_id=643970963]
+scale = Vector2(0.6, 0.6)
+
+[node name="animator" parent="texture" index="1" unique_id=2020851420]
+libraries/ = SubResource("AnimationLibrary_tqa34")
+autoplay = &"loop"
+
+[node name="base" type="Polygon2D" parent="texture" index="2" unique_id=1263975598]
+position = Vector2(0, -60)
+color = Color(0.2, 0.2, 0.2, 1)
+polygon = PackedVector2Array(-60, 60, 60, 60, 120, -15, 30, 30, -30, 30, -120, -15)
+
+[node name="circle" type="Polygon2D" parent="texture" index="3" unique_id=664721359]
+position = Vector2(0, -180)
+polygon = PackedVector2Array(130, 0, 65.00327, 112.58141, -64.993454, 112.58708, -130, 0.011332591, -65.013084, -112.575745, 64.98361, -112.59276, 130, -0.022665182, 115, 0, 57.50289, -99.59125, -57.494213, -99.59627, -115, -0.010024984, -57.511578, 99.586235, 57.485508, 99.60129, 115, 0.020049969)
+script = ExtResource("2_tqa34")
+cornerDetails = 6
+outerRadius = 130.0
+innerRadius = 115.0
+
+[node name="core" type="Polygon2D" parent="texture/circle" index="0" unique_id=1095262286]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(90, 0, 0.00392282, 90, -90, 0.00784564, -0.011800647, -90, 90, -0.01569128, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+script = ExtResource("2_tqa34")
+cornerDetails = 4
+outerRadius = 90.0
+innerRadius = 0.0
+
+[node name="corecore" type="Polygon2D" parent="texture/circle/core" index="0" unique_id=1660575297]
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+color = Color(0.5, 0.5, 0.5, 1)
+polygon = PackedVector2Array(80, 0, 0.003486951, 80, -80, 0.006973902, -0.010489464, -80, 80, -0.013947804, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+script = ExtResource("2_tqa34")
+cornerDetails = 4
+outerRadius = 80.0
+innerRadius = 0.0
+
+[node name="corecorecore" type="Polygon2D" parent="texture/circle/core/corecore" index="0" unique_id=954924807]
+polygon = PackedVector2Array(-40, -40, 15, -15, 40, 40, -15, 15)
+
+[node name="corecorecorecore" type="Polygon2D" parent="texture/circle/core/corecore/corecorecore" index="0" unique_id=592817787]
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="text" type="GPUParticles2D" parent="texture" index="4" unique_id=188136555]
+position = Vector2(0, -176.53963)
+scale = Vector2(1.0000001, 1.0000001)
+amount = 20
+texture = ExtResource("3_h4vn5")
+lifetime = 2.5
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_a5qmu")
+
+[node name="hitbox" parent="." index="1" unique_id=312346846]
+position = Vector2(0, -90.5)
+shape = SubResource("RectangleShape2D_tqa34")
+
+[node name="keys" parent="." index="2" unique_id=3039827]
+position = Vector2(0, -205)
+
+[node name="keysBtn" parent="keys/anchor" parent_id_path=PackedInt32Array(985648007) index="0" unique_id=206390935]
+complement = "RSA终端"

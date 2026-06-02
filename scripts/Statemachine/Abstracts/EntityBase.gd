@@ -4,6 +4,7 @@ class_name EntityBase
 signal damageTaken(amount: float)
 signal died()
 
+@export var displayName: String = "EntityName"
 @export var maxHealth: float = 100
 @export var invincible: bool = false
 
@@ -51,14 +52,15 @@ func publicDie():
 	dieing = true
 	died.emit()
 	await die()
-	queue_free()
+	if !isPlayer(): queue_free()
 	dieing = false
 func takeDamage(amount: float):
 	if invincible: return
+	if dieing: return
 	var totalDamage = overrideDamage(amount)
 	currentHealth -= totalDamage
 	currentHealth = clamp(currentHealth, 0, maxHealth)
-	DamageLabel.create(get_parent(), position, totalDamage)
+	DamageLabel.create(get_parent(), getAnchorPosition("damage") + MathUtil.sampleInCircle(30), totalDamage)
 	damageTaken.emit(totalDamage)
 	if currentHealth == 0:
 		publicDie()
@@ -78,3 +80,7 @@ func getAnchorRotation(namx: String):
 		return 0
 func impact(delta: Vector2):
 	velocity += delta
+func alert(anchor: String = "alert", danger: bool = false):
+	EffectPlayer.play("%sdenStar4" % ("Re" if danger else "Gol"), getAnchorPosition(anchor), 0)
+func getHealthPercent() -> float:
+	return currentHealth / maxHealth

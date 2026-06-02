@@ -10,6 +10,7 @@ size = Vector2(250.5, 178)
 script = ExtResource("2_qe7ij")
 anchor = "attack1"
 baseDamage = 30.0
+canDash = false
 lifetime = 300.0
 impulse = 8.0
 

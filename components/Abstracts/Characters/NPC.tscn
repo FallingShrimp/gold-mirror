@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://y7p1ourcebdb"]
+
+[ext_resource type="PackedScene" uid="uid://byn7d8frmp314" path="res://components/Abstracts/CharacterBase.tscn" id="1_r7c41"]
+[ext_resource type="Texture2D" uid="uid://bux76cfaspnp2" path="res://resources/characters/xgl/full.png" id="2_ufyho"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ufyho"]
+radius = 37.0
+height = 212.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uc8g8"]
+radius = 7.0
+height = 50.0
+
+[node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_r7c41")]
+gravityScale = 1.0
+
+[node name="texture" parent="." index="0" unique_id=167379002]
+scale = Vector2(0.15084699, 0.15084699)
+
+[node name="dick" type="Bone2D" parent="texture/skeleton" parent_id_path=PackedInt32Array(1326387772) index="0" unique_id=1480356252]
+position = Vector2(-53.03387, -649.6649)
+rotation = 3.1415925
+rest = Transform2D(-1, 8.742278e-08, -8.742278e-08, -1, -53.03387, -649.6649)
+auto_calculate_length_and_angle = false
+length = 271.75
+bone_angle = 0.0
+
+[node name="full" type="Polygon2D" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="0" unique_id=1468873302]
+position = Vector2(-346, -1445)
+texture = ExtResource("2_ufyho")
+skeleton = NodePath("../../skeleton")
+polygon = PackedVector2Array(63.283447, -10.835911, 639.74414, 14.227596, 677.33936, 356.7622, 735.82104, 557.27026, 694.04834, 686.7651, 698.2256, 929.04565, 652.2759, 1484.6201, 597.70496, 1528.1924, 526.96643, 1532.9082, 76.598145, 1518.7605, 43.621826, 1247.635, 26.811035, 637.026)
+uv = PackedVector2Array(63.283447, -10.835911, 639.74414, 14.227596, 677.33936, 356.7622, 735.82104, 557.27026, 694.04834, 686.7651, 698.2256, 929.04565, 652.2759, 1484.6201, 597.70496, 1528.1924, 526.96643, 1532.9082, 76.598145, 1518.7605, 43.621826, 1247.635, 26.811035, 637.026)
+bones = ["dick", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+
+[node name="movebox" parent="." index="1" unique_id=1108104038]
+z_index = -1
+position = Vector2(0, -103)
+shape = SubResource("CapsuleShape2D_ufyho")
+
+[node name="shape" parent="hurtbox" parent_id_path=PackedInt32Array(771077559) index="0" unique_id=1412400232]
+position = Vector2(-28, -97)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_uc8g8")
+
+[node name="stateBar" parent="." index="3" unique_id=2012763349]
+visible = false

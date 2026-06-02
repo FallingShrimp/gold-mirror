@@ -32,7 +32,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mb2mf"]
 resource_name = "spawn"
-step = 0.1
+step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -51,7 +51,7 @@ tracks/1/path = NodePath("shader:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"times": PackedFloat32Array(0, 0.1, 0.8, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1), Vector2(0, 0)]
@@ -91,6 +91,9 @@ shader_parameter/rotation = 0.0
 [node name="EffectBase" unique_id=685466674 instance=ExtResource("1_wo0v7")]
 oneShot = true
 autoplayAnimation = &"spawn"
+
+[node name="animationSound" parent="." index="1" unique_id=1671469331]
+volume_db = 10.0
 
 [node name="animator" parent="." index="2" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_garu6")

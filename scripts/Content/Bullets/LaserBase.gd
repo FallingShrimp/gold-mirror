@@ -15,11 +15,13 @@ func ai(delta: float):
 		hitbox.disabled = false
 	else:
 		hitbox.disabled = true
+	var hb = hitbox.shape as RectangleShape2D
+	hb.size.x = effect.currentLength + effect.laserHeight
+	hitbox.position.x = effect.currentLength / 2
 func register():
 	effect.shot()
 	CameraManager.shake(lifetime, shakeIntensity, func(_c, initial: float, rest: float): return initial * rest)
 	hitEntity.connect(func(e: EntityBase): e.impact(Vector2.from_angle(rotation) * 500))
+	hitbox.shape = hitbox.shape.duplicate()
 func destroy():
-	animator.play("hide")
-	await animator.animation_finished
 	CameraManager.shakeStop()

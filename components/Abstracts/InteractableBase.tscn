@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://di787xb1ooaou"]
+
+[ext_resource type="Script" uid="uid://dg6utvu2bmcfv" path="res://scripts/Statemachine/Abstracts/InteractableBase.gd" id="1_y1bhk"]
+[ext_resource type="PackedScene" uid="uid://bqhfk57jev48v" path="res://components/Boxes/KeypadButton.tscn" id="2_8txga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n2hgw"]
+radius = 100.0
+
+[node name="InteractableBase" type="Area2D" unique_id=319335013]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_y1bhk")
+
+[node name="texture" type="Node2D" parent="." unique_id=643970963]
+
+[node name="texture" type="Sprite2D" parent="texture" unique_id=1977483750]
+
+[node name="animator" type="AnimationPlayer" parent="texture" unique_id=2020851420]
+unique_name_in_owner = true
+
+[node name="hitbox" type="CollisionShape2D" parent="." unique_id=312346846]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_n2hgw")
+
+[node name="keys" type="Node2D" parent="." unique_id=3039827]
+position = Vector2(0, -114)
+
+[node name="anchor" type="Control" parent="keys" unique_id=985648007]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+
+[node name="keysBtn" parent="keys/anchor" unique_id=206390935 instance=ExtResource("2_8txga")]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -11.5
+offset_top = -11.0
+offset_right = 11.5
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+keys = Array[String](["F", "E"])
+complement = "交互"
