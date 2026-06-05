@@ -3,35 +3,61 @@
 [ext_resource type="PackedScene" uid="uid://cxp6oy0iktpuh" path="res://components/Abstracts/EffectBase.tscn" id="1_rtbq8"]
 [ext_resource type="Texture2D" uid="uid://f6iahe48jfhd" path="res://resources/effects/sword-stab.png" id="2_rtbq8"]
 
+[sub_resource type="Animation" id="Animation_rtbq8"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_vbkfl"]
 resource_name = "spawn"
-length = 0.5
+length = 0.6
 step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("texture:scale:x")
+tracks/0/path = NodePath("texture:modulate:a")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.4, -0.1, 0, 0, 0, 0.4, 0, 0, 0.1, 0, 1e-05, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.15, 0.35, 0.5008545)
+"handle_modes": PackedInt32Array(2, 0, 0, 0),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, -0.25, 0, 0, 0, 1, 0, 0, 0.25, 0, 0, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.6008545)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("texture:modulate:a")
+tracks/1/path = NodePath("texture:scale:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(2, 0, 0, 0),
-"points": PackedFloat32Array(0, 0, 0, 0, 0, 1, -0.1, 0, 0, 0, 1, 0, 0, 0.1, 0, 0, 0, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.15, 0.35, 0.5008545)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1e-05, 0, 0, 0, 0, 0.4, -0.25, 0, 0, 0, 0.4, 0, 0, 0.25, 0, 1e-05, 0, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.25, 0.35, 0.6)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 0, 200, -0.6, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.6)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhlsn"]
 _data = {
+&"RESET": SubResource("Animation_rtbq8"),
 &"spawn": SubResource("Animation_vbkfl")
 }
 
@@ -39,14 +65,14 @@ _data = {
 oneShot = true
 autoplayAnimation = &"spawn"
 
-[node name="animator" parent="." index="2" unique_id=138184434]
+[node name="animator" parent="." index="3" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_hhlsn")
 
-[node name="shader" parent="." index="3" unique_id=784770636]
+[node name="shader" parent="." index="4" unique_id=784770636]
 visible = false
 
-[node name="texture" parent="." index="5" unique_id=212148538]
-modulate = Color(1, 1, 1, 0.015977453)
+[node name="texture" parent="." index="6" unique_id=212148538]
+modulate = Color(1, 1, 1, 0)
 rotation = 3.1415927
-scale = Vector2(0.006400822, 0.4)
+scale = Vector2(0.4, 1e-05)
 texture = ExtResource("2_rtbq8")

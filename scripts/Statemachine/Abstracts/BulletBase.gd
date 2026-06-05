@@ -20,6 +20,7 @@ enum MotionType {
 @export var lifetime: float = 1000
 @export var penetrate: bool = false
 @export var knockback: float = 0
+@export var recoil: float = 0
 @export var impulse: float = 0
 @export var speed: float = 500
 @export var magic: Vector2 = Vector2.ZERO
@@ -141,6 +142,7 @@ func handleAreaEnter(node: Node2D):
 			EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
 			entity.takeDamage(baseDamage)
 			entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
+			launcher.impact(Vector2.from_angle(rotation) * -1000 * recoil)
 			hitEntity.emit(entity)
 			if !penetrate:
 				publicDestroy()

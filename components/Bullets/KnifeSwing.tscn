@@ -11,7 +11,8 @@ script = ExtResource("2_qgi6r")
 anchor = "attack1"
 lifetime = 200.0
 penetrate = true
-knockback = 1.0
+knockback = 0.5
+recoil = 0.5
 freezeMultiplier = 0.75
 
 [node name="hitbox" parent="." index="2" unique_id=1273022028]

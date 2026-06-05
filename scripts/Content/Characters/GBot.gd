@@ -15,7 +15,7 @@ func _ready():
 							var holdTime = await holdup("attack", 500)
 							if holdTime == 500 && useStrength(25):
 								emittedForNextAttack = true
-								fsm.changeState(States.ATTACK, [HEAVY_SHOT])
+								fsm.changeState(States.ATTACK, [HEAVY_SHOT], false)
 								attackCounter = 0
 								toIdle = false
 								ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
@@ -115,7 +115,7 @@ func ai(delta: float):
 			):
 				emittedForNextAttack = true
 				await animator.animation_finished
-				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1])
+				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
 				attackCounter += 1
 				ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 		States.MAGIC:

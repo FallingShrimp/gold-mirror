@@ -40,8 +40,9 @@ curve = SubResource("Curve_8bmsn")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cd8tj"]
 particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 40, 1)
 angle_curve = SubResource("CurveTexture_ke6nh")
-direction = Vector3(-1, 0, 0)
 spread = 30.0
 initial_velocity_min = 100.0
 initial_velocity_max = 1000.0
@@ -62,10 +63,10 @@ autoplaySound = &"spawn"
 [node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=979547621]
 stream = ExtResource("2_0dvu2")
 
-[node name="shader" parent="." index="3" unique_id=784770636]
+[node name="shader" parent="." index="4" unique_id=784770636]
 visible = false
 
-[node name="particles" parent="." index="6" unique_id=2076768246]
+[node name="particles" parent="." index="7" unique_id=2076768246]
 amount = 100
 texture = ExtResource("3_ke6nh")
 lifetime = 0.5

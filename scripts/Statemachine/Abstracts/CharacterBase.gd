@@ -50,6 +50,7 @@ var inventory: Dictionary[ContentManager.ItemType, int] = {
 	ContentManager.ItemType.MAGIC_BALL: 0
 }
 var inventoryMax: Dictionary[ContentManager.ItemType, int] = {}
+var cooldowners: Dictionary[int, CooldownController] = {}
 
 func _ready():
 	super._ready()
@@ -96,6 +97,11 @@ func _physics_process(delta):
 			velocity.x *= 1 - CONSTANT_FRICTION * frictionMultipiler
 		move_and_slide()
 
+func autoCooldown(index: int, cooldown: float = 0):
+	if cooldowners.has(index):
+		return cooldowners[index].start()
+	else:
+		cooldowners[index] = CooldownController.new(cooldown)
 func createAttack(_id: int) -> void:
 	pass
 func isInterruptedByDamage(amount: float) -> bool:

@@ -7,6 +7,8 @@ func _ready():
 			if fsm.currentState is States.ATTACK:
 				fsm.changeState(States.IDLE)
 	)
+	autoCooldown(1, 5000)
+	autoCooldown(2, 0)
 func ai(delta: float):
 	super.ai(delta)
 	if is_instance_valid(focusingEntity) && focusingEntity is EntityBase:
@@ -20,9 +22,10 @@ func ai(delta: float):
 						fsm.changeState(States.WALK, [-targetDirection])
 					elif distanceToFocusing() > 300 || targetDirection != direction:
 						fsm.changeState(States.WALK, [targetDirection])
-					else:
+					elif autoCooldown(attackCounter % 2 + 1):
 						fsm.changeState(States.ATTACK, [attackCounter % 2 + 1])
 						attackCounter += 1
+					direction = targetDirection
 func createAttack(id: int) -> void:
 	match id:
 		1:

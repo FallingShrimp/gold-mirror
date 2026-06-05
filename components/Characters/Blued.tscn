@@ -102,7 +102,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_fw34l"]
 resource_name = "ATTACK2"
-length = 5.0
+length = 4.0
 step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
