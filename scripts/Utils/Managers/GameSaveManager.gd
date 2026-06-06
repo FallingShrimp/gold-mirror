@@ -21,11 +21,15 @@ static func overrideSave():
 	saveFile.store_string(JsonUtil.stringify(gatherIn()))
 static func loadSave():
 	var data = JsonUtil.parseFromText(saveFile.get_as_text())
-	var cp = data["cp"] as Array[String]
-	for c in cp:
-		unlockedCheckpoints.append(c)
-	for key in data["sid"]:
-		StoryManager.playedCount[key] = data["sid"][key]
+	if data:
+		var cp = data["cp"] as Array[String]
+		for c in cp:
+			unlockedCheckpoints.append(c)
+		for key in data["sid"]:
+			StoryManager.playedCount[key] = data["sid"][key]
+		print("存档加载完成")
+	else:
+		print("存档文件无效")
 static func clear():
 	if saveFile:
 		saveFile.close()

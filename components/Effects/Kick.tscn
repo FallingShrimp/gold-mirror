@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://cesqykd0jk5en"]
+
+[ext_resource type="PackedScene" uid="uid://cxp6oy0iktpuh" path="res://components/Abstracts/EffectBase.tscn" id="1_wilej"]
+[ext_resource type="AudioStream" uid="uid://dkcd1nl5275l2" path="res://resources/sounds/kick.wav" id="2_rls6h"]
+[ext_resource type="Texture2D" uid="uid://blgm7nekcfv7r" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC0.png" id="2_stlwb"]
+[ext_resource type="Texture2D" uid="uid://d2h4cj8qm5iqt" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC1.png" id="3_rls6h"]
+[ext_resource type="Texture2D" uid="uid://d02dyvulwruex" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC2.png" id="4_odxno"]
+[ext_resource type="Texture2D" uid="uid://6hv0wvwp8iva" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC3.png" id="5_q7iok"]
+[ext_resource type="Texture2D" uid="uid://3prutk3aj4yh" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC4.png" id="6_rgvsb"]
+[ext_resource type="Texture2D" uid="uid://uki3tpf234tn" path="res://resources/effects/a/Effect_Dragon_Ninja_Elite_AttackC5.png" id="7_fqfd5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0k4v0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_stlwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rls6h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_odxno")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_q7iok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_rgvsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_fqfd5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="EffectBase" unique_id=685466674 instance=ExtResource("1_wilej")]
+oneShot = true
+autoplayFrames = &"default"
+autoplaySound = &"spawn"
+
+[node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=841873927]
+stream = ExtResource("2_rls6h")
+
+[node name="shader" parent="." index="4" unique_id=784770636]
+visible = false
+
+[node name="frames" parent="." index="5" unique_id=2075736612]
+position = Vector2(0, -48)
+rotation = -1.5707964
+sprite_frames = SubResource("SpriteFrames_0k4v0")
+frame = 5
+frame_progress = 1.0

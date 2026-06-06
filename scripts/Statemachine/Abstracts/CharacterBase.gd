@@ -37,7 +37,7 @@ var frictionMultipiler: float = 1
 var fsm: FiniteStateMachine
 var direction: Direction = Direction.RIGHT
 var attackCounter: int = 0
-var emittedForNextAttack: bool = false
+var emittedForNextAttack: int = 0
 var lastAttackTime: float = 0
 var parrying: bool = false
 var myBossbar: Bossbar = null

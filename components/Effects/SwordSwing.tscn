@@ -83,7 +83,6 @@ libraries/ = SubResource("AnimationLibrary_hhlsn")
 visible = false
 
 [node name="texture" parent="." index="6" unique_id=212148538]
-modulate = Color(1, 1, 1, 0)
 rotation = 3.1415927
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("2_jk6vw")

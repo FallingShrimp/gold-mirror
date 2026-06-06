@@ -16,6 +16,7 @@ class_name EffectPlayer
 func _ready():
 	particles.one_shot = oneShot
 	particles.emitting = false
+	hide()
 	spawn()
 func _physics_process(delta):
 	ai(delta)
@@ -36,6 +37,7 @@ func extremePlayer(millseconds: float):
 	await TimeUtil.millseconds(millseconds)
 	CameraManager.extremeStop()
 func shot():
+	show()
 	particles.emitting = true
 	if autoplayAnimation:
 		animator.play(autoplayAnimation)
@@ -57,10 +59,11 @@ func shot():
 			await particles.finished
 		queue_free()
 
-static func play(namx: StringName, positiox: Vector2, rotatiox: float, autoShot: bool = true, overrideRoot: Node = null):
+static func play(namx: StringName, positiox: Vector2 = Vector2.ZERO, rotatiox: float = 0, scalx: Vector2 = Vector2.ONE, autoShot: bool = true, overrideRoot: Node = null):
 	var instance = load("res://components/Effects/%s.tscn" % namx).instantiate() as EffectPlayer
 	instance.position = positiox
 	instance.rotation = rotatiox
+	instance.scale = scalx
 	(overrideRoot if is_instance_valid(overrideRoot) else WorldManager.rootNode).add_child(instance)
 	if autoShot:
 		instance.shot()

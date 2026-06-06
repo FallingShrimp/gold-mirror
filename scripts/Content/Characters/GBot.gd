@@ -9,12 +9,12 @@ func _ready():
 		func(_n):
 			match fsm.stateIs():
 				States.ATTACK:
-					if !emittedForNextAttack:
+					if emittedForNextAttack == 0:
 						var toIdle = true
 						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
 							var holdTime = await holdup("attack", 500)
 							if holdTime == 500 && useStrength(25):
-								emittedForNextAttack = true
+								emittedForNextAttack += 1
 								fsm.changeState(States.ATTACK, [HEAVY_SHOT], false)
 								attackCounter = 0
 								toIdle = false
@@ -28,7 +28,7 @@ func _ready():
 	fsm.joinState.connect(
 		func(newState, _o, _a):
 			if newState is States.ATTACK:
-				emittedForNextAttack = false
+				emittedForNextAttack -= 1
 	)
 	handleHoldon("attack")
 	installSkill(SkillCard.createCard("AnnihilationRay"))
@@ -74,6 +74,7 @@ func ai(delta: float):
 					if Input.is_action_just_pressed("attack") && useStrength(attackCounter):
 						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
 							attackCounter += 1
+							emittedForNextAttack += 1
 							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 				elif Input.is_action_just_pressed("dash") && ActionManager.canI(ActionManager.PlayerAction.DASH):
 					if useStrength(10):
@@ -109,13 +110,13 @@ func ai(delta: float):
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
 			if (
-				!emittedForNextAttack
+				emittedForNextAttack < MAX_ATTACK_PERIOD
 				&& Input.is_action_just_pressed("attack")
 				&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
 				&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
 				&& useStrength(attackCounter)
 			):
-				emittedForNextAttack = true
+				emittedForNextAttack += 1
 				await animator.animation_finished
 				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
 				attackCounter += 1
@@ -165,7 +166,7 @@ func createAttack(id: int) -> void:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
 					b.baseDamage = 20
-			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
+			EffectPlayer.play("Kick", getAnchorPosition("effect4"), 0, Vector2(direction, 1))
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
 		EffectPlayer.play("PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())

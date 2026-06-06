@@ -5,7 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://c2si64kby6q0o" path="res://resources/sounds/swing1.mp3" id="3_b5e2n"]
 [ext_resource type="AudioStream" uid="uid://bp1hgbyvu7x13" path="res://resources/sounds/swing2.mp3" id="4_hfxiv"]
 [ext_resource type="AudioStream" uid="uid://b7n3yvovllncc" path="res://resources/sounds/swing3.mp3" id="5_hfxiv"]
-[ext_resource type="AudioStream" uid="uid://dkcd1nl5275l2" path="res://resources/sounds/kick.wav" id="6_j3bhw"]
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -664,12 +663,8 @@ tracks/6/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("5_hfxiv")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("6_j3bhw")
 }],
-"times": PackedFloat32Array(0, 0.5)
+"times": PackedFloat32Array(0)
 }
 tracks/6/use_blend = true
 tracks/7/type = "method"
@@ -1138,6 +1133,9 @@ scale = Vector2(0.32535243, 0.32535243)
 scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
+scale = Vector2(0.9999996, 0.9999996)
+
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
 scale = Vector2(0.9999998, 0.9999998)
 
@@ -1158,7 +1156,7 @@ scale = Vector2(0.9999997, 0.9999997)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
 rotation = -1.4398966
-scale = Vector2(0.999999, 0.999999)
+scale = Vector2(0.9999987, 0.9999987)
 
 [node name="leftleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="2" unique_id=1150981751]
 rotation = -0.60039306
@@ -1191,20 +1189,23 @@ position = Vector2(817.57495, -430.3026)
 [node name="effect3" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=1098976485]
 position = Vector2(350.38928, -430.3026)
 
-[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=1605478299]
+[node name="effect4" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=1161149537]
+position = Vector2(922.077, -627.0124)
+
+[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=1605478299]
 position = Vector2(-76.83977, -614.718)
 rotation = 0.3265123
 
-[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=662818464]
+[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=662818464]
 position = Vector2(316.57977, -393.41953)
 
-[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=198186523]
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=198186523]
 position = Vector2(76.83975, -811.42773)
 
-[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=490380349]
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="8" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
 
-[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="8" unique_id=108014891]
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="9" unique_id=108014891]
 position = Vector2(0, -977.4016)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
