@@ -102,6 +102,7 @@ func autoCooldown(index: int, cooldown: float = 0):
 		return cooldowners[index].start()
 	else:
 		cooldowners[index] = CooldownController.new(cooldown)
+		cooldowners[index].makeCooldowned()
 func createAttack(_id: int) -> void:
 	pass
 func isInterruptedByDamage(amount: float) -> bool:

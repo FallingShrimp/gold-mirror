@@ -7,7 +7,7 @@ func _ready():
 			if fsm.currentState is States.ATTACK:
 				fsm.changeState(States.IDLE)
 	)
-	autoCooldown(1, 5000)
+	autoCooldown(1, 7500)
 	autoCooldown(2, 0)
 func ai(delta: float):
 	super.ai(delta)

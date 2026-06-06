@@ -1156,7 +1156,7 @@ scale = Vector2(0.9999997, 0.9999997)
 
 [node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
 rotation = -1.4398966
-scale = Vector2(0.9999987, 0.9999987)
+scale = Vector2(0.99999845, 0.99999845)
 
 [node name="leftleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="2" unique_id=1150981751]
 rotation = -0.60039306
@@ -1190,7 +1190,7 @@ position = Vector2(817.57495, -430.3026)
 position = Vector2(350.38928, -430.3026)
 
 [node name="effect4" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=1161149537]
-position = Vector2(922.077, -627.0124)
+position = Vector2(922.077, -759.17676)
 
 [node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=1605478299]
 position = Vector2(-76.83977, -614.718)

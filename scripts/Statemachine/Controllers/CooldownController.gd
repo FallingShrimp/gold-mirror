@@ -29,3 +29,5 @@ func timePassedSinceLastFlag() -> float:
 	return WorldManager.getCurrentTime() - lastStart
 func canStart():
 	return timePassedSinceLastFlag() >= cooldown
+func makeCooldowned():
+	lastStart = 0

@@ -60,6 +60,7 @@ func ai(delta: float):
 		States.PARRY_START:
 			if Input.is_action_just_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(15):
 				fsm.changeState(States.KICK, [], false)
+				ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 			elif !Input.is_action_pressed("parry"):
 				fsm.changeState(States.PARRY_END)
 		States.IDLE, States.WALK, States.JUMP:
@@ -71,8 +72,8 @@ func ai(delta: float):
 					fsm.changeState(States.PARRY_START)
 					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
 				elif Input.is_action_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK):
-					if Input.is_action_just_pressed("attack") && useStrength(attackCounter):
-						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
+					if Input.is_action_just_pressed("attack"):
+						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]) && useStrength(attackCounter):
 							attackCounter += 1
 							emittedForNextAttack += 1
 							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
@@ -160,12 +161,12 @@ func createAttack(id: int) -> void:
 		5:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
-					b.baseDamage = 10
+					b.baseDamage = 7
 			EffectPlayer.play("SwordSwing", getAnchorPosition("effect3"), directionAsRotation())
 		6:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
-					b.baseDamage = 20
+					b.baseDamage = 25
 			EffectPlayer.play("Kick", getAnchorPosition("effect4"), 0, Vector2(direction, 1))
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:

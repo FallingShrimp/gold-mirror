@@ -60,7 +60,7 @@ func takeDamage(amount: float):
 	var totalDamage = overrideDamage(amount)
 	currentHealth -= totalDamage
 	currentHealth = clamp(currentHealth, 0, maxHealth)
-	DamageLabel.create(get_parent(), getAnchorPosition("damage") + MathUtil.sampleInCircle(30), totalDamage)
+	DamageLabel.create(get_parent(), getAnchorPosition("damage") + MathUtil.sampleInCircle(100), totalDamage)
 	damageTaken.emit(totalDamage)
 	if currentHealth == 0:
 		publicDie()
