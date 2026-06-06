@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c2si64kby6q0o" path="res://resources/sounds/swing1.mp3" id="3_b5e2n"]
 [ext_resource type="AudioStream" uid="uid://bp1hgbyvu7x13" path="res://resources/sounds/swing2.mp3" id="4_hfxiv"]
 [ext_resource type="AudioStream" uid="uid://b7n3yvovllncc" path="res://resources/sounds/swing3.mp3" id="5_hfxiv"]
+[ext_resource type="AudioStream" uid="uid://dkcd1nl5275l2" path="res://resources/sounds/kick.wav" id="6_j3bhw"]
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -578,6 +579,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_de0m2"]
 resource_name = "KICK"
+length = 1.25
 step = 0.05
 tracks/0/type = "bezier"
 tracks/0/imported = false
@@ -586,9 +588,9 @@ tracks/0/path = NodePath("%skeleton/hip/body/neck/rightarm:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 2),
-"points": PackedFloat32Array(1.600467, 0, 0, 0.1, 0, 3.95, -0.15, 0, 0, 0, 3.95, 0, 0, 0, 0, -0.505, -0.15, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.65)
+"handle_modes": PackedInt32Array(0, 0, 0, 2, 0),
+"points": PackedFloat32Array(1.600467, 0, 0, 0.1, 0, 3.95, -0.15, 0, 0, 0, 3.95, 0, 0, 0, 0, -0.505, -0.15, 0, 0, 0, -0.505, -0.15, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.65, 1.25)
 }
 tracks/1/type = "bezier"
 tracks/1/imported = false
@@ -597,9 +599,9 @@ tracks/1/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand/weapon:rota
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2, 0, 2),
-"points": PackedFloat32Array(-1.6266469, 0, 0, 0.15, 0, 0.6, -0.15, 0, 0, 0, 0.6, 0, 0, 0, 0, -0.105, -0.15, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.65)
+"handle_modes": PackedInt32Array(0, 2, 0, 2, 0),
+"points": PackedFloat32Array(-1.6266469, 0, 0, 0.15, 0, 0.6, -0.15, 0, 0, 0, 0.6, 0, 0, 0, 0, -0.105, -0.15, 0, 0, 0, -0.105, -0.15, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.65, 1.25)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
@@ -608,9 +610,9 @@ tracks/2/path = NodePath("%skeleton/hip/body:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-0.007589412, 0, 0, 0.15, 0, 0.637, -0.15, 0, 0, 0, 0.637, 0, 0, 0, 0, -0.258, -0.15, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.3, 0.5, 0.65000004)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-0.007589412, 0, 0, 0.15, 0, 0.637, -0.15, 0, 0, 0, 0.637, 0, 0, 0, 0, -0.258, -0.15, 0, 0, 0, -0.258, -0.15, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.3, 0.5, 0.65000004, 1.25)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
@@ -619,9 +621,9 @@ tracks/3/path = NodePath("%skeleton/hip:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(-0.2146755, 0, 0, 0, 0, -0.2146755, 0, 0, 0.2, 0, -6.545, -0.3, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.5, 1)
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-0.2146755, 0, 0, 0, 0, -0.2146755, 0, 0, 0.2, 0, -6.545, -0.3, 0, 0, 0, -6.545, -0.3, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 1, 1.25)
 }
 tracks/4/type = "bezier"
 tracks/4/imported = false
@@ -630,9 +632,62 @@ tracks/4/path = NodePath("%skeleton/hip:position:y")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0, 0),
-"points": PackedFloat32Array(-188.85, 0, 0, 0, 0, -188.85, 0, 0, 0, 0, -562.655, -0.25, 0, 0.1, 0, -188.85, -0.05, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.5, 0.75, 1)
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(-188.85, 0, 0, 0, 0, -188.85, 0, 0, 0, 0, -1000, -0.25, 0, 0.1, 0, -188.85, -0.05, 0, 0, 0, -188.85, -0.05, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1, 1.25)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%texture/..")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.05, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [-10.0],
+"method": &"dart"
+}, {
+"args": [20.0],
+"method": &"dart"
+}]
+}
+tracks/6/type = "audio"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("%animationAudio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_hfxiv")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_j3bhw")
+}],
+"times": PackedFloat32Array(0, 0.5)
+}
+tracks/6/use_blend = true
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%texture/..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [5],
+"method": &"createAttack"
+}, {
+"args": [6],
+"method": &"createAttack"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_i6yko"]
@@ -933,6 +988,61 @@ tracks/0/keys = {
 "update": 1,
 "values": [1.0]
 }
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%skeleton/hip/body/neck/rightarm:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(3.0896547, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand/weapon:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1.3102964, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("%skeleton/hip/body:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("%skeleton/hip:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("%skeleton/hip:position:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-263, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_1uso6"]
 resource_name = "walk"
@@ -1025,15 +1135,41 @@ strengthRegeneration = 20.0
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
-[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
+[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
+rotation = -1.5009831
+
+[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 rotation = 1.3102964
 rest = Transform2D(0.2575636, 0.96626127, -0.96626127, 0.2575636, 143.37064, 3.8577828)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999999, 0.9999999)
+scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(-0.8858916, 0.4638921, -0.4638921, -0.8858916, -58, -111)
+
+[node name="rightleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="1" unique_id=703145623]
+rotation = 0.7644541
+scale = Vector2(0.9999997, 0.9999997)
+
+[node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
+rotation = -1.4398966
+scale = Vector2(0.999999, 0.999999)
+
+[node name="leftleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="2" unique_id=1150981751]
+rotation = -0.60039306
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="leftknee" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
+rotation = 1.1850786
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
+rotation = -0.43633232
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
 position = Vector2(46.103855, -144.45872)
@@ -1052,20 +1188,23 @@ position = Vector2(614.718, -430.3026)
 [node name="effect2" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="2" unique_id=288480898]
 position = Vector2(817.57495, -430.3026)
 
-[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=1605478299]
+[node name="effect3" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="3" unique_id=1098976485]
+position = Vector2(350.38928, -430.3026)
+
+[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=1605478299]
 position = Vector2(-76.83977, -614.718)
 rotation = 0.3265123
 
-[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=662818464]
+[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=662818464]
 position = Vector2(316.57977, -393.41953)
 
-[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=198186523]
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=198186523]
 position = Vector2(76.83975, -811.42773)
 
-[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=490380349]
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
 
-[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=108014891]
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="8" unique_id=108014891]
 position = Vector2(0, -977.4016)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]

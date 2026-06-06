@@ -58,7 +58,9 @@ func ai(delta: float):
 		States.CONVERSED, States.PARRY_END:
 			return
 		States.PARRY_START:
-			if !Input.is_action_pressed("parry"):
+			if Input.is_action_just_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(15):
+				fsm.changeState(States.KICK, [], false)
+			elif !Input.is_action_pressed("parry"):
 				fsm.changeState(States.PARRY_END)
 		States.IDLE, States.WALK, States.JUMP:
 			if fsm.stateIs() in [States.IDLE, States.WALK, States.JUMP] && !is_on_floor():
@@ -154,6 +156,16 @@ func createAttack(id: int) -> void:
 		4:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
 			BulletBase.create("HeavyShot", getAnchorPosition("attack1"), directionAsRotation(), self )
+		5:
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 10
+			EffectPlayer.play("SwordSwing", getAnchorPosition("effect3"), directionAsRotation())
+		6:
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 20
+			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 func parry(_bullet: BulletBase, isPerfect: bool):
 	if isPerfect:
 		EffectPlayer.play("PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())

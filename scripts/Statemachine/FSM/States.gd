@@ -129,3 +129,8 @@ class MAGIC_EXIT extends IState:
 class DIE extends IState:
 	func join() -> String:
 		return "DIE"
+
+class KICK extends IState:
+	func join() -> String:
+		SignalUtil.once(character.animator.animation_finished, func(_a): fsm.changeState(IDLE))
+		return "KICK"
