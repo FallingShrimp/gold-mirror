@@ -69,7 +69,7 @@ func ai(delta: float):
 					fsm.changeState(States.FALLING)
 			elif fsm.stateIs() not in [States.JUMP]:
 				if Input.is_action_just_pressed("parry") && ActionManager.canI(ActionManager.PlayerAction.PARRY):
-					fsm.changeState(States.PARRY_START)
+					fsm.changeState(States.PARRY_START, [1, false])
 					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
 				elif Input.is_action_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK):
 					if Input.is_action_just_pressed("attack"):
@@ -110,18 +110,24 @@ func ai(delta: float):
 					elif fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
-			if (
-				emittedForNextAttack < MAX_ATTACK_PERIOD
-				&& Input.is_action_just_pressed("attack")
-				&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
-				&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
-				&& useStrength(attackCounter)
-			):
-				emittedForNextAttack += 1
-				await animator.animation_finished
-				fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
-				attackCounter += 1
-				ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+			if fsm.currentState.arguments[0] == HEAVY_SHOT:
+				if ActionManager.canI(ActionManager.PlayerAction.PARRY) && Input.is_action_just_pressed("parry"):
+					await animator.animation_finished
+					fsm.changeState(States.PARRY_START, [3, true])
+					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
+			else:
+				if (
+					emittedForNextAttack < MAX_ATTACK_PERIOD
+					&& Input.is_action_just_pressed("attack")
+					&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
+					&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
+					&& useStrength(attackCounter)
+				):
+					emittedForNextAttack += 1
+					await animator.animation_finished
+					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
+					attackCounter += 1
+					ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 		States.MAGIC:
 			var currentState = fsm.currentState as States.MAGIC
 			for i in 3:
@@ -168,8 +174,10 @@ func createAttack(id: int) -> void:
 				if b is BulletBase:
 					b.baseDamage = 25
 			EffectPlayer.play("Kick", getAnchorPosition("effect4"), 0, Vector2(direction, 1))
-func parry(_bullet: BulletBase, isPerfect: bool):
-	if isPerfect:
+func parry(_bullet: BulletBase, isPerfect: bool, isSuper: bool):
+	if isSuper:
+		EffectPlayer.play("SuperParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
+	elif isPerfect:
 		EffectPlayer.play("PerfectParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
 	else:
 		EffectPlayer.play("UnexactParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())

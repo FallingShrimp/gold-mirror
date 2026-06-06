@@ -81,6 +81,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(0.99, 0.7095, 0, 0), Color(0.99, 0.7095, 0, 1), Color(0.99, 0.7095, 0, 1), Color(0.99, 0.7095, 0, 0)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [300.0, 400.0],
+"method": &"shake"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8u25p"]
 _data = {
@@ -90,8 +104,13 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mm61v"]
 shader = ExtResource("3_sooux")
-shader_parameter/gold_color = Color(1, 0.84, 0, 1)
+shader_parameter/k = 0.3
 shader_parameter/star_size = 0.8
+shader_parameter/glow_intensity = 1.5
+shader_parameter/glow_radius = 2.0
+shader_parameter/star_color = Color(1, 0.85, 0.1, 1)
+shader_parameter/glow_color = Color(1, 0.5, 0, 1)
+shader_parameter/rotation = 0.0
 
 [sub_resource type="Curve" id="Curve_7h6aa"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -136,7 +155,7 @@ scale_curve = SubResource("CurveTexture_g2jo3")
 color_initial_ramp = SubResource("GradientTexture1D_kmh8y")
 alpha_curve = SubResource("CurveTexture_ybuw1")
 
-[node name="Blood" unique_id=685466674 instance=ExtResource("1_7h6aa")]
+[node name="EffectBase" unique_id=685466674 instance=ExtResource("1_7h6aa")]
 oneShot = true
 autoplayAnimation = &"spawn"
 autoplaySound = &"spawn"
@@ -144,21 +163,21 @@ autoplaySound = &"spawn"
 [node name="spawn" type="AudioStreamPlayer2D" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=979547621]
 stream = ExtResource("2_7h6aa")
 
-[node name="animator" parent="." index="1" unique_id=138184434]
+[node name="animator" parent="." index="3" unique_id=138184434]
 libraries/ = SubResource("AnimationLibrary_8u25p")
 
-[node name="shader" parent="." index="2" unique_id=784770636]
+[node name="shader" parent="." index="4" unique_id=784770636]
 visible = false
 material = SubResource("ShaderMaterial_mm61v")
 
-[node name="texture" parent="." index="4" unique_id=212148538]
+[node name="texture" parent="." index="6" unique_id=212148538]
 modulate = Color(0.9866621, 0.69905746, 0, 1)
 z_index = 1
 rotation = 1.5707964
 scale = Vector2(1e-05, 1e-05)
 texture = ExtResource("3_ybuw1")
 
-[node name="particles" parent="." index="5" unique_id=2076768246]
+[node name="particles" parent="." index="7" unique_id=2076768246]
 amount = 200
 texture = ExtResource("3_7h6aa")
 lifetime = 1.5

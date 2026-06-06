@@ -114,25 +114,28 @@ func handleAreaEnter(node: Node2D):
 					if canParry && (entity.direction != getDirection() || verticalDirection):
 						var parryState = entity.fsm.currentState as States.PARRY_START
 						var isPerfect = parryState.timePassed() <= entity.PERFECT_PARRY_WINDOW
-						entity.parry(self , isPerfect)
-						if isPerfect:
+						var isSuper = entity.fsm.currentState.arguments[1]
+						entity.parry(self , isPerfect, isSuper)
+						if isSuper:
+							parryState.maxHoldTime += 1000
+							launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
+							entity.impact(Vector2(getDirection(), 0).normalized() * 3000)
+						elif isPerfect:
 							parryState.maxHoldTime += 250
 							launcher.impact(Vector2(-getDirection(), 0).normalized() * 1500)
 							entity.impact(Vector2(getDirection(), 0).normalized() * 3000)
-							CameraManager.shake(300, 400)
 						else:
 							parryState.maxHoldTime -= 500
 							entity.impact(Vector2(getDirection(), 0).normalized() * 1500)
 							launcher.impact(Vector2(-getDirection(), 0).normalized() * 3000)
-							CameraManager.shake(200, 150)
 						if launcher is CharacterBase:
 							if isPerfect:
 								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
 								entity.useStrength(impulse * averageMultiplier, false)
-								launcher.useStrength(impulse * (2 - averageMultiplier), false)
+								launcher.useStrength(impulse * (2 - averageMultiplier) * entity.fsm.currentState.arguments[0], false)
 							else:
 								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
-								entity.useStrength(impulse * (2 - averageMultiplier), false)
+								entity.useStrength(impulse * (2 - averageMultiplier) / entity.fsm.currentState.arguments[0], false)
 								launcher.useStrength(impulse * averageMultiplier, false)
 						return
 				if entity.isInterruptedByDamage(baseDamage):

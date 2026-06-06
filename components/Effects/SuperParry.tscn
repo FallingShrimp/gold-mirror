@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://ebl3o57y4s18"]
+
+[ext_resource type="PackedScene" uid="uid://ctf1b5887oo1i" path="res://components/Effects/PerfectParry.tscn" id="1_llosg"]
+
+[sub_resource type="Animation" id="Animation_llosg"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.9866621, 0.69905746, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ooufb"]
+resource_name = "spawn"
+length = 1.5
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 10, 0, -1, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(2, 2),
+"points": PackedFloat32Array(0, 0, 0, 0, 10, 0, -1, 0, 0, 0),
+"times": PackedFloat32Array(0, 1.5)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.99, 0.7095, 0, 0), Color(0.99, 0.7095, 0, 1), Color(0.99, 0.7095, 0, 1), Color(0.99, 0.7095, 0, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [500.0, 1000.0],
+"method": &"shake"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tpfps"]
+_data = {
+&"RESET": SubResource("Animation_llosg"),
+&"spawn": SubResource("Animation_ooufb")
+}
+
+[node name="EffectBase" unique_id=685466674 instance=ExtResource("1_llosg")]
+
+[node name="spawn" parent="sounds" parent_id_path=PackedInt32Array(2008599912) index="0" unique_id=979547621]
+volume_db = 10.0
+
+[node name="animator" parent="." index="3" unique_id=138184434]
+libraries/ = SubResource("AnimationLibrary_tpfps")
+
+[node name="particles" parent="." index="7" unique_id=2076768246]
+amount = 400

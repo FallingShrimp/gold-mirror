@@ -107,7 +107,7 @@ func createAttack(_id: int) -> void:
 	pass
 func isInterruptedByDamage(amount: float) -> bool:
 	return amount >= 0
-func parry(_bullet: BulletBase, _isPerfect: bool):
+func parry(_bullet: BulletBase, _isPerfect: bool, _isSuper: bool):
 	pass
 func canRunAi() -> bool:
 	return !following
