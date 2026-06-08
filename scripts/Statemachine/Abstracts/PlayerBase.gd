@@ -55,15 +55,11 @@ func holdup(inp: String, maxTime: float = INF):
 			break
 		await get_tree().process_frame
 	return result
-# ---- 预输入（input buffer）机制 ----
-# 将一次动作输入压入预输入栈，记录触发时刻
 func pushInput(action: String) -> void:
 	inputStack.append(InputStack.new(action, WorldManager.getCurrentTime()))
-# 将一次动作输入压入预输入栈；同一动作在时间窗内已有待消费输入时不重复压入
 func pushUniqueInput(action: String, window: float = INF) -> void:
 	if countInput(action, window) == 0:
 		pushInput(action)
-# 在时间窗 window（毫秒，默认无限）内查找并消费一条匹配的预输入；成功返回 true
 func consumeInput(action: String, window: float = INF) -> bool:
 	var now = WorldManager.getCurrentTime()
 	for i in range(inputStack.size() - 1, -1, -1):
@@ -72,7 +68,6 @@ func consumeInput(action: String, window: float = INF) -> bool:
 			inputStack.remove_at(i)
 			return true
 	return false
-# 统计时间窗内某动作的待消费预输入数量
 func countInput(action: String, window: float = INF) -> int:
 	var now = WorldManager.getCurrentTime()
 	var count = 0
@@ -80,10 +75,8 @@ func countInput(action: String, window: float = INF) -> int:
 		if entry.action == action && now - entry.time <= window:
 			count += 1
 	return count
-# 裁剪掉超出时间窗的过期预输入
 func pruneInput(window: float) -> void:
 	var now = WorldManager.getCurrentTime()
 	inputStack = inputStack.filter(func(entry: InputStack): return now - entry.time <= window)
-# 清空整个预输入栈
 func clearInputStack() -> void:
 	inputStack.clear()
