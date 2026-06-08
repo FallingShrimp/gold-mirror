@@ -8,8 +8,7 @@ var inputStack: Array[InputStack] = []
 
 func _ready():
 	super._ready()
-	instanceId = randi_range(1234, 9876)
-	displayName = "Instance #%d" % instanceId
+	displayName = "Instance #%d" % reinstance()
 	add_to_group("player")
 	LayerUtil.config(self , [LayerUtil.Layers.PLAYER], [LayerUtil.Layers.WALL])
 	WorldManager.playerInstance = self
@@ -26,6 +25,9 @@ func ai(delta: float):
 	if !is_instance_valid(focusingEntity):
 		focusingEntity = ContentUtil.findClosetEntity(position, func(e: EntityBase): return !e.isPlayer())
 
+func reinstance():
+	instanceId = randi_range(1234, 9876)
+	return instanceId
 func canCollect(item: ItemBase) -> bool:
 	return inventory[item.item] < inventoryMax.get(item.item, INF)
 func getCommitId() -> String:

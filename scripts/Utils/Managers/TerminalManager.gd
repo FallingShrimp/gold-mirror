@@ -10,15 +10,17 @@ static var instance: TerminalManager
 @onready var titleNumber: Label = $%titleNumber
 var showing: bool = false
 var decrypted: bool = false
+var canClose: bool = false
 
 func _ready():
 	instance = self
 func _physics_process(_delta):
 	if showing:
-		if Input.is_action_just_pressed("ui_exit"):
+		if canClose && Input.is_action_just_pressed("ui_exit"):
 			hidePanel()
 
 static func showPanel():
+	instance.canClose = false
 	WorldManager.sceneTree.paused = true
 	instance.formatter.setData("gameProgress", GameBusManager.gameProgress)
 	instance.formatter.setData("healthPercent", WorldManager.playerInstance.getHealthPercent())
@@ -36,6 +38,7 @@ static func showPanel():
 	instance.decrypted = true
 	await writeLine("[- SYSTEM DECRYPTED -]", 50, 2)
 	await write(instance.formatter.getOutput())
+	await TimeUtil.millseconds(1000)
 static func hidePanel():
 	instance.decrypted = false
 	await write("\n\n[- SYSTEM ENCRYPTED -]", 50)

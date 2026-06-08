@@ -5,8 +5,10 @@ extends InteractableBase
 
 func interact(_player: PlayerBase):
 	await TerminalManager.showPanel()
-	await TerminalManager.simulateCommand("git add /home/instance-%d" % WorldManager.playerInstance.instanceId)
-	await TerminalManager.simulateCommand('git commit -m "update only"')
-	await TerminalManager.writeLine("[master %s] update only" % WorldManager.playerInstance.getCommitId())
-	await TerminalManager.writeLine("%d files changed, %d insertions(+), %d deletions(-)" % [randi_range(1, 15), randi_range(100, 2000), randi_range(50, 200)])
-	# await TerminalManager.simulateCommand("git push"
+	PresetSoftware.git(
+		"/home/instance-%d" % WorldManager.playerInstance.instanceId,
+		"backup data of #%d" % WorldManager.playerInstance.instanceId,
+		"master",
+		"https://gayhub.com/G-Bot/instance-backup.git/"
+	)
+	TerminalManager.instance.canClose = true
