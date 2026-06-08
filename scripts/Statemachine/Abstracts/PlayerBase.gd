@@ -59,6 +59,10 @@ func holdup(inp: String, maxTime: float = INF):
 # 将一次动作输入压入预输入栈，记录触发时刻
 func pushInput(action: String) -> void:
 	inputStack.append(InputStack.new(action, WorldManager.getCurrentTime()))
+# 将一次动作输入压入预输入栈；同一动作在时间窗内已有待消费输入时不重复压入
+func pushUniqueInput(action: String, window: float = INF) -> void:
+	if countInput(action, window) == 0:
+		pushInput(action)
 # 在时间窗 window（毫秒，默认无限）内查找并消费一条匹配的预输入；成功返回 true
 func consumeInput(action: String, window: float = INF) -> bool:
 	var now = WorldManager.getCurrentTime()

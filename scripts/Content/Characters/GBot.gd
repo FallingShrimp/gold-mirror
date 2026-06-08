@@ -1,6 +1,7 @@
 extends PlayerBase
 
 var MAX_ATTACK_PERIOD = 3
+var INPUT_BUFFER_WINDOW = 350
 @onready var HEAVY_SHOT = MAX_ATTACK_PERIOD + 1
 
 func _ready():
@@ -9,19 +10,23 @@ func _ready():
 		func(_n):
 			match fsm.stateIs():
 				States.ATTACK:
-					if countInput("attack") == 0:
-						var toIdle = true
-						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
-							var holdTime = await holdup("attack", 500)
-							if holdTime == 500 && useStrength(25):
-								pushInput("attack")
-								fsm.changeState(States.ATTACK, [HEAVY_SHOT], false)
-								attackCounter = 0
-								toIdle = false
-								ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
-						if toIdle:
+					var toIdle = true
+					if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
+						var holdTime = await holdup("attack", 500)
+						if holdTime == 500 && useStrength(25):
+							pushInput("attack")
+							fsm.changeState(States.ATTACK, [HEAVY_SHOT], false)
 							attackCounter = 0
-							fsm.changeState(States.IDLE)
+							toIdle = false
+							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+					if toIdle && countInput("attack", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(3):
+						fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
+						attackCounter += 1
+						toIdle = false
+						ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+					if toIdle:
+						attackCounter = 0
+						fsm.changeState(States.IDLE)
 				States.PARRY_END:
 					fsm.changeState(States.IDLE)
 	)
@@ -54,11 +59,14 @@ func _ready():
 						StoryManager.close()
 func ai(delta: float):
 	super.ai(delta)
+	collectPlayerInputs()
+	pruneInput(INPUT_BUFFER_WINDOW)
 	match fsm.stateIs():
 		States.CONVERSED, States.PARRY_END:
 			return
 		States.PARRY_START:
-			if Input.is_action_just_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(15):
+			if countInput("attack", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(15):
+				consumeInput("attack", INPUT_BUFFER_WINDOW)
 				fsm.changeState(States.KICK, [], false)
 				ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
 			elif !Input.is_action_pressed("parry"):
@@ -68,68 +76,21 @@ func ai(delta: float):
 				if fsm.stateIs() != States.JUMP || velocity.y < 0:
 					fsm.changeState(States.FALLING)
 			elif fsm.stateIs() not in [States.JUMP]:
-				if Input.is_action_just_pressed("parry") && ActionManager.canI(ActionManager.PlayerAction.PARRY):
-					fsm.changeState(States.PARRY_START, [1, false])
-					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
-				elif Input.is_action_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK):
-					if Input.is_action_just_pressed("attack"):
-						pushInput("attack")
-						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]) && useStrength(3):
-							attackCounter += 1
-							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
-						else:
-							consumeInput("attack")
-				elif Input.is_action_just_pressed("dash") && ActionManager.canI(ActionManager.PlayerAction.DASH):
-					if useStrength(10):
-						fsm.changeState(States.DASH, [direction])
-						ActionManager.emitDid(ActionManager.PlayerAction.DASH)
-				elif Input.is_action_just_pressed("jump") && ActionManager.canI(ActionManager.PlayerAction.JUMP):
-					fsm.changeState(States.JUMP, [1])
-					ActionManager.emitDid(ActionManager.PlayerAction.JUMP)
-				elif Input.is_action_pressed("moving") && ActionManager.canI(ActionManager.PlayerAction.MOVE):
-					fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
-					ActionManager.emitDid(ActionManager.PlayerAction.MOVE)
-				else:
-					var useSkill = -1
-					for i in 3:
-						var skillInputId = "skill%d" % (i + 1)
-						var currentState: States.MAGIC = null
-						if fsm.currentState is States.MAGIC:
-							currentState = fsm.currentState as States.MAGIC
-						if Input.is_action_just_pressed(skillInputId):
-							useSkill = i
-							break
-					if useSkill >= 0:
-						if len(skills) > useSkill:
-							var card: SkillCard = skills[useSkill]
-							if card.cooldownTimer.start() && ActionManager.canI(ActionManager.PlayerAction.MAGIC):
-								fsm.changeState(States.MAGIC, [card, useSkill])
-								ActionManager.emitDid(ActionManager.PlayerAction.MAGIC)
-							else:
-								print("Not cooldowned skill %d" % (useSkill + 1))
-						else:
-							print("Not installed skill %d" % (useSkill + 1))
+				if !tryBufferedAction():
+					if Input.is_action_pressed("moving") && ActionManager.canI(ActionManager.PlayerAction.MOVE):
+						fsm.changeState(States.WALK, [Input.get_axis("move_left", "move_right")])
+						ActionManager.emitDid(ActionManager.PlayerAction.MOVE)
 					elif fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
 		States.ATTACK:
 			if fsm.currentState.arguments[0] == HEAVY_SHOT:
-				if ActionManager.canI(ActionManager.PlayerAction.PARRY) && Input.is_action_just_pressed("parry"):
+				if countInput("parry", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.PARRY):
+					consumeInput("parry", INPUT_BUFFER_WINDOW)
 					await animator.animation_finished
 					fsm.changeState(States.PARRY_START, [3, true])
 					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
 			else:
-				if (
-					countInput("attack") == 0
-					&& Input.is_action_just_pressed("attack")
-					&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
-					&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
-					&& useStrength(3)
-				):
-					pushInput("attack")
-					await animator.animation_finished
-					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
-					attackCounter += 1
-					ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+				pass
 		States.MAGIC:
 			var currentState = fsm.currentState as States.MAGIC
 			for i in 3:
@@ -146,6 +107,56 @@ func ai(delta: float):
 							if !Input.is_action_pressed(skillInputId):
 								if currentState.nextState:
 									fsm.changeState(currentState.nextState)
+func collectPlayerInputs() -> void:
+	if Input.is_action_just_pressed("attack"):
+		pushUniqueInput("attack", INPUT_BUFFER_WINDOW)
+	if Input.is_action_just_pressed("parry"):
+		pushUniqueInput("parry", INPUT_BUFFER_WINDOW)
+	if Input.is_action_just_pressed("dash"):
+		pushUniqueInput("dash", INPUT_BUFFER_WINDOW)
+	if Input.is_action_just_pressed("jump"):
+		pushUniqueInput("jump", INPUT_BUFFER_WINDOW)
+	for i in 3:
+		var skillInputId = "skill%d" % (i + 1)
+		if Input.is_action_just_pressed(skillInputId):
+			pushUniqueInput(skillInputId, INPUT_BUFFER_WINDOW)
+func tryBufferedAction() -> bool:
+	if countInput("parry", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.PARRY):
+		if fsm.changeState(States.PARRY_START, [1, false]):
+			consumeInput("parry", INPUT_BUFFER_WINDOW)
+			ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
+			return true
+	if countInput("attack", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(3):
+		if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]):
+			attackCounter += 1
+			ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+			return true
+		consumeInput("attack", INPUT_BUFFER_WINDOW)
+	if countInput("dash", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.DASH) && useStrength(10):
+		if fsm.changeState(States.DASH, [direction]):
+			consumeInput("dash", INPUT_BUFFER_WINDOW)
+			ActionManager.emitDid(ActionManager.PlayerAction.DASH)
+			return true
+	if countInput("jump", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.JUMP):
+		if fsm.changeState(States.JUMP, [1]):
+			consumeInput("jump", INPUT_BUFFER_WINDOW)
+			ActionManager.emitDid(ActionManager.PlayerAction.JUMP)
+			return true
+	for i in 3:
+		var skillInputId = "skill%d" % (i + 1)
+		if countInput(skillInputId, INPUT_BUFFER_WINDOW) > 0:
+			consumeInput(skillInputId, INPUT_BUFFER_WINDOW)
+			if len(skills) > i:
+				var card: SkillCard = skills[i]
+				if card.cooldownTimer.start() && ActionManager.canI(ActionManager.PlayerAction.MAGIC):
+					if fsm.changeState(States.MAGIC, [card, i]):
+						ActionManager.emitDid(ActionManager.PlayerAction.MAGIC)
+						return true
+				else:
+					print("Not cooldowned skill %d" % (i + 1))
+			else:
+				print("Not installed skill %d" % (i + 1))
+	return false
 func createAttack(id: int) -> void:
 	match id:
 		1:
