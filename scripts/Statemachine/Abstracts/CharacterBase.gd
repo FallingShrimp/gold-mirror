@@ -5,6 +5,7 @@ signal strengthIncreased(amount: float)
 signal strengthChanged(to: float)
 signal magicChanged(to: Vector2)
 signal converse()
+signal madeEntityConversed(entity: CharacterBase)
 signal itemStored(delta: Dictionary[ContentManager.ItemType, int])
 
 enum Direction {
@@ -66,6 +67,8 @@ func _ready():
 	)
 	converse.connect(
 		func():
+			if is_instance_valid(focusingEntity) && focusingEntity is CharacterBase:
+				(focusingEntity as CharacterBase).madeEntityConversed.emit(self )
 			fsm.changeState(States.CONVERSED)
 	)
 	died.connect(func(): fsm.changeState(States.DIE))

@@ -18,6 +18,18 @@ class ATTACK extends IState:
 		character.lastAttackTime = WorldManager.getCurrentTime()
 		return "ATTACK%d" % arguments[0]
 
+class COUNTER_ATTACK_START extends IState:
+	func join() -> String:
+		return "COUNTER_ATTACK_START"
+
+class COUNTER_ATTACK_LOOP extends IState:
+	func join() -> String:
+		return "COUNTER_ATTACK_LOOP"
+
+class COUNTER_ATTACK_END extends IState:
+	func join() -> String:
+		return "COUNTER_ATTACK_END"
+
 class JUMP extends IState:
 	func join() -> String:
 		character.impact(Vector2(0, -arguments[0] * 1200))

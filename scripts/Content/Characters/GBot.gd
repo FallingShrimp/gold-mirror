@@ -4,14 +4,20 @@ var MAX_ATTACK_PERIOD = 3
 @onready var HEAVY_SHOT = MAX_ATTACK_PERIOD + 1
 var INPUT_BUFFER_WINDOW = 350
 var COYOTE_TIME = 50
+var COUNTER_ATTACK_WINDOW = 5000
+var MAX_COUNTER_ATTACK_LOOP = 3
 
 var lastGroundedTime = 0
 var coyoteJumpAvailable = false
+var counterAttackStartTime = - INF
+var counterAttackLoopCount = 0
 
 func _ready():
 	super._ready()
 	animator.animation_finished.connect(
 		func(_n):
+			if handleCounterAttackAnimationFinished():
+				return
 			match fsm.stateIs():
 				States.ATTACK:
 					var toIdle = true
@@ -38,6 +44,11 @@ func _ready():
 		func(newState, _o, _a):
 			if newState is States.ATTACK:
 				consumeInput("attack")
+	)
+	madeEntityConversed.connect(
+		func(_entity: CharacterBase):
+			counterAttackStartTime = WorldManager.getCurrentTime()
+			counterAttackLoopCount = 0
 	)
 	handleHoldon("attack")
 	installSkill(SkillCard.createCard("AnnihilationRay"))
@@ -69,8 +80,6 @@ func ai(delta: float):
 		lastGroundedTime = WorldManager.getCurrentTime()
 		coyoteJumpAvailable = true
 	match fsm.stateIs():
-		States.CONVERSED, States.PARRY_END:
-			return
 		States.PARRY_START:
 			if countInput("attack", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && useStrength(15):
 				consumeInput("attack", INPUT_BUFFER_WINDOW)
@@ -92,6 +101,8 @@ func ai(delta: float):
 		States.FALLING:
 			tryBufferedCoyoteJump()
 		States.ATTACK:
+			if tryStartCounterAttack():
+				return true
 			if fsm.currentState.arguments[0] == HEAVY_SHOT:
 				if countInput("parry", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.PARRY):
 					consumeInput("parry", INPUT_BUFFER_WINDOW)
@@ -166,6 +177,43 @@ func tryBufferedAction() -> bool:
 					print("Not cooldowned skill %d" % (i + 1))
 			else:
 				print("Not installed skill %d" % (i + 1))
+	return false
+func tryStartCounterAttack() -> bool:
+	if (
+		countInput("attack", INPUT_BUFFER_WINDOW) > 0
+		&& WorldManager.getCurrentTime() - counterAttackStartTime <= COUNTER_ATTACK_WINDOW
+		&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
+	):
+		consumeInput("attack", INPUT_BUFFER_WINDOW)
+		counterAttackStartTime = - INF
+		counterAttackLoopCount = 0
+		attackCounter = 0
+		if fsm.changeState(States.COUNTER_ATTACK_START):
+			ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+			return true
+	return false
+func handleCounterAttackAnimationFinished() -> bool:
+	match fsm.stateIs():
+		States.COUNTER_ATTACK_START:
+			if countInput("attack", INPUT_BUFFER_WINDOW) > 0:
+				consumeInput("attack", INPUT_BUFFER_WINDOW)
+				counterAttackLoopCount += 1
+				fsm.changeState(States.COUNTER_ATTACK_LOOP, [], false)
+			else:
+				fsm.changeState(States.COUNTER_ATTACK_END)
+			return true
+		States.COUNTER_ATTACK_LOOP:
+			if counterAttackLoopCount < MAX_COUNTER_ATTACK_LOOP && countInput("attack", INPUT_BUFFER_WINDOW) > 0:
+				consumeInput("attack", INPUT_BUFFER_WINDOW)
+				counterAttackLoopCount += 1
+				fsm.changeState(States.COUNTER_ATTACK_LOOP, [], false)
+			else:
+				fsm.changeState(States.COUNTER_ATTACK_END)
+			return true
+		States.COUNTER_ATTACK_END:
+			counterAttackLoopCount = 0
+			fsm.changeState(States.IDLE)
+			return true
 	return false
 func tryBufferedCoyoteJump() -> bool:
 	if (

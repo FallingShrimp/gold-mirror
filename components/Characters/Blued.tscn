@@ -356,8 +356,8 @@ script = ExtResource("2_onkpg")
 showBossWarning = false
 gravityScale = 1.0
 movementSpeed = 1.5
-maxStrength = 20.0
-maxHealth = 75.0
+maxStrength = 1.0
+maxHealth = 500.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.5912069, 0.5912069)
@@ -376,6 +376,7 @@ rest = Transform2D(1, 0, 0, 1, 3, -157)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(61.000008, 20.000002)
+scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.89081466, -0.45436627, 0.45436627, 0.89081466, 61.000008, 20.000002)
 
 [node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
@@ -387,7 +388,7 @@ length = 79.206
 
 [node name="rightarm" parent="texture/skeleton/hip/body/neck" index="1" unique_id=604297370]
 position = Vector2(-62.999992, 24)
-rotation = -2.173185
+rotation = 3.09
 scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.9986515, 0.05191462, -0.05191462, -0.9986515, -62.999992, 24)
 

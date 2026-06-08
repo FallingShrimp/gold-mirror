@@ -132,16 +132,18 @@ func handleAreaEnter(node: Node2D):
 							if isPerfect:
 								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
 								entity.useStrength(impulse * averageMultiplier, false)
-								launcher.useStrength(impulse * (2 - averageMultiplier) * entity.fsm.currentState.arguments[0], false)
+								launcher.useStrength(impulse * (2 - averageMultiplier) * parryState.arguments[0], false)
 							else:
 								var averageMultiplier = (launcher.impactMultiplier + entity.impactMultiplier) / 2.0
-								entity.useStrength(impulse * (2 - averageMultiplier) / entity.fsm.currentState.arguments[0], false)
+								entity.useStrength(impulse * (2 - averageMultiplier) / parryState.arguments[0], false)
 								launcher.useStrength(impulse * averageMultiplier, false)
 						return
 				if entity.isInterruptedByDamage(baseDamage):
 					entity.fsm.changeState(States.HURT, [-Vector2.from_angle(rotation).x])
 			if launcher.isPlayer():
 				launcher.focusingEntity = entity
+			if entity is CharacterBase && launcher is CharacterBase:
+				(entity as CharacterBase).focusingEntity = launcher
 			EffectPlayer.play("Blood", Vector2(entity.position.x, position.y), 0)
 			entity.takeDamage(baseDamage)
 			entity.impact(Vector2.from_angle(rotation) * 1000 * knockback)
