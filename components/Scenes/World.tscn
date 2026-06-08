@@ -39,7 +39,7 @@ script = ExtResource("1_sbdvw")
 
 [node name="GBot" parent="." unique_id=948564138 instance=ExtResource("2_0ci2v")]
 z_index = 1
-position = Vector2(-3079, 369)
+position = Vector2(-4698, 1379)
 
 [node name="camera" type="Camera2D" parent="." unique_id=2047599218]
 process_callback = 0
@@ -120,7 +120,7 @@ offset_right = -15.0
 offset_bottom = 158.0
 
 [node name="floor3" type="StaticBody2D" parent="." unique_id=294894309]
-position = Vector2(-1862, 284)
+position = Vector2(-3678, 1290)
 collision_layer = 7
 collision_mask = 7
 
@@ -144,11 +144,71 @@ offset_top = -604.0
 offset_right = -1294.0
 offset_bottom = 92.0
 
+[node name="floor4" type="StaticBody2D" parent="." unique_id=1251448896]
+position = Vector2(-3185, 1054)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor4" unique_id=1695995309]
+position = Vector2(-221.5, 116.5)
+shape = SubResource("RectangleShape2D_tu2wq")
+
+[node name="texture" type="ColorRect" parent="floor4" unique_id=961807131]
+offset_left = -429.0
+offset_top = 90.0
+offset_right = -15.0
+offset_bottom = 158.0
+
+[node name="floor5" type="StaticBody2D" parent="." unique_id=397588322]
+position = Vector2(-2577, 851)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor5" unique_id=1935112079]
+position = Vector2(-221.5, 116.5)
+shape = SubResource("RectangleShape2D_tu2wq")
+
+[node name="texture" type="ColorRect" parent="floor5" unique_id=118861845]
+offset_left = -429.0
+offset_top = 90.0
+offset_right = -15.0
+offset_bottom = 158.0
+
+[node name="floor6" type="StaticBody2D" parent="." unique_id=589959597]
+position = Vector2(-1750, 336)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor6" unique_id=914956073]
+position = Vector2(-221.5, 116.5)
+shape = SubResource("RectangleShape2D_tu2wq")
+
+[node name="texture" type="ColorRect" parent="floor6" unique_id=1621107646]
+offset_left = -429.0
+offset_top = 90.0
+offset_right = -15.0
+offset_bottom = 158.0
+
+[node name="floor7" type="StaticBody2D" parent="." unique_id=1682231282]
+position = Vector2(-2118, 599)
+collision_layer = 7
+collision_mask = 7
+
+[node name="hitbox" type="CollisionShape2D" parent="floor7" unique_id=650160123]
+position = Vector2(-221.5, 116.5)
+shape = SubResource("RectangleShape2D_tu2wq")
+
+[node name="texture" type="ColorRect" parent="floor7" unique_id=71666243]
+offset_left = -429.0
+offset_top = 90.0
+offset_right = -15.0
+offset_bottom = 158.0
+
 [node name="tutorial2" type="Label" parent="." unique_id=761341199]
 offset_left = -1468.0
-offset_top = 26.0
+offset_top = -9.0
 offset_right = -913.0
-offset_bottom = 309.0
+offset_bottom = 274.0
 text = "闪避无法穿过物理攻击，
 但在合适的时机按下格挡可振晕敌人，
 而不精准的格挡可能会振晕自己。
@@ -190,6 +250,13 @@ offset_right = 3529.0
 offset_bottom = 415.0
 text = "前方有强大敌人，做好准备。"
 label_settings = SubResource("LabelSettings_5pkqg")
+
+[node name="tutorial7" type="Label" parent="." unique_id=1170372788]
+offset_left = -4043.0
+offset_top = 1262.0
+offset_right = -3488.0
+offset_bottom = 1545.0
+text = "与RSA终端交互，储存当前G-Bot的实例。"
 
 [node name="trigger1" type="Area2D" parent="." unique_id=1264210951 node_paths=PackedStringArray("spawnPosition")]
 position = Vector2(-379, 24)
@@ -240,7 +307,7 @@ shape = SubResource("RectangleShape2D_pv5hy")
 position = Vector2(741, -234)
 
 [node name="triggerVoid" type="Area2D" parent="." unique_id=833547623]
-position = Vector2(4178, 16)
+position = Vector2(-507, 1845)
 script = ExtResource("6_5pkqg")
 type = 2
 allowEnemy = true
@@ -248,11 +315,11 @@ storyPreset = &"fallIntoVoid"
 metadata/_custom_type_script = "uid://cbdhox7s4vfeh"
 
 [node name="hitbox" type="CollisionShape2D" parent="triggerVoid" unique_id=219547842]
-position = Vector2(-6352, 876)
+position = Vector2(-4229, -193)
 shape = SubResource("WorldBoundaryShape2D_5pkqg")
 
 [node name="save1" parent="." unique_id=319335013 instance=ExtResource("8_pv5hy")]
-position = Vector2(-2528, 373)
+position = Vector2(-4214, 1381)
 id = ""
 
 [node name="Brown" parent="." unique_id=63274235 instance=ExtResource("7_5pkqg")]
@@ -270,7 +337,14 @@ offset_left = -1725.0
 offset_top = 147.0
 offset_right = -1510.0
 offset_bottom = 170.0
-text = "按住[parry] - 格挡"
+text = "按住[parry] : 格挡"
+
+[node name="a11" parent="." unique_id=1101226449 instance=ExtResource("9_x3jtm")]
+offset_left = -1729.0
+offset_top = 178.0
+offset_right = -1514.0
+offset_bottom = 205.0
+text = "[parry]+[attack] : 踢颅击"
 
 [node name="a3" parent="." unique_id=1507592490 instance=ExtResource("9_x3jtm")]
 offset_left = 2040.0
@@ -301,22 +375,29 @@ offset_bottom = 100.0
 text = "按住[skill1]：湮灭射线"
 
 [node name="a7" parent="." unique_id=2049610526 instance=ExtResource("9_x3jtm")]
-offset_left = -2852.0
-offset_top = 103.0
-offset_right = -2637.0
-offset_bottom = 126.0
+offset_left = -4914.0
+offset_top = 958.0
+offset_right = -4699.0
+offset_bottom = 985.0
 text = "[move_left][move_right] - 移动"
 
 [node name="a8" parent="." unique_id=104913764 instance=ExtResource("9_x3jtm")]
-offset_left = -2852.0
-offset_top = 133.0
-offset_right = -2637.0
-offset_bottom = 156.0
+offset_left = -4914.0
+offset_top = 988.0
+offset_right = -4699.0
+offset_bottom = 1015.0
 text = "[jump] - 跳"
 
 [node name="a9" parent="." unique_id=1333162354 instance=ExtResource("9_x3jtm")]
-offset_left = -2852.0
-offset_top = 162.0
-offset_right = -2637.0
-offset_bottom = 185.0
+offset_left = -4914.0
+offset_top = 1017.0
+offset_right = -4699.0
+offset_bottom = 1044.0
 text = "[dash] - 闪避"
+
+[node name="a10" parent="." unique_id=874305833 instance=ExtResource("9_x3jtm")]
+offset_left = -1468.0
+offset_top = 179.0
+offset_right = -1223.0
+offset_bottom = 206.0
+text = "振晕敌人后持续按住[attack]可进行4段反击。"

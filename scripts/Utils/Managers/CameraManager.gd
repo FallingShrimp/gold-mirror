@@ -50,6 +50,10 @@ static func autoExtreme(something: Node2D, millseconds: float):
 	extreme(something)
 	await TimeUtil.millseconds(millseconds)
 	extremeStop()
+static func freezeTime(millseconds: float):
+	WorldManager.sceneTree.paused = true
+	await TimeUtil.millseconds(millseconds * Engine.time_scale)
+	WorldManager.sceneTree.paused = false
 
 static func playAnimation(animation: String):
 	instance.animator.play(animation)

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://ds2lqjafjwia6" path="res://components/Stages/SoundStage.tscn" id="2_6117n"]
 
 [node name="EffectBase" type="Node2D" unique_id=685466674]
+process_mode = 3
 script = ExtResource("1_xccqq")
 
 [node name="sounds" parent="." unique_id=2008599912 instance=ExtResource("2_6117n")]

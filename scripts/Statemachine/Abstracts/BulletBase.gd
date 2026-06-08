@@ -28,7 +28,7 @@ enum MotionType {
 @export var spawnAnimation: StringName = ""
 @export var destroyAnimation: StringName = ""
 @export var verticalDirection: bool = false
-@export var freezeMultiplier: float = 1.0
+@export var freezeTime: float = 0
 
 @onready var sounds: SoundStage = $%sounds
 @onready var animator: AnimationPlayer = $%animator
@@ -50,13 +50,8 @@ func _ready():
 	hitEntity.connect(
 		func(_e):
 			if !freezed:
-				launcher.animator.speed_scale *= freezeMultiplier
+				CameraManager.freezeTime(freezeTime)
 				freezed = true
-	)
-	hitoutEntity.connect(
-		func(_e):
-			if freezed:
-				launcher.animator.speed_scale /= freezeMultiplier
 	)
 	await get_tree().process_frame
 	spawn()

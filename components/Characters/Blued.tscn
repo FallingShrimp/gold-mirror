@@ -356,8 +356,7 @@ script = ExtResource("2_onkpg")
 showBossWarning = false
 gravityScale = 1.0
 movementSpeed = 1.5
-maxStrength = 1.0
-maxHealth = 500.0
+maxStrength = 20.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.5912069, 0.5912069)
