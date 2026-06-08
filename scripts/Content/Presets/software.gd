@@ -5,7 +5,7 @@ static func openssl(input: String, key: String, output: String):
 	await TimeUtil.millseconds(500)
 	await TerminalManager.progress(20)
 	await TerminalManager.writeLine("\nDecryption successful. Output: %s" % output, 10, 2)
-static func git(dir: String, msg: String, branch: String, remoteUrl: String):
+static func git(dir: String, msg: String, branch: String, repo: String):
 	var oldHash = WorldManager.playerInstance.getCommitId()
 	WorldManager.playerInstance.reinstance()
 	var newHash = WorldManager.playerInstance.getCommitId()
@@ -27,6 +27,6 @@ static func git(dir: String, msg: String, branch: String, remoteUrl: String):
 	await TerminalManager.writeLine("Writing objects: 100%% (%d/%d), %.2f KiB | %.2f MiB/s, done." % [compressedObjCount + 1, compressedObjCount + 1, size, speed], size / speed)
 	await TerminalManager.writeLine("Total %d (delta %d), reused 0 (delta 0), pack-reused 0 (from 0)" % [compressedObjCount + 1, deltaCount], 5)
 	await TerminalManager.writeLine("remote: Resolving deltas: 100%% (%d/%d), completed with %d local objects." % [deltaCount, deltaCount, localObjCount], 5)
-	await TerminalManager.writeLine("To %s" % remoteUrl, 5)
+	await TerminalManager.writeLine("To https://gayhub.com/%s.git/" % repo, 5)
 	await TerminalManager.writeLine("%s..%s %s -> %s" % [oldHash, newHash, branch, branch], 5)
 	await TerminalManager.writeLine("branch '%s' set up to track 'origin/%s'." % [branch, branch], 5)

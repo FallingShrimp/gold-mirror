@@ -9,6 +9,6 @@ func interact(_player: PlayerBase):
 		"/home/instance-%d" % WorldManager.playerInstance.instanceId,
 		"backup data of #%d" % WorldManager.playerInstance.instanceId,
 		"master",
-		"https://gayhub.com/G-Bot/instance-backup.git/"
+		"Hemini-Bot/instance-backup"
 	)
 	TerminalManager.instance.canClose = true
