@@ -25,6 +25,7 @@ func rebuildInfo():
 	else:
 		label.label_settings.font_color = Color.GRAY
 		label.text = "MISS"
+	label.label_settings.outline_color = label.label_settings.font_color
 
 static func create(root: Node2D, positiox: Vector2, amounx: float):
 	var instance = load("res://components/Boxes/DamageLabel.tscn").instantiate() as DamageLabel
