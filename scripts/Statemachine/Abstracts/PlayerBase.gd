@@ -4,6 +4,7 @@ class_name PlayerBase
 var inputHoldStart: Dictionary[String, float] = {}
 var skills: Array[SkillCard] = []
 var instanceId: int
+var inputStack: Array[InputStack] = []
 
 func _ready():
 	super._ready()

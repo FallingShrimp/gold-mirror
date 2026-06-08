@@ -983,61 +983,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [1.0]
 }
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("%skeleton/hip/body/neck/rightarm:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(3.0896547, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand/weapon:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(1.3102964, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("%skeleton/hip/body:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("%skeleton/hip:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("%skeleton/hip:position:y")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0),
-"points": PackedFloat32Array(-263, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="Animation" id="Animation_1uso6"]
 resource_name = "walk"
@@ -1130,44 +1075,15 @@ strengthRegeneration = 20.0
 scale = Vector2(0.32535243, 0.32535243)
 
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
-scale = Vector2(0.99999976, 0.99999976)
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
-[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
-scale = Vector2(0.9999996, 0.9999996)
-
-[node name="rightarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="1" unique_id=604297370]
-scale = Vector2(0.9999998, 0.9999998)
-
-[node name="righthand" parent="texture/skeleton/hip/body/neck/rightarm" index="0" unique_id=751552691]
-rotation = -1.5009831
-
-[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
+[node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
 rotation = 1.3102964
 rest = Transform2D(0.2575636, 0.96626127, -0.96626127, 0.2575636, 143.37064, 3.8577828)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999997, 0.9999997)
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.8858916, 0.4638921, -0.4638921, -0.8858916, -58, -111)
-
-[node name="rightleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="1" unique_id=703145623]
-rotation = 0.7644541
-scale = Vector2(0.9999997, 0.9999997)
-
-[node name="rightfoot" parent="texture/skeleton/hip/rightleg/rightknee" parent_id_path=PackedInt32Array(756090729) index="0" unique_id=1749461819]
-rotation = -1.4398966
-scale = Vector2(0.99999845, 0.99999845)
-
-[node name="leftleg" parent="texture/skeleton/hip" parent_id_path=PackedInt32Array(1819370648) index="2" unique_id=1150981751]
-rotation = -0.60039306
-scale = Vector2(0.9999998, 0.9999998)
-
-[node name="leftknee" parent="texture/skeleton/hip/leftleg" index="0" unique_id=1032884720]
-rotation = 1.1850786
-scale = Vector2(0.9999998, 0.9999998)
-
-[node name="leftfoot" parent="texture/skeleton/hip/leftleg/leftknee" index="0" unique_id=1435686573]
-rotation = -0.43633232
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
 position = Vector2(46.103855, -144.45872)
@@ -1190,22 +1106,25 @@ position = Vector2(817.57495, -430.3026)
 position = Vector2(350.38928, -430.3026)
 
 [node name="effect4" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="4" unique_id=1161149537]
-position = Vector2(922.077, -759.17676)
+position = Vector2(1029.6527, -759.17676)
 
-[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=1605478299]
+[node name="effect5" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="5" unique_id=45510914]
+position = Vector2(218.22488, -430.3026)
+
+[node name="parry" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=1605478299]
 position = Vector2(-76.83977, -614.718)
 rotation = 0.3265123
 
-[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="6" unique_id=662818464]
+[node name="magic" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=662818464]
 position = Vector2(316.57977, -393.41953)
 
-[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="7" unique_id=198186523]
+[node name="alert" type="Node2D" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="8" unique_id=198186523]
 position = Vector2(76.83975, -811.42773)
 
-[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="8" unique_id=490380349]
+[node name="trace" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="9" unique_id=490380349]
 position = Vector2(-3.0735903, -387.27234)
 
-[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="9" unique_id=108014891]
+[node name="damage" parent="texture/anchors" parent_id_path=PackedInt32Array(1302053380) index="10" unique_id=108014891]
 position = Vector2(0, -977.4016)
 
 [node name="movebox" parent="." index="1" unique_id=1108104038]
