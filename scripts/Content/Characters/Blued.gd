@@ -58,7 +58,7 @@ func focus3():
 	TutorialManager.tutorialFocus(
 		"attack1",
 		(getAnchorPosition("trace") + focusingEntity.getAnchorPosition("trace")) / 2,
-		"敌人被震晕了！疲劳状态下的敌人将会获得易伤+50%，趁现在近身敌人进行反击。",
+		"敌人被震晕了！疲劳状态下的敌人将会获得易伤+50%，趁现在近身敌人按住J进行反击。",
 		[
 			ActionManager.PlayerAction.MOVE,
 			ActionManager.PlayerAction.DASH,

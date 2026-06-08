@@ -141,6 +141,8 @@ func collectPlayerInputs() -> void:
 		if Input.is_action_just_pressed(skillInputId):
 			pushUniqueInput(skillInputId, INPUT_BUFFER_WINDOW)
 func tryBufferedAction() -> bool:
+	if tryStartCounterAttack():
+		return true
 	if countInput("parry", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.PARRY):
 		if fsm.changeState(States.PARRY_START, [1, false]):
 			consumeInput("parry", INPUT_BUFFER_WINDOW)
@@ -178,13 +180,17 @@ func tryBufferedAction() -> bool:
 			else:
 				print("Not installed skill %d" % (i + 1))
 	return false
+func hasCounterAttackInput() -> bool:
+	return countInput("attack", INPUT_BUFFER_WINDOW) > 0 || Input.is_action_pressed("attack")
+func consumeCounterAttackInput() -> void:
+	consumeInput("attack", INPUT_BUFFER_WINDOW)
 func tryStartCounterAttack() -> bool:
 	if (
-		countInput("attack", INPUT_BUFFER_WINDOW) > 0
+		hasCounterAttackInput()
 		&& WorldManager.getCurrentTime() - counterAttackStartTime <= COUNTER_ATTACK_WINDOW
 		&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
 	):
-		consumeInput("attack", INPUT_BUFFER_WINDOW)
+		consumeCounterAttackInput()
 		counterAttackStartTime = - INF
 		counterAttackLoopCount = 0
 		attackCounter = 0
@@ -195,16 +201,16 @@ func tryStartCounterAttack() -> bool:
 func handleCounterAttackAnimationFinished() -> bool:
 	match fsm.stateIs():
 		States.COUNTER_ATTACK_START:
-			if countInput("attack", INPUT_BUFFER_WINDOW) > 0:
-				consumeInput("attack", INPUT_BUFFER_WINDOW)
+			if hasCounterAttackInput():
+				consumeCounterAttackInput()
 				counterAttackLoopCount += 1
 				fsm.changeState(States.COUNTER_ATTACK_LOOP, [counterAttackLoopCount], false)
 			else:
 				fsm.changeState(States.COUNTER_ATTACK_END)
 			return true
 		States.COUNTER_ATTACK_LOOP:
-			if counterAttackLoopCount < MAX_COUNTER_ATTACK_LOOP && countInput("attack", INPUT_BUFFER_WINDOW) > 0:
-				consumeInput("attack", INPUT_BUFFER_WINDOW)
+			if counterAttackLoopCount < MAX_COUNTER_ATTACK_LOOP && hasCounterAttackInput():
+				consumeCounterAttackInput()
 				counterAttackLoopCount += 1
 				fsm.changeState(States.COUNTER_ATTACK_LOOP, [counterAttackLoopCount], false)
 			else:
@@ -262,7 +268,7 @@ func createAttack(id: int) -> void:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
 					b.baseDamage = 15
-			EffectPlayer.play("SwordSwing", getAnchorPosition("effect3"), directionAsRotation())
+			EffectPlayer.play("SwordStab", getAnchorPosition("effect2"), directionAsRotation())
 func parry(_bullet: BulletBase, isPerfect: bool, isSuper: bool):
 	if isSuper:
 		EffectPlayer.play("SuperParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
