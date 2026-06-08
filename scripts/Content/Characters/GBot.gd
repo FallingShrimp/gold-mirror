@@ -1,8 +1,12 @@
 extends PlayerBase
 
 var MAX_ATTACK_PERIOD = 3
-var INPUT_BUFFER_WINDOW = 350
 @onready var HEAVY_SHOT = MAX_ATTACK_PERIOD + 1
+var INPUT_BUFFER_WINDOW = 350
+var COYOTE_TIME = 50
+
+var lastGroundedTime = 0
+var coyoteJumpAvailable = false
 
 func _ready():
 	super._ready()
@@ -61,6 +65,9 @@ func ai(delta: float):
 	super.ai(delta)
 	collectPlayerInputs()
 	pruneInput(INPUT_BUFFER_WINDOW)
+	if is_on_floor() && fsm.stateIs() in [States.IDLE, States.WALK]:
+		lastGroundedTime = WorldManager.getCurrentTime()
+		coyoteJumpAvailable = true
 	match fsm.stateIs():
 		States.CONVERSED, States.PARRY_END:
 			return
@@ -82,6 +89,8 @@ func ai(delta: float):
 						ActionManager.emitDid(ActionManager.PlayerAction.MOVE)
 					elif fsm.stateIs() in [States.WALK]:
 						fsm.changeState(States.IDLE)
+		States.FALLING:
+			tryBufferedCoyoteJump()
 		States.ATTACK:
 			if fsm.currentState.arguments[0] == HEAVY_SHOT:
 				if countInput("parry", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.PARRY):
@@ -140,6 +149,7 @@ func tryBufferedAction() -> bool:
 	if countInput("jump", INPUT_BUFFER_WINDOW) > 0 && ActionManager.canI(ActionManager.PlayerAction.JUMP):
 		if fsm.changeState(States.JUMP, [1]):
 			consumeInput("jump", INPUT_BUFFER_WINDOW)
+			coyoteJumpAvailable = false
 			ActionManager.emitDid(ActionManager.PlayerAction.JUMP)
 			return true
 	for i in 3:
@@ -156,6 +166,19 @@ func tryBufferedAction() -> bool:
 					print("Not cooldowned skill %d" % (i + 1))
 			else:
 				print("Not installed skill %d" % (i + 1))
+	return false
+func tryBufferedCoyoteJump() -> bool:
+	if (
+		coyoteJumpAvailable
+		&& countInput("jump", INPUT_BUFFER_WINDOW) > 0
+		&& WorldManager.getCurrentTime() - lastGroundedTime <= COYOTE_TIME
+		&& ActionManager.canI(ActionManager.PlayerAction.JUMP)
+	):
+		if fsm.changeState(States.JUMP, [1]):
+			consumeInput("jump", INPUT_BUFFER_WINDOW)
+			coyoteJumpAvailable = false
+			ActionManager.emitDid(ActionManager.PlayerAction.JUMP)
+			return true
 	return false
 func createAttack(id: int) -> void:
 	match id:
