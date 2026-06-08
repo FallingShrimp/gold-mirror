@@ -32,8 +32,3 @@ func canCollect(_item: ItemBase) -> bool:
 
 func isPlayer() -> bool:
 	return false
-func fixDirection():
-	if is_instance_valid(focusingEntity):
-		direction = sign(focusingEntity.position.x - position.x)
-func tutorial1():
-	pass

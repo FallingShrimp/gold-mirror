@@ -184,6 +184,9 @@ func storeItem(delta: Dictionary[ContentManager.ItemType, int]):
 	for item in delta:
 		inventory[item] = clamp(inventory[item] + delta[item], 0, inventoryMax.get(item, INF))
 	itemStored.emit(delta)
+func fixDirection():
+	if is_instance_valid(focusingEntity):
+		direction = sign(focusingEntity.position.x - position.x)
 
 static func create(namx: String, positiox: Vector2, directiox: Direction):
 	var instance = load("res://components/Characters/%s.tscn" % namx).instantiate() as CharacterBase

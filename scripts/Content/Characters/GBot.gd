@@ -198,7 +198,7 @@ func handleCounterAttackAnimationFinished() -> bool:
 			if countInput("attack", INPUT_BUFFER_WINDOW) > 0:
 				consumeInput("attack", INPUT_BUFFER_WINDOW)
 				counterAttackLoopCount += 1
-				fsm.changeState(States.COUNTER_ATTACK_LOOP, [], false)
+				fsm.changeState(States.COUNTER_ATTACK_LOOP, [counterAttackLoopCount], false)
 			else:
 				fsm.changeState(States.COUNTER_ATTACK_END)
 			return true
@@ -206,7 +206,7 @@ func handleCounterAttackAnimationFinished() -> bool:
 			if counterAttackLoopCount < MAX_COUNTER_ATTACK_LOOP && countInput("attack", INPUT_BUFFER_WINDOW) > 0:
 				consumeInput("attack", INPUT_BUFFER_WINDOW)
 				counterAttackLoopCount += 1
-				fsm.changeState(States.COUNTER_ATTACK_LOOP, [], false)
+				fsm.changeState(States.COUNTER_ATTACK_LOOP, [counterAttackLoopCount], false)
 			else:
 				fsm.changeState(States.COUNTER_ATTACK_END)
 			return true
@@ -233,17 +233,17 @@ func createAttack(id: int) -> void:
 		1:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
-					b.baseDamage = 10
+					b.baseDamage = 8
 			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 		2:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
-					b.baseDamage = 12
+					b.baseDamage = 11
 			EffectPlayer.play("SwordSwing", getAnchorPosition("effect1"), directionAsRotation())
 		3:
 			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
 				if b is BulletBase:
-					b.baseDamage = 15
+					b.baseDamage = 12
 			EffectPlayer.play("SwordStab", getAnchorPosition("effect2"), directionAsRotation())
 		4:
 			BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self )
@@ -258,6 +258,11 @@ func createAttack(id: int) -> void:
 				if b is BulletBase:
 					b.baseDamage = 25
 			EffectPlayer.play("Kick", getAnchorPosition("effect4"), 0, Vector2(direction, 1))
+		7:
+			for b in BulletBase.create("KnifeSwing", getAnchorPosition("attack1"), directionAsRotation(), self ):
+				if b is BulletBase:
+					b.baseDamage = 15
+			EffectPlayer.play("SwordSwing", getAnchorPosition("effect3"), directionAsRotation())
 func parry(_bullet: BulletBase, isPerfect: bool, isSuper: bool):
 	if isSuper:
 		EffectPlayer.play("SuperParry", getAnchorPosition("parry"), (Vector2.from_angle(getAnchorRotation("parry")) * Vector2(-1, 1)).angle())
