@@ -119,6 +119,8 @@ func canCollect(_item: ItemBase) -> bool:
 	assert(false, "未实现canCollect")
 	return false
 
+func heal(amount: float):
+	takeDamage(-amount)
 func follow(positiox: Variant, speed: float = 1, autoExit: float = 10):
 	following = true
 	followingPosition = positiox if positiox is Vector2 else positiox.call()
