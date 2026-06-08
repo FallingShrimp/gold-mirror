@@ -9,12 +9,12 @@ func _ready():
 		func(_n):
 			match fsm.stateIs():
 				States.ATTACK:
-					if emittedForNextAttack == 0:
+					if countInput("attack") == 0:
 						var toIdle = true
 						if fsm.currentState.arguments[0] == MAX_ATTACK_PERIOD && ActionManager.canI(ActionManager.PlayerAction.ATTACK) && enoughStrength(25):
 							var holdTime = await holdup("attack", 500)
 							if holdTime == 500 && useStrength(25):
-								emittedForNextAttack += 1
+								pushInput("attack")
 								fsm.changeState(States.ATTACK, [HEAVY_SHOT], false)
 								attackCounter = 0
 								toIdle = false
@@ -28,7 +28,7 @@ func _ready():
 	fsm.joinState.connect(
 		func(newState, _o, _a):
 			if newState is States.ATTACK:
-				emittedForNextAttack -= 1
+				consumeInput("attack")
 	)
 	handleHoldon("attack")
 	installSkill(SkillCard.createCard("AnnihilationRay"))
@@ -73,10 +73,12 @@ func ai(delta: float):
 					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
 				elif Input.is_action_pressed("attack") && ActionManager.canI(ActionManager.PlayerAction.ATTACK):
 					if Input.is_action_just_pressed("attack"):
-						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]) && useStrength(attackCounter):
+						pushInput("attack")
+						if fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1]) && useStrength(3):
 							attackCounter += 1
-							emittedForNextAttack += 1
 							ActionManager.emitDid(ActionManager.PlayerAction.ATTACK)
+						else:
+							consumeInput("attack")
 				elif Input.is_action_just_pressed("dash") && ActionManager.canI(ActionManager.PlayerAction.DASH):
 					if useStrength(10):
 						fsm.changeState(States.DASH, [direction])
@@ -117,13 +119,13 @@ func ai(delta: float):
 					ActionManager.emitDid(ActionManager.PlayerAction.PARRY)
 			else:
 				if (
-					emittedForNextAttack < MAX_ATTACK_PERIOD
+					countInput("attack") == 0
 					&& Input.is_action_just_pressed("attack")
 					&& WorldManager.getCurrentTime() - lastAttackTime > attackTime
 					&& ActionManager.canI(ActionManager.PlayerAction.ATTACK)
-					&& useStrength(attackCounter)
+					&& useStrength(3)
 				):
-					emittedForNextAttack += 1
+					pushInput("attack")
 					await animator.animation_finished
 					fsm.changeState(States.ATTACK, [attackCounter % MAX_ATTACK_PERIOD + 1], false)
 					attackCounter += 1
