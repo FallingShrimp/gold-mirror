@@ -13,6 +13,8 @@ script = ExtResource("1_o1eeb")
 [node name="texture" type="Node2D" parent="." unique_id=167379002]
 unique_name_in_owner = true
 
+[node name="trails" type="Node2D" parent="texture" unique_id=1251407004]
+
 [node name="animator" type="AnimationPlayer" parent="texture" unique_id=788723809]
 unique_name_in_owner = true
 

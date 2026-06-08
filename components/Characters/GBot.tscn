@@ -6,6 +6,52 @@
 [ext_resource type="AudioStream" uid="uid://bp1hgbyvu7x13" path="res://resources/sounds/swing2.mp3" id="4_hfxiv"]
 [ext_resource type="AudioStream" uid="uid://b7n3yvovllncc" path="res://resources/sounds/swing3.mp3" id="5_hfxiv"]
 [ext_resource type="AudioStream" uid="uid://cjwjm2tdefctc" path="res://resources/sounds/counter-attack.wav" id="6_j3bhw"]
+[ext_resource type="AudioStream" uid="uid://bdlawdtwxd8lb" path="res://resources/sounds/dash.wav" id="7_4tujy"]
+
+[sub_resource type="Curve" id="Curve_4tujy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_x3xge"]
+curve = SubResource("Curve_4tujy")
+
+[sub_resource type="Curve" id="Curve_7gmcx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_12pkj"]
+curve = SubResource("Curve_7gmcx")
+
+[sub_resource type="Gradient" id="Gradient_ejmrh"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.62058055, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_svyw4"]
+gradient = SubResource("Gradient_ejmrh")
+
+[sub_resource type="Curve" id="Curve_d4fll"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_d0jbr"]
+curve = SubResource("Curve_d4fll")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i6yko"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angle_curve = SubResource("CurveTexture_12pkj")
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 300.0
+initial_velocity_max = 600.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_d0jbr")
+color_initial_ramp = SubResource("GradientTexture1D_svyw4")
+alpha_curve = SubResource("CurveTexture_x3xge")
 
 [sub_resource type="Animation" id="Animation_vmwqn"]
 resource_name = "attack1"
@@ -680,7 +726,7 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_4tujy"]
 resource_name = "dash"
-length = 0.4
+length = 0.5
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -689,7 +735,7 @@ tracks/0/path = NodePath("skeleton/hip:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.099999994, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.099999994, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, -1.2217304763960306, -1.2217304763960306, 0.0]
@@ -701,10 +747,10 @@ tracks/1/path = NodePath("%skeleton/hip/rightleg/rightknee/rightfoot:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.51165354, 0.7173303225696699, 0.7173303225696699, -0.51165354, 0.7173303225696699]
+"values": [-0.51165354, 0.7173303225696699, 0.7173303225696699, -0.51165354]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -713,10 +759,10 @@ tracks/2/path = NodePath("%skeleton/hip/leftleg:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.47166082, 0.8813912722571364, 0.8813912722571364, 0.47166082, 0.8813912722571364]
+"values": [0.47166082, 0.8813912722571364, 0.8813912722571364, 0.47166082]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -725,10 +771,10 @@ tracks/3/path = NodePath("%skeleton/hip/body/neck/mouth:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.70000005),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [2.659209, 3.274237676741363, 3.274237676741363, 2.659209, 3.274237676741363]
+"values": [2.659209, 3.274237676741363, 3.274237676741363, 2.659209]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -737,7 +783,7 @@ tracks/4/path = NodePath("%skeleton/hip/leftleg/leftknee:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.11323539, 0.9337511498169664, 0.9337511498169664, 0.11323539]
@@ -749,7 +795,7 @@ tracks/5/path = NodePath("%skeleton/hip:position:y")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-263.0, -206.715, -206.715, -263.0]
@@ -761,10 +807,37 @@ tracks/6/path = NodePath("%skeleton/hip/body/neck/rightarm/righthand/weapon:rota
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.4),
+"times": PackedFloat32Array(0, 0.1, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.3102964, 2.81347075421486, 2.81347075421486, 1.3102964]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("%animationAudio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_4tujy")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("trails/dash:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_8tjt6"]
@@ -1289,6 +1362,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [1.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("trails/dash:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_1uso6"]
 resource_name = "walk"
@@ -1377,28 +1462,35 @@ height = 264.0
 
 [node name="GBot" unique_id=948564138 instance=ExtResource("1_feuyp")]
 script = ExtResource("2_1uso6")
-gravityScale = 1.0
 strengthRegeneration = 20.0
 
 [node name="texture" parent="." index="0" unique_id=167379002]
 scale = Vector2(0.32535243, 0.32535243)
 
+[node name="dash" parent="texture/trails" parent_id_path=PackedInt32Array(1251407004) index="0" unique_id=1967274263]
+position = Vector2(98.35488, -30.7359)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_i6yko")
+
 [node name="leftarm" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="0" unique_id=410263788]
 rest = Transform2D(0.8908146, -0.4543663, 0.4543663, 0.8908146, 76, 43)
 
+[node name="lefthand" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
+scale = Vector2(0.99999964, 0.99999964)
+
 [node name="weapon" parent="texture/skeleton/hip/body/neck/rightarm/righthand" parent_id_path=PackedInt32Array(751552691) index="0" unique_id=483953332]
 rotation = 1.3102964
+scale = Vector2(0.99999994, 0.99999994)
 rest = Transform2D(0.2575636, 0.96626127, -0.96626127, 0.2575636, 143.37064, 3.8577828)
 
 [node name="mouth" parent="texture/skeleton/hip/body/neck" parent_id_path=PackedInt32Array(1049122167) index="2" unique_id=24930383]
-scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.8858916, 0.4638921, -0.4638921, -0.8858916, -58, -111)
 
 [node name="weapon" parent="texture/polygons" parent_id_path=PackedInt32Array(507869215) index="6" unique_id=1517447311]
 position = Vector2(46.103855, -144.45872)
 rotation = 2.7782815
 
-[node name="animator" parent="texture" index="3" unique_id=788723809]
+[node name="animator" parent="texture" index="4" unique_id=788723809]
 libraries/ = SubResource("AnimationLibrary_vmwqn")
 speed_scale = 1.0
 

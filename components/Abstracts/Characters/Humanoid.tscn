@@ -25,14 +25,14 @@ rest = Transform2D(1, 0, 0, 1, 10, -173)
 
 [node name="leftarm" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="0" unique_id=410263788]
 position = Vector2(76, 43)
-rotation = -0.47166088
+rotation = -0.47166085
 scale = Vector2(0.9999997, 0.9999997)
 rest = Transform2D(0.8908146, -0.45436633, 0.45436633, 0.8908146, 76, 43)
 
 [node name="lefthand" type="Bone2D" parent="texture/skeleton/hip/body/neck/leftarm" index="0" unique_id=843647080]
 position = Vector2(-52.56317, 85.44656)
 rotation = 1.8357233
-scale = Vector2(0.99999964, 0.99999964)
+scale = Vector2(0.9999996, 0.9999996)
 rest = Transform2D(-0.26183867, 0.9651113, -0.9651113, -0.26183867, -52.56317, 85.44656)
 auto_calculate_length_and_angle = false
 length = 123.684
@@ -55,7 +55,7 @@ bone_angle = 0.0
 [node name="weapon" type="Bone2D" parent="texture/skeleton/hip/body/neck/rightarm/righthand" index="0" unique_id=483953332]
 position = Vector2(143.37064, 3.8577828)
 rotation = -1.4497777
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(0.12072343, -0.99268615, 0.99268615, 0.12072343, 143.37064, 3.8577828)
 auto_calculate_length_and_angle = false
 length = 563.395
@@ -64,7 +64,7 @@ bone_angle = 0.0
 [node name="mouth" type="Bone2D" parent="texture/skeleton/hip/body/neck" index="2" unique_id=24930383]
 position = Vector2(-58, -111)
 rotation = 2.659209
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999999, 0.9999999)
 rest = Transform2D(-0.8858917, 0.46389213, -0.46389213, -0.8858917, -58, -111)
 auto_calculate_length_and_angle = false
 length = 185.174

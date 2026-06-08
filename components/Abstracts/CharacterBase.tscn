@@ -3,12 +3,58 @@
 [ext_resource type="PackedScene" uid="uid://bqv2uugch0t5e" path="res://components/Abstracts/EntityBase.tscn" id="1_f4vc7"]
 [ext_resource type="Script" uid="uid://cbfsgu3wmt418" path="res://scripts/Statemachine/Abstracts/CharacterBase.gd" id="2_0cve1"]
 [ext_resource type="PackedScene" uid="uid://v5w64ehq8nq3" path="res://components/Boxes/CharacterStateBar.tscn" id="3_0cve1"]
+[ext_resource type="Texture2D" uid="uid://bptcfeyjm8a7g" path="res://resources/effects/star.svg" id="3_w6roo"]
+
+[sub_resource type="Curve" id="Curve_0cve1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_w6roo"]
+curve = SubResource("Curve_0cve1")
+
+[sub_resource type="Curve" id="Curve_buw6x"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2jew0"]
+curve = SubResource("Curve_buw6x")
+
+[sub_resource type="Gradient" id="Gradient_4haj7"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 0.62058055, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_t2xb3"]
+gradient = SubResource("Gradient_4haj7")
+
+[sub_resource type="Curve" id="Curve_k873l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_5gt0j"]
+curve = SubResource("Curve_k873l")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q83nn"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 100, 1)
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+angle_curve = SubResource("CurveTexture_2jew0")
+direction = Vector3(-1, 0, 0)
+spread = 15.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.099999994
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_5gt0j")
+color_initial_ramp = SubResource("GradientTexture1D_t2xb3")
+alpha_curve = SubResource("CurveTexture_w6roo")
 
 [node name="CharacterBase" unique_id=948564138 instance=ExtResource("1_f4vc7")]
 script = ExtResource("2_0cve1")
 isBoss = false
 attackTime = 50.0
-mass = 1.0
+gravityScale = 1.0
 movementSpeed = 1.0
 maxStrength = 100.0
 maxMagicLength = 100.0
@@ -19,19 +65,24 @@ magicRegeneration = 5.0
 currentStrength = 0.0
 currentMagic = Vector2(0, 0)
 
-[node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="0" unique_id=1326387772]
+[node name="dash" type="GPUParticles2D" parent="texture/trails" parent_id_path=PackedInt32Array(1251407004) index="0" unique_id=1967274263]
+amount = 100
+texture = ExtResource("3_w6roo")
+process_material = SubResource("ParticleProcessMaterial_q83nn")
+
+[node name="skeleton" type="Skeleton2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="1" unique_id=1326387772]
 unique_name_in_owner = true
 
-[node name="polygons" type="Node2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="1" unique_id=507869215]
+[node name="polygons" type="Node2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="2" unique_id=507869215]
 unique_name_in_owner = true
 metadata/_edit_lock_ = true
 metadata/_edit_group_ = true
 
-[node name="full" type="Sprite2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="2" unique_id=275419339]
+[node name="full" type="Sprite2D" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=275419339]
 modulate = Color(1, 0, 0, 0.4)
 z_index = -1
 
-[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="3" unique_id=788723809]
+[node name="animator" parent="texture" parent_id_path=PackedInt32Array(167379002) index="4" unique_id=788723809]
 speed_scale = 3.0
 
 [node name="bossmusic" type="AudioStreamPlayer2D" parent="texture/sounds" parent_id_path=PackedInt32Array(1330768803) index="0" unique_id=559295679]
